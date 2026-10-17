@@ -42,7 +42,7 @@ What D1 derives from it:
 
 - `css/site.css`: the colour, type, spacing, shadow tokens from `tokens.json` as custom properties on `:root`, Night under `prefers-color-scheme: dark`; the pixel-border and lift recipes; the layout rules (1200px content, 720px article measure, 320px sidebar stacking under 900px, 40px gutter).
 - `templates/post.html` and the home and archive pages: markup copied from the component previews (NavBar, PostCard, Chip, CodeBlock, Callout), no React. The system's own README says to copy markup and `bundle.css` for the static site.
-- `css/prism.css`: a Prism theme mapped to the `code-bg` and `code-*` tokens so highlighted blocks match the CodeBlock component.
+- The Prism theme, inside `css/site.css`, mapped to the `code-bg` and `code-*` tokens so highlighted blocks match the CodeBlock component.
 - `site/img/`: the hero and avatar PNGs downloaded from the system's asset store, served with `image-rendering: pixelated`.
 - Three pages built as the first acceptance of the look: home (10 latest posts as PostCards), a post page with a code block and an image, the archive by year.
 
