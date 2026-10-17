@@ -1,0 +1,8 @@
+node_modules/
+.playwright-mcp/
+.DS_Store
+Thumbs.db
+
+# Local agent notes (evolve plugin): kept out of the public repository
+evolution/
+memory/

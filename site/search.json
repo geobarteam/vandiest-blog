@@ -1,0 +1,12 @@
+[
+ {
+  "title": "Sample post: style check",
+  "url": "/post/2026/10/17/sample-post-style-check/",
+  "date": "2026-10-17",
+  "description": "A throwaway post that shows every element a post can hold, so the stylesheet can be checked before the migrated posts arrive.",
+  "tags": [
+   "Meta",
+   "Sample"
+  ]
+ }
+]

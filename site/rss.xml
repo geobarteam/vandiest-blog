@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geoffrey Vandiest</title>
+    <link>https://vandiest.biz/</link>
+    <description>Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</description>
+    <language>en</language>
+    <lastBuildDate>Sat, 17 Oct 2026 08:00:00 GMT</lastBuildDate>
+    <atom:link href="https://vandiest.biz/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Sample post: style check</title>
+      <link>https://vandiest.biz/post/2026/10/17/sample-post-style-check/</link>
+      <guid isPermaLink="true">https://vandiest.biz/post/2026/10/17/sample-post-style-check/</guid>
+      <pubDate>Sat, 17 Oct 2026 08:00:00 GMT</pubDate>
+      <category>Meta</category>
+      <category>Sample</category>
+      <description><![CDATA[<p>This post exists to check the stylesheet. It is removed when the migrated posts arrive. Every element a post may contain appears once below, so a single page shows whether the design holds.</p>
+          <h2>A second-level heading</h2>
+          <p>Body text is set in Nunito Sans at 18 pixels on a 30 pixel line, held to 65 characters. Links look <a href="https://vandiest.biz/archive/">like this</a>, and inline code like <code>tools/build.mjs</code>.</p>
+          <ul>
+            <li>An unordered list item.</li>
+            <li>A second item, long enough to wrap onto a second line at phone width so the indent can be checked.</li>
+          </ul>
+          <ol>
+            <li>An ordered step.</li>
+            <li>Another step.</li>
+          </ol>
+          <h3>A third-level heading</h3>
+          <pre><code class="language-csharp">// A C# snippet, highlighted by Prism in the browser
+public sealed class SubscriptionHandler : ICommandHandler&lt;Subscribe&gt;
+{
+    public async Task Handle(Subscribe command, CancellationToken ct)
+    {
+        var plan = await _plans.FindAsync(command.PlanId, ct);
+        if (plan is null) throw new NotFoundException("plan");
+        _audit.Write($"subscribed {command.PatientId}");
+    }
+}</code></pre>
+          <pre><code class="language-bash">node tools/check.mjs &amp;&amp; node tools/build.mjs
+git push   # publishes</code></pre>
+          <figure>
+            <img src="https://vandiest.biz/img/2026/sample-post-style-check-01.png" alt="Pixel-art meadow with a laptop, a tree and a city skyline" width="192" height="96" loading="lazy" class="pixel">
+            <figcaption>A figure with a caption. Screenshots get the same 4px pixel border.</figcaption>
+          </figure>
+          <blockquote>
+            <p>A blockquote reads as a bordered aside, the way the design system draws a callout.</p>
+          </blockquote>
+          <aside class="callout"><p>A tip callout. Write the spec before you open the chat window.</p></aside>
+          <aside class="callout callout--warn"><p>A warning callout. Never change the URL of a published post.</p></aside>
+          <table>
+            <thead><tr><th>Part</th><th>Choice</th></tr></thead>
+            <tbody>
+              <tr><td>Hosting</td><td>Azure Static Web Apps, Free</td></tr>
+              <tr><td>Source</td><td>Plain HTML in a GitHub repository</td></tr>
+            </tbody>
+          </table>
+          <p>The last paragraph closes the post.</p>]]></description>
+    </item>
+  </channel>
+</rss>
