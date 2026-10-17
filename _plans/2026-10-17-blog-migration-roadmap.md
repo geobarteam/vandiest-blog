@@ -7,7 +7,7 @@ Written 2026-10-17. The spec budgets one weekend for the migration proper; the d
 
 | # | Deliverable | Depends on | Done when |
 | --- | --- | --- | --- |
-| D1 | Decisions closed and foundation live | — | An empty site answers on the preview URL after a manual workflow run |
+| D1 (done) | Decisions closed and foundation live | — | An empty site answers on the preview URL after a manual workflow run |
 | D2 | Content extracted | D1 | 77 posts and 1 page committed as raw input (BlogML or scraped) |
 | D3 | Content converted and media fetched | D2 | `check.mjs` passes on all generated posts; `report.md` lists every miss |
 | D4 | Review pass accepted | D3 | Every post has a report line; you accepted the uncertain ones and the missing-image list |
@@ -66,7 +66,7 @@ Where the system and the spec disagree, resolved as follows:
 - The three pages (home, post, archive) built from Vandiest Pixel and approved by you on the preview URL; see Design track.
 - `templates/post.html` and `css/site.css` built from the design system and following the HTML conventions (HTML5, canonical, Open Graph, one JSON-LD `BlogPosting` block, `<article>` body, system fonts, readable without CSS).
 - `tools/build.mjs` (index, archive, `rss.xml`, `sitemap.xml`, `search.json`, header/footer refresh) and `tools/check.mjs` (structure, metadata, escaped code, image sizes, internal links). Node 20, one dependency (`node-html-parser`), under a second.
-- Prism JS hosted in the repo with the token-mapped `css/prism.css`; self-hosted fonts under `site/fonts/`. `404.html`, `robots.txt`, `contact/index.html`, `page/gentsbbq/index.html` placeholder.
+- Prism JS hosted in the repo, its theme mapped to the code tokens inside `css/site.css`; self-hosted fonts under `site/fonts/`. `404.html`, `robots.txt`, `contact/index.html`, `page/gentsbbq/index.html` placeholder.
 - `AGENTS.md` with the conventions, the voice rules and "never change a published URL".
 
 **Done when.**
@@ -76,6 +76,32 @@ Where the system and the spec disagree, resolved as follows:
 - The feed redirect and the 404 page work on the preview URL.
 
 **Out of scope.** Any migrated content; custom domains.
+
+**Status (2026-10-17): done, pending your look approval.**
+
+| Item | Value |
+| --- | --- |
+| Repository | https://github.com/geobarteam/vandiest-blog (public, `main`) |
+| Static Web App | `swa-vandiest-blog`, Free, West Europe, resource group `rg-vandiest-blog` |
+| Preview URL | https://kind-pebble-064b5f003.4.azurestaticapps.net |
+| Secret | `AZURE_STATIC_WEB_APPS_API_TOKEN`, piped from Azure to GitHub without being printed |
+
+Verified on the preview URL: push and manual runs both deploy; `/syndication.axd` (both formats) and `/contact.aspx` return 301; a post path without trailing slash returns 301 to the slashed path; a wrong path returns the custom 404 with status 404; images and fonts carry a one-year immutable cache header. `check.mjs` catches a missing tag, an inline style, a code block without language, an image without alt and a broken internal link.
+
+Deviations from the spec, all deliberate:
+
+- The app was created with the Azure CLI, unlinked from GitHub, instead of in the portal. Azure therefore committed no workflow file and the token-based workflow is the only one.
+- CI runs Node 22, not 20. Node 20 reached end of life in April 2026; the scripts still run on 20.
+- The Prism theme lives inside `css/site.css`, so the site has exactly one stylesheet.
+- `tools/layout.mjs` is the single source for the header, footer and sidebar; `build.mjs` stamps them into every page and into `templates/post.html`.
+- `CLAUDE.md` holds one line importing `AGENTS.md`. `evolution/` and `memory/` are git-ignored so local agent notes stay out of the public repository.
+- The SWA ignores the custom content type for `/rss.xml` and serves `text/xml`, which feed readers accept.
+
+Open before D7:
+
+- [ ] Approve the look on the preview URL (home, the sample post, archive, Night theme).
+- [ ] Give the public contact address and the LinkedIn profile URL; `site/contact/index.html` holds placeholders marked TODO.
+- [ ] D3 deletes the sample post `post/2026/10/17/sample-post-style-check/` and its image.
 
 ## D2. Content extracted
 
