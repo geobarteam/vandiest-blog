@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you w" />
+	<meta name="author" content="Geoffrey Vandiest" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="Build your Arduino Robot and program it with Javascript (RSS)" href="/post/feed/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="Build your Arduino Robot and program it with Javascript (ATOM)" href="/post/feed/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | Build your Arduino Robot and program it with Javascript
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./build-your-arduino-robot-and-program-it-with-javascript?id=8161edb4-3edf-4cd1-af69-d92405841012" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="VpSPAsOl2Yz7EuxxYqtEgqarKxtR0rs42c8Pa2S9beskE0OrkrUL0wUgqRysazbCk49/czlfhFr3ade6n9lDPUakcS3sJECgo4eS17LmAKCXEcEhTl347bSNeLdJgH7zdaPSFc0prf4f/xoaAy6vCYF5PvPnXdMn4DMaLJB3RmucmylThn8O8zt+Iy4wd5TTG6xyRoxfxl8CCQs5jGct+xK5b2tXcamHn1Gxys7/ipJ0juBtaW2hNT59ppuRcgP5cQu0PXl8Lj6JPF5C8nbVFSztXpf2Gu0ohd1yI1B13tGojG/nqr548kwK8npsKBRPg0jHSVgMxu4wPDXl1uHIDC8ZnSMM7RmT7flgUEFJpruVYCh3faHrWVyIgD9eIT/SuSnbrlSy1V7iuDjGsXQNtcV5nqIlf3p8GwudeH7g9rBxCO2iU5S2ULwxzlPimIHkLkvAMBOKI6qwM2Evu3aGXh7ILACDY88V8BMutlN4Ykk5i0yC4iwdhNfkJGLMTBdSpzlFux3id4WmtjQhVG2K0AP3f5ecbRkyKloCGBD3fRVmsXIVyLpERaJ8Q5smTLxSU8tq8I7ojwLPTkniimlCYDFv61cxh83D0dA0r+kMwR+EJF8mAZd28K5VsQkNRq39XYKTZy1X2+vbeBbEDHx2BC4VW6bC2MGGu5jMbFVnerNVs93AxanGmADkzLgXH5GpxskzmTD5l7UtP1bidJmsqJxQlASbYxhUcR8pH3Ksi7QqfHBuEyJ5GHWCMEYNouNLTFT+riGwH+4yUwMbCOn1lkf3KY641vTTy1bX3FbkB1AjICwPitajQvOkkuV+hod32DxRPu4RNLVJlxlb7O95YJizYWmghskniufXgoKSppc8UTzqmhi1ieUOP7BGdfkxXswEAdRY4Qoe9w+JtdXKA330H9o=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2016/09/01/building-typescript-with-gulp" class="nav-next">Building TypeScript with Gulp</a> |
+    <a href="/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb" class="nav-prev">Get started with ASP.NET Core, Angular and MongoDB</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript" class="taggedlink">Build your Arduino Robot and program it with Javascript</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">3. May 2016 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/Admin">Geobarteam</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <div class="entry-content">
+<p>In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you want to build your own. I explain which design choices I made, which frameworks and technologies I used and how I program and configured the robot. Here you can find a video of the end result.<br /><iframe src="//www.youtube.com/embed/l7mypzAhCl4" width="425" height="350"></iframe></p>
+<h2>What is needed?</h2>
+<p>The robot is based on a RoverV2 + Bluetooth Arduino robotic kit sold by&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.robotshop.com/en/dfrobotshop-rover-tracked-robot-bluetooth-kit.html">Robotshop</a>.&nbsp; This kit contains:</p>
+<ul>
+<li>A compatible Arduino board including:
+<ul>
+<li>Dual H-bridge and onboard voltage regulator</li>
+<li>An onboard charger</li>
+</ul>
+</li>
+<li>A Bluetooth module</li>
+<li>An aluminum frame</li>
+<li>Tamiya Twin-Motor Gear Box</li>
+<li>Tamiya Track and Wheel Set</li>
+<li>Lithium Polymer Battery Cell &ndash; 3.7V 1000mAh</li>
+</ul>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robotshop.jpg"><img class="alignnone  wp-image-2111" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robotshop-300x300.jpg" sizes="(max-width: 589px) 100vw, 589px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/robotshop-150x150.jpg 150w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/robotshop-300x300.jpg 300w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/robotshop-624x624.jpg 624w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/robotshop.jpg 800w" alt="robotshop" width="589" height="589" /></a></p>
+<p>The kit is complete and well documented but if you want to go hard core and start with a classic Arduino board,&nbsp;you can obtain the same result with following components:</p>
+<ul>
+<li>An Arduino compatible board</li>
+<li>An Arduino motor shield</li>
+<li>A pair of two 5v motors and 4 Wheels &amp; frame</li>
+<li>A Bluetooth module</li>
+<li>4xAA battery &amp; holder</li>
+</ul>
+<p>The goal of this article is to set the basic building blocks to build a robotic platform that you can extend to finally build an autonomous robot.&nbsp; Therefore, to enable the robot to sense his environment we extend the base platform with:</p>
+<p>3 x ultrasonic sensors HC-SR04</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/ultrasonic.jpg"><img class="alignnone size-full wp-image-2201" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/ultrasonic.jpg" sizes="(max-width: 265px) 100vw, 265px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/ultrasonic-150x150.jpg 150w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/ultrasonic.jpg 265w" alt="ultrasonic" width="265" height="265" /></a></p>
+<p>1x Accelerometer MMA7361.</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/accelerometer.jpg"><img class="alignnone size-full wp-image-2131" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/accelerometer.jpg" sizes="(max-width: 265px) 100vw, 265px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/accelerometer-150x150.jpg 150w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/accelerometer.jpg 265w" alt="accelerometer" width="265" height="265" /></a></p>
+<p>1x Compass HMC5883L</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/compass.jpg"><img class="alignnone size-full wp-image-2141" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/compass.jpg" sizes="(max-width: 265px) 100vw, 265px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/compass-150x150.jpg 150w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/compass.jpg 265w" alt="compass" width="265" height="265" /></a></p>
+<p>You can find all these components, including the wheels &amp; frames in shops selling Arduino compatible boards online like&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.sainsmart.com/">SainSmart</a>&nbsp;or&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.robotshop.com/">Robotshop</a>.</p>
+<p>&nbsp;</p>
+<h2>Design</h2>
+<p>For the design I choosed to remotely control the robot from a server (a laptop or pc).&nbsp; This design overcomes the limited processing &amp; storage of the Arduino board but it comes at the expense of autonomy. My robot will not be able to evolve without be connected by Bluetooth to his server.&nbsp; This is a concession I&rsquo;ve to make but it provides me quasi infinitely processing power and makes my robot accessible through the internet.</p>
+<p>The Arduino board plays the role of central nervous system and the PC is the brain. Another advantage that offers this design is that the robot can be controlled from anywhere in the world as it is exposed through http by a&nbsp;<a href="https://web.archive.org/web/20160305222449/https://nodejs.org/">node.js</a>&nbsp;application.</p>
+<p>On the Arduino board runs a small program named&nbsp;<a href="https://web.archive.org/web/20160305222449/https://www.arduino.cc/en/reference/firmata">&ldquo;Firmata&rdquo;</a>.&nbsp; This program enables you to control the Arduino board remotely through the Firmata protocol.&nbsp; You&rsquo;ll send commands from the server to the robot through a serial connection.&nbsp; On the server side you&rsquo;ll program your robot with Javascript using the&nbsp;<a href="https://web.archive.org/web/20160305222449/https://github.com/rwaldron/johnny-five">johnny-five</a>&nbsp;node library.&nbsp; This library provides an abstraction over the Firmata protocol and enable us to interact with the Arduino board and a lot of the Arduinos compatible electronic devices like sensors and motors.</p>
+<p>The robot can be remotely controlled and followed through a web interface dashboard.&nbsp; The dashboard is a single page application built with&nbsp;<a href="https://web.archive.org/web/20160305222449/https://angularjs.org/">angular.js&nbsp;&nbsp;</a>&nbsp;.&nbsp; The html, images, css and javascript resources are served by express.js.&nbsp; Express.js is the default web application framework for node.&nbsp; Express.js is also used to expose a rest based API.&nbsp;&nbsp; Through this REST interface, the radar and accelerometer data can be retrieved and commands can be send to the motor.&nbsp; This allow you to program and control the robot via any device using the programming language of your choice.</p>
+<p>To enable real time communication in both directions between the server and the robot&nbsp;I&rsquo;ve&nbsp;used socket.io.</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/design.jpg"><img class="alignnone  wp-image-2091" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/design-224x300.jpg" sizes="(max-width: 679px) 100vw, 679px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/design-224x300.jpg 224w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/design.jpg 511w" alt="design" width="679" height="909" /></a></p>
+<p>&nbsp;</p>
+<h2>&nbsp;Assemble and configure your robot.</h2>
+<p>To assemble the DFRobotshop RoverV2 you can follow&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.robotshop.com/en/dfrobotshop-rover-tracked-robot-bluetooth-kit.html">this video</a>.&nbsp; As I&rsquo;m a Lego fan and that with two little boys in house I&rsquo;ve a lot of little bricks, I&rsquo;d no difficulties to find all pieces I needed to build a Lego frame where I could mount the ultrasonic sensors, the accelerometer and the compass on it. Here you can find a picture of the end result.</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robot.jpg"><img class="alignnone  wp-image-2181" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robot-300x225.jpg" sizes="(max-width: 715px) 100vw, 715px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/robot-300x225.jpg 300w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/robot-624x468.jpg 624w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/robot.jpg 640w" alt="robot" width="715" height="536" /></a></p>
+<p>It&rsquo;s up to you to decide to copy the design or make your own as long as you use the same core components and follow the schematics provided here beneath the code will be compatible with your robot.</p>
+<h3>Scematics</h3>
+<p>Here you can find the schematics for your robot:</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/Johnny5-Radar_bb.png"><img class="alignnone  wp-image-2101" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/Johnny5-Radar_bb-300x274.png" sizes="(max-width: 627px) 100vw, 627px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/Johnny5-Radar_bb-300x274.png 300w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/Johnny5-Radar_bb-1024x935.png 1024w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/Johnny5-Radar_bb-624x570.png 624w" alt="Johnny5-Radar_bb" width="627" height="573" /></a></p>
+<p>&nbsp;</p>
+<h4>Accelerometer</h4>
+<p>As the accelerometer MMA7361 can vary slightly between manufacturers and models I provide an alternative schematic only for the accelerometer:</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/schematicsaccel.jpg"><img class="alignnone  wp-image-2191" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/schematicsaccel-300x159.jpg" sizes="(max-width: 611px) 100vw, 611px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/schematicsaccel-300x159.jpg 300w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/schematicsaccel.jpg 1024w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/schematicsaccel-624x332.jpg 624w" alt="schematicsaccel" width="611" height="324" /></a></p>
+<h2>Configure your Robot</h2>
+<h3>Prerequisites:</h3>
+<p>Before you start make sure you&rsquo;ve setup the following tools on your box:</p>
+<p>&ndash; Git&nbsp;:&nbsp;<a href="https://web.archive.org/web/20160305222449/https://git-scm.com/">https://git-scm.com/</a></p>
+<p>&ndash; Node 0.10.40 for x86 :&nbsp;<a href="https://web.archive.org/web/20160305222449/https://nodejs.org/dist/v0.10.40/" target="_blank">https://nodejs.org/dist/v0.10.40/</a></p>
+<p>&ndash; Python 2.7.x&nbsp;:&nbsp;<a href="https://web.archive.org/web/20160305222449/https://www.python.org/downloads/release/python-2710/">https://www.python.org/downloads/release/python-2710/</a></p>
+<p>If you&rsquo;re on windows make sure you&rsquo;ve configure your PATH correctly for all of these tools, therefore I suggest you use&nbsp;<a href="https://web.archive.org/web/20160305222449/https://chocolatey.org/">Chocolatey</a>&nbsp;to install all of these components.</p>
+<h3>&nbsp;Download the code</h3>
+<p>Create your working folder:<br /><em>c:\Dev&gt;mkdir arduino<br />cd arduino</em></p>
+<p>Clone the repository:<br /><em>c:\Dev\arduino&gt; git clone&nbsp;</em><a href="https://web.archive.org/web/20160305222449/https://github.com/geobarteam/johnny5.git"><em>https://github.com/geobarteam/johnny5.git</em></a></p>
+<p>Install the packages:</p>
+<p><em>c:\Dev\arduino\johnny5&gt; npm install</em></p>
+<p>You could receive some warnings here, don&rsquo;t panic it should still be working fine.</p>
+<h3>Flashing your Arduino board</h3>
+<p>Because the onboard bluetooth ship is limited to 9600 baud I&rsquo;hd to patch the firmate protocol. This patched version can be found on the root folder.</p>
+<ol>
+<li>Open the Arduino IDE</li>
+<li>Connect your Robot to your PC through the usb cable and temporarly remove the bluetooth module from your Arduino board</li>
+<li>In the IDE select the correct com port</li>
+<li>Choose, File, open and select the &ldquo;firmate_pulse_9600B_patch.ino&rdquo; file located under: ..\johnny5\firmate_pulse_9600B_patch</li>
+<li>Push the upload button</li>
+<li>Reconnect your bluetooth module</li>
+</ol>
+<p>&nbsp;</p>
+<h3>Connect to your Arduino board through Bluetooth</h3>
+<p>You should go to your Bluetooth settings and associate your Bluetooth with a COM port.&nbsp; On resent versions of windows you should click on the Bluetooth icon, choose &ldquo;Add Bluetooth devices&rdquo;.&nbsp; You should see &ldquo;Bluetooth_Bee_V3&rdquo; click on it and enter the secret code: 1234.</p>
+<p>You need to know which COM port windows as configured to your outgoing connections to you robot.&nbsp; Therefore open the Bluetooth settings, select the COM ports tab and note which COM port is associated with your Bluetooth_Bee_V3 outgoing connection.</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/comports.png"><img class="alignnone size-medium wp-image-2151" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/comports-225x300.png" alt="comports" width="225" height="300" /></a></p>
+<h3>Configure and start the server</h3>
+<p>With your preferred IDE modify the variable &ldquo;comport&rdquo; in the &ldquo;app.js&rdquo; file with the COM port you connected the Arduino with.</p>
+<p>On the Johnny5 folder, start the program =&gt; &ldquo;node app.js&rdquo;</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console1.png"><img class="alignnone size-medium wp-image-2161" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console1-300x158.png" sizes="(max-width: 300px) 100vw, 300px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/console1-300x158.png 300w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/console1.png 503w" alt="console1" width="300" height="158" /></a></p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console2.png"><img class="alignnone size-medium wp-image-2171" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console2-300x137.png" sizes="(max-width: 300px) 100vw, 300px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/console2-300x137.png 300w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/console2.png 503w" alt="console2" width="300" height="137" /></a></p>
+<p>Start your preferred browser on http://localhost:3000 , you should now be able to control your robot through the interface:</p>
+<p><a href="https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/dashboard.png"><img class="alignnone  wp-image-2211" src="https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/dashboard-300x283.png" sizes="(max-width: 718px) 100vw, 718px" srcset="https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/dashboard-300x283.png 300w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/dashboard-624x589.png 624w, https://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2015/09/dashboard.png 870w" alt="dashboard" width="718" height="677" /></a></p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>
+</div>
+<footer class="entry-meta">This entry was posted in&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.vandiest.biz/?cat=71" rel="category">Arduino</a>&nbsp;on&nbsp;<a title="4:30 pm" href="https://web.archive.org/web/20160305222449/http://www.vandiest.biz/?p=2061" rel="bookmark"><time class="entry-date" datetime="2015-09-18T16:30:28+00:00">18th September 2015</time></a>.</footer>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">8161edb4-3edf-4cd1-af69-d92405841012|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript" dc:identifier="http://vandiest.biz/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript" dc:title="Build your Arduino Robot and program it with Javascript" trackback:ping="http://vandiest.biz/trackback.axd?id=8161edb4-3edf-4cd1-af69-d92405841012" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor">What is the best UI technology: Angular or Blazor ?</a><span>(When you build enterprise business apps using DotNet)
+
+Introduction
+&nbsp;</span><a href="/post/2016/09/01/building-typescript-with-gulp">Building TypeScript with Gulp</a><span>In the preceding post I show how you can build your TypeScript with Tsc, you can also simply use Vis</span><a href="/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing">Building Code Like a Skyscraper: The Scaffolding Magic of Automated Testing!</a><span>Today, I want to chat about how automated testing in software development is like scaffolding in bui</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="94e65058-eb0a-4485-8fa3-bd4e48899bdf" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "Admin";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="GyokBdc73JHcw6jFDR3kolL1BmUkAtNv+D9CbKywkTwmIi4rzhKPMytKXbbq0sR34TtLPSOelV675V22Vkf4qncXtJ04d4rrNK04OOYiUWLm74SUeMgE2QZgAljOSCMDjkqplQ==" />
+</div></form>
+</body>
+</html>

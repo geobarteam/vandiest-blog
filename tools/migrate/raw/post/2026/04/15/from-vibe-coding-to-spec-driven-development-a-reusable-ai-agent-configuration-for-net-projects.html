@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplin" />
+	<meta name="author" content="Geoffrey Vandiest" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects (RSS)" href="/post/feed/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects (ATOM)" href="/post/feed/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects?id=7ee9fbd3-7020-4ad2-ac70-30bc51aabd6f" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="w08JL2K0auZykl4/W6CHAHa0YbHtEqC0qDAXHNx+0Gy1LnbKZWqz49qn0Jq2MW1zjuhtHkCQyNHenmHpq5j4ISkRKeUmADRVSmq9bx7BoVjWlGgrPHOFEnHULbl5ZdKz8g4J8tvsrYMqLneOcvBx+kMwlL3+T7tsMUS8xUq6bKvk7o9YUMHbTEv1hnmOc4x6BPSwYKHhVk1CnEIb40X5gNc73da69k/6dqK9QPhp084sUYwaT+DjRkyHV2vL6i/P22OkYezq+0Q1Cs953CVfAWRXl/CRhKTbXIYRECVhwvK+69a5RE9i/NjC2lv69CbmK/ojqoiOYwhBu0yCq0TM4KDrfEtiZrS+utfKuTlz/ZTOUu0lZZpb++6EI44+sgpTzrnvi0EG0jY5bx1XaqcL6Gr9rS9bunVpBtPLIntW5LoMXPrklCAupp30xGJnsztRp8boPCVuflFXfHciDmjlgg1MqW6vmLY8IXBasKslYoKvoHvLxK0zbuDXGpwLeVe4uzq8NkwSscXJE9JVYcz2sfABzQUUIZBFM0GgJTHhb8NrwRc6XW+dzOf7ey/Pzl7PYteYD5UJ9VFwq7Me7cAWqhu1oLoPjm4Zc1Uu6PH8INlvgwP36ukirbO+Bf/7k09TWQRacB+ElM8K0AY7QmcAMCMctpknrpMpIa8UZWou4vfgoYTge/IhaxoTZQQVJu3niMc6gep4uLTV2rSiq8dBDAwAmMTLvHmN0iL01ZtjylDO3DiOiADyoRyUPc7b8NftkbwcDrTgE1tBiqJhKLfDMdPjdzKZBsWCw5LAiQxcGa4UTndSIEM/WR39/S0Qw5eHbplr8hdKwLRmwK33VLgKlCWscumU5hyLJ3kJCisMQ+1wf6ab23NFibUTBDKqI/aZaiwwwoSSaLdhBcgnhQy8NjnqhRY=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" class="nav-next">Spec-Driven Development with AI: A Practical Guide to Staying in Control</a> |
+    <a href="/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor" class="nav-prev">My way to apply the test pyramid to an Onion Style architecture with Blazor</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects" class="taggedlink">From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">15. April 2026 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/Admin">Geobarteam</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p dir="auto">&nbsp;</p>
+<p dir="auto"><img src="/image.axd?picture=/80f1f36a-01b1-41fc-992d-dd40a10d5377 (1).png" alt="" /><a title="github-copilot-configs" href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a></p>
+<p dir="auto"><em>An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplined, repeatable engineering process into AI agents, skills, and instructions.</em></p>
+<blockquote>
+<p dir="auto"><strong>Repository:</strong>&nbsp;<strong>Part 1 of 2.</strong>&nbsp;This article covers the motivation, best practices, and the configuration library. For a hands-on walkthrough of the spec-driven process, see&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST-PROCESS.md">Part 2: The Process in Action</a>.</p>
+</blockquote>
+<hr />
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Why I Built This</h2>
+<a id="user-content-why-i-built-this" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#why-i-built-this"></a></div>
+<p dir="auto">Over the past year I've spent hundreds of hours working with AI coding agents &mdash; GitHub Copilot, Claude Code, and various MCP tool integrations. I learned a lot, made plenty of mistakes, and eventually landed on a workflow that works reliably.</p>
+<p dir="auto">The problem was: every time I started a new project, I was rebuilding the same configuration from scratch. The same planning discipline. The same Red-Green-Refactor loop. The same human gates. The same layer-specific coding conventions. Each project had slight variations, and none of them captured everything I'd learned.</p>
+<p dir="auto">So I built&nbsp;<strong><a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a></strong>&nbsp;&mdash; a reusable template library of AI agent configuration files that I copy into every new .NET project. It encodes the engineering process I've developed over my career &mdash; now translated into agents, skills, and instruction files that AI assistants follow automatically.</p>
+<p dir="auto">The goal is twofold:</p>
+<ol dir="auto">
+<li><strong>Quick project setup</strong>&nbsp;&mdash; Copy the files, run the&nbsp;<code>/init</code>&nbsp;skill, and every AI assistant in the project immediately knows the architecture, conventions, test commands, and development workflow. No more explaining the same things in every chat session.</li>
+<li><strong>Consistent engineering process</strong>&nbsp;&mdash; The agents enforce plan-first development, test-first implementation, vertical slicing, and mandatory human review gates. This isn't just guidance &mdash; it's a process that prevents the most common AI coding failures I've encountered.</li>
+</ol>
+<p dir="auto">This article shares what I've learned and how the configuration library works. Whether you adopt it wholesale or just borrow ideas, I hope it saves you some of the trial and error I went through.</p>
+<hr />
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">The Problem: Vibe Coding</h2>
+<a id="user-content-the-problem-vibe-coding" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-problem-vibe-coding"></a></div>
+<p dir="auto">AI coding assistants like GitHub Copilot are changing how developers write software. But without clear practices, teams drift into what I call&nbsp;<strong>vibe coding</strong>&nbsp;&mdash; letting the AI generate code with no plan, no verification, and no accountability. The result? Code nobody fully understands.</p>
+<hr />
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Part 1: Best Practices for AI-Assisted Coding</h2>
+<a id="user-content-part-1-best-practices-for-ai-assisted-coding" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-1-best-practices-for-ai-assisted-coding"></a></div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Understand the Core Concepts</h3>
+<a id="user-content-understand-the-core-concepts" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#understand-the-core-concepts"></a></div>
+<p dir="auto">Before diving into workflows, every developer should understand three foundational concepts:</p>
+<p dir="auto"><strong>The Model</strong>&nbsp;&mdash; The LLM behind Copilot. Different models have different strengths, costs, and context windows. Choosing the right model for the task is a deliberate decision, not an afterthought.</p>
+<p dir="auto"><strong>The Context</strong>&nbsp;&mdash; Everything the model sees when generating a response: your open files, instructions, conversation history, and workspace structure. Context quality directly determines output quality.</p>
+<p dir="auto"><strong>The Agent</strong>&nbsp;&mdash; The orchestration layer that can inspect files, reason about tasks, propose plans, make changes, run checks, launch commands, and iterate through workflows. Agents interact with tools including MCP servers, making them far more capable than simple chat completions.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Treat Tokens as a Limited Resource</h3>
+<a id="user-content-treat-tokens-as-a-limited-resource" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#treat-tokens-as-a-limited-resource"></a></div>
+<p dir="auto">Tokens &mdash; the unit of model consumption &mdash; are finite on any plan. Practical consequences:</p>
+<ul dir="auto">
+<li>Use&nbsp;<strong>short, focused sessions</strong></li>
+<li>Keep prompts&nbsp;<strong>specific and bounded</strong></li>
+<li>Choose the&nbsp;<strong>right model for the task</strong></li>
+<li>Avoid unnecessary retries in polluted sessions</li>
+<li>Use&nbsp;<strong>lighter models</strong>&nbsp;for simple work</li>
+<li>Reserve&nbsp;<strong>premium models</strong>&nbsp;for harder problems</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Choose the Right Model for the Job</h3>
+<a id="user-content-choose-the-right-model-for-the-job" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#choose-the-right-model-for-the-job"></a></div>
+<p dir="auto">Not every task needs the most powerful model. Here's how I think about model selection:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Best for</th>
+<th>Relative cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Haiku 4.5 / Gemini Flash</td>
+<td>Cheap, simple tasks</td>
+<td>~0.33&times;</td>
+</tr>
+<tr>
+<td>Claude Sonnet 4.6 / GPT-5.3-Codex</td>
+<td>Daily default for coding</td>
+<td>1&times;</td>
+</tr>
+<tr>
+<td>Gemini 2.5 Pro</td>
+<td>Large-context reasoning</td>
+<td>1&times;</td>
+</tr>
+<tr>
+<td>Claude Opus 4.6</td>
+<td>Hardest coding and review tasks</td>
+<td>3&times;</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto"><strong>The rule</strong>: use Haiku or Flash for quick simple work, Sonnet as the daily default, and Opus only when the problem genuinely demands it. Don't burn premium tokens on formatting a JSON file.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">The Biggest Risk: Losing Control</h3>
+<a id="user-content-the-biggest-risk-losing-control" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-biggest-risk-losing-control"></a></div>
+<p dir="auto">The main danger of AI-assisted coding isn't wrong code &mdash; it's&nbsp;<strong>no longer knowing what the AI changed, why it changed it, or whether it still matches the design</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Vibe Coding</th>
+<th>Spec-Driven Development</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vague goal, no constraints</td>
+<td>Clear goal, explicit constraints, reviewed plan</td>
+</tr>
+<tr>
+<td>Long unstructured sessions</td>
+<td>Short iterations with build/test/review gates</td>
+</tr>
+<tr>
+<td>AI decides design and validation</td>
+<td>You stay accountable for design, code, and validation</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">The antidote is&nbsp;<strong>spec-driven development</strong>: start with a specification, produce a plan, implement in small verified steps, and stay in control throughout. That's what this configuration library encodes.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Keep Sessions Short</h3>
+<a id="user-content-keep-sessions-short" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#keep-sessions-short"></a></div>
+<p dir="auto">A good AI coding session has one task, one goal, a small scope, only relevant files, and clear validation criteria. A bad session involves multiple unrelated tasks, too much history, broad exploration, repeated retries, and unclear ownership.</p>
+<p dir="auto"><strong>Rule: if the topic changes, start a new session.</strong>&nbsp;Session pollution &mdash; accumulated irrelevant context &mdash; is one of the most common causes of degraded AI output.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Anthropic Principle #1: Give the Model a Way to Verify Its Work</h3>
+<a id="user-content-anthropic-principle-1-give-the-model-a-way-to-verify-its-work" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#anthropic-principle-1-give-the-model-a-way-to-verify-its-work"></a></div>
+<p dir="auto">Verification is the&nbsp;<strong>single biggest improvement</strong>&nbsp;you can make in AI-assisted coding.</p>
+<p dir="auto">What counts as verification:</p>
+<ul dir="auto">
+<li>Failing tests that turn green</li>
+<li>Successful builds</li>
+<li>Static analyzers passing</li>
+<li>Expected output matching</li>
+<li>Deterministic scripts</li>
+</ul>
+<p dir="auto">Without verification, the AI produces plausible but potentially wrong code, and you become the only feedback loop &mdash; a feedback loop that gets tired and loses attention.</p>
+<p dir="auto">In my workflow, every change follows:&nbsp;<strong>RED &rarr; GREEN &rarr; REFACTOR &rarr; ANALYSIS &rarr; PROOF &rarr; HUMAN GATE</strong>.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Anthropic Principle #2: Explore &rarr; Specify &rarr; Plan &rarr; Implement &rarr; Commit</h3>
+<a id="user-content-anthropic-principle-2-explore--specify--plan--implement--commit" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#anthropic-principle-2-explore--specify--plan--implement--commit"></a></div>
+<p dir="auto">This is the workflow backbone:</p>
+<ol dir="auto">
+<li><strong>Explore</strong>&nbsp;&mdash; Understand the codebase, existing patterns, and the real problem</li>
+<li><strong>Specify</strong>&nbsp;&mdash; Write a detailed, AI-friendly specification (acceptance criteria, constraints, edge cases)</li>
+<li><strong>Plan</strong>&nbsp;&mdash; Produce a concrete implementation plan&nbsp;<em>before</em>&nbsp;code changes</li>
+<li><strong>Implement</strong>&nbsp;&mdash; Execute one step at a time and verify after each step</li>
+<li><strong>Commit</strong>&nbsp;&mdash; Checkpoint small, validated changes in Git</li>
+</ol>
+<p dir="auto">Planning is most valuable for new features, multi-file changes, or risk areas. Tiny fixes can be done directly &mdash; but still verified.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Anthropic Principle #3: Provide Specific Context</h3>
+<a id="user-content-anthropic-principle-3-provide-specific-context" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#anthropic-principle-3-provide-specific-context"></a></div>
+<p dir="auto">Good prompts are not long prompts &mdash; they are&nbsp;<strong>scoped, specific, and verifiable</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Weak Prompt</th>
+<th>Better Prompt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Fix the login bug."</td>
+<td>"Reproduce the session-timeout bug, inspect auth flow, write a failing test, fix root cause, verify it passes."</td>
+</tr>
+<tr>
+<td>"Add an endpoint."</td>
+<td>"Add GET endpoint X using feature Y as reference pattern; no new table; add tests."</td>
+</tr>
+<tr>
+<td>"Improve this page."</td>
+<td>"Use existing page pattern, keep same components, add validation and proof steps."</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">The pattern is always the same: scope the task, reference existing patterns, and define what "done" looks like.</p>
+<hr />
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Part 2: The "github-copilot-configs"&nbsp;library &mdash; What's Inside</h2>
+<a id="user-content-part-2-the-configuration-library--whats-inside" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-2-the-configuration-library--whats-inside"></a></div>
+<p dir="auto">Knowing best practices is one thing. Making every AI session follow them automatically is another. That's what the&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;library does &mdash; it encodes your architecture, conventions, and development process into configuration files that GitHub Copilot and Claude Code follow without you repeating yourself every session.</p>
+<p dir="auto"><strong>Target stack</strong>: ASP.NET Core + Blazor WebAssembly &middot; Onion/Screaming Architecture &middot; CQRS-lite &middot; .NET 10. But the patterns and workflow are adaptable to any .NET project.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Agents &mdash; Specialized AI Roles</h3>
+<a id="user-content-agents--specialized-ai-roles" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#agents--specialized-ai-roles"></a></div>
+<p dir="auto">Agents are invoked via&nbsp;<code>@name</code>&nbsp;in VS Code chat. Each is a specialized role with its own constraints, workflow, and tools.</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>@planner</code></strong></td>
+<td>Reads&nbsp;<code>_specs/&lt;Feature&gt;.md</code>&nbsp;(if it exists) and creates&nbsp;<code>_plans/&lt;Feature&gt;.md</code>&nbsp;with vertical-slice steps before any code is written. Interviews you about the feature, reads the reference pattern, decomposes into testable behavior slices. Never writes production code &mdash; planning only.</td>
+</tr>
+<tr>
+<td><strong><code>@bugfix</code></strong></td>
+<td>Diagnoses bugs using regression-test-first discipline. Writes a test that reproduces the bug, confirms it fails, then writes the minimal fix. Escalates to&nbsp;<code>@planner</code>&nbsp;if the fix spans 3+ files.</td>
+</tr>
+<tr>
+<td><strong><code>@debug</code></strong></td>
+<td>A debug engineer that combines Application Insights log analysis with Playwright browser automation. Queries Azure telemetry for exceptions and traces, reproduces UI issues in a real browser, correlates frontend errors with backend traces, and produces structured debug reports.</td>
+</tr>
+<tr>
+<td><strong><code>@devops</code></strong></td>
+<td>Maintains GitHub Actions CI/CD pipelines and Azure Bicep infrastructure. Knows the exact workflow structure (build &rarr; deploy &rarr; summary), Bicep module conventions, resource naming patterns, and the Architecture.md/Deployment-Info pattern for tracking infrastructure state.</td>
+</tr>
+<tr>
+<td><strong><code>@smoke-test</code></strong></td>
+<td>Post-deployment smoke testing using browser automation. Discovers environment URLs from infrastructure docs, navigates to health endpoints and pages, checks for console errors and network failures, and produces a structured pass/fail report.</td>
+</tr>
+<tr>
+<td><strong><code>@git</code></strong></td>
+<td>GitFlow branching specialist. Creates feature/bugfix/hotfix branches, manages tags, guides PR workflows. Only runs mutating Git commands after explicit confirmation.</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">Each agent follows the shared workflow rules in&nbsp;<code>AGENTS.md</code>: plan-first discipline, Red-Green-Refactor loops, and mandatory human gates.</p>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">The DevOps Agent in Detail</h4>
+<a id="user-content-the-devops-agent-in-detail" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-devops-agent-in-detail"></a></div>
+<p dir="auto">The&nbsp;<code>@devops</code>&nbsp;agent deserves special attention because it encodes a pattern I found particularly valuable: the&nbsp;<strong>Architecture.md &rarr; Bicep &rarr; Deployment-Info pipeline</strong>.</p>
+<p dir="auto">The workflow separates&nbsp;<em>what should exist</em>&nbsp;(Architecture.md) from&nbsp;<em>what does exist</em>&nbsp;(Deployment-Info-{env}.md):</p>
+<ol dir="auto">
+<li><strong>Architecture.md</strong>&nbsp;is the specification &mdash; the desired infrastructure state, including resource topology, SKUs, cost estimates, DNS records, and URL maps</li>
+<li><strong>Bicep templates</strong>&nbsp;implement that specification</li>
+<li><strong>Deployment-Info-stg.md / Deployment-Info-prd.md</strong>&nbsp;record the actual deployed state &mdash; real resource names, FQDNs, and live URLs</li>
+</ol>
+<p dir="auto">This separation means the devops agent always knows the current state of each environment and can reason about what needs to change. It also means the&nbsp;<code>@smoke-test</code>&nbsp;and&nbsp;<code>@debug</code>&nbsp;agents can discover live URLs automatically &mdash; no hardcoded values.</p>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">The Smoke Test Agent in Detail</h4>
+<a id="user-content-the-smoke-test-agent-in-detail" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-smoke-test-agent-in-detail"></a></div>
+<p dir="auto">The&nbsp;<code>@smoke-test</code>&nbsp;agent is designed for post-deployment verification. Instead of relying on hardcoded URLs, it dynamically builds its environment URL table by reading the infrastructure documentation files. It then executes a structured test plan:</p>
+<ul dir="auto">
+<li><strong>Health endpoints</strong>: Checks&nbsp;<code>/health</code>,&nbsp;<code>/health/ready</code>,&nbsp;<code>/health/live</code>&nbsp;on every API</li>
+<li><strong>Page loads</strong>: Navigates to each web application, verifies content renders</li>
+<li><strong>Console errors</strong>: Captures JavaScript errors and failed resource loads</li>
+<li><strong>Network errors</strong>: Monitors for 4xx/5xx HTTP responses</li>
+<li><strong>Authentication flows</strong>: Verifies login redirects appear on protected routes (without entering real credentials)</li>
+</ul>
+<p dir="auto">The agent produces a structured report with pass/fail counts, collected errors, and details on every failure. It's read-only by design &mdash; it never submits forms or modifies data, especially in production.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Skills &mdash; Step-by-Step Recipes</h3>
+<a id="user-content-skills--step-by-step-recipes" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#skills--step-by-step-recipes"></a></div>
+<p dir="auto">Skills are invoked via&nbsp;<code>/name</code>&nbsp;in chat and guide the AI through multi-step code generation tasks.</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>/init</code></strong></td>
+<td><strong>Start here</strong>&nbsp;&mdash; discovers project tokens (<code>{{SolutionName}}</code>,&nbsp;<code>{{TestExePath}}</code>, etc.) and replaces placeholders across all config files</td>
+</tr>
+<tr>
+<td><strong><code>/build-feature</code></strong></td>
+<td>Implements an approved plan step by step using Red-Green-Refactor</td>
+</tr>
+<tr>
+<td><strong><code>/add-endpoint</code></strong></td>
+<td>Adds a vertical-slice API endpoint (domain &rarr; application &rarr; controller &rarr; tests)</td>
+</tr>
+<tr>
+<td><strong><code>/add-blazor-page</code></strong></td>
+<td>Adds a Blazor page with ViewModel, Refit client, and MudBlazor components</td>
+</tr>
+<tr>
+<td><strong><code>/add-blazor-module</code></strong></td>
+<td>Scaffolds a standalone WASM module with MVVM + HttpClient</td>
+</tr>
+<tr>
+<td><strong><code>/add-dbup</code></strong></td>
+<td>Creates a DbUp migration script (CREATE TABLE, ALTER, seed data)</td>
+</tr>
+<tr>
+<td><strong><code>/e2e-test</code></strong></td>
+<td>Full-stack browser testing with Playwright MCP</td>
+</tr>
+<tr>
+<td><strong><code>/csharp-coding-standards</code></strong></td>
+<td>Reference-only C# coding standards and patterns</td>
+</tr>
+<tr>
+<td>Specs and plans are created as project-level documentation at the repo root:</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<ul dir="auto">
+<li><strong><code>_specs/&lt;Feature&gt;.md</code></strong>&nbsp;&mdash; Feature specifications (the contract between developer and AI). Written before planning using&nbsp;<code>templates/spec-template.md</code>.</li>
+<li><strong><code>_plans/&lt;Feature&gt;.md</code></strong>&nbsp;&mdash; Implementation plans with vertical-slice steps, created by&nbsp;<code>@planner</code>&nbsp;from the spec.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Instructions &mdash; Auto-Activated Layer Conventions</h3>
+<a id="user-content-instructions--auto-activated-layer-conventions" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#instructions--auto-activated-layer-conventions"></a></div>
+<p dir="auto">Instruction files activate automatically when you edit files matching their&nbsp;<code>applyTo</code>&nbsp;glob pattern. When you open a domain entity file, the AI silently loads domain conventions. When you edit a controller, it loads BFF patterns.</p>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Activates for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>domain-entity</code></td>
+<td><code>src/Core/Domain/**</code></td>
+</tr>
+<tr>
+<td><code>application-layer</code></td>
+<td><code>src/Core/Application/**</code></td>
+</tr>
+<tr>
+<td><code>persistence-layer</code></td>
+<td><code>src/Core/Persistence/**</code></td>
+</tr>
+<tr>
+<td><code>bff-controller</code></td>
+<td><code>src/Host/Client/**</code></td>
+</tr>
+<tr>
+<td><code>blazor-presentation</code></td>
+<td><code>src/Presentation/**</code></td>
+</tr>
+<tr>
+<td><code>refit-client</code></td>
+<td><code>src/Presentation/**/ServiceClients/**</code></td>
+</tr>
+<tr>
+<td><code>tests</code></td>
+<td><code>src/Test/**</code></td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">This means the AI always knows the conventions for the layer you're working in &mdash; without you needing to mention them.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Root Files &mdash; The Process Backbone</h3>
+<a id="user-content-root-files--the-process-backbone" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#root-files--the-process-backbone"></a></div>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>AGENTS.md</code></strong></td>
+<td>Shared workflow rules &mdash; planning gates, Red-Green-Refactor-Proof loop, human gates, vertical slice decomposition rules</td>
+</tr>
+<tr>
+<td><strong><code>copilot-instructions.md</code></strong></td>
+<td>Project-level Copilot instructions &mdash; critical rules, project structure, dependency matrix, naming conventions, verification commands</td>
+</tr>
+<tr>
+<td><strong><code>CLAUDE.md</code></strong></td>
+<td>Claude Code entrypoint &mdash; references AGENTS.md, adds Claude-specific rules</td>
+</tr>
+</tbody>
+</table>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Token System &mdash; Project-Specific Customization</h3>
+<a id="user-content-token-system--project-specific-customization" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#token-system--project-specific-customization"></a></div>
+<p dir="auto">Templates use&nbsp;<code>{{MustacheStyle}}</code>&nbsp;placeholders that the&nbsp;<code>/init</code>&nbsp;skill replaces with project-specific values:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{{SolutionName}}</code></td>
+<td><code>FindMyDoctor</code></td>
+</tr>
+<tr>
+<td><code>{{NamespaceRoot}}</code></td>
+<td><code>Contoso.FindMyDoctor</code></td>
+</tr>
+<tr>
+<td><code>{{DbContextName}}</code></td>
+<td><code>FindMyDoctorDbContext</code></td>
+</tr>
+<tr>
+<td><code>{{TestExePath}}</code></td>
+<td><code>.\src\Test\Unit\bin\Debug\net10.0\Contoso.FindMyDoctor.Unit.Tests.exe</code></td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">Copy the files, run&nbsp;<code>/init</code>, and the entire AI configuration is project-specific in seconds.</p>
+<hr />
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Part 3: Getting Started &mdash; Setting Up Your Own Project</h2>
+<a id="user-content-part-3-getting-started--setting-up-your-own-project" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-3-getting-started--setting-up-your-own-project"></a></div>
+<p dir="auto">You don't need to use the exact same stack. The engineering process &mdash; plan first, test first, one step at a time &mdash; works for any project. Here's how to get started:</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Step 1: Copy the Configuration Files</h3>
+<a id="user-content-step-1-copy-the-configuration-files" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-1-copy-the-configuration-files"></a></div>
+<p dir="auto">Clone or download&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;and copy the relevant files into your project:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>your-project/
+├── .github/
+│   ├── copilot-instructions.md   &larr; from this repo's root copilot-instructions.md
+│   ├── instructions/             &larr; auto-activated by applyTo glob patterns
+│   ├── agents/                   &larr; invoked via @name in chat
+│   ├── skills/                   &larr; invoked via /name in chat
+│   └── prompts/                  &larr; available in prompt picker
+├── AGENTS.md                     &larr; shared agent workflow rules (always-on)
+├── CLAUDE.md                     &larr; optional, for Claude Code users
+└── templates/                    &larr; referenced by agents and skills
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<blockquote>
+<p dir="auto">The&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;in this repo is meta (for the template library itself). Copy the&nbsp;<strong>root-level</strong>&nbsp;<code>copilot-instructions.md</code>&nbsp;to&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;in your project.</p>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Step 2: Run the Init Skill</h3>
+<a id="user-content-step-2-run-the-init-skill" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-2-run-the-init-skill"></a></div>
+<p dir="auto">Open VS Code chat and type&nbsp;<code>/init</code>. The skill will:</p>
+<ol dir="auto">
+<li><strong>Discover</strong>&nbsp;your project's tokens automatically (solution name, namespace root, test executable path, etc.)</li>
+<li><strong>Ask</strong>&nbsp;for values that can't be auto-discovered</li>
+<li><strong>Replace</strong>&nbsp;all&nbsp;<code>{{token}}</code>&nbsp;placeholders across your config files</li>
+<li><strong>Verify</strong>&nbsp;no unreplaced tokens remain</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Step 3: Start Building Features</h3>
+<a id="user-content-step-3-start-building-features" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-3-start-building-features"></a></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code># 1. Plan the feature
+@planner Add subscription management with list and create
+
+# 2. Review and approve the plan
+
+# 3. Implement step by step
+/build-feature Step 1 &mdash; Display subscription list
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Step 4: Adapt to Your Architecture</h3>
+<a id="user-content-step-4-adapt-to-your-architecture" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-4-adapt-to-your-architecture"></a></div>
+<p dir="auto">These files are templates. After running&nbsp;<code>/init</code>, adapt them to your project:</p>
+<ul dir="auto">
+<li><strong>Different architecture?</strong>&nbsp;Edit the project structure in&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;and update&nbsp;<code>applyTo</code>&nbsp;globs in instruction files</li>
+<li><strong>Different test runner?</strong>&nbsp;Update&nbsp;<code>{{TestExePath}}</code>&nbsp;references</li>
+<li><strong>Additional layers?</strong>&nbsp;Create new&nbsp;<code>&lt;topic&gt;.instructions.md</code>&nbsp;files with an&nbsp;<code>applyTo</code>&nbsp;glob in&nbsp;<code>.github/instructions/</code></li>
+<li><strong>Additional agents?</strong>&nbsp;Create&nbsp;<code>&lt;name&gt;.agent.md</code>&nbsp;in&nbsp;<code>.github/agents/</code>&nbsp;following the existing pattern</li>
+<li><strong>Different CI/CD?</strong>&nbsp;Update the&nbsp;<code>@devops</code>&nbsp;agent with your pipeline conventions</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Step 5: Build Your Own Agent Library</h3>
+<a id="user-content-step-5-build-your-own-agent-library" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-5-build-your-own-agent-library"></a></div>
+<p dir="auto">The most valuable thing in this repo isn't the boilerplate &mdash; it's the&nbsp;<strong>workflow encoded in agents</strong>. Consider building agents for your own recurring tasks:</p>
+<ul dir="auto">
+<li>A&nbsp;<strong>code review agent</strong>&nbsp;that checks PRs against your team's conventions</li>
+<li>A&nbsp;<strong>migration agent</strong>&nbsp;that handles framework or library upgrades</li>
+<li>A&nbsp;<strong>documentation agent</strong>&nbsp;that keeps API docs in sync with implementation</li>
+<li>A&nbsp;<strong>performance agent</strong>&nbsp;that profiles and suggests optimizations</li>
+</ul>
+<p dir="auto">The pattern is always the same: define the agent's role, constraints, workflow steps, and tools &mdash; then let it execute within guardrails you control.</p>
+<hr />
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Part 4: Best Practices for AI Development Process</h2>
+<a id="user-content-part-4-best-practices-for-ai-development-process" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-4-best-practices-for-ai-development-process"></a></div>
+<p dir="auto">Parts 1&ndash;3 covered principles and tooling. This part describes the&nbsp;<strong>concrete development process</strong>&nbsp;we encode into our templates &mdash; the workflow an AI agent follows when building features. This is where spec-driven development, Red-Green-Refactor, vertical slicing, and human gates come together into a single disciplined loop.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">The Five-Phase Workflow</h3>
+<a id="user-content-the-five-phase-workflow" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-five-phase-workflow"></a></div>
+<p dir="auto">Every feature follows five phases. The AI agent is responsible for executing them, but the developer stays in control at every gate.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>Explore &rarr; Specify &rarr; Plan &rarr; Implement &rarr; Commit
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto"><strong>Explore</strong>&nbsp;&mdash; The agent reads the codebase to understand existing patterns, the reference feature, and the problem space. No code changes happen here.</p>
+<p dir="auto"><strong>Specify</strong>&nbsp;&mdash; A specification file (<code>_specs/&lt;FeatureName&gt;.md</code>) captures user stories, acceptance criteria, data model, and business rules. This is the contract between the developer and the AI.</p>
+<p dir="auto"><strong>Plan</strong>&nbsp;&mdash; A plan file (<code>_plans/&lt;FeatureName&gt;.md</code>) decomposes the feature into concrete implementation steps. Each step is a vertical behaviour slice with explicit file paths, test methods, and verification criteria. The plan must be approved before any code is written.</p>
+<p dir="auto"><strong>Implement</strong>&nbsp;&mdash; The agent executes the plan one step at a time using Red-Green-Refactor. Each step ends at a human gate &mdash; the developer reviews and approves before the next step starts.</p>
+<p dir="auto"><strong>Commit</strong>&nbsp;&mdash; Small, validated changes are checkpointed in Git after each approved step.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">The Planning Gate: When Plans Are Required</h3>
+<a id="user-content-the-planning-gate-when-plans-are-required" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-planning-gate-when-plans-are-required"></a></div>
+<p dir="auto">Not every change needs a plan. The configuration library encodes a simple decision matrix:</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Plan required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New feature or vertical slice</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>Change touching 3+ files</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>Risk area change (auth, PII, DB schema, shared contracts)</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td>1&ndash;2 file bugfix</td>
+<td>No &mdash; but still test-first</td>
+</tr>
+<tr>
+<td>Config correction, simple refactor</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">The planning gate prevents the most common AI failure mode: the agent starts writing code before understanding the scope, creates files in the wrong locations, misses existing patterns, and produces work that has to be thrown away.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Vertical Slice Decomposition</h3>
+<a id="user-content-vertical-slice-decomposition" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#vertical-slice-decomposition"></a></div>
+<p dir="auto">This is the most important planning principle and the one most teams get wrong when working with AI.</p>
+<p dir="auto"><strong>The problem with horizontal slicing:</strong>&nbsp;A natural instinct &mdash; for both humans and AI &mdash; is to plan layer by layer: "Step 1: Create the entity. Step 2: Add the repository. Step 3: Build the controller. Step 4: Create the page." This feels orderly, but it has a critical flaw:&nbsp;<strong>you don't discover integration problems until the very end</strong>. The entity might not match the DTO. The query might return the wrong shape. The page might need data the controller doesn't provide. By the time you find out, you've built four layers of code that need rework.</p>
+<p dir="auto"><strong>The vertical slice alternative:</strong>&nbsp;Decompose features into the smallest possible&nbsp;<strong>user-visible behaviours</strong>, not into layers. Each slice delivers something a user or a test can verify end-to-end.</p>
+<p dir="auto">The strategy is&nbsp;<strong>UI first with mocks, then replace mocks top-to-bottom</strong>:</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>Stub phase</strong>&nbsp;&mdash; Build the page, form, or component at the Presentation layer with a stubbed service returning fake data. The user validates the UI and interaction design immediately. Tests verify the ViewModel behaviour against the mock.</p>
+</li>
+<li>
+<p dir="auto"><strong>Wire phase</strong>&nbsp;&mdash; Replace the stub with real production code, working from top to bottom: controller &rarr; application handler &rarr; domain &rarr; persistence &rarr; database. Integration tests verify the full stack. Remove the stub.</p>
+</li>
+</ol>
+<p dir="auto">This two-phase approach has three benefits:</p>
+<ul dir="auto">
+<li><strong>Fail fast</strong>&nbsp;&mdash; Integration mismatches between layers surface on the second step, not after building the entire feature in isolation.</li>
+<li><strong>UI feedback early</strong>&nbsp;&mdash; The user sees and validates the interface before any backend work begins, catching UX issues when they're cheap to fix.</li>
+<li><strong>Smaller blast radius</strong>&nbsp;&mdash; If the backend step reveals that the contract needs to change, only one stub step and one wire step are affected &mdash; not four independent layers.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Example: Two Slices for a "Subscriptions" Feature</h3>
+<a id="user-content-example-two-slices-for-a-subscriptions-feature" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#example-two-slices-for-a-subscriptions-feature"></a></div>
+<p dir="auto"><strong>Slice A &mdash; View subscriptions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What it delivers</th>
+<th>Layers touched</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Display subscription list (stubbed)</td>
+<td>Page renders a list with fake data; user validates layout and columns</td>
+<td>Presentation only</td>
+</tr>
+<tr>
+<td>2. Wire subscription list to real API</td>
+<td>GET endpoint returns real data; integration test passes</td>
+<td>Controller, Application, Persistence, DB, Refit client</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto"><strong>Slice B &mdash; Create a subscription:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What it delivers</th>
+<th>Layers touched</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3. Create subscription form (stubbed)</td>
+<td>Form renders with validation; user validates error handling</td>
+<td>Presentation only</td>
+</tr>
+<tr>
+<td>4. Wire subscription create to real API</td>
+<td>POST endpoint creates record; validation errors returned; integration test passes</td>
+<td>Controller, Application, Domain, Persistence, DB, Refit client</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">Notice: each slice is completed (UI + backend) before the next slice starts. Step 1 and Step 2 are adjacent &mdash; they belong to the same user behaviour. The agent never jumps to Slice B before Slice A is fully wired.</p>
+<p dir="auto"><strong>Compare with the anti-pattern:</strong>&nbsp;Step 1 "Create Entity + Repository", Step 2 "Build Application handlers", Step 3 "GET endpoint", Step 4 "POST endpoint", Step 5 "List page", Step 6 "Create page". This builds layers in isolation. The UI is validated last, when it should be validated first.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Red-Green-Refactor-Proof: The Implementation Loop</h3>
+<a id="user-content-red-green-refactor-proof-the-implementation-loop" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#red-green-refactor-proof-the-implementation-loop"></a></div>
+<p dir="auto">Each plan step is executed as a single Red-Green-Refactor cycle. This is the loop the AI agent follows for every step:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>READ       &mdash; Read the plan step. Understand scope, files, and the test to write.
+RED        &mdash; Write the failing test FIRST. Run it. Confirm it fails.
+GREEN      &mdash; Write the minimal production code to make the test pass. Run it. Confirm it passes.
+REFACTOR   &mdash; Clean up if needed. Do not change behaviour.
+ANALYSE    &mdash; Run static analysis. Fix all violations. Run the full test suite.
+PROVE      &mdash; Build (zero warnings) + all tests pass + format check passes.
+🛑 STOP    &mdash; Present results. Wait for human approval.
+MARK DONE  &mdash; After approval, update the plan file checkboxes.
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto">Three rules are non-negotiable:</p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>Never skip RED.</strong>&nbsp;The test must exist and fail before any production code is written. This proves the test actually validates something. An AI that writes the test and production code simultaneously has no guarantee the test would have caught a real failure.</p>
+</li>
+<li>
+<p dir="auto"><strong>Never batch steps.</strong>&nbsp;One step per interaction. The agent completes a step, proves it, presents results, and stops. The developer reviews before the next step begins. This prevents the common AI failure of compounding errors across multiple steps.</p>
+</li>
+<li>
+<p dir="auto"><strong>Never proceed past the human gate.</strong>&nbsp;The 🛑 STOP is absolute. The agent does not continue until the developer explicitly approves. This is the single most important control mechanism &mdash; it keeps the developer accountable for every change.</p>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Human Gates: The Developer Stays in Control</h3>
+<a id="user-content-human-gates-the-developer-stays-in-control" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#human-gates-the-developer-stays-in-control"></a></div>
+<p dir="auto">The human gate is not a rubber stamp. Each gate requires&nbsp;<strong>behavioural verification</strong>&nbsp;&mdash; a concrete assertion that the system now does something it didn't before:</p>
+<ul dir="auto">
+<li>"Integration test&nbsp;<code>GetSubscriptionsTest</code>&nbsp;passes &mdash; GET&nbsp;<code>/api/subscriptions</code>&nbsp;returns a list."</li>
+<li>"Form renders with validation &mdash; entering an empty name shows 'Name is required'."</li>
+<li>"POST&nbsp;<code>/api/subscriptions</code>&nbsp;with valid data returns 200; with invalid data returns 400 with error message."</li>
+</ul>
+<p dir="auto">"Code review" alone is never sufficient as the sole verification. If a step cannot be verified through observable behaviour, it should be merged into a step that can.</p>
+<p dir="auto">Gates also trigger at higher-risk moments:</p>
+<ul dir="auto">
+<li>After plan creation (before any code is written)</li>
+<li>Before any Git push</li>
+<li>On any change to authentication, PII handling, shared contracts, or database schema</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Spec-Driven Development: The Spec as Contract</h3>
+<a id="user-content-spec-driven-development-the-spec-as-contract" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#spec-driven-development-the-spec-as-contract"></a></div>
+<p dir="auto">The specification file (<code>_specs/&lt;FeatureName&gt;.md</code>) is written before the plan and serves as the contract between developer intent and AI execution. A good spec contains:</p>
+<ul dir="auto">
+<li><strong>User stories</strong>&nbsp;&mdash; Who benefits and what they can do</li>
+<li><strong>Acceptance criteria</strong>&nbsp;&mdash; Concrete, testable conditions for "done"</li>
+<li><strong>Data model</strong>&nbsp;&mdash; Entities, properties, relationships</li>
+<li><strong>Business rules</strong>&nbsp;&mdash; Validation, constraints, edge cases</li>
+<li><strong>Non-goals</strong>&nbsp;&mdash; What is explicitly out of scope</li>
+</ul>
+<p dir="auto">The spec prevents a common AI failure: scope creep. Without a spec, the AI infers what "Add subscriptions" means and may add features nobody asked for, use patterns that don't match the codebase, or miss critical business rules. The spec makes intent unambiguous.</p>
+<p dir="auto">The plan is then derived from the spec. Every plan step traces back to an acceptance criterion. If a step doesn't serve an acceptance criterion, it shouldn't exist.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Progress Tracking Across Sessions</h3>
+<a id="user-content-progress-tracking-across-sessions" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#progress-tracking-across-sessions"></a></div>
+<p dir="auto">AI coding sessions are ephemeral &mdash; context is lost when a session ends. Our plan files solve this with a simple convention:&nbsp;<strong>checkbox tracking</strong>.</p>
+<div class="highlight highlight-text-md notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-mh">## <span class="pl-en">Step 1 &mdash; Display subscription list (stubbed)</span></span>
+...
+<span class="pl-s">**</span>🛑 HUMAN GATE<span class="pl-s">**</span>:
+<span class="pl-v">-</span> <span class="pl-k">[x]</span> Behavioral verification: ViewModel test passes, page renders list with fake data
+<span class="pl-v">-</span> <span class="pl-k">[x]</span> Code review: Page layout matches reference feature
+
+<span class="pl-mh">## <span class="pl-en">Step 2 &mdash; Wire subscription list to real API</span></span>
+...
+<span class="pl-s">**</span>🛑 HUMAN GATE<span class="pl-s">**</span>:
+<span class="pl-v">-</span> <span class="pl-k">[ ]</span> Behavioral verification: Integration test passes, GET /api/subscriptions returns list
+<span class="pl-v">-</span> <span class="pl-k">[ ]</span> Code review: Repository, query, controller follow reference patterns</pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto">When a new session starts, the agent reads the plan file and finds the first unchecked&nbsp;<code>[ ]</code>&nbsp;&mdash; that's where to resume. No context is lost. Any agent, in any session, can pick up exactly where the last one left off.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Encoding All of This as AI Instructions</h3>
+<a id="user-content-encoding-all-of-this-as-ai-instructions" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#encoding-all-of-this-as-ai-instructions"></a></div>
+<p dir="auto">The key insight is that this entire process &mdash; planning gates, vertical slicing, Red-Green-Refactor, human gates, progress tracking &mdash; is&nbsp;<strong>encoded as AI instruction files</strong>&nbsp;that the agent reads and follows automatically. It's not a convention that developers need to remember; it's a constraint the AI enforces on itself.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it encodes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AGENTS.md</code></td>
+<td>Planning gate, mandatory workflow rules, RGR-Proof loop, human gates, vertical slice rules</td>
+</tr>
+<tr>
+<td><code>planner.agent.md</code></td>
+<td>How to decompose features into vertical slices, interview checklist, self-check validation</td>
+</tr>
+<tr>
+<td><code>devops.agent.md</code></td>
+<td>CI/CD pipeline structure, Bicep conventions, Architecture.md &rarr; Deployment-Info pipeline</td>
+</tr>
+<tr>
+<td><code>smoke-test.agent.md</code></td>
+<td>Post-deployment verification, URL discovery, browser-based health checks</td>
+</tr>
+<tr>
+<td><code>debug.agent.md</code></td>
+<td>App Insights telemetry analysis, Playwright reproduction, cross-layer correlation</td>
+</tr>
+<tr>
+<td><code>bugfix.agent.md</code></td>
+<td>Regression-test-first bug fixing, 2-file scope limit, escalation rules</td>
+</tr>
+<tr>
+<td><code>build-feature/SKILL.md</code></td>
+<td>How to execute plan steps with layer-specific code templates</td>
+</tr>
+<tr>
+<td><code>copilot-instructions.md</code></td>
+<td>Critical rules, project structure, dependency matrix, naming conventions</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">When a developer says "build the Subscriptions feature", the AI reads these files, asks clarifying questions, produces a vertically-sliced plan, waits for approval, and executes one step at a time with test-first discipline and mandatory human gates. The developer's job shifts from writing boilerplate to&nbsp;<strong>reviewing vertical slices of working behaviour</strong>.</p>
+<hr />
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Conclusion</h2>
+<a id="user-content-conclusion" class="anchor" href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#conclusion"></a></div>
+<p dir="auto">AI coding assistants are powerful, but they amplify both good and bad practices. The developers who benefit most will be those who:</p>
+<ol dir="auto">
+<li><strong>Adopt deliberate workflows</strong>&nbsp;&mdash; Explore, Specify, Plan, Implement, Commit</li>
+<li><strong>Require verification</strong>&nbsp;&mdash; never trust AI output without automated proof</li>
+<li><strong>Keep sessions focused</strong>&nbsp;&mdash; one task, one goal, clear validation</li>
+<li><strong>Choose models wisely</strong>&nbsp;&mdash; match cost to complexity</li>
+<li><strong>Encode their process into AI configuration</strong>&nbsp;&mdash; turn personal engineering discipline into agents that enforce it automatically</li>
+</ol>
+<p dir="auto">I built&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;because I got tired of re-explaining my process to every AI session in every project. Now I copy the files, run&nbsp;<code>/init</code>, and every agent &mdash; planner, bugfix, debug, devops, smoke-test, git &mdash; knows the architecture, the conventions, and the workflow. The AI becomes a disciplined teammate instead of an unpredictable code generator.</p>
+<p dir="auto">The library is open source and designed to be forked and adapted. Take what works for you, modify what doesn't, and build your own agent library on top of it. The investment in encoding your engineering process pays for itself on the first feature you build with it.</p>
+<hr />
+<p dir="auto"><em>The practices described in this article are encoded in the&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;open-source repository &mdash; a reusable template library of GitHub Copilot and Claude Code configuration files for .NET projects.</em></p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">7ee9fbd3-7020-4ad2-ac70-30bc51aabd6f|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects" dc:identifier="http://vandiest.biz/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects" dc:title="From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects" trackback:ping="http://vandiest.biz/trackback.axd?id=7ee9fbd3-7020-4ad2-ac70-30bc51aabd6f" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control">Spec-Driven Development with AI: A Practical Guide to Staying in Control</a><span>AI coding tools have made it remarkably easy to generate software at speed. They can scaffold featur</span><a href="/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor">What is the best UI technology: Angular or Blazor ?</a><span>(When you build enterprise business apps using DotNet)
+
+Introduction
+&nbsp;</span><a href="/post/2010/03/31/ASPNET-MVC-with-Webforms">ASP.NET MVC with Webforms</a><span>source code can be found here&nbsp;
+
+It&rsquo;s now generally admitted in the community that Unit ...</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="c2948d43-9691-4664-911f-863b3370afb5" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "Admin";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="j8vwU9b0Xf5O6/mqQqih2NBNPDGUx3i2IcGw46g30YDh3jWT99EdbEuY5bEvtldhjU3hJVWr6iaDw1BUxisroMs70FLVyyttMxEjybYcIV27eni5knjuOV+1GCpaDU96wNlTpA==" />
+</div></form>
+</body>
+</html>

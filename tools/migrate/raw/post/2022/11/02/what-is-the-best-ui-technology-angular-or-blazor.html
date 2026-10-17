@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - (When you build enterprise business apps using DotNet)
+
+Introduction
+&amp;nbsp;" />
+	<meta name="author" content="Geoffrey Vandiest" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="What is the best UI technology: Angular or Blazor ? (RSS)" href="/post/feed/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="What is the best UI technology: Angular or Blazor ? (ATOM)" href="/post/feed/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | What is the best UI technology: Angular or Blazor ?
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./what-is-the-best-ui-technology-angular-or-blazor?id=c4336b04-203e-4a53-b58d-fb82717d57aa" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="rKMjT0yZE47fgvxoRjaaMFBHNmvoPmizaD9t4Oh53+rLfDjnX9JDCsW/mDGgGgv3ohCfH3eetSniVM9OQ7QhZ08VY5hILePe39Gmd/1DUWSlzimTUnlQZM/JST54aDge6iGVhpYWYGiaMe1ndhwxK97cgk/8ts2dXghCsWma1csirfqYnx25HMCC+nuxrnK9BBKpVi0Y0uwAGjJORE+6JzXJZNf8204nM8NoFxi4wbLhkHe/HCIb3ZBh12rSbdKxc4duxxD2OCVAiC8IKaAa2j230UM9W6I31Oh7xWQCLi+RoKtjzH8u+RMnGAaC1EIVaRRP1iE+WC31mcgAM6Ntn81m/+zvXZUEsCnlK7XNleLrvhavMtG3vvEF2XMS5tv+hLAt3r+f4xxSt869T0sfP7GZrwpNkI9nMYVjKWy+GfMvTna/cyw3XQ+GmFevOIgGlia9DYiGv2YWTSWew6LIsqF7ra1h3CwvyCD94JJrL0fx5e9meW1zr9F1SZfiODz/6ZoJf9mKLHY3zSiEaRGYO+Cvr4FwORdvHsjnKqhMr3dDW84CcwR2hEYrywgQX2difFqSVc7R26RRbSx3mXauYtH9EoXkx90HPyFYr08CNIHqJfg1CAlVIwPmKsMuprnki4vQ7S5m0eeBNplWFT22zw/TCL1uOD4KNTv8LAYZ2Cmgpdao162LLtgzStGhFjbk8ORhoQUZLO5NO/soLUDYmW8fxeuNPjpV/h+x4TqCg7huqVVN7ai03uaQ64+f6rZMwVv+cEZQv2XWCURTUVywnaLmlyOFSLFqrHVYuPGhqjEcDwGavMQ+OdTC+rDoUOJh2OC+BvnYVyC0KKBnmAzRytc6Y8wC8EpKVTSx0bVOLjT06aUDM3APv0Ff3QSYlwa9Z0OTobcwIz/AAV3wZXLs1pZg/dI=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing" class="nav-next">Building Code Like a Skyscraper: The Scaffolding Magic of Automated Testing!</a> |
+    <a href="/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture" class="nav-prev">What Is a Single Page Application and when should we use it?</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor" class="taggedlink">What is the best UI technology: Angular or Blazor ?</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">2. November 2022 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/Admin">Geobarteam</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p><em>What is the best UI technology: Angular or Blazor ?&nbsp; </em></p>
+<p><em>(When you build enterprise business apps using DotNet)</em></p>
+<p><em><img src="/image.axd?picture=/AngularVsBlazor/AngularVsBlazor.jpg" alt="" /></em></p>
+<h2>Introduction</h2>
+<p>This post compares and explains in detail the pros and cons of the 2 most used SPA frameworks by .net developers, Angular and Blazor.</p>
+<p>My customers are enterprises that use .Net for building their line of business applications. I compared these 2 UI technologies, to find which one is the best fit for them and when they should use them instead of traditional ASP.NET MVC.</p>
+<p>This study is primarily based on my many years of experience in architecting and developing solutions based on Angular and .NET. It is based on research over the internet and the feedback of other architects and IT consultants. Because I had no formal experience with Blazor I invested time in studying the Blazor framework and in building some small applications with Blazor. I also interviewed other developers that had experience with Blazor and integrated their feedback into this study.</p>
+<h2>Single Page Applications</h2>
+<p>There are two general approaches to building web applications today: traditional web applications also called Multi Page Applications (MPA&rsquo;s) because they are made of multiple pages. These perform most of the application logic on the server. On the other hand, you have single-page applications (SPAs) that perform most of the user interface logic in a web browser, communicating with the web server primarily using web APIs. A hybrid approach is also possible, the simplest being to host one or more rich SPA-like sub-applications within a larger traditional web application.</p>
+<p><img src="/image.axd?picture=/AngularVsBlazor/PageLifecycle.png" alt="" /></p>
+<p>MPA reloads the entire page and displays the new one when a user interacts with the web app.&nbsp;</p>
+<p>A SPA is more like a traditional application because it&rsquo;s initially loaded and then it refreshes part of the page without reloading it. When a user interacts with the application, it displays content without the need to be fully updated since different pieces of content are downloaded automatically as per request. It is possible thanks to AJAX technology. In single-page applications, there is only one HTML page, and this one page downloads a bunch of assets, CSS, and images but typically also a lot of JavaScript. Speaking of the latter, the code will then listen to clicks on links and then re-render parts of the DOM in the loaded page whenever a user needs something.&nbsp;</p>
+<p>Although SPA applications are extremely popular because they usually account for a better user experience it does not mean that every web application should be built with a SPA architecture. Let&rsquo;s take, for instance, a news portal like CNN. It is a good example of a multi-page application. How can we see it? Just click any link and watch the reload icon on the top of your browser. You see that reloading has started because a browser is now reaching out to our public server and fetching that page and all the resources needed. The interesting thing about multi-page applications is that every new page is downloaded. Every request we send to the server, like whenever we type a new URL or click on a link, leads to a new page being sent back from the server. Notable examples of multiple-page applications are giants like Amazon or eBay. Using them, you always get a new file for every request.</p>
+<p>ASP. Net Core MVC is an excellent choice for websites that are better developed as MPAs (see later). But as explained here above SPAs usually supplies a better user experience when our application is more like an interactive application.&nbsp; &nbsp;</p>
+<h2>Angular</h2>
+<p>Angular still is by far the most used SPA framework by .NET developers. This is because it has a lot of similarities with the .Net ecosystem.</p>
+<ul>
+<li>TypeScript: Angular use TypeScript by default. This means that all documentation, articles, and source code are provided in TypeScript. TypeScript is a superset of JavaScript that compiles JavaScript. C# and Typescript are both designed by Anders Hejlsberg, and in many ways, TypeScript feels like the result of adding parts of C# to JavaScript. They share similar features and syntax, and both use the compiler to check for type safety. So, it's more straightforward to learn TypeScript for a C# dev as JavaScript.</li>
+<li>MVVM: Angular uses the MVVM pattern. This Pattern was invented for WPF &amp; Silverlight (.NET). So many developers coming from .NET that wanted to do Web development have turned to Angular because it used the same pattern.</li>
+<li>All in the box: Unlike other Js frameworks like Vue or React, Angular is a complete framework that tends to supply everything you need, libs, and tooling and spare you of the dependency hell so that you can focus on your application. Just like the .NET framework.&nbsp;</li>
+</ul>
+<p>&nbsp;Most of the other Js frameworks are exactly the opposite. They only focus on one aspect but leave you with a lot of choices. Although focusing on one thing results in frameworks that are simpler to learn, .NET enterprise developers are annoyed when they must make a lot of choices. They prefer opinionated frameworks that help them in getting productive faster with better supportability.</p>
+<p>Angular is a part of the&nbsp;<a href="https://www.altexsoft.com/blog/engineering/javascript-ecosystem-38-tools-for-front-and-back-end-development/">JavaScript ecosystem</a>&nbsp;and one of the most popular SPA frameworks today. AngularJs the preceding version, was introduced by Google in 2009 and was largely adopted by the development community.</p>
+<p>In September 2016, Google released Angular 2. It was a complete rewrite of the framework by the same team. The recent version of the framework uses TypeScript as a programming language.&nbsp;<a href="https://www.sitepoint.com/typescript-tutorial-for-beginners/">TypeScript</a><u>&nbsp;</u>is a typed superset of JavaScript which has been built and maintained by Microsoft. The presence of types makes the code written in TypeScript less prone to run-time errors. As explained here above, TypeScript is the primary reason Angular is so popular in the .NET community.</p>
+<p>The difference between the old Angular and the second version is so radical that you can&rsquo;t update from AngularJs (the older version). Migrating the applications to Angular requires too many modifications due to different syntax and architecture. This means that upgrading our existing AngularJs apps to the new Angular framework will lead to a complete rewrite.&nbsp;</p>
+<p>TypeScript compiles JavaScript and integrates perfectly with the JavaScript ecosystem. So Angular is part of the JavaScript ecosystem and uses npm to manage dependencies. It can count on the largest community and number of libraries today. With Angular, you use the largest open-source ecosystem where you can find everything that you need.&nbsp;</p>
+<p>But the vast number of packages and their fast-changing rate is also a challenge in the enterprise. Making these packages available is the biggest challenge. Take a new Angular application as a sample. An empty new Angular application has the following direct dependencies:</p>
+<ul>
+<li><em>@angular</em></li>
+<li><em>@angular/cli</em></li>
+<li><em>@ngrx</em></li>
+<li><em>rxjs</em></li>
+<li><em>typescript</em></li>
+<li><em>tslint</em></li>
+<li><em>codelyzer</em></li>
+<li><em>zone.js</em></li>
+<li><em>core-js</em></li>
+</ul>
+<p><em>&nbsp;</em></p>
+<p>And now let&rsquo;s install all the dependencies by typing:</p>
+<p>npm i<br /> ... one eternity later ...<br /> added 1174 packages in 116.846s</p>
+<p>A new regular Angular application without any add-on uses already 1200 packages!&nbsp;</p>
+<p>When your ecosystem has this number of dependencies, you can&rsquo;t inspect them all yourself. You can&rsquo;t hope they&rsquo;re all secure. You can&rsquo;t assume they&rsquo;ve all got permissive licenses. You can&rsquo;t maintain your registry by hand. You can&rsquo;t formally approve packages by comity, and you can&rsquo;t maintain this as many packages you&rsquo;re using will get an update every single hour. You must move from manual, discrete processes to automated, continuous processes.&nbsp;</p>
+<p>Angular comes with great tools, supported by a large community. Angular has been around for over a decade, while Blazor has been in the market for only a few years. Angular is a production-ready framework with full support for MVVM applications and it is being used by many large companies. Blazor, while being used by some large brands, is early in its lifecycle. Angular and other popular Js frameworks like Razor or View come with much more content in the form of courses, books, blogs, videos, and other materials. Angular has dedicated tech events held worldwide, a huge community, and it supplies a broad choice of third-party integrations.</p>
+<p>To illustrate the difference in adoption, consider the graphic here that compares the number of jobs offered by frontend technology. Angular comes second when Blazor is somewhere between the others:</p>
+<p><img src="/image.axd?picture=/AngularVsBlazor/jobs.png" alt="" /></p>
+<p>As illustrated here above, despite being one of the oldest and one of the most mature SPA frameworks Angular is not the most used or loved framework in the JavaScript community. This is primarily due to his complexity. Even for seasoned JavaScript developers, Angular is difficult to master. His strength of being an opinionated framework using TypeScript comes at the expense of a steep learning curve.&nbsp;</p>
+<p>This is even more challenging for most .NET developers who usually have only a marginal knowledge of JavaScript. They not only have to learn a new language they also must learn an entirely new ecosystem and framework. In my own experience, this is the greatest challenge for organizations using .NET. This can be solved by recruiting Angular specialists that focus on the frontend part. Having a frontend specialist usually improves the user experience but it comes at the expense of having to segregate your devs in frontend (Angular) and backend devs (.NET).&nbsp;</p>
+<p>Mixing two technologies coming from different worlds diminishes the flexibility of resource allocation. People must specialize and the potential number of tasks they can work on diminishes. It also increases development time as you need to put more effort into integrating both technologies.</p>
+<p>My own experience with working with .net developers having to learn Angular confirms that the learning curve is very steep for them. In the past, to cope with this problem, we recruited Angular specialists to coach our .Net teams. We also had to invest in our CI/CD pipeline to support our new technology stack. As a .Net shop that desired to adopt Angular, we had to make a considerable investment in recruiting the right profiles, supplying the right guidance, and investing in building and adapting our package management process and tools to the high velocity and number of packages that are typical for the Javascript ecosystem. Also recruiting the right skills was a challenge for the reasons explained here above and because Angular is somewhat losing traction in the Js community.</p>
+<h3><strong>When to choose Angular over ASP.NET MVC?</strong></h3>
+<p>If the team is unfamiliar with JavaScript or TypeScript but is familiar with pure server-side MVC development, then they will probably be able to deliver a traditional MVC App more quickly than an Angular app. Unless the team has already learned Angular or unless the user experience afforded by Angular is needed, the traditional MVC is the more productive choice.&nbsp;</p>
+<h2>Blazor</h2>
+<p>Blazor is a relatively new Microsoft ASP.NET Core web framework that allows developers to write code for browsers in C#. Blazor is based on existing web technologies like HTML and CSS but then allows the developer to use C# and Razor syntax instead of JavaScript. Razor is the template markup syntax used by ASP.NET MVC and MVC developers can reuse most of their skills to build apps with Blazor.&nbsp;</p>
+<p>Blazor is very promising for .NET developers as it enables them to create SPA applications using C#, without the need for significant JavaScript skills.&nbsp;</p>
+<p>An advantage of Blazor is that it uses the latest web standards and does not need added plugins or add-ons to run in different deployment models. It can run in the browser using WebAssembly and offers a server-side ASP.NET Core option.&nbsp;&nbsp;</p>
+<p>Learning Blazor for .NET developers is nothing compared to Angular or other Js frameworks. First, they don&rsquo;t need to master JavaScript and TypeScript but also, but they can use the enterprise-friendly .NET ecosystem they already know. For a .NET dev already accustomed to web development through MVC, we can say that developers can be productive in a matter of days/weeks compared to months/years with Angular.</p>
+<p>But the biggest advantage of Blazor is its productivity. It allows .NET developers to build entire applications with only C#. It feels more like building desktop apps than web apps. When using the server-side version developers don&rsquo;t have to think about data transfer between client and server. Also, with the client-side version, it&rsquo;s a lot easier than with Angular as it&rsquo;s all integrated within one .NET solution.&nbsp;</p>
+<p>Blazor seems even more productive than traditional MVC as it doesn&rsquo;t require the developer to cope with server page refreshes and can use client rendering and events. It feels like what was developing with Silverlight or WPF but using Razor, Html, and CSS instead of Xaml. This was also confirmed by our discussion with a consultant at Gartner. They confirmed that based on experiences with several customers, Blazor was the most productive technology for building UIs inside the .NET ecosystem, even compared to MVC.</p>
+<p>The adoption of Blazor outside the .NET community will probably remain low. Blazor is hard to sell to the current web developer because it means leaving behind many of the libraries and technologies that have been up for over a decade of modern JavaScript development. This means that Blazor will probably stay a niche technology. Blazor is and will be used by teams that know .NET for building internal business applications but will probably not be adopted outside this community. That means that the community and tools will mostly be supported by Microsoft. The tool and libraries support from the open-source community and vendors will remain less compared to Angular or other mainstream Js frameworks.&nbsp;</p>
+<p>One of the impediments to Blazor adoption by the .NET community is that Blazor will be the next Silverlight. They fear that it will be around only for a brief period. More than 10 years after the final Microsoft Silverlight release, some developers&nbsp;<a href="https://visualstudiomagazine.com/articles/2021/08/17/silverlighted.aspx">still fear being 'Silverlighted,'</a>&nbsp;or seeing a development product in which they have invested heavily abandoned by Microsoft. This is because both technologies are similar, both are developed by Microsoft and allow us to use the .NET platform to create web applications. They both share the same core idea: Instead of using JavaScript, we can use C# as the programming language to create web applications.&nbsp;</p>
+<p>Inside the enterprise, this risk is largely mitigated by the fact that Microsoft has always supplied relatively long support periods. Even for Silverlight Microsoft continued to support it for nearly 10 years before retiring it. This risk has also a lot less impact as Blazor is not dependent on a browser plugin. Microsoft learned a lot from this story. First, ASP.NET and later ASP.NET Core do not require any browser plugins to run. Also, Microsoft decided to only use open web standards for Blazor. As long as the browsers support those open web standards, they will also support Blazor.</p>
+<p>&nbsp;</p>
+<h3><strong>Client Side (Wasm) vs. Server Side Blazor</strong></h3>
+<p>Blazor has a separation between how it calculates UI changes (app/component model) and how those changes are applied (renderer). This decouples the renderer from the platform and allows to have the same programming model for different platforms.&nbsp;</p>
+<p><img src="/image.axd?picture=/AngularVsBlazor/blazor1.png" alt="" /></p>
+<p>Currently, Microsoft supports only 2 renderers, Blazor client (WebAssembly Renderer) and Blazor Sever (Remote Renderer). The implementation code is the same but what differs is the configuration of the hosting middleware. A good practice is to isolate your code from changes to the hosting model by using a class library where you put all the rendering code. This will ease the job if you later must migrate to another hosting model or when you need to support another supplementary model.</p>
+<h3><strong>Blazor Server</strong></h3>
+<p>With Blazor Server you use a classic ASP.NET Core website like ASP.NET MVC but the UI refreshes are handled over a SignalR connection.&nbsp;&nbsp;</p>
+<p><img src="/image.axd?picture=/AngularVsBlazor/BlazorServer.png" alt="" /></p>
+<p>As for a SPA, one page is displayed on the browser and then parts of it are refreshed. On the server at the first request, the Html is generated from the Razor pages. When UI updates are triggered by user interaction and app events a UI diff is calculated and sent to the client over a SignalR connection. Then, the client-side Js library used by Blazor server applies the changes in the browser.&nbsp;&nbsp;</p>
+<p>Using Blazor Server behind load balancers or proxy servers requires special attention. As described in the&nbsp;<a href="https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/proxy-load-balancer?view=aspnetcore-6.0&amp;viewFallbackFrom=aspnetcore-2.2#other-proxy-server-and-load-balancer-scenarios">article here</a>, forwarded headers should be enabled (default configuration in IIS) and the load balancers should support sticky sessions. You can also use Redis to create a backplane as described&nbsp;<a href="https://medium.com/it-dead-inside/lets-learn-blazor-blazor-server-with-signalr-457bec513d99">here</a>.&nbsp;</p>
+<h3><strong>Blazor Client (WebAssembly)</strong></h3>
+<p><strong><img src="/image.axd?picture=/AngularVsBlazor/BlazorWasm.png" alt="" /></strong></p>
+<p>Here .Net code is running inside the browsers. The application code is compiled in WebAssembly (a sort of Assembly language for the web) and sent together with the .Net runtime to the browser. The Blazor WebAssembly runtime uses JavaScript interop to handle DOM manipulation and browser API calls.</p>
+<p>WebAssembly is an open web standard and is supported by all modern web browsers. Blazor is not the only technology using WebAssembly, most of the other big vendors develop tools and platforms that make use of WebAssembly.</p>
+<p>&nbsp;</p>
+<h3><strong>Blazor Server vs. client recommendation</strong></h3>
+<p>For traditional enterprise business applications, Blazor Server seems usually the best option but for certain scenarios, Blazor Wasm has clear advantages :</p>
+<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the responsiveness of your app must be optimal, the low latency of Blazor server will optimize the responsiveness.</p>
+<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You need offline support.</p>
+<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You expect many users (&gt;100). Blazor Server is a less scalable solution as many users require server resources to handle multiple client connections and client states.</p>
+<table width="681">
+<tbody>
+<tr>
+<td width="93">&nbsp;</td>
+<td width="47">
+<p><strong>Weight</strong></p>
+</td>
+<td width="185">
+<p><strong>Blazor Server</strong></p>
+</td>
+<td width="41">
+<p><strong>Score</strong></p>
+</td>
+<td width="36">
+<p><strong>Total</strong></p>
+</td>
+<td width="199">
+<p><strong>Blazor Client</strong></p>
+</td>
+<td width="41">
+<p><strong>Score</strong></p>
+</td>
+<td width="39">
+<p><strong>Total</strong></p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Learning curve</strong></p>
+</td>
+<td width="47">
+<p>5</p>
+</td>
+<td width="185">
+<p>Easier to configuration because security model.</p>
+</td>
+<td width="41">
+<p>8</p>
+</td>
+<td width="36">
+<p>40</p>
+</td>
+<td width="199">
+<p>More complex, same problems as with SPA but not significantly harder as server side Blazor.</p>
+</td>
+<td width="41">
+<p>7</p>
+</td>
+<td width="39">
+<p>35</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Productivity</strong></p>
+</td>
+<td width="47">
+<p>5</p>
+</td>
+<td width="185">
+<p>Enable to build 2 tier apps that demand less effort as 3 tier apps.</p>
+</td>
+<td width="41">
+<p>9</p>
+</td>
+<td width="36">
+<p>45</p>
+</td>
+<td width="199">
+<p>Enforce 3 tier and use of API.</p>
+</td>
+<td width="41">
+<p>7</p>
+</td>
+<td width="39">
+<p>35</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Supportability </strong></p>
+</td>
+<td width="47">
+<p>5</p>
+</td>
+<td width="185">
+<p>The same as traditional MVC apps.</p>
+</td>
+<td width="41">
+<p>9</p>
+</td>
+<td width="36">
+<p>45</p>
+</td>
+<td width="199">
+<p>More difficult to support due to security model.</p>
+</td>
+<td width="41">
+<p>7</p>
+</td>
+<td width="39">
+<p>35</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Maturity</strong></p>
+</td>
+<td width="47">
+<p>4</p>
+</td>
+<td width="185">
+<p>First version with production support.</p>
+</td>
+<td width="41">
+<p>7</p>
+</td>
+<td width="36">
+<p>28</p>
+</td>
+<td width="199">
+<p>Came later but now it's supported in production by Microsoft.</p>
+</td>
+<td width="41">
+<p>7</p>
+</td>
+<td width="39">
+<p>28</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Community</strong></p>
+</td>
+<td width="47">
+<p>3</p>
+</td>
+<td width="185">
+<p>For the moment adoption seems better.</p>
+</td>
+<td width="41">
+<p>6</p>
+</td>
+<td width="36">
+<p>18</p>
+</td>
+<td width="199">
+<p>WebAssembly has highest buzz so probably the most adoption in the long run.</p>
+</td>
+<td width="41">
+<p>7</p>
+</td>
+<td width="39">
+<p>21</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Enforce Best practice</strong></p>
+</td>
+<td width="47">
+<p>3</p>
+</td>
+<td width="185">
+<p>Does not enforce 3 tiers or MVVM.</p>
+</td>
+<td width="41">
+<p>4</p>
+</td>
+<td width="36">
+<p>12</p>
+</td>
+<td width="199">
+<p>Enforce 3 tiers, using 3 tiers is usually a good practice.</p>
+</td>
+<td width="41">
+<p>8</p>
+</td>
+<td width="39">
+<p>24</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Performance</strong></p>
+</td>
+<td width="47">
+<p>2</p>
+</td>
+<td width="185">
+<p>Better performance at load time but a lot less scalable.</p>
+</td>
+<td width="41">
+<p>6</p>
+</td>
+<td width="36">
+<p>12</p>
+</td>
+<td width="199">
+<p>Longer load time but a lot more scalable.</p>
+</td>
+<td width="41">
+<p>7</p>
+</td>
+<td width="39">
+<p>14</p>
+</td>
+</tr>
+<tr>
+<td width="93">&nbsp;</td>
+<td width="47">
+<p>&nbsp;</p>
+</td>
+<td width="185">
+<p>&nbsp;</p>
+</td>
+<td width="41">
+<p>&nbsp;</p>
+</td>
+<td width="36">
+<p>&nbsp;</p>
+</td>
+<td width="199">
+<p>&nbsp;</p>
+</td>
+<td width="41">&nbsp;</td>
+<td width="39">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Risk</strong></p>
+</td>
+<td width="47">
+<p>Impact</p>
+</td>
+<td width="185">
+<p>&nbsp;</p>
+</td>
+<td width="41">
+<p>&nbsp;</p>
+</td>
+<td width="36">
+<p>&nbsp;</p>
+</td>
+<td width="199">
+<p>&nbsp;</p>
+</td>
+<td width="41">&nbsp;</td>
+<td width="39">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Security </strong></p>
+</td>
+<td width="47">
+<p>4</p>
+</td>
+<td width="185">
+<p>No more risk as a classical MVC.</p>
+</td>
+<td width="41">
+<p>0</p>
+</td>
+<td width="36">
+<p>0</p>
+</td>
+<td width="199">
+<p>Higher risk for misconfiguration.</p>
+</td>
+<td width="41">
+<p>-1</p>
+</td>
+<td width="39">
+<p>-4</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Lifecycle support</strong></p>
+</td>
+<td width="47">
+<p>5</p>
+</td>
+<td width="185">
+<p>No dependency on browser support.</p>
+</td>
+<td width="41">
+<p>0</p>
+</td>
+<td width="36">
+<p>0</p>
+</td>
+<td width="199">
+<p>Browsers need to continue to support WebAssembly standard, but the probability is low.</p>
+</td>
+<td width="41">
+<p>-1</p>
+</td>
+<td width="39">
+<p>-5</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="47">
+<p>&nbsp;</p>
+</td>
+<td width="185">
+<p>&nbsp;</p>
+</td>
+<td width="41">
+<p>&nbsp;</p>
+</td>
+<td width="36">
+<p>&nbsp;</p>
+</td>
+<td width="199">
+<p>&nbsp;</p>
+</td>
+<td width="41">
+<p>&nbsp;</p>
+</td>
+<td width="39">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Total (Max 360)</strong></p>
+</td>
+<td width="47">
+<p>&nbsp;</p>
+</td>
+<td width="185">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="41">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="36">
+<p><strong>200</strong></p>
+</td>
+<td width="199">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="41">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="39">
+<p><strong>183</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h3><strong>When to choose Blazor over ASP.NET MVC ?</strong></h3>
+<p>As developing or maintaining apps using Blazor is more productive than ASP.NET MVC and easy to learn, Blazor is usually the best choice except when:</p>
+<p><em>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your application has simple, possibly read-only requirements.</em></p>
+<p>Many web applications are primarily consumed in a read-only fashion by most of their users. Read-only (or read-mostly) applications tend to be much simpler than those applications that maintain and manipulate a great deal of state. For example, our intranet or public websites where anonymous users can easily make requests, and there is little need for client-side logic. This type of public-facing web site usually consists mainly of content with little client-side behavior. Such applications are easily built as traditional ASP.NET MVC web applications, which perform logic on the web server and render HTML to be displayed in the browser. The fact that each unique page of the site has its own URL that can be bookmarked and indexed by search engines (by default, without having to add this functionality as a separate feature of the application) is also a clear benefit in such scenarios.</p>
+<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your application ecosystem is based on MVC and is too small or too simple to invest in Blazor.</p>
+<p>When your applications consist mainly of server-side processes and your UI is quite simple (e.g., Dashboard, back-office CRUD apps, &hellip;) and you&rsquo;ve already made a strong investment in MVC then adding Blazor could not be worth the investment.</p>
+<h2>Angular vs. Blazor Score Card</h2>
+<p>Here we selected several criteria and attributed weight to the function of the specific needs and environment of Enterprises using .Net as their main technology stack. But, each organization is unique and adapt the scoring based on its specific needs.&nbsp; &nbsp;</p>
+<p>The weight ranges from 1 to 5. 5 indicates an especially important criterion, starting from 1 as minor importance to 5 as the top priority.</p>
+<p>The score for each criterion ranges from 0 to 10. 10 shows an exceptionally high-quality attribute, 1 is the minimum.</p>
+<p>We also take account of Risks at the bottom of the scorecard. Here the weight indicates the risk potential impact and the score the probability. Staring from 0 as 0% probability to -10 indicates a risk that will occur with 100% probability.</p>
+<ul>
+<li>Learning curve: the amount time a developer, on average, needs to invest to become productive with the technology.</li>
+<li>Productivity: how productive the developers are with the given platform once it has mastered the technology.</li>
+<li>Supportability: how well can we efficiently support the platform?</li>
+<li>Community: how valuable, responsive and broad is the developer's community? When a platform has a strong community the organization, its developers and its users all benefit.</li>
+<li>Maturity: is the platform used for long enough that most of its first faults and inherent problems have been removed or reduced?</li>
+<li>Full Stack efficiency: how efficient is it for the project to work and to cope with the separation of the frontend and the backend? Does the adoption of this technology diminish the efficiency of the project teams and the organization because they must deal with different skill sets for backend and frontend?</li>
+<li>Finding resources: how easy is it to recruit developers on the market?</li>
+<li>Libraries choices: a good library well suited for the needs and well maintained improves productivity while minimizing the TCO. A large choice of libraries increases the probability of finding a library that satisfies the needs.</li>
+<li>Opinionated: a platform that believes a certain way of approaching a problem is inherently better and enables the developer to spend less time finding the right way of solving a problem.</li>
+<li>Performance: which platform has the fastest render time, load time, and refresh time, and consumes a minimal number of resources?</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table width="692">
+<tbody>
+<tr>
+<td width="93">&nbsp;</td>
+<td width="55">
+<p><strong>Weight</strong></p>
+</td>
+<td width="173">
+<p><strong>Blazor</strong></p>
+</td>
+<td width="35">
+<p><strong>Score</strong></p>
+</td>
+<td width="43">
+<p><strong>Total</strong></p>
+</td>
+<td width="177">
+<p><strong>Angular</strong></p>
+</td>
+<td width="73">
+<p><strong>Score</strong></p>
+</td>
+<td width="43">
+<p><strong>Total</strong></p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Learning curve</strong></p>
+</td>
+<td width="55">
+<p>5</p>
+</td>
+<td width="173">
+<p>Easy to learn for .Net devs, especially with MVC/Razor experience.&nbsp; Non-included features require Js integration (limited).</p>
+</td>
+<td width="35">
+<p>9</p>
+</td>
+<td width="43">
+<p>45</p>
+</td>
+<td width="177">
+<p>Steep learning curve even for experimented Js devs.</p>
+</td>
+<td width="73">
+<p>3</p>
+</td>
+<td width="43">
+<p>15</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Productivity</strong></p>
+</td>
+<td width="55">
+<p>5</p>
+</td>
+<td width="173">
+<p>More tuned for RAD as Angular, even more productive as bare MVC (Gartner)</p>
+</td>
+<td width="35">
+<p>9</p>
+</td>
+<td width="43">
+<p>45</p>
+</td>
+<td width="177">
+<p>Lot of ceremony but good tooling is provided (e.g., Visual Studio Code).</p>
+</td>
+<td width="73">
+<p>4</p>
+</td>
+<td width="43">
+<p>20</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Supportability </strong></p>
+</td>
+<td width="55">
+<p>5</p>
+</td>
+<td width="173">
+<p>Included in. Net6 &amp; Visual Studio, Server Blazor Server is same as MVC web app towards supportability. (Blazor server is included in .Net 6 =&gt; not a Nuget package)</p>
+</td>
+<td width="35">
+<p>9</p>
+</td>
+<td width="43">
+<p>45</p>
+</td>
+<td width="177">
+<p>Big challenges with lifecycle due to number of packages.</p>
+</td>
+<td width="73">
+<p>2</p>
+</td>
+<td width="43">
+<p>10</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Community</strong></p>
+</td>
+<td width="55">
+<p>4</p>
+</td>
+<td width="173">
+<p>Backed by Micrsosoft but small community made out exclusively of .NET devs.</p>
+</td>
+<td width="35">
+<p>3</p>
+</td>
+<td width="43">
+<p>12</p>
+</td>
+<td width="177">
+<p>Backed by Google and exceptionally large community.</p>
+</td>
+<td width="73">
+<p>8</p>
+</td>
+<td width="43">
+<p>32</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Maturity</strong></p>
+</td>
+<td width="55">
+<p>4</p>
+</td>
+<td width="173">
+<p>Is supported since .NET core 3.1.&nbsp; and is considered by community as mature since .NET 6.</p>
+</td>
+<td width="35">
+<p>6</p>
+</td>
+<td width="43">
+<p>24</p>
+</td>
+<td width="177">
+<p>Very mature &amp; battle tested.</p>
+</td>
+<td width="73">
+<p>9</p>
+</td>
+<td width="43">
+<p>36</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Full Stack efficiency</strong></p>
+</td>
+<td width="55">
+<p>3</p>
+</td>
+<td width="173">
+<p>Although some devs specialize in backend or frontend work, Blazor is an integrated environment with 1 stack where 1 dev can easily work on both with high efficiency.</p>
+</td>
+<td width="35">
+<p>9</p>
+</td>
+<td width="43">
+<p>27</p>
+</td>
+<td width="177">
+<p>Some Angular/.NET real full stack devs are available. Experience shows that when 2 different stacks (.NET &amp; Angular) are used this often leads to a segregation of devs in frontend and backend devs what diminish efficiency.</p>
+</td>
+<td width="73">
+<p>4</p>
+</td>
+<td width="43">
+<p>12</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Finding resources</strong></p>
+</td>
+<td width="55">
+<p>3</p>
+</td>
+<td width="173">
+<p>Finding experienced Blazor devs is more difficult as finding Angular devs. Nevertheless, for MVC devs, learning Blazor is easy.</p>
+</td>
+<td width="35">
+<p>4</p>
+</td>
+<td width="43">
+<p>12</p>
+</td>
+<td width="177">
+<p>Angular is one of the mainstream Js frameworks but a lot of JS frameworks exist and finding Angular devs that know .Net is not easy.</p>
+</td>
+<td width="73">
+<p>6</p>
+</td>
+<td width="43">
+<p>18</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Libraries choices</strong></p>
+</td>
+<td width="55">
+<p>3</p>
+</td>
+<td width="173">
+<p>Limited choice of Open-source library. Major vendors Teleric or DevExpress have Blazor component UI libraries.&nbsp;</p>
+</td>
+<td width="35">
+<p>3</p>
+</td>
+<td width="43">
+<p>9</p>
+</td>
+<td width="177">
+<p>Large choice open source and commercial libraries.</p>
+</td>
+<td width="73">
+<p>8</p>
+</td>
+<td width="43">
+<p>24</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Opinionated</strong></p>
+</td>
+<td width="55">
+<p>2</p>
+</td>
+<td width="173">
+<p>Although it's a full framework with databinding, Devs have more choices to make as with Angular.</p>
+</td>
+<td width="35">
+<p>7</p>
+</td>
+<td width="43">
+<p>14</p>
+</td>
+<td width="177">
+<p>Angular is very opinionated and complete.</p>
+</td>
+<td width="73">
+<p>8</p>
+</td>
+<td width="43">
+<p>16</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Performance</strong></p>
+</td>
+<td width="55">
+<p>2</p>
+</td>
+<td width="173">
+<p>Less performant but still very acceptable</p>
+</td>
+<td width="35">
+<p>7</p>
+</td>
+<td width="43">
+<p>14</p>
+</td>
+<td width="177">
+<p>Framework was tuned over the years towards performance.</p>
+</td>
+<td width="73">
+<p>8</p>
+</td>
+<td width="43">
+<p>16</p>
+</td>
+</tr>
+<tr>
+<td width="93">&nbsp;</td>
+<td width="55">
+<p>&nbsp;</p>
+</td>
+<td width="173">
+<p>&nbsp;</p>
+</td>
+<td width="35">
+<p>&nbsp;</p>
+</td>
+<td width="43">
+<p>&nbsp;</p>
+</td>
+<td width="177">
+<p>&nbsp;</p>
+</td>
+<td width="73">&nbsp;</td>
+<td width="43">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Risk</strong></p>
+</td>
+<td width="55">
+<p>&nbsp;</p>
+</td>
+<td width="173">
+<p>&nbsp;</p>
+</td>
+<td width="35">
+<p>&nbsp;</p>
+</td>
+<td width="43">
+<p>&nbsp;</p>
+</td>
+<td width="177">
+<p>&nbsp;</p>
+</td>
+<td width="73">&nbsp;</td>
+<td width="43">
+<p>&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p>Abandon technology within 5J</p>
+</td>
+<td width="55">
+<p>4</p>
+</td>
+<td width="173">
+<p>Taking Ms lifecycle into consideration the chance is extremely low for 5Y.</p>
+</td>
+<td width="35">
+<p>-1</p>
+</td>
+<td width="43">
+<p>-4</p>
+</td>
+<td width="177">
+<p>Chances are low but AngularJs has proven that even when the tech is successful vendors can abandon it.</p>
+</td>
+<td width="73">
+<p>-1</p>
+</td>
+<td width="43">
+<p>-4</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p>Adoption falls within the community</p>
+</td>
+<td width="55">
+<p>3</p>
+</td>
+<td width="173">
+<p>The probability is low but exists that .NET devs don't continue to adopt the tech due to "Silverlight" history.</p>
+</td>
+<td width="35">
+<p>-2</p>
+</td>
+<td width="43">
+<p>-6</p>
+</td>
+<td width="177">
+<p>Angular has a large community but it's losing traction.</p>
+</td>
+<td width="73">
+<p>-1</p>
+</td>
+<td width="43">
+<p>-3</p>
+</td>
+</tr>
+<tr>
+<td width="93">
+<p><strong>Total (Max 360)</strong></p>
+</td>
+<td width="55">
+<p>&nbsp;</p>
+</td>
+<td width="173">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="35">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="43">
+<p><strong>237</strong></p>
+</td>
+<td width="177">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="73">
+<p><strong>&nbsp;</strong></p>
+</td>
+<td width="43">
+<p><strong>192</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">c4336b04-203e-4a53-b58d-fb82717d57aa|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor" dc:identifier="http://vandiest.biz/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor" dc:title="What is the best UI technology: Angular or Blazor ?" trackback:ping="http://vandiest.biz/trackback.axd?id=c4336b04-203e-4a53-b58d-fb82717d57aa" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1">How to design your SPA to work with Angular CLI and DoNet Core</a><span>When building new apps, you need both client and server-side pieces.&nbsp; This article focusses on</span><a href="/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer">Angular2 vs React from the perspective of a .Net fullstack developer</a><span>Intro
+Currently we had a lot of discussion on which web framework we should invest: Angular2 or Rea...</span><a href="/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript">Build your Arduino Robot and program it with Javascript</a><span>In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you w</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="e89b24da-34a0-499e-b35e-30c4eb68c16d" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "Admin";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="qVoawdfE7/e+4VzvugqD0ezTN4E81gFWnEobZ8WkUiv3w9A5aSylPUsc5JULcLROqoODvWK4WKy4gKg6OsI7BpDoD2QvwtnTRH7eiBvIBKfq86ttN0K/2BViH2pdBlPJMrsAIQ==" />
+</div></form>
+</body>
+</html>

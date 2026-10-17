@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - " />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="ASP.NET Web setup project walkthrough (RSS)" href="/post/feed/2008/10/07/ASPNET-Web-setup-project-walkthrough?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="ASP.NET Web setup project walkthrough (ATOM)" href="/post/feed/2008/10/07/ASPNET-Web-setup-project-walkthrough?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | ASP.NET Web setup project walkthrough
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./ASPNET-Web-setup-project-walkthrough?id=b452421f-cca8-4ff3-a769-c4f7acfbae20" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="0AvXcPLWmAphxhdOIabS4f+2nY0dnMSuSHB6Of0YM6RI8uzAX8IBh9jUlxa45aCkNLIpAdNaDyeUjPa57sLV7V8kFyR0mHiWvEkscovTedwAi9Cb8tgrhI/WU5W8U/GmfMCdxZfcwv9mo2mds0X/P/bMQIjFVcsLQYFVTDHZ+5OVstHEzpgQA2TmtaeZQzrGIgVk3/pUqCQr8b1quWqSSQp3aeiJiBwWTvT+19ceTIr50mKzbqX1ZAa4pc4Xbp5OTBurDIaAXCkiJkMpkrn+7ZT4sWzCz1W5hDswt/S/45Z+8FM/LFlFCRYtkANt2dZ7E2nvGufvxQGYHD7IHXib8FRZEWrgPmhJaEkhRcprjYogjPN5MKxzQCKrVbo+VSw/9IZYSYoxJB4B0YcOTpfA43L5SgVn8EaNNcVmndJe93cfFCIHQOWoezod5Uih9EUONGg5Aq9r9tFXEMklwUQEn1oGDlb62S+VEOg55XzLpfIJbxMlzoWaT/8RouwJHQnfydzy6Y5lpqrDr/S6hfQokDuEgiY6gekTGstcWHfGkFlKqOtkEUD40jAEB15etlBHo8h2pYZJbVkqoVa/eluz+hgDfEjiWYfNiLlibd2mb6Sof6xzBzhKGrOuA9vakjiTKha3N16Yy/Hic2h/KVIrttz304iJ6GXv9SCJHT2CJLfIXwqh6h0bumV5VeudjZFD1gWYJOQWLBaDMCIbbxFmtdKhhX+J8DFBpLd/khySeZaSeiDyUBnoH9I/qusROQ5AiEdu2824JZ+a236dBzof+Y6VcuO/uKC7mBPWqN841IpbMBu2klv0hh898LYoqkxfH7DpKr/7hkyFwPw/AidaifHvdSyusJZrUbXftGlwyR2Szvv32rBQvCuAjY9aoH1gOyMgQgniHpPvUhUS1W+m7sf6y/c=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough" class="nav-next">First Steps with Unit Testing Walkthrough</a> |
+    <a href="/post/2008/09/24/Webservice-Interoperability-with-contract-first-approach" class="nav-prev">Webservice Interoperability with contract first approach</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2008/10/07/ASPNET-Web-setup-project-walkthrough" class="taggedlink">ASP.NET Web setup project walkthrough</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">7. October 2008 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/"></a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2008/10/07/ASPNET-Web-setup-project-walkthrough#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p>
+<table cellspacing="5" cellpadding="0" width="100%" border="0">
+    <tbody>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+            <div style="max-width: 800px"><b><font size="6">&nbsp;</font></b></div>
+            <div style="max-width: 800px">This&nbsp;post contains a walkthrough that will help you understand the basic tasks to accomplish to create an MSI packages for deploying your web application. The walkthrough describes the most common scenario of deploying a web project.&nbsp; We will create a standard Web setup project.&nbsp; This project will generate as output an msi package that will create and configure the application IIS and copy the application&rsquo;s file to a specific location on the server.&nbsp;&nbsp; This walkthrough also describes how to modify the web.config file for providing a connectionstring or change any of the configuration sections.&nbsp;</div>
+            <div style="max-width: 800px">Because msi packages are mostly deployed by system engineers from the command line, this walkthrough will also pay attention on how to enable quiet installs and how to pass parameters to the installer from the command line.</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <p><span style="font-size: small"><b>1.&nbsp;&nbsp;&nbsp;&nbsp; Create a &ldquo;Hello World&rdquo; web service</b></span></p>
+            <div style="max-width: 800px"><br />
+            To be able to create a setup will need a sample project that will be deployed by the setup project.&nbsp; So we create a new empty ASP.NET website application.</div>
+            <div style="max-width: 800px">- File-&gt;new -&gt;ASP.NET WebService</div>
+            <div style="max-width: 800px"><img alt="image001" border="0" style="width: 576px; height: 570px" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_1280_998_xpng_2579043_2ccb1a7912f69d685dab68fc35d1f3ec.png" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Add&nbsp; a Class library project to your solution.<br />
+            - File-&gt;Add-&gt;Class Librrary</div>
+            <div style="max-width: 800px"><img height="295" alt="image003" width="462" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_681_445_xpng_2579043_03aa9b85b440d723f3f453281786c437.png" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Now we should have 2 projects inside our solution.</div>
+            <div style="max-width: 800px">- Add a static method SayHello() to the class1.</div>
+            <div style="max-width: 800px"><img height="168" alt="image006" width="267" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_372_228_pjpeg_2579043_0a604c21ff81a0da2f41e26d387c88fe.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Reference this class in your web service project:<br />
+            - Add Reference-&gt; Projects-&gt;SayHelloLibrary</div>
+            <div style="max-width: 800px">&nbsp;<img alt="image007" border="0" style="width: 444px; height: 352px" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_467_382_xpng_2579043_ae649169388e9bdc358abdd6985cd8a3.png" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">- Change the code of the Hello world method to use the Library static method SayHello()</div>
+            <div style="max-width: 800px">&nbsp;<img alt="image010" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_516_298_jpeg_2579043_ccd2c5538c929a9ec28ac8845779071d.jpg" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">- Hit F5, your solution should compile.&nbsp; <br />
+            - Test the application through the invoke button of the test web page, you should see the following:</div>
+            <div style="max-width: 800px">&nbsp;<img height="322" alt="image011" width="518" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_800_600_png_2579043_923fa52d8037f903758fa8554616bc59.png" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">
+            <div style="max-width: 800px">&nbsp;</div>
+            <h2><span style="font-size: small"><b>2.&nbsp;&nbsp;&nbsp;&nbsp; Add a Web setup project</b></span></h2>
+            </div>
+            <div style="max-width: 800px"><br />
+            We will add the web setup deployment project to the solution.<br />
+            - File-&gt;Add-&gt;New Project-&gt;Other Project Types-&gt;Web Setup Project</div>
+            <div style="max-width: 800px"><img alt="image013" border="0" style="width: 596px; height: 436px" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_681_495_png_2579043_64cb3becd5431808660c3b13133b492d.png" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Now our solution should look like this:</div>
+            <div style="max-width: 800px">&nbsp;<img alt="image016" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_315_444_jpeg_2579043_27d35b455f48aef59226646a3bff020e.jpg" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Now the real work begins, we will configure our web setup project to hold our content and our compiled assemblies.</div>
+            <div style="max-width: 800px"><b><font size="5">&nbsp;&nbsp;</font></b></div>
+            <div style="max-width: 800px">
+            <div style="max-width: 800px">&nbsp;</div>
+            <h2><span style="font-size: small"><span><b>3.&nbsp;&nbsp;&nbsp;&nbsp; Add content and assemblies to your web setup project</b></span></span><b><font size="5"><br />
+            </font></b></h2>
+            </div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">First we will add the content of our web service project.&nbsp; These are the asmx pages and the content of the APP_CODE folder.&nbsp; They will be compiled by the host IIS server the first time the site will be hit.</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Right click on the setup project-&gt;Add-&gt;Project output.</div>
+            <div style="max-width: 800px"><img alt="image018" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_160_294_jpeg_2579043_b59ae8d67c9e1de99a4c443f04a59a41.jpg" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">A &ldquo;Add project output Group&rdquo; dialog box should appear.</div>
+            <div style="max-width: 800px"><img alt="image019" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_324_386_png_2579043_546dbb7baa4c3f47b6f175ebca7328c8.png" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Because our Web setup project does not have any compiled assemblies as output we only can select &ldquo;Content Files&rdquo;.&nbsp; &nbsp;</div>
+            <div style="max-width: 800px">&nbsp;<img alt="image022" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_636_173_jpeg_2579043_64c5657ceb75a17fe91d42d757598dbe.jpg" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">You should be in the file system view. If you don&rsquo;t see the above screen.<br />
+            - &nbsp;right-click on the web project setup folder and choose view-&gt;File system.</div>
+            <div style="max-width: 800px">Now we will add our web service application compiled assemblies.&nbsp; <br />
+            - Right-click again on the web-setup project and choose Add-&gt;Project Output and select the SayHelloLibrary project and click on &ldquo;Primary Output&rdquo;.</div>
+            <div style="max-width: 800px"><img alt="image025" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_324_386_pjpeg_2579043_40d3d8fd995da51e9074dd7a30a43a62.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">After we click on the ok button Visual studio has added the &ldquo;Primary Output&rdquo; to the root of the Web Application Folder. This will result in a compile error the first time we try to hit the application we deploy.</div>
+            <div style="max-width: 800px">To correct this error we must move the &ldquo;Primary output&rdquo; to the Bin folder of our web application.&nbsp; <br />
+            - Simply drag &amp; drop the &ldquo;Primary Output&rdquo; to the bin folder.</div>
+            <div style="max-width: 800px"><img alt="image027" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_660_228_pjpeg_2579043_5ae2c4dec2d4fb9b4177c2eab5453dc9.jpg" /></div>
+            <div style="max-width: 800px"><img alt="image029" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_660_207_pjpeg_2579043_aded358643c4e56d2d71ff50936aa136.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Before we test our first installation package we&rsquo;ve to compile it because Visual studio will not compile it as part of the solution. When we compile our project, visual studio will generate an msi file containing all parts of our application.</div>
+            <div style="max-width: 800px">It&rsquo;s time to test our first installation packet.&nbsp; <br />
+            - Select the setup project-&gt;richt-click-&gt;Install</div>
+            <div style="max-width: 800px"><img alt="image031" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_604_483_pjpeg_2579043_b8a5a31807551915aa1631c42094da53.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">The setup wizard pops-up, click next.</div>
+            <div style="max-width: 800px"><img alt="image033" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_503_414_pjpeg_2579043_87afaeb4d57f92cf2c8ba510b68adf1d.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">You can change the default value of the&nbsp; Virtual directory textbox.&nbsp; The default Virtual Directory is a property of your &ldquo;Web application folder&rdquo; available in the File system view.&nbsp; Important: If you want to be able of passing the virtual directory as a parameter through the console for a quiet installation you should set this property to a blank field otherwise the msi package will overwrite a blank value with the value of the property.</div>
+            <div style="max-width: 800px">When the installation is completed successfully the web service should be available on the your local IIS server under the path <a href="http://localhost/HelloWorldSetup/service.asmx">http://localhost/HelloWorldSetup/service.asmx</a></div>
+            <div style="max-width: 800px"><img alt="image035" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_605_454_pjpeg_2579043_2a9a6f2c245bc3acf1c3bc2058895d00.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">The application should also be visible in the &ldquo;Add or Remove Programs&rdquo; in the Windows Control Panel.</div>
+            <div style="max-width: 800px"><img alt="image037" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_604_439_pjpeg_2579043_165f6273f0bd7fe4237deeeb02dde3cd.jpg" />&nbsp;</div>
+            <div style="max-width: 800px"><b><font size="5">&nbsp;&nbsp;</font></b></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <p><span style="font-size: small"><span><b>4.&nbsp;Adapt the connectionString property of the Web.Config file.</b></span></span><b><font size="5"><br />
+            &nbsp;</font></b>The web setup project wizard alow us to change common IIS settings through the File System view (View-&gt;File System) by changing the properties of the &ldquo;Web Application Folder&rdquo;.&nbsp;</p>
+            <div style="max-width: 800px"><img alt="image039" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_169_229_pjpeg_2579043_69f5168c248a0834aaa1eb5f49f4e050.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">We can also add prerequisits of our solution (the .net framework2 is a standard prerequisit).</div>
+            <div style="max-width: 800px">To adapt the connectionString property of our Web.Config file we will have to add custom code to our project that will edit the config file.&nbsp; To be able to this type of actions during a setup we&rsquo;ve to create custom actions.&nbsp; Custom actions are code that is executed during the installation process.&nbsp; Therefore we&rsquo;ve to create a new ClassLibrary project.&nbsp;</div>
+            <div style="max-width: 800px">- Add a classlibrary project and name it HelloWorldCustomActions.</div>
+            <div style="max-width: 800px">- Add following assemblys references: System.Configuration.dll,</div>
+            <div style="max-width: 800px"><img alt="image041" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_163_306_pjpeg_2579043_b0e1d22f62d17a46c28bbe3e9659cb6f.jpg" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">System.Configuration.Install.dll, System.Web.dll.</div>
+            <div style="max-width: 800px">- Add a new class to MyCustomAction.cs your project that will be used during the installation of your project.&nbsp;&nbsp;&nbsp; This class must inherit from &ldquo;System.Configuration.Install.Installer&rdquo; class and be annotated with the RunInstaller(True) attribute. using System;</div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Collections.Generic;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Text;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Configuration.Install;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.ComponentModel;</span><span style="font-size: 10pt; color: windowtext">&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">namespace</span><span style="font-size: 10pt; color: windowtext"> HelloWorldCustomActions</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">{</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp; [</span><span style="font-size: 10pt; color: #2b91af">RunInstaller</span><span style="font-size: 10pt; color: windowtext">(</span><span style="font-size: 10pt; color: blue">true</span><span style="font-size: 10pt; color: windowtext">)]</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">&nbsp; public</span><span style="font-size: 10pt; color: blue">class</span><span style="font-size: 10pt; color: #2b91af">MyCustomAction</span><span style="font-size: 10pt; color: windowtext">:</span><span style="font-size: 10pt; color: #2b91af">Installer</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp; {</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">public</span><span style="font-size: 10pt; color: blue">override</span><span style="font-size: 10pt; color: blue">void</span><span style="font-size: 10pt; color: windowtext"> Install(System.Collections.</span><span style="font-size: 10pt; color: #2b91af">IDictionary</span><span style="font-size: 10pt; color: windowtext"> stateSaver)</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp; {</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: blue">base</span><span style="font-size: 10pt; color: windowtext">.Install(stateSaver);</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp; }</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;}</span> </font>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: windowtext"><font style="background-color: #ffffff">}</font></span></div>
+            </font></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Now we need to create our custom action and associate it with our class.<br />
+            First we need to add the output of the HelloWorldCustomActions assembly in our Setup project.<br />
+            - Right-click &ldquo;HelloWorldSetup&rdquo; project-&gt;Add-&gt;Primary Output</div>
+            <div style="max-width: 800px"><img alt="image044" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_324_386_pjpeg_2579043_79afe1879ee4d093d8d1493bd3e0605a.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">- From the File System View move the &ldquo;Primary output from HelloWorld actions&rdquo; to the bin folder.</div>
+            <div style="max-width: 800px">Now we will make sure that our code is executed as a custom action during the installation.<br />
+            - Right-click the project folder-&gt;view-&gt;CustomActions.</div>
+            <div style="max-width: 800px">The Custom action view should be displayed.<br />
+            - Right-click on the install folder-&gt;Add Custom Action-&gt;select &ldquo;Primary output from HelloWorldCustomActions (Active)&rdquo;.</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px"><img alt="image046" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_408_297_pjpeg_2579043_f5f7ac605e5b7ba2cdbda18a8cbec0ba.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">The web setup project wizard contains a form where the user must select the application site and the virtual directory. To be able to locate and change the web.config file of our application we need to read these parameters.&nbsp; We can also pass these arguments by the command line and provide a targetdirectory.&nbsp;</div>
+            <div style="max-width: 800px">To be able to access these parameters we need to declare them in the &ldquo;CustomActionData&rdquo; property of our CustomAction:&nbsp; <br />
+            - Select your custom action-&gt;In the property window select &ldquo;CustomActionData&rdquo; Insert the following values: <br />
+            <font color="#ff0000">/targetdir=&quot;[TARGETDIR]\&quot; /targetvdir=&quot;[TARGETVDIR]&quot; /targetsite=&quot;[TARGETSITE]&quot; /targetconn=&quot;[EDITA1]&quot;&nbsp; /db=&quot;[DB]&quot;</font></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px"><img alt="image048" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_605_443_pjpeg_2579043_9207dcfe8fb76d1c7a37e7ec7bd65559.jpg" /></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">We will now add a screen to our wizard that prompts the user for a connectionString.&nbsp; <br />
+            - Right click the project-&gt;View -&gt;User Interface.<br />
+            - Right click start-&gt; Add Dialog</div>
+            <div style="max-width: 800px"><img alt="image050" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_420_300_pjpeg_2579043_3f918e6618737bee53331b6b532dca71.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">- Select Textboxes(A) and move it between &ldquo;Installation Address&rdquo; and &ldquo;Confirm Installation&rdquo;.</div>
+            <div style="max-width: 800px">- Set the following properties:</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px"><img alt="image054" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_308_410_pjpeg_2579043_59d1cd7b4d0bc12f33154a516514d085.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Now we will code our custom action.<br />
+            - First check you have following references in you CustomAction project.</div>
+            <div style="max-width: 800px"><img alt="image056" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_312_202_pjpeg_2579043_1d0eb9012eb86a46360742ea6905dac0.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">- Set following using statements in your CustomAction class:</div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Configuration;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Configuration.Install;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.ComponentModel;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Diagnostics;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.IO;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.DirectoryServices;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Web.Configuration;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">using</span><span style="font-size: 10pt; color: windowtext"> System.Windows.Forms;</span></font>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: windowtext">&nbsp; </span></div>
+            </font></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">your install method should look like:</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: windowtext">&nbsp;</span><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">public</span><span style="font-size: 10pt; color: blue">override</span><span style="font-size: 10pt; color: blue">void</span><span style="font-size: 10pt; color: windowtext"> Install(System.Collections.</span><span style="font-size: 10pt; color: #2b91af">IDictionary</span><span style="font-size: 10pt; color: windowtext"> stateSaver)</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">{</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: blue">base</span><span style="font-size: 10pt; color: windowtext">.Install(stateSaver);</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: green">// Retrieve configuration settings</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> targetSite = Context.Parameters[</span><span style="font-size: 10pt; color: #a31515">&quot;targetsite&quot;</span><span style="font-size: 10pt; color: windowtext">];</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> targetVDir = Context.Parameters[</span><span style="font-size: 10pt; color: #a31515">&quot;targetvdir&quot;</span><span style="font-size: 10pt; color: windowtext">];</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> targetDirectory = Context.Parameters[</span><span style="font-size: 10pt; color: #a31515">&quot;targetdir&quot;</span><span style="font-size: 10pt; color: windowtext">];</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> targetConnectionString = Context.Parameters[</span><span style="font-size: 10pt; color: #a31515">&quot;targetconn&quot;</span><span style="font-size: 10pt; color: windowtext">];</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: green">//if this is a quiet install </span><span style="font-size: 10pt; color: green">//the connectionstring is passed as with a parameter named &quot;db&quot;</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">if</span><span style="font-size: 10pt; color: windowtext"> (targetConnectionString.Length &lt; 1)</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; targetConnectionString = Context.Parameters[</span><span style="font-size: 10pt; color: #a31515">&quot;db&quot;</span><span style="font-size: 10pt; color: windowtext">];</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">if</span><span style="font-size: 10pt; color: windowtext"> (targetConnectionString.Length &lt; 1)</span><span style="font-size: 10pt; color: blue">throw</span><span style="font-size: 10pt; color: blue">new</span><span style="font-size: 10pt; color: #2b91af">InstallException</span><span style="font-size: 10pt; color: windowtext">(</span><span style="font-size: 10pt; color: #a31515">&quot;Please provide a connectionstring!&quot;</span><span style="font-size: 10pt; color: windowtext">);</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">if</span><span style="font-size: 10pt; color: windowtext"> (targetSite == </span><span style="font-size: 10pt; color: blue">null</span><span style="font-size: 10pt; color: windowtext">)</span><span style="font-size: 10pt; color: blue">throw</span><span style="font-size: 10pt; color: blue">new</span><span style="font-size: 10pt; color: #2b91af">InstallException</span><span style="font-size: 10pt; color: windowtext">(</span><span style="font-size: 10pt; color: #a31515">&quot;IIS Site Name Not Specified!&quot;</span><span style="font-size: 10pt; color: windowtext">);</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">if</span><span style="font-size: 10pt; color: windowtext"> (targetSite.StartsWith(</span><span style="font-size: 10pt; color: #a31515">&quot;/LM/&quot;</span><span style="font-size: 10pt; color: windowtext">))</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; targetSite = targetSite.Substring(4);</span><span style="font-size: 10pt; color: windowtext">&nbsp; </span><span style="font-size: 10pt; color: windowtext">ConfigureWebConfig(targetSite, targetVDir, targetConnectionString);</span></font></div>
+            <div style="max-width: 800px"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span><span style="color: #003399">&nbsp; </span></font></div>
+            <div style="max-width: 800px"><br />
+            Add the ConfigureWebConfig method:</div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: blue"><span style="font-size: 10pt; color: windowtext">&nbsp;</span><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">void</span><span style="font-size: 10pt; color: windowtext"> ConfigureWebConfig(</span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> targetSite, </span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> targetVDir, </span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> targetConn)</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></span></div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: blue"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">{</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: green">// Retrieve &quot;Friendly Site Name&quot; from IIS for TargetSite</span></font></span></div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: blue"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: #2b91af">DirectoryEntry</span><span style="font-size: 10pt; color: windowtext"> entry = </span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: blue">new</span><span style="font-size: 10pt; color: #2b91af">DirectoryEntry</span><span style="font-size: 10pt; color: windowtext">(</span><span style="font-size: 10pt; color: #a31515">&quot;IIS://LocalHost/&quot;</span><span style="font-size: 10pt; color: windowtext"> + targetSite);</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> friendlySiteName = </span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; entry.Properties[</span><span style="font-size: 10pt; color: #a31515">&quot;ServerComment&quot;</span><span style="font-size: 10pt; color: windowtext">].Value.ToString();</span></font></span></div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: blue"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: green">// Open Application's Web.Config</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: #2b91af">Configuration</span><span style="font-size: 10pt; color: windowtext"> config = </span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: #2b91af">WebConfigurationManager</span><span style="font-size: 10pt; color: windowtext">.OpenWebConfiguration(</span><span style="font-size: 10pt; color: #a31515">&quot;/&quot;</span><span style="font-size: 10pt; color: windowtext"> + targetVDir, friendlySiteName);</span></font></span></div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: blue"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addConnectionStringAttribute(targetConn, config);</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; togleCompilationAttribute(config);</span></font></span></div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: blue"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: green">// Persist web.config settings</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.Save();</span></font></span></div>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: blue"><font style="background-color: #ffffff">&nbsp;</font>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: windowtext"><font style="background-color: #ffffff">&nbsp; &nbsp; &nbsp; &nbsp; }</font></span></div>
+            </span></div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">Method to add the connectionstring to your web.config:</div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">private</span><span style="font-size: 10pt; color: blue">static</span><span style="font-size: 10pt; color: blue">void</span><span style="font-size: 10pt; color: windowtext"> addConnectionStringAttribute(</span><span style="font-size: 10pt; color: blue">string</span><span style="font-size: 10pt; color: windowtext"> connectionStringValue, </span><span style="font-size: 10pt; color: #2b91af">Configuration</span><span style="font-size: 10pt; color: windowtext"> config)</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">{</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: #2b91af">ConnectionStringSettings</span><span style="font-size: 10pt; color: windowtext"> appDatabase = </span><span style="font-size: 10pt; color: blue">new</span><span style="font-size: 10pt; color: #2b91af">ConnectionStringSettings</span><span style="font-size: 10pt; color: windowtext">();</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appDatabase.Name = </span><span style="font-size: 10pt; color: #a31515">&quot;db&quot;</span><span style="font-size: 10pt; color: windowtext">;</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; appDatabase.ConnectionString = connectionStringValue;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appDatabase.ProviderName = </span><span style="font-size: 10pt; color: #a31515">&quot;System.Data.SqlClient&quot;</span><span style="font-size: 10pt; color: windowtext">;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; config.ConnectionStrings.ConnectionStrings.Clear();</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; config.ConnectionStrings.ConnectionStrings.Add(appDatabase);</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff">&nbsp;</font>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: windowtext"><font style="background-color: #ffffff">&nbsp; &nbsp; &nbsp; &nbsp; }</font></span></div>
+            <div style="max-width: 800px"><font color="#3366ff"><br />
+            </font><font style="background-color: #ffffff">This method will set the compilation attribute to debug=false</font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: blue">private</span><span style="font-size: 10pt; color: blue">static</span><span style="font-size: 10pt; color: blue">void</span><span style="font-size: 10pt; color: windowtext"> togleCompilationAttribute(</span><span style="font-size: 10pt; color: #2b91af">Configuration</span><span style="font-size: 10pt; color: windowtext"> config)</span></font><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></font></div>
+            </font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">{</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-size: 10pt; color: #2b91af">CompilationSection</span><span style="font-size: 10pt; color: windowtext"> compilation;</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; compilation = config.GetSection(</span><span style="font-size: 10pt; color: #a31515">&quot;system.web/compilation&quot;</span><span style="font-size: 10pt; color: windowtext">) </span><span style="font-size: 10pt; color: blue">as</span><span style="font-size: 10pt; color: #2b91af">CompilationSection</span><span style="font-size: 10pt; color: windowtext">;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;</span><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size: 10pt; color: blue">if</span><span style="font-size: 10pt; color: windowtext"> (compilation != </span><span style="font-size: 10pt; color: blue">null</span><span style="font-size: 10pt; color: windowtext">)</span><span style="font-size: 10pt; color: windowtext">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; compilation.Debug = !compilation.Debug;</span></font></font></div>
+            <div style="max-width: 800px"><font color="#3366ff"><font style="background-color: #ffffff"><span style="font-size: 10pt; color: windowtext">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font>
+            <div style="max-width: 800px"><span style="font-size: 10pt; color: windowtext"><font style="background-color: #ffffff">&nbsp; &nbsp; &nbsp; &nbsp; }</font></span></div>
+            <div style="max-width: 800px">Now you can test your installation package.&nbsp; <br />
+            - Right-click Setup project-&gt;Install.<br />
+            <br />
+            The second screen should ask for a connectionstring.</div>
+            </font></div>
+            <div style="max-width: 800px"><img alt="image061" border="0" src="http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_503_414_pjpeg_2579043_7f0f1e33951dd15222e731c3d87de7eb.jpg" />&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px"><b><font size="4">5.&nbsp;&nbsp;&nbsp;&nbsp; Quiet install <br />
+            &nbsp;</font></b></div>
+            <div style="max-width: 800px">When distributing a setup package you will mostly install the application through a quiet install.&nbsp; Therefore you&rsquo;ve to pass the parameter through the command line.&nbsp;&nbsp; I experienced that the parameters you pass through the console are sometimes overwritten by the parameters you&rsquo;ve added in your custom screens.&nbsp; This is why I added a supplementary parameter &ldquo;db&rdquo; and don&rsquo;t use the parameter &ldquo;targetconn&rdquo;.&nbsp; The installer first checks if the parameter is empty.&nbsp; This will be the case if you install the application through a quiet install.&nbsp;</div>
+            <div style="max-width: 800px">You will find this parameter in the CustomactionData property of the custom action:<br />
+            <font color="#ff0000">/targetdir=&quot;[TARGETDIR]\&quot; /targetvdir=&quot;[TARGETVDIR]&quot; /targetsite=&quot;[TARGETSITE]&quot; /targetconn=&quot;[EDITA1]&quot;&nbsp; /db=&quot;[DB]&quot;</font></div>
+            <div style="max-width: 800px">&nbsp;The code that handles the parameter in the Install method:<br />
+            <font color="#3366ff">if (targetConnectionString.Length &lt; 1)</font></div>
+            <div style="max-width: 800px"><font color="#3366ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; targetConnectionString = Context.Parameters[&quot;db&quot;];</font></div>
+            <div style="max-width: 800px">You can launch the msi setup package with the folowing command line: (First navigate to the directory containing the builded release version of the msi)</div>
+            <div style="max-width: 800px">&gt;HelloWorldSetup.msi /qb targetvdir=&quot;HelloWorld&quot; db=&quot;Test for connectionstring&quot;</div>
+            <div style="max-width: 800px">If you want to specify the target website you need to specify the website IIS metabase targetsite path.&nbsp; This path mostly begins with &ldquo;/LM/W3SVC/&rdquo; followed by the site id.&nbsp;</div>
+            <div style="max-width: 800px">A trick to find the site id or to debug the setup application is to use the /l* option.&nbsp; Launch the installer with the /l* option and follow the wizard.&nbsp; The /l* will log all the parameters passed to the installation program.&nbsp; After the installation completes you can retrieve website metabase path by searching for the &ldquo;targetsite&rdquo; in the log file.<br />
+            &gt;HelloWorldSetup.msi /l* log.txt</div>
+            <div style="max-width: 800px">I hope this tutorial help you to understand the basics of creating a web setup project.&nbsp; This type of setup will enable you creating testable and repeatable deployment scenarios.&nbsp; It will also help our IT engineers to deploy web applications gracefully on production machines.</div>
+            <div style="max-width: 800px">&nbsp;</div>
+            <div style="max-width: 800px">GVD</div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</p>
+<p><a href="http://www.linkedin.com/pub/4/486/208"><img height="33" alt="View Geoffrey Vandiest's profile on LinkedIn" width="120" border="0" src="http://www.linkedin.com/img/webpromo/btn_viewmy_120x33.gif" /></a></p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">b452421f-cca8-4ff3-a769-c4f7acfbae20|7|4.6|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2008/10/07/ASPNET-Web-setup-project-walkthrough" dc:identifier="http://vandiest.biz/post/2008/10/07/ASPNET-Web-setup-project-walkthrough" dc:title="ASP.NET Web setup project walkthrough" trackback:ping="http://vandiest.biz/trackback.axd?id=b452421f-cca8-4ff3-a769-c4f7acfbae20" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2010/03/31/ASPNET-MVC-with-Webforms">ASP.NET MVC with Webforms</a><span>source code can be found here&nbsp;
+
+It&rsquo;s now generally admitted in the community that Unit ...</span><a href="/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure">Setup, develop and deploy your ASP.NET MVC Umbraco website on Azure</a><span>&nbsp;
+
+
+
+
+
+
+To run Umbraco on Azure you can choose to use the build in Azure template.
+
+&n...</span><a href="/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor">What is the best UI technology: Angular or Blazor ?</a><span>(When you build enterprise business apps using DotNet)
+
+Introduction
+&nbsp;</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="88c0b6cf-b460-42b7-ad2e-d719d7eb497b" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="OD8ogbOib7RHHgaGnXyaOQP5j89oTncY8bm41SuiBjs2ntHhZNAsOPNVUnkWNr0CJ5sQa91X00D8fwZNvHXILBsk0fGyxlmb7Vr+YJDbCRyNq5kaSOZZGsf4ns/lgyQOqVvRRg==" />
+</div></form>
+</body>
+</html>

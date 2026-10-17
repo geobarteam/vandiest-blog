@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - " />
+	<meta name="author" content="geoffrey" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="Create a WCF service and client, using Msmq, programmatically (RSS)" href="/post/feed/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="Create a WCF service and client, using Msmq, programmatically (ATOM)" href="/post/feed/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | Create a WCF service and client, using Msmq, programmatically
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./Create-a-WCF-service-and-client-using-Msmq-programmatically?id=4bf3b53f-8141-43c3-a111-a46e2256c064" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="7hyakSFVcvElMpDw+B8TtjiaBg+yFgEpStSTfP8hb27Y/NIpN4IqKZ9eAZpPeyUAbqo1io/aLlG4RHjkE+1A01MIMYNDcO/gNQdQeTUHq3I4Sbls+/lqZqBBpMNbi7jzumMnp/pMyIYWUdBG2o20MPkts+jqII4G5ER5JU4Nh28stI8cnD7SbLTO2OuRcKHl+H0OZliLWHZcIG02OkmPvG4kDg5klXknLL6c8QoKZK60gEdzKz4QIRZyRNZVNrU5Nos8FAzxjFU5g7pEwPMZbZyhFLGF5KESs/63M0Yj8ku9RBgzz6hFAVXFMVvayslqFF2coX2SuO2bFJkjk0HwN/opy92Azj5k1H3cUnp6CYG9ssyMf0Cr4ncVJRZa16+SA7EF0IHGgd+NbMtEN15aTliTP8fT4DGFIcNEn6oelLqDlqJsHtNL7Ja3sYwWH47iKopLBK0LcpmQgY0pg1OQzEHIxmKFFPV3/IZLYTd23R7KgYmgEXifMZ2O441YvJxlE8o44fdKwjkvXEvptT/kQ0vuoQeGTQZlhMBsK5/wcsh009dsjFvBIecAfh8u34NlKDZmUSIHDhRW1cthvgEt6hl73f4LTq94eFQq6CDfa1CBhEUrhfmDVfrhWf6QfEZWB2pbYxW3sjwKmSPpDEgbbB5VsreldURaCXhnvsHIAtB/lpbaUcjtAq77vS/KZE2LbvglqJQ8bj9G7XTpbst80SFyUEh4dl1JkNnhiNYLsD5NouJEYZbDwcn4vs1tItOFnS8EeXx1T6QK7YJHE089Ip1IWdNXbXZf1156YxtpEAk1OBeVFv9zII493oN5bmmQdUNpurZPcIJMXFQwPErrNqf4SP4Zp8Q1kVzzclTCaS7NPTR3z7zIGwFhjGl2KPglWhx13W5cmSdfwiu5kSMF4xTwJb0=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2010/01/25/Sharepoint-2007-Certification-Guide" class="nav-next">Sharepoint 2007 Certification Guide</a> |
+    <a href="/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background" class="nav-prev">Visual Studio TextMate Font Black Background</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically" class="taggedlink">Create a WCF service and client, using Msmq, programmatically</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">16. November 2009 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/geoffrey">geoffrey</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p>&nbsp; <em><a href="http://www.belgianagencies.com/content/WCFMsmqFactoryExample.zip">download source code</a></em></p>
+<p>Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service. I dislike this way of configuring client and service in WCF because most of the time it leads to config files that are full of crab and that becomes unmanageable. I prefer to construct my WCF services programmatically. Therefore I&rsquo;ve create a bunch of helper classes that contains most of the configuration settings that are applicable in a particular domain.</p>
+<p>In this article I discuss one of these classes&nbsp; I use to create local queues. With local I mean queues used by components making part of the same application. This class can be used as a factory to create the service (serviceHost) as well as the client part (Channel) for components communicating through Msmq.</p>
+<p>This article provides a small tutorial on how to create a simple console app. I demonstrate how to create the client and service host without any configuration by using a helper factory class: WCFMsmqFactory</p>
+<p>Prerequisite:</p>
+<p>- This article assumes you&rsquo;ve installed Msmq on your box.&nbsp; If this isn&rsquo;t the case install Msmq see-&gt;&nbsp; <a href="http://technet.microsoft.com/en-us/library/bb684791.aspx">here</a> for Xp &amp; Win server 2003 or <a href="http://technet.microsoft.com/en-us/library/cc731102(WS.10).aspx">here</a> for Vista &amp; Win 2008 &amp; Seven.</p>
+<p>- If you&rsquo;re a vista user you need to register your namespace for by typing in the command (in administrator mode):<br />netsh http add urlacl url=http://+:8000/BackToOwner/gatewayservice/sms user=[your username]</p>
+<p>1) Create a new console application project: &lsquo;WCFMsmqFactory&rsquo; and add a reference to</p>
+<ul>
+<li>System.ServiceModel </li>
+<li>System.Messaging </li>
+<li>System.Transactions </li>
+</ul>
+<p><img src="http://www.belgianagencies.com/content/WCFMsmqFactoryExample.gif" alt="" width="618" height="387" /></p>
+<p>&nbsp;</p>
+<p>2) Create a the WcfMsmqFactory class by copying the source code here beneath:</p>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> WcfMsmqFactory&lt;I, T&gt; <span class="kwrd">where</span> T : I</pre>
+<pre><span class="lnum">   2:  </span>   {</pre>
+<pre><span class="lnum">   3:  </span>       <span class="kwrd">private</span> <span class="kwrd">string</span> _queueAddress;</pre>
+<pre><span class="lnum">   4:  </span>       <span class="kwrd">public</span> WcfMsmqFactory(<span class="kwrd">string</span> queueAddress)</pre>
+<pre><span class="lnum">   5:  </span>       {</pre>
+<pre><span class="lnum">   6:  </span>           _queueAddress = queueAddress; </pre>
+<pre><span class="lnum">   7:  </span>&nbsp;</pre>
+<pre><span class="lnum">   8:  </span>           <span class="kwrd">if</span> (!MessageQueue.Exists(queueAddress))</pre>
+<pre><span class="lnum">   9:  </span>               MessageQueue.Create(queueAddress, <span class="kwrd">true</span>);</pre>
+<pre><span class="lnum">  10:  </span>       } </pre>
+<pre><span class="lnum">  11:  </span>&nbsp;</pre>
+<pre><span class="lnum">  12:  </span>       <span class="kwrd">public</span> ServiceHost CreateMsmqServiceHost(<span class="kwrd">string</span> metadataAddress, <span class="kwrd">string</span> namespaceName)</pre>
+<pre><span class="lnum">  13:  </span>       {</pre>
+<pre><span class="lnum">  14:  </span>           var sHost = <span class="kwrd">new</span> ServiceHost(<span class="kwrd">typeof</span>(T));</pre>
+<pre><span class="lnum">  15:  </span>           var binding = <span class="kwrd">new</span> MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);</pre>
+<pre><span class="lnum">  16:  </span>           binding.DeadLetterQueue = DeadLetterQueue.System;</pre>
+<pre><span class="lnum">  17:  </span>           binding.Namespace = namespaceName;</pre>
+<pre><span class="lnum">  18:  </span>           sHost.AddServiceEndpoint(<span class="kwrd">typeof</span>(I),</pre>
+<pre><span class="lnum">  19:  </span>                                          binding,</pre>
+<pre><span class="lnum">  20:  </span>                                          <span class="kwrd">new</span> Uri(String.Format(</pre>
+<pre><span class="lnum">  21:  </span>                                                      <span class="str">@"msmq.formatname:DIRECT=OS:{0}"</span>,</pre>
+<pre><span class="lnum">  22:  </span>                                                      _queueAddress)</pre>
+<pre><span class="lnum">  23:  </span>                                              )</pre>
+<pre><span class="lnum">  24:  </span>               ); </pre>
+<pre><span class="lnum">  25:  </span>&nbsp;</pre>
+<pre><span class="lnum">  26:  </span>           <span class="rem">// Expose the service metadata on the metadataAddress</span></pre>
+<pre><span class="lnum">  27:  </span>           var smb = <span class="kwrd">new</span> ServiceMetadataBehavior();</pre>
+<pre><span class="lnum">  28:  </span>           smb.HttpGetEnabled = <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum">  29:  </span>           smb.HttpGetUrl = <span class="kwrd">new</span> Uri(metadataAddress);</pre>
+<pre><span class="lnum">  30:  </span>           sHost.Description.Behaviors.Add(smb); </pre>
+<pre><span class="lnum">  31:  </span>&nbsp;</pre>
+<pre><span class="lnum">  32:  </span>           <span class="kwrd">return</span> sHost;</pre>
+<pre><span class="lnum">  33:  </span>       } </pre>
+<pre><span class="lnum">  34:  </span>&nbsp;</pre>
+<pre><span class="lnum">  35:  </span>       <span class="kwrd">public</span> I CreateChannel()</pre>
+<pre><span class="lnum">  36:  </span>       {</pre>
+<pre><span class="lnum">  37:  </span>           var binding = <span class="kwrd">new</span> MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);</pre>
+<pre><span class="lnum">  38:  </span>           var address = <span class="kwrd">new</span> EndpointAddress(String.Format(<span class="str">"msmq.formatname:DIRECT=OS:{0}"</span>, _queueAddress));</pre>
+<pre><span class="lnum">  39:  </span>           var channelFactory = <span class="kwrd">new</span> ChannelFactory&lt;I&gt;(binding, address);</pre>
+<pre><span class="lnum">  40:  </span>           <span class="kwrd">return</span> channelFactory.CreateChannel();</pre>
+<pre><span class="lnum">  41:  </span>       }</pre>
+<pre><span class="lnum">  42:  </span>   }</pre>
+<pre><span class="lnum">  43:  </span>&nbsp;</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>This class is perfectly reusable in any project and provide an abstraction on how to create programaticaly WCF services using the msmq binding. To instantiate the class we&rsquo;ve to pass the interface and his actual implementation. The interface type we&rsquo;ll be used to create the client &amp; server part. The implementation type (service) will only be used to create the server. <br />The constructor creates a queue if it&rsquo;s not already available. Note that the example don&rsquo;t use security as the transport level security would demand to use active directory. As my pc does not connect to an Active Directory server I had to instantiate the binding without security:</p>
+<pre class="csharpcode">var binding = <span class="kwrd">new</span> MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);</pre>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>Not setting this setting resulted to the following error message: <em>&rdquo; Binding validation failed because the binding's MsmqAuthenticationMode property is set to WindowsDomain but MSMQ is installed with Active Directory integration disabled. The channel factory or service host cannot be opened&rdquo;</em></p>
+<p>For the dead letter queue I use the default dead letter queue (see comment) settings:</p>
+<pre class="csharpcode">binding.DeadLetterQueue = DeadLetterQueue.System;</pre>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>To prevent the service to display the namespace as Tempuri.org it&rsquo;s important to provide the same namespace settings as in your service contract &amp; behavior directive.</p>
+<pre class="csharpcode">binding.Namespace = namespaceName;</pre>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>The following code exposes the metadata information (wsdl) on the provided metadata address:</p>
+<pre class="csharpcode">var smb = <span class="kwrd">new</span> ServiceMetadataBehavior();
+smb.HttpGetEnabled = <span class="kwrd">true</span>;
+smb.HttpGetUrl = <span class="kwrd">new</span> Uri(metadataAddress);
+sHost.Description.Behaviors.Add(smb);</pre>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>3) Now lets create the message definition.<br />Add a new class SmsMessage:</p>
+<pre class="csharpcode"><span class="kwrd">public</span> <span class="kwrd">class</span> SmsMessage
+{
+        <span class="kwrd">public</span> <span class="kwrd">string</span> Number { get; set; }
+        <span class="kwrd">public</span> <span class="kwrd">string</span> Body { get; set; }
+}</pre>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>4) Define the service definition:<br />Add the file SmsService.cs:</p>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span>[ServiceContract(Namespace = <span class="str">"http://My.Domain.Services.WCF"</span>)]</pre>
+<pre><span class="lnum">   2:  </span>[ServiceKnownType(<span class="kwrd">typeof</span>(SmsMessage))]</pre>
+<pre><span class="lnum">   3:  </span><span class="kwrd">public</span> <span class="kwrd">interface</span> ISmsService</pre>
+<pre><span class="lnum">   4:  </span>{</pre>
+<pre><span class="lnum">   5:  </span>    [OperationContract(IsOneWay = <span class="kwrd">true</span>, Action = <span class="str">"*"</span>)]</pre>
+<pre><span class="lnum">   6:  </span>    <span class="kwrd">void</span> SubmitSms(MsmqMessage&lt;SmsMessage&gt; msg);</pre>
+<pre><span class="lnum">   7:  </span>} </pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>[ServiceBehavior(Namespace = <span class="str">"http://My.Domain.Services.WCF"</span>)]</pre>
+<pre><span class="lnum">  10:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> SmsService : ISmsService</pre>
+<pre><span class="lnum">  11:  </span>{</pre>
+<pre><span class="lnum">  12:  </span>    <span class="kwrd">public</span> <span class="kwrd">void</span> SubmitSms(MsmqMessage&lt;SmsMessage&gt; msg)</pre>
+<pre><span class="lnum">  13:  </span>    {</pre>
+<pre><span class="lnum">  14:  </span>        var sms = msg.Body;</pre>
+<pre><span class="lnum">  15:  </span>        Console.WriteLine(<span class="kwrd">string</span>.Format(</pre>
+<pre><span class="lnum">  16:  </span>                              <span class="str">"SMS send to {0} with body='{1}'"</span>,</pre>
+<pre><span class="lnum">  17:  </span>                              sms.Number,</pre>
+<pre><span class="lnum">  18:  </span>                              sms.Body)</pre>
+<pre><span class="lnum">  19:  </span>            ); </pre>
+<pre><span class="lnum">  20:  </span>&nbsp;</pre>
+<pre><span class="lnum">  21:  </span>    }</pre>
+<pre><span class="lnum">  22:  </span>}</pre>
+<pre><span class="lnum">  23:  </span>&nbsp;</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>The SmsService class contains the real implementation code. As the purpose of this article is not to demonstrate how to actually send sms messages I didn&rsquo;t provide the real code here. This demo only output the message on the console.</p>
+<p>5) Finally let&rsquo;s put all the parts together.<br />Add the following code to the main part of the program:</p>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span> <span class="kwrd">static</span> <span class="kwrd">void</span> Main(<span class="kwrd">string</span>[] args)</pre>
+<pre><span class="lnum">   2:  </span>    {</pre>
+<pre><span class="lnum">   3:  </span>        <span class="rem">//define variables</span></pre>
+<pre><span class="lnum">   4:  </span>        <span class="kwrd">const</span> <span class="kwrd">string</span> queueAddress = <span class="str">@".\private$\sms"</span>;</pre>
+<pre><span class="lnum">   5:  </span>        <span class="kwrd">const</span> <span class="kwrd">string</span> metadataAddress = <span class="str">"http://localhost:8000/BackToOwner/gatewayservice/sms"</span>;</pre>
+<pre><span class="lnum">   6:  </span>        <span class="kwrd">const</span> <span class="kwrd">string</span> nameSpaceName = <span class="str">"http://My.Domain.Services.WCF"</span>;</pre>
+<pre><span class="lnum">   7:  </span>        var message = <span class="kwrd">new</span> SmsMessage()</pre>
+<pre><span class="lnum">   8:  </span>                          {</pre>
+<pre><span class="lnum">   9:  </span>                              Number = <span class="str">"+322678821"</span>,</pre>
+<pre><span class="lnum">  10:  </span>                              Body = <span class="str">"This is a sample sms message!"</span></pre>
+<pre><span class="lnum">  11:  </span>                          };</pre>
+<pre><span class="lnum">  12:  </span>        var msmqMessage = <span class="kwrd">new</span> MsmqMessage&lt;SmsMessage&gt;(message); </pre>
+<pre><span class="lnum">  13:  </span>&nbsp;</pre>
+<pre><span class="lnum">  14:  </span>        <span class="rem">//define factory </span></pre>
+<pre><span class="lnum">  15:  </span>        var factory = <span class="kwrd">new</span> WcfMsmqFactory&lt;ISmsService, SmsService&gt;(queueAddress); </pre>
+<pre><span class="lnum">  16:  </span>&nbsp;</pre>
+<pre><span class="lnum">  17:  </span>        <span class="rem">//Do the work</span></pre>
+<pre><span class="lnum">  18:  </span>        <span class="kwrd">using</span>(var serviceHost = factory.CreateMsmqServiceHost(metadataAddress,nameSpaceName))</pre>
+<pre><span class="lnum">  19:  </span>        {</pre>
+<pre><span class="lnum">  20:  </span>            Console.WriteLine(<span class="str">"Starting the server..."</span>);</pre>
+<pre><span class="lnum">  21:  </span>            serviceHost.Open();</pre>
+<pre><span class="lnum">  22:  </span>            Console.WriteLine(<span class="str">"Instantiating the client channel..."</span>);</pre>
+<pre><span class="lnum">  23:  </span>            var channel = factory.CreateChannel();</pre>
+<pre><span class="lnum">  24:  </span>            <span class="kwrd">using</span> (TransactionScope scope = <span class="kwrd">new</span> TransactionScope(TransactionScopeOption.Required))</pre>
+<pre><span class="lnum">  25:  </span>            {</pre>
+<pre><span class="lnum">  26:  </span>                Console.WriteLine(<span class="str">"Sending the message..."</span>);</pre>
+<pre><span class="lnum">  27:  </span>                channel.SubmitSms(msmqMessage);</pre>
+<pre><span class="lnum">  28:  </span>                scope.Complete();</pre>
+<pre><span class="lnum">  29:  </span>            }</pre>
+<pre><span class="lnum">  30:  </span>            Thread.Sleep(1000);</pre>
+<pre><span class="lnum">  31:  </span>            Console.WriteLine(<span class="str">"Closing the server..."</span>);</pre>
+<pre><span class="lnum">  32:  </span>            serviceHost.Close();</pre>
+<pre><span class="lnum">  33:  </span>        }</pre>
+<pre><span class="lnum">  34:  </span>        Console.ReadLine();</pre>
+<pre><span class="lnum">  35:  </span>    }</pre>
+<pre><span class="lnum">  36:  </span>}</pre>
+<pre><span class="lnum">  37:  </span>&nbsp;</pre>
+<pre>&nbsp;</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p><span style="font-family: verdana; color: #0000ff">&nbsp;&nbsp; </span>Running the application should display a console with:<br /><em>Starting the server...<br />Instantiating the client channel...<br />Sending the message...<br />SMS send to +322678821 with body='This is a sample sms message!'<br />Closing the server...</em></p>
+<p>The real magic happens here:</p>
+<pre class="csharpcode">var factory = <span class="kwrd">new</span> WcfMsmqFactory&lt;ISmsService, SmsService&gt;(queueAddress);</pre>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>With this few line of code we&rsquo;ve instantiated a factory that is able to create the client as the server of our service. The only thing we&rsquo;ve to pass is the queue address &ndash; the rest of the configuration is encapsulated in our Factory class and can be easily reused.&nbsp;&nbsp; We can provide our factory classes to all the enterprise and create a framework on top of WCF that will standardize and facilitate how WCF is used inside our company.</p>
+<p>GVD</p>
+<p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fgeoffrey.vandiest.biz%2fpost%2fCreate-a-WCF-service-and-client-using-Msmq-programmatically.aspx"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fgeoffrey.vandiest.biz%2fpost%2fCreate-a-WCF-service-and-client-using-Msmq-programmatically.aspx" border="0" alt="kick it on DotNetKicks.com" /></a></p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">4bf3b53f-8141-43c3-a111-a46e2256c064|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically" dc:identifier="http://vandiest.biz/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically" dc:title="Create a WCF service and client, using Msmq, programmatically" trackback:ping="http://vandiest.biz/trackback.axd?id=4bf3b53f-8141-43c3-a111-a46e2256c064" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control">Spec-Driven Development with AI: A Practical Guide to Staying in Control</a><span>AI coding tools have made it remarkably easy to generate software at speed. They can scaffold featur</span><a href="/post/2010/05/27/Anti-Pattern-5-Fat-UIs">Anti-Pattern 5: Fat UI&#39;s</a><span>One of the major flaws in an un-testable design is the very tight coupling between the UI and the ac...</span><a href="/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework">Create a refrence WPF application using MVVM with Prism, WCF and Entity Framework</a><span>In this series of posts I&rsquo;ll build a reference WPF application(template) that can be used as a...</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="20f79858-5f2a-4ba8-98d7-7302afc49af9" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "geoffrey";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="FHEFDmhZ0me4F5bZtWdSTK6Jvs3IhpLtdfzvUR3388hf7EhPSUHo7x22Q7NTE/bTFcRhnU+VJ3cb5soGSdb4ARruNX+2zm9PK1uqOte0W2Lnge0h4A13vwtXmDh4X0S1ZHgjfg==" />
+</div></form>
+</body>
+</html>

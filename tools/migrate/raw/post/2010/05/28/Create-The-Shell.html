@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="keywords" content="Prism,WPF,MVVM" />
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - " />
+	<meta name="author" content="geoffrey" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="Prism walkthrough - Part 1: Create The Shell (RSS)" href="/post/feed/2010/05/28/Create-The-Shell?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="Prism walkthrough - Part 1: Create The Shell (ATOM)" href="/post/feed/2010/05/28/Create-The-Shell?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | Prism walkthrough - Part 1: Create The Shell
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./Create-The-Shell?id=6044a9ee-84f3-47e4-b8f1-3a59468ea071" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="NWkaZZyvNob8QrIDnXSx52+hiMnQA8HUKLAZIBDiUDp2S9oqOHBBY17TlgGX5ZqFKhvGc/NJ4Gep1/0AvP0uoJikNXAqrd/px/mhpVDEr5MA0BA65G/rKGyJjyNAHCq8E8x+hgIjoXCy1TjVUCqQlEyNEgFJ8HzfXXuHYnImhTTh0KWzFAy6umocZItm4EVJS0y5Of4yFEWCkHwtbkCX72nZPXytqPBsKW5nmZoWeIpHJj+gfzlLFIi/lKqVIXnwkUb5SnewNYTHysc7RdqnbVmaphCmu6rEqEv4EbZoCURf63sXjdh0CrgcOCC16Dggv3Jrab3UQsrDvaHa91lRyoq6uuLbDAApoZFDmSFVVlCzGdtp7/ryd3lh7kihL4MX0PY/nndTxNVun3pJuQH1JYOiWyhMKy8LdKNk+/2awNXjhoNR0VgJHJivudqWQJOPFI+ohO985En/YO+OFbpXm+8lxdlD6o32kDG7ZO2JMrIETM07e8aiVrih/c8ghdlDVxwUIY2qdU9wWwpmH0kq+1v7cprxXIn2nXn8qAc5YKRrOFU7nB2gVE6M54ZBBybvRmrAQSlr11sKYFUA/9gzlhgvLmEiyUajG9bmcLB9T9TAosDsnNmWPPXuMpKWcRWhrP0toFYDRp4W/daWeutYxkUcy1hoF+ljf16A6VYaZy3jgdOFkiqxldGm61yvQs4t6kAalIPC6GPm+rr9mNasUcCxP4SRwUoxh4b5cp/zW269KECLL6H8l1j9ErGjRRFq/SjHARVnAxX8N4lzDqvZDBYkgIaz9lJfTotT4ZrrsjoTNkRaOEFEv9XiM9henx27wEa9mJ3bJIcIqOoCn8gSA0oXzChqrWSUGZr/3VV7egr9/dOh1FtN0nl2WDByZpaekCyI+kdkeA53I4iywEG83C6gsAs=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions" class="nav-next">Prism Walkthrough - Part 2: Define The Regions</a> |
+    <a href="/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework" class="nav-prev">Create a refrence WPF application using MVVM with Prism, WCF and Entity Framework</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2010/05/28/Create-The-Shell" class="taggedlink">Prism walkthrough - Part 1: Create The Shell</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">28. May 2010 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/geoffrey">geoffrey</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2010/05/28/Create-The-Shell#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p>&nbsp;</p>
+<p>The client side application is made out of three assemblies:</p>
+<ul>
+<li>The Shell (PrismWalkthrough.Shell) </li>
+<li>The Modules ( PrismWalkthrough.Modules) </li>
+<li>The Infrastructure (PrismWalkthrough.Infrastructure)</li>
+</ul>
+<p>The foundation of the application is &ldquo;The Shell&rdquo;.&nbsp; The Shell is the top-level window of an application based on the Prism Composite Application Library. This window is a place to host different user interface (UI) components that exposes a way for itself to be dynamically populated by others, and it may also contain common UI elements, such as menus and toolbars. The Shell window sets the overall appearance of the application.</p>
+<p>&nbsp;</p>
+<p>In our application it&rsquo;s the shell that is responsible to load the Modules. A module represents a set of related concerns. It can include components such as views, business logic, and pieces of infrastructure, such as services for logging or authenticating users. Modules are independent of one another but can communicate with each other in a loosely coupled fashion.&nbsp; In this walkthrough our application will contain only one module: the CoreModule nevertheless the modular architecture enable us to easily extend the application adding new modules later on.</p>
+<p>&nbsp;</p>
+<p>The Infrastructure Assembly is a shared library referenced by both the shell project and the module projects, and holds shared types such as constants, event types, entity definitions and interfaces.</p>
+<p>&nbsp;</p>
+<h2>Create the Solution</h2>
+<p>&nbsp;</p>
+<ol>
+<li>Create the Shell project (PrismWalkthrough.Shell) application with Visual Studio-&gt; File, Project, WPF Application. </li>
+<li>Add the Modules project and Infrastructure project &ndash;&gt; File, Add New Project, Classlibrary </li>
+<li>The three projects should reference the Composite Application Library assemblies, add the following reference:<br />(These assemblies can be found in the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=387c7a59-b217-4318-ad1b-cbc2ea453f40&amp;displaylang=en">october 2009 Guidance</a> of Prism -&nbsp; you will need to compile the sample application) <ol>
+<li>&nbsp; 
+<ul>
+<li><strong>Microsoft.Practices.Composite.dll</strong> </li>
+<li><strong>Microsoft.Practices.Composite.Presentation.dll</strong> </li>
+<li><strong>Microsoft.Practices.Composite.UnityExtensions.dll</strong> </li>
+<li><strong>Microsoft.Practices.Unity.dll</strong> </li>
+<li><strong>Microsoft.Practices.ServiceLocation.dll</strong></li>
+</ul>
+</li>
+</ol></li>
+<li>Add a reference to the Modules and Shell&nbsp;projects referencing the Infrastructure assembly. </li>
+<li>Add a refrence to the Shell&nbsp;project referencing the Modules assembly. </li>
+<li>Add a refrence to the Modules and infrastructure that reference to the WindowsBase &amp; PresentationCore and PresentationFramework &ndash;&gt; Reference, Add, .Net tab.</li>
+</ol>
+<p>&nbsp;</p>
+<p>Your solution should look like this:</p>
+<p>&nbsp;</p>
+<p><img src="/image.axd?picture=2010%2f5%2fSolution.jpg" alt="" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Initialize the application</h2>
+<p>To enable modularity and dependency injection in our application we need to make some changes to the standard WPF application we just created.&nbsp; First we setup a bootstrapper.&nbsp; The bootstrapper is responsible for the initialization of the application, this is realized by overriding the CreateShell method.</p>
+<ol>
+<li>Add a new class on the root of the application containing the shell (PrismWalkthrough.Shell), name it Bootstrapper </li>
+<li>The Bootstrapper should inherit from Microsoft.Practices.Composite.UnityExtensions.UnityBootstrapper class and override the CreateShell method. You need to instantiate the Shell through the Unity conatiner and call his Show method</li>
+</ol>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> Bootstrapper : UnityBootstrapper</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   2:  </span>{</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   3:  </span>    <span class="kwrd">protected</span> <span class="kwrd">override</span> System.Windows.DependencyObject CreateShell()</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   4:  </span>    {</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   5:  </span>        Shell shell = <span class="kwrd">this</span>.Container.Resolve&lt;Shell&gt;();</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   6:  </span>        shell.Show();</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   7:  </span>        <span class="kwrd">return</span> shell;</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   8:  </span>    }</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   9:  </span>}</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p>To be able to run the bootstrapper at least one module should be registered in our application.&nbsp;</p>
+<ol>
+<li>Add a class to the PrismWalkthrough.Module and name it CoreModule.cs </li>
+<li>This class should implement the IModule interface:</li>
+</ol>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">namespace</span> PrismWalkthrough.Modules</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   2:  </span>{</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   3:  </span>    <span class="kwrd">public</span> <span class="kwrd">class</span> CoreModule : IModule</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   4:  </span>    {</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   5:  </span>        <span class="kwrd">public</span> <span class="kwrd">void</span> Initialize()</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   6:  </span>        {</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   7:  </span>            </pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   8:  </span>        }</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   9:  </span>    }</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">  10:  </span>}</pre>
+</div>
+<p>&nbsp;</p>
+<p>Through the bootstrapper you must configure which Modules are available in our Shell. You need to register at least one module in your bootstrapper.</p>
+<ol>
+<li>Override the InitializeModules in the bootstrapper:</li>
+</ol>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span>  InitializeModules()</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   2:  </span>{</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   3:  </span>    IModule coreModule = <span class="kwrd">this</span>.Container.Resolve&lt;CoreModule&gt;();</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   4:  </span>    coreModule.Initialize();</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   5:  </span>}</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p>The WPF Application class needs to execute the bootstrapper by calling his Run method.&nbsp;</p>
+<ol>
+<li>First you should delete the <strong>StartupUri </strong>in the App.Xaml file.
+<pre class="csharpcode"><span class="kwrd">&lt;</span><span class="html">Application</span> <span class="attr">x:Class</span><span class="kwrd">="PrismWalkthrough.Shell.App"</span>
+             <span class="attr">xmlns</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+             <span class="attr">xmlns:x</span><span class="kwrd">="http://schemas.microsoft.com/winfx/2006/xaml"</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;/</span><span class="html">Application</span><span class="kwrd">&gt;</span></pre>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } --></li>
+<li>Override the OnStartup method in the App.cs file:</li>
+</ol>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">protected</span> <span class="kwrd">override</span> <span class="kwrd">void</span> OnStartup(StartupEventArgs e)</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   2:  </span>{</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   3:  </span>    <span class="kwrd">base</span>.OnStartup(e);</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   4:  </span>    Bootstrapper bootstrapper = <span class="kwrd">new</span> Bootstrapper();</pre>
+</div>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   5:  </span>    bootstrapper.Run();</pre>
+</div>
+<div class="csharpcode">
+<pre><span class="lnum">   6:  </span>}</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p>Now you should be able to run you application, you should see a white screen.</p>
+<p><a href="http://geoffrey.vandiest.biz/post/Prism-Walkthrough-Part2-Define-The-Regions.aspx">Next ---&gt;</a></p>
+<p>&nbsp;</p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">6044a9ee-84f3-47e4-b8f1-3a59468ea071|2|5.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: <a href="http://vandiest.biz/?tag=Prism" rel="tag">Prism</a> , <a href="http://vandiest.biz/?tag=WPF" rel="tag">WPF</a> , <a href="http://vandiest.biz/?tag=MVVM" rel="tag">MVVM</a>
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2010/05/28/Create-The-Shell" dc:identifier="http://vandiest.biz/post/2010/05/28/Create-The-Shell" dc:title="Prism walkthrough - Part 1: Create The Shell" trackback:ping="http://vandiest.biz/trackback.axd?id=6044a9ee-84f3-47e4-b8f1-3a59468ea071" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands">Prism Walkthrough Part 4: Use Delegate Commands</a><span>The final source code can be downloaded here!
+In this post we&rsquo;ll bind a Command to our Menu s...</span><a href="/post/2010/05/31/Part-3-Add-Views-to-Regions">Prism Walkthrough - Part 3: Add Views to Regions</a><span>Source code of this part can be downloaded here.
+In this part we&rsquo;ll create&nbsp;our first vie...</span><a href="/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions">Prism Walkthrough - Part 2: Define The Regions</a><span>Define the Regions
+&nbsp;
+Our shell will contain 3 regions:
+
+Menu Region: contain a Menu that is...</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="88f9d880-e0ff-405e-9eac-72673be0cd7c" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "geoffrey";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="7PTIHeVSO5IaRaZk9TF08+1qE4ERGib1Y8JJi64dIy1fyxLmL1fqS3M1s4hMMzGhXj6MVmT61GZTSpBX+z1tIillpk5grIYWZ9eFxLVfmkz8xlsb/x+pH/DjMWa5ZZ0sEmEgAQ==" />
+</div></form>
+</body>
+</html>

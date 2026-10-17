@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="keywords" content="Prism,MVVM,Command,Unity,Container" />
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - " />
+	<meta name="author" content="geoffrey" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="Prism Walkthrough Part 4: Use Delegate Commands (RSS)" href="/post/feed/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="Prism Walkthrough Part 4: Use Delegate Commands (ATOM)" href="/post/feed/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | Prism Walkthrough Part 4: Use Delegate Commands
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./Prism-Walkthrough-Part-4-Use-Delegate-Commands?id=edba66a2-3603-43ec-9ccd-53ca6ec24dba" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="B1+SIE638i/Sj5oajQt+tz3Tv2DfyfkjVVkyXEz/EnBrdoO5ifTSCNRgCJolHn9mdVtm3xnnx5D3e6a3mgS/g6FJx9FNFAg9M+EFLXq9EHIUBwHgE/+6PQ0mn34FdHFjq8qI9MzF99DHbUWh6y4YFzgnQnYg5YbfdZaJaJToOrYpGb1D6Hz4E3vDTYXAMucorkkX2r5BDJtUgeHvUh9Rp89Wer5mA676OHw8DQ4CyvBZvw6nrxjh9VUM5kFGKZWH3bMe0K1NVR3p7aVrZIX34bAZ09QicySnXPYrd6iNl0Jmhg+RCQTsvTz7mvrZrtH1qEf/Ez1p60AZqIb5tNA3rSPzlxffaqAffcQ4KZkSEOlmPtv/j7Y33Uw4jHxalD1vx5rRn3HLBYAECGXpOM0WQYAPXQVqVYJxI3mMiiSBrwODXANvXfvth42z7EpZtiOaimdHS9wg+Ln6FgqH5Q5RJAx6pHMLJTwfNIyH1lEjuH3lCM92vhfSjc8abrAOgY5Gt0ozcQnSmLM5H9fvfFck0g9Qx9TYxeQ/E7JE1nDLlE540z9nkzqqdDbJU+PFneTFqVY+U10vkUcU9Qvz4ZCyZXkJ771le+H+r1cMzWSozwQ92l5bDyWDJnyMbKOsFKsvx3LiMnS9o8e5voncD+yKYvy3icEDrqxbm1N1jkNw8eXrdKdo/FmIiXJ9UTYUbtiBios6esCi2edPTBY8pn/4P92C1K6vdT68SSDyN4m2TrU9dbZ3syuEBeViLSvS16Fp7bUTi2tp8lg9sgQPDn9Gh+/qP9rHA/P8U/OjWU33CtzFz17zBMFE1y47R71BcskCEH5Jvt1HZ17tzzRzjPCa0pnFjkKlPHxuhW1DvQ1wXqVwD8C7y/o4fnAgSE88ClWaSGAyVQO6by5DzjmKY1lvsn2kSHA=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2010/06/09/Net-Interview-questions" class="nav-next">.Net Interview questions</a> |
+    <a href="/post/2010/05/31/Part-3-Add-Views-to-Regions" class="nav-prev">Prism Walkthrough - Part 3: Add Views to Regions</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands" class="taggedlink">Prism Walkthrough Part 4: Use Delegate Commands</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">4. June 2010 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/geoffrey">geoffrey</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p><em>The final source code can be downloaded </em><a href="http://www.belgianagencies.com/content/PrismWalktrhough-Final.zip"><em>here</em></a><em>!</em></p>
+<p>In this post we&rsquo;ll bind a Command to our Menu so that it&rsquo;s able to add views to the MainRegion.</p>
+<p>Create a MenuViewModel:</p>
+<p><a rel="WLPP" href="$menuviewmodel[2].jpg"></a></p>
+<p>&nbsp;</p>
+<p><img src="/image.axd?picture=2010%2f6%2fmenuviewmodel.jpg" alt="" /></p>
+<p>&nbsp;</p>
+<p>Insert following code into the MenuViewModel:</p>
+<div class="csharpcode">
+<pre>&nbsp;</pre>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> MenuViewModel</pre>
+<pre><span class="lnum">   2:  </span>{</pre>
+<pre><span class="lnum">   3:  </span>    <span class="kwrd">private</span> <span class="kwrd">readonly</span> IRegionManager _regionManager;</pre>
+<pre><span class="lnum">   4:  </span>    <span class="kwrd">private</span> <span class="kwrd">readonly</span> IUnityContainer _container;</pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span>    <span class="kwrd">public</span> MenuViewModel(IRegionManager regionManager, IUnityContainer container)</pre>
+<pre><span class="lnum">   7:  </span>    {</pre>
+<pre><span class="lnum">   8:  </span>        <span class="kwrd">this</span>._regionManager = regionManager;</pre>
+<pre><span class="lnum">   9:  </span>        <span class="kwrd">this</span>._container = container;</pre>
+<pre><span class="lnum">  10:  </span>    }</pre>
+<pre><span class="lnum">  11:  </span>}</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } --></div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p>Here we created our first ViewModel that will be the target of our View binding.&nbsp;&nbsp; Our View reference our ViewModel but&nbsp;the ViewModel does not need a reference to a view. The view binds to properties on a ViewModel, which, in turn, exposes data contained in model objects and other state specific to the view. The bindings between view and ViewModel are simple to construct because a ViewModel object is set as the DataContext of a view. If property values in the ViewModel change, those new values automatically propagate to the view via data binding.&nbsp;</p>
+<p>&nbsp;</p>
+<p>When implementing MVVM you need to bind the View and ViewModel, therefore you have the choice between several options.&nbsp; You can declare the ViewModel as a resource in your view xaml, you can also use&nbsp; a presenter class that is responsible to instantiate and bind the View to the ViewModel.&nbsp; This strategy is useful when you need to bind different Views to the same ViewModel.&nbsp; Because we don&rsquo;t need this flexibility here we chooses for a simpler design; here it&rsquo;s the view itself that instantiate and bind to his ViewModel.&nbsp; Some could claim that I&rsquo;m not implementing the pure MVVM pattern as in this application the View knows his ViewModel.&nbsp;&nbsp;I nevertheless chooses for this approach because it&rsquo;s the simplest way to implement MVVM and also because it enable me to handle UI events like KeyboardPress events gracefully&nbsp; (see folowing post).&nbsp;</p>
+<p>&nbsp;</p>
+<p>In this design, the ViewModel, never the View, performs all modifications made to the model data. The ViewModel and model are unaware of the View but the View reference his ViewModel.&nbsp;&nbsp;This design still provide loose coupling in the sence that the ViewModel does not know about the View but it makes some concessions to the purity of MVVM.&nbsp; Nevertheless these concessions pays dividends in many ways, as you will see in the next series.</p>
+<p>&nbsp;</p>
+<p>To setup this binding update the MenuView class:</p>
+<p>&nbsp;</p>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">partial</span> <span class="kwrd">class</span> MenuView : UserControl</pre>
+<pre><span class="lnum">   2:  </span>{</pre>
+<pre><span class="lnum">   3:  </span>    <span class="kwrd">public</span> MenuView(IRegionManager regionManager,IUnityContainer container)</pre>
+<pre><span class="lnum">   4:  </span>    {</pre>
+<pre><span class="lnum">   5:  </span>        InitializeComponent();</pre>
+<pre><span class="lnum">   6:  </span>        <span class="kwrd">this</span>.DataContext = <span class="kwrd">new</span> MenuViewModel(regionManager, container);</pre>
+<pre><span class="lnum">   7:  </span>    }</pre>
+<pre><span class="lnum">   8:  </span>&nbsp;</pre>
+<pre><span class="lnum">   9:  </span>    <span class="kwrd">public</span> MenuViewModel ViewModel</pre>
+<pre><span class="lnum">  10:  </span>    {</pre>
+<pre><span class="lnum">  11:  </span>        get</pre>
+<pre><span class="lnum">  12:  </span>        {</pre>
+<pre><span class="lnum">  13:  </span>            <span class="kwrd">return</span> <span class="kwrd">this</span>.DataContext <span class="kwrd">as</span> MenuViewModel;</pre>
+<pre><span class="lnum">  14:  </span>        }</pre>
+<pre><span class="lnum">  15:  </span>    }</pre>
+<pre><span class="lnum">  16:  </span>}</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p>When the user clicks a MenuItem in the MenuView, a command on the MenuViewModel should execute to display a view in the MainRegion (see line 36 - MenuViewModel).&nbsp;&nbsp; Here we use the Prism DelegateCommand to implement the Command pattern.&nbsp;</p>
+<p>&nbsp;</p>
+<p>To retrieve the right View we choose for convention over configuration.&nbsp; The&nbsp; LoadViewCommand takes a parameter that is the the name of the View without the suffix View.&nbsp;</p>
+<p>The ViewModel has exactly the same name as the View but ends with ViewModel -&gt;see MenuViewModel line 39.<br /><br />To implement this convention we need to register the Views with a name parameter via the Unity container in the Module Initialization &ndash;&gt; see Coremodule line 8 &amp; 9.</p>
+<p>&nbsp;</p>
+<p>Add the following code to the CoreModule.cs:</p>
+<p>&nbsp;</p>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">void</span> Initialize()</pre>
+<pre><span class="lnum">   2:  </span>{</pre>
+<pre><span class="lnum">   3:  </span>    <span class="kwrd">this</span>.RegisterViewsWithRegions();</pre>
+<pre><span class="lnum">   4:  </span>}</pre>
+<pre><span class="lnum">   5:  </span>&nbsp;</pre>
+<pre><span class="lnum">   6:  </span><span class="kwrd">protected</span> <span class="kwrd">virtual</span> <span class="kwrd">void</span> RegisterViewsWithRegions()</pre>
+<pre><span class="lnum">   7:  </span>{</pre>
+<pre><span class="lnum">   8:  </span>    <span class="kwrd">this</span>.regionManager.RegisterViewWithRegion(RegionNames.MenuRegion, <span class="kwrd">typeof</span>(MenuView));</pre>
+<pre><span class="lnum">   9:  </span>    <span class="kwrd">this</span>.regionManager.RegisterViewWithRegion(RegionNames.StatusbarRegion, <span class="kwrd">typeof</span>(StatusbarView));</pre>
+<pre><span class="lnum">  10:  </span>}</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p><br />Update the MenuViewModel:</p>
+<p>&nbsp;</p>
+<div class="csharpcode">
+<pre><span class="lnum">   1:  </span><span class="kwrd">public</span> <span class="kwrd">class</span> MenuViewModel : INotifyPropertyChanged</pre>
+<pre><span class="lnum">   2:  </span>{</pre>
+<pre><span class="lnum">   3:  </span>    <span class="kwrd">private</span> <span class="kwrd">readonly</span> IRegionManager _regionManager;</pre>
+<pre><span class="lnum">   4:  </span>    <span class="kwrd">private</span> <span class="kwrd">readonly</span> IUnityContainer _container;</pre>
+<pre><span class="lnum">   5:  </span>        </pre>
+<pre><span class="lnum">   6:  </span>    <span class="kwrd">public</span> MenuViewModel(IRegionManager regionManager,IUnityContainer container)</pre>
+<pre><span class="lnum">   7:  </span>    {</pre>
+<pre><span class="lnum">   8:  </span>        <span class="kwrd">this</span>._regionManager = regionManager;</pre>
+<pre><span class="lnum">   9:  </span>        <span class="kwrd">this</span>._container = container;</pre>
+<pre><span class="lnum">  10:  </span>        <span class="kwrd">this</span>.LoadViewCommand = <span class="kwrd">new</span> DelegateCommand&lt;<span class="kwrd">object</span>&gt;(<span class="kwrd">this</span>.LoadView, <span class="kwrd">this</span>.CanLoad);</pre>
+<pre><span class="lnum">  11:  </span>            </pre>
+<pre><span class="lnum">  12:  </span>    }</pre>
+<pre><span class="lnum">  13:  </span>&nbsp;</pre>
+<pre><span class="lnum">  14:  </span>    <span class="preproc">#region</span> PropertyChanged</pre>
+<pre><span class="lnum">  15:  </span>    <span class="kwrd">public</span> <span class="kwrd">event</span> PropertyChangedEventHandler PropertyChanged;</pre>
+<pre><span class="lnum">  16:  </span>        </pre>
+<pre><span class="lnum">  17:  </span>    <span class="kwrd">private</span> <span class="kwrd">void</span> OnPropertyChanged(<span class="kwrd">string</span> propertyName)</pre>
+<pre><span class="lnum">  18:  </span>    {</pre>
+<pre><span class="lnum">  19:  </span>        PropertyChangedEventHandler handler = <span class="kwrd">this</span>.PropertyChanged;</pre>
+<pre><span class="lnum">  20:  </span>        <span class="kwrd">if</span> (handler != <span class="kwrd">null</span>)</pre>
+<pre><span class="lnum">  21:  </span>        {</pre>
+<pre><span class="lnum">  22:  </span>            handler(<span class="kwrd">this</span>, <span class="kwrd">new</span> PropertyChangedEventArgs(propertyName));</pre>
+<pre><span class="lnum">  23:  </span>        }</pre>
+<pre><span class="lnum">  24:  </span>    }</pre>
+<pre><span class="lnum">  25:  </span>    <span class="preproc">#endregion</span></pre>
+<pre><span class="lnum">  26:  </span>&nbsp;</pre>
+<pre><span class="lnum">  27:  </span>    <span class="preproc">#region</span> LoadViewCommand</pre>
+<pre><span class="lnum">  28:  </span>    <span class="kwrd">public</span> DelegateCommand&lt;<span class="kwrd">object</span>&gt; LoadViewCommand { get; <span class="kwrd">private</span> set; }</pre>
+<pre><span class="lnum">  29:  </span>    <span class="kwrd">public</span> <span class="kwrd">event</span> EventHandler&lt;DataEventArgs&lt;<span class="kwrd">string</span>&gt;&gt; LoadedView;</pre>
+<pre><span class="lnum">  30:  </span>&nbsp;</pre>
+<pre><span class="lnum">  31:  </span>    <span class="kwrd">private</span> <span class="kwrd">bool</span> CanLoad(<span class="kwrd">object</span> arg)</pre>
+<pre><span class="lnum">  32:  </span>    {</pre>
+<pre><span class="lnum">  33:  </span>        <span class="kwrd">return</span> <span class="kwrd">true</span>;</pre>
+<pre><span class="lnum">  34:  </span>    }</pre>
+<pre><span class="lnum">  35:  </span>        </pre>
+<pre><span class="lnum">  36:  </span>    <span class="kwrd">private</span> <span class="kwrd">void</span> LoadView(<span class="kwrd">object</span> obj)</pre>
+<pre><span class="lnum">  37:  </span>    {</pre>
+<pre><span class="lnum">  38:  </span>        IRegion mainRegion = <span class="kwrd">this</span>._regionManager.Regions[RegionNames.MainRegion];</pre>
+<pre><span class="lnum">  39:  </span>        <span class="kwrd">string</span> viewName = obj.ToString() + <span class="str">"View"</span>;</pre>
+<pre><span class="lnum">  40:  </span>        var view = <span class="kwrd">this</span>._container.Resolve&lt;IView&gt;(viewName);</pre>
+<pre><span class="lnum">  41:  </span>        mainRegion.Add(view,viewName);</pre>
+<pre><span class="lnum">  42:  </span>        mainRegion.Activate(view);</pre>
+<pre><span class="lnum">  43:  </span>        <span class="kwrd">this</span>.OnLoadView(<span class="kwrd">new</span> DataEventArgs&lt;<span class="kwrd">string</span>&gt;(obj.ToString()));</pre>
+<pre><span class="lnum">  44:  </span>    }</pre>
+<pre><span class="lnum">  45:  </span>&nbsp;</pre>
+<pre><span class="lnum">  46:  </span>    <span class="kwrd">private</span> <span class="kwrd">void</span> OnLoadView(DataEventArgs&lt;<span class="kwrd">string</span>&gt; e)</pre>
+<pre><span class="lnum">  47:  </span>    {</pre>
+<pre><span class="lnum">  48:  </span>        EventHandler&lt;DataEventArgs&lt;<span class="kwrd">string</span>&gt;&gt; loadHandler = <span class="kwrd">this</span>.LoadedView;</pre>
+<pre><span class="lnum">  49:  </span>        <span class="kwrd">if</span> (loadHandler != <span class="kwrd">null</span>)</pre>
+<pre><span class="lnum">  50:  </span>        {</pre>
+<pre><span class="lnum">  51:  </span>            loadHandler(<span class="kwrd">this</span>, e);</pre>
+<pre><span class="lnum">  52:  </span>        }</pre>
+<pre><span class="lnum">  53:  </span>    }</pre>
+<pre><span class="lnum">  54:  </span>    <span class="preproc">#endregion</span></pre>
+<pre><span class="lnum">  55:  </span>}</pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p>Bind the LoadViewCommand in our MenuItem.xaml:</p>
+<p>&nbsp;</p>
+<div class="csharpcode">
+<pre class="alt"><span class="lnum">   1:  </span><span class="kwrd">&lt;</span><span class="html">Menu</span> <span class="attr">Name</span><span class="kwrd">="menu1"</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   2:  </span>    <span class="kwrd">&lt;</span><span class="html">MenuItem</span> <span class="attr">Header</span><span class="kwrd">="File"</span><span class="kwrd">&gt;</span></pre>
+<pre class="alt"><span class="lnum">   3:  </span>        <span class="kwrd">&lt;</span><span class="html">MenuItem</span> <span class="attr">Header</span><span class="kwrd">="New"</span>  <span class="attr">CommandParameter</span><span class="kwrd">="CreateFile"</span> <span class="attr">Command</span><span class="kwrd">="{Binding Path=LoadViewCommand}"</span><span class="kwrd">/&gt;</span></pre>
+<pre><span class="lnum">   4:  </span>        <span class="kwrd">&lt;</span><span class="html">MenuItem</span> <span class="attr">Header</span><span class="kwrd">="Folder"</span>  <span class="attr">CommandParameter</span><span class="kwrd">="CreateFolder"</span> <span class="attr">Command</span><span class="kwrd">="{Binding Path=LoadViewCommand}"</span> <span class="kwrd">/&gt;</span></pre>
+<pre class="alt"><span class="lnum">   5:  </span>    <span class="kwrd">&lt;/</span><span class="html">MenuItem</span><span class="kwrd">&gt;</span></pre>
+<pre><span class="lnum">   6:  </span><span class="kwrd">&lt;/</span><span class="html">Menu</span><span class="kwrd">&gt;</span></pre>
+</div>
+<!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } --><!-- .csharpcode, .csharpcode pre { 	font-size: small; 	color: black; 	font-family: consolas, "Courier New", courier, monospace; 	background-color: #ffffff; 	/*white-space: pre;*/ } .csharpcode pre { margin: 0em; } .csharpcode .rem { color: #008000; } .csharpcode .kwrd { color: #0000ff; } .csharpcode .str { color: #006080; } .csharpcode .op { color: #0000c0; } .csharpcode .preproc { color: #cc6633; } .csharpcode .asp { background-color: #ffff00; } .csharpcode .html { color: #800000; } .csharpcode .attr { color: #ff0000; } .csharpcode .alt  { 	background-color: #f4f4f4; 	width: 100%; 	margin: 0em; } .csharpcode .lnum { color: #606060; } -->
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>You should be able to run the application and when you click the menu File, you should see :</p>
+<p>&nbsp;</p>
+<p><a rel="WLPP" href="$image[2].png"></a></p>
+<p>&nbsp;</p>
+<p><img src="/image.axd?picture=2010%2f6%2fresult.jpg" alt="" /></p>
+<p>&nbsp;</p>
+<p>This end the Walkthrough series.&nbsp; In these 4 parts we setup the foundation of our client application implementing the MVVM pattern and learned how to use Prism to&nbsp;create a&nbsp;modular architecture.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>In the following posts I&rsquo;ll provide a complete application build on the architecture&nbsp;described in part 0 -&gt; (WPF/WCF/EntityFramework).&nbsp;&nbsp; The application extends this basic design and provide an example on how to use the asynchronous behavior of web services to&nbsp;create responsive applications.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fgeoffrey.vandiest.biz%2fpost%2fPrism-Walkthrough-Part-4-Use-Delegate-Commands.aspx"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fgeoffrey.vandiest.biz%2fpost%2fPrism-Walkthrough-Part-4-Use-Delegate-Commands.aspx" border="0" alt="kick it on DotNetKicks.com" /></a></p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">edba66a2-3603-43ec-9ccd-53ca6ec24dba|3|5.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: <a href="http://vandiest.biz/?tag=Prism" rel="tag">Prism</a> , <a href="http://vandiest.biz/?tag=MVVM" rel="tag">MVVM</a> , <a href="http://vandiest.biz/?tag=Command" rel="tag">Command</a> , <a href="http://vandiest.biz/?tag=Unity" rel="tag">Unity</a> , <a href="http://vandiest.biz/?tag=Container" rel="tag">Container</a>
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands" dc:identifier="http://vandiest.biz/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands" dc:title="Prism Walkthrough Part 4: Use Delegate Commands" trackback:ping="http://vandiest.biz/trackback.axd?id=edba66a2-3603-43ec-9ccd-53ca6ec24dba" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2010/05/28/Create-The-Shell">Prism walkthrough - Part 1: Create The Shell</a><span>&nbsp;
+The client side application is made out of three assemblies:
+
+The Shell (PrismWalkthrough....</span><a href="/post/2010/05/31/Part-3-Add-Views-to-Regions">Prism Walkthrough - Part 3: Add Views to Regions</a><span>Source code of this part can be downloaded here.
+In this part we&rsquo;ll create&nbsp;our first vie...</span><a href="/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions">Prism Walkthrough - Part 2: Define The Regions</a><span>Define the Regions
+&nbsp;
+Our shell will contain 3 regions:
+
+Menu Region: contain a Menu that is...</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="b7c8a2c0-12e4-4a1c-ab8f-d6128ac16965" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "geoffrey";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="OoCQunVT5lbJvqvtfrKh3eSi77BxD/jrQqpZ0eUn4W/paSslJf3rmnIeqnka/RiSfm0Up1y2Thp3paL/i1xJLjhMFkEsjeoZrK3DN4RoQ294CcNsCfGxnwzxoavLhXoH3nUMVQ==" />
+</div></form>
+</body>
+</html>

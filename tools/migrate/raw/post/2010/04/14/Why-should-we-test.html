@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="keywords" content="Unit testing,software factory" />
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - " />
+	<meta name="author" content="geoffrey" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="Why should we test? (RSS)" href="/post/feed/2010/04/14/Why-should-we-test?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="Why should we test? (ATOM)" href="/post/feed/2010/04/14/Why-should-we-test?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | Why should we test?
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./Why-should-we-test?id=07dbd7e2-a99a-43fe-aabf-a8a96b90fd7c" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="lm9nbrNmfCnKPlAOiun12vBcTIbDB0seU+sKDc7wKAwQY2zOF0KThRzkJg9Vm9V/kUAmrIr7+V/1E9+49TkLfJRkYxXvA4yrbbZAabH2+13O7PDKLt/lLShVm7OVY2BQvuW0T3dk9JFk1F2zruHbCe/u6JrSwUaBpihmnQFHzb9Xk47K5hmLMRXFlNImfayT7fKz7hw02t0aRmexVRPf4KCxw3TrcoE88G8yRHD/cesORB43KkoRbGA29UpM37+ea7uatYrj1NJx+X6R+Gt8+n2+YC9XDPgeS4DP08V6AycRFvo2u9tAubQTt6JXEI0wPvqT3rIjJr0gPvI6WMwTmHqk9HVSbBTWK9xxTmruqo443gbCvqn1Rzk4hKcDRZtXXON6n6J7K7IuTthXg/G2YC0w/E9xO6iF4K5DtaZLsZDFZngvdDvQJHt0/yaDQTsjnVMACsdsAOvxT+WrlI4allXPo2sDAQqH6dMgDKrq5dVCIQAazIPpscdgwpdirtYPEur/wPKp807u5Uql+kah6G5lMAa7sgYz72h/czm5sOLLUcH6Np9YzuEHeAaQAVQa8kL9MTcLu479UDoBGl02Xs+tbvcXeR0xGU2+l6cUdv1wRV4m8BDTA58nouLf/RKNXphUeWdtJoxuDLUjGv8h+mtYeCCAr5ZRCkLFbE+aMNyAWAFYZcgvk0LD4p0JOPbZ3YnrVLlTRKSDAu58j8FZdU7HfKvloWlQfJ8KqETUYAUyDlBK/1uHdP0kxcrJ5gqbshMM9nEczhA8nd3vGy5uxMu9g6MXxPSDxziJ3KdN54fxx5g4P7Dwryl+M79Vk1NihRK5dapRbAO1iL+WkfqmEPB9BDxCsLzum5K5MMRPe5r4mBQVJzrjAEHXnsbQWXU97kkBnfM7a+l7+hMv3FQ93krQa5M=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2010/04/16/WCF4-error-message-server-did-not-provide-a-meaningful-reply" class="nav-next">WCF4 error message: server did not provide a meaningful reply</a> |
+    <a href="/post/2010/04/13/How-to-distinguish-an-integration-test-from-a-unit-test" class="nav-prev">How to distinguish an integration test from a unit test?</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2010/04/14/Why-should-we-test" class="taggedlink">Why should we test?</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">14. April 2010 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/geoffrey">geoffrey</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2010/04/14/Why-should-we-test#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p><img src="/image.axd?picture=2010%2f4%2fraleur-320262.jpg" alt="" /></p>
+<p>I plan to write some articles regarding how to write good unit tests but before&nbsp;providing what my guidelines are regarding unit testing it&rsquo;s important to first understand what are the reasons why we want to unit test and what are the drivers for depicting these guidelines. Because&nbsp;my objective&nbsp;is to encourage developers to practice unit testing,&nbsp;I choose to address the main oppositions I encounter today on the field.</p>
+<p>&nbsp;</p>
+<h3>Unit&nbsp;testing is not productive!</h3>
+<p>If we take a closer look to how productivity is optimized in classical manufacturing process, we can envision why well written, well maintained unit tests have exactly the opposite effect. <br /><br />The productivity of a factory is measured by the speed at which products flaws from the production line and the effectiveness of the production line. As one may think, the speed at which products flaws out of the factory is not the average speed of each part of the production line but it depend mostly on of the number of things to process in the production line. So if you want to increase the overall production capacity of a factory you&rsquo;ve to synchronize every part of the production line and make sure that each part works at a constant peace and that every part is working at a sustainable piece for him and his neighbor. The worsted thing that can happen in a production line is that a defect is caused in a part of the line and is paced at the next part. The defect will not only cause the part of the line where the defect is detected to stop but the defect part has also to be resent to the part of the line where the defect was made. This will desynchronize the overall production line and diminish the overall productivity of the factory. When we produce software the same is true, if a bug is detected by the testing team or worse in production it will generate a lot of waste. The bug will need to be described precisely; the developers will need to switch from their ongoing task to the bug resolution. A lot of time will be loosed in understanding the problem. The bug resolution will need to be tested. Finally a patch will need to be deployed in production potentially causing a service interruption. There is also a consequent risk to repeat this process the defect was not corrected adequately or because a new defect is caused by the resolution. An important side effect for unit test is also that they reduce the risk of a project. Each unit test is an insurance that the system works. Having a bug in the code means carrying a risk. Utilizing a set of unit tests, engineers can dramatically reduce number of bugs and the risk with untested code.</p>
+<p>Unit tests will also decrease the maintenance cost because they provide a living documentation. This is called "Test as documentation". Unit testing provides a sort of living documentation of the system. Developers looking to learn what functionality is provided by a unit and how to use it can look at the unit tests to gain a basic understanding of the unit.&nbsp;&nbsp;Unit tests&nbsp;embody characteristics that are critical to the success of the unit. These characteristics can indicate appropriate/inappropriate use of a unit as well as negative behaviors that are to be trapped by the unit. A unit test case documents these critical characteristics.</p>
+<p>So it&rsquo;s true that unit tests are generally doubling the initial cost of the implementation phase because it tends to cost the same amount of time as writing production code. But this cost is more than re-gain because the other steps of the production process shorten. The amount of defects detected by the Q&amp;A team is drastically falling and a lot of time is won because the Q&amp;A team can work faster. Even the overall throughout put of the development teams increases at the end because a time is not loosed anymore in correcting a lot of defects detected by the Q&amp;A team. The project manager is far better at estimated the project status. At the end the trust of the business increases because they get features build on a constant pace and because the overall delivered quality increases.</p>
+<p>&nbsp;</p>
+<h3>Unit testing does not catch all bugs!</h3>
+<p>Unit testing and other forms of automated testing serve the same purpose as the automated testing devices in manufacturing. Unit tests will enable to detect rapidly a defect when code is changed or added. The automated tests are not made to detect malfunctions in production but to prevent that defects could enter into our assembly line.&nbsp; The real value of Unit testing &amp; TDD is not that they can detect defects but that they overcome defects to happen!&nbsp; Unit testing will not only improve the quality perceived by the business because lesser defects will slip through it will also improve the internal quality attributes of the code itself because the developer will tend to refactor a lot more and will design his code more loosely coupled. (see Design for testability).&nbsp;</p>
+<p>Nevertheless Unit testing alone is not sufficient, testing should happen on all levels but unit tests decrease the amount of other kind of testing that is needed. Because unit testing helps to eliminate uncertainty in the units themselves they enable a bottom-up testing style approach. By testing the parts of a program first and then testing the sum of its parts, integration testing becomes much easier.</p>
+<p>&nbsp;</p>
+<h3>Testing is for the testers!</h3>
+<p>Unit testing and other forms of automated testing serve the same purpose as the automated testing devices in manufacturing. Unit tests will enable to detect rapidly a defect when code is changed or added. The automated tests are not made to detect malfunctions in production but to prevent that defects could enter into our assembly line. The real value of Unit testing &amp; TDD is not that they can detect defects but that they overcome defects to happen! Unit testing will not only improve the quality perceived by the business because lesser defects will slip through it will also improve the internal quality attributes of the code itself because the developer will tend to refactor a lot more and will design his code more loosely coupled.</p>
+<p>When software is developed using a test-driven approach, the Unit-Test may take the place of formal design. Each unit test can be seen as a design element specifying classes, methods, and observable behavior. By writing your tests you are performing an act of design and all professional developers should aim for good design.</p>
+<p>&nbsp;</p>
+<h3>Unit testing is a waste of time because they tend to break and we constantly have to fix them!</h3>
+<p>Unit testing allows the programmer to&nbsp;refactor code at a later date, and make sure the module still works correctly. The unit tests enables refactoring because they provide a safety net that allows us to practice refactoring. The procedure is to write test cases for all methods so that whenever a change causes a fault, it can be quickly identified and fixed. Readily-available unit tests make it easy for the programmer to check whether a piece of code is still working properly. They enable us to constantly improve our SUT by adhering to the <a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> principles. This principle does not only apply to our SUT but also to our test code. By constantly keeping our tests<a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> by eliminating duplication we improve the maintainability of our tests and make sure that these tests stay efficient. When you spent too much time in fixing tests you should consider to review your test design. Have a look at the&nbsp;following articles these will provide some&nbsp;guidelines that will help you in increasing the maintainability of your tests.</p>
+<p>&nbsp;</p>
+<h3>This code is too difficult to test!&nbsp;</h3>
+<p>Because unit tests forces us to exercise our code in another context as the context in which the code will run in production &ndash; the tests forces us to design our code so that it is more loosely coupled. Loose coupling tend to improve reusability and robustness. Reusability and robustness are certainly desirable goals. So Unit testing is a way to assert that our code is robust and reusable &ndash; if your code is hard to test this is mostly because there is something wrong with your design and you should not try to test bad design but you should fix it!</p>
+<p>&nbsp;</p>
+<p><a href="http://www.dotnetkicks.com/kick/?url=http%3a%2f%2fgeoffrey.vandiest.biz%2fpost%2fWhy-should-we-test.aspx"><img src="http://www.dotnetkicks.com/Services/Images/KickItImageGenerator.ashx?url=http%3a%2f%2fgeoffrey.vandiest.biz%2fpost%2fWhy-should-we-test.aspx" border="0" alt="kick it on DotNetKicks.com" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">07dbd7e2-a99a-43fe-aabf-a8a96b90fd7c|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: <a href="http://vandiest.biz/?tag=Unit+testing" rel="tag">Unit testing</a> , <a href="http://vandiest.biz/?tag=software+factory" rel="tag">software factory</a>
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2010/04/14/Why-should-we-test" dc:identifier="http://vandiest.biz/post/2010/04/14/Why-should-we-test" dc:title="Why should we test?" trackback:ping="http://vandiest.biz/trackback.axd?id=07dbd7e2-a99a-43fe-aabf-a8a96b90fd7c" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor">My way to apply the test pyramid to an Onion Style architecture with Blazor</a><span>It's crucial to understand that the testing pyramid must be tailored to a project's unique requireme</span><a href="/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough">First Steps with Unit Testing Walkthrough</a><span>&nbsp;In this article I&nbsp;introduce through a walkthrough the basics of how to write a good well ...</span><a href="/post/2023/07/07/best-practices-for-effective-unit-testing-in-c">Best Practices for Effective Unit Testing in C#</a><span>In my previous blog post, I explained the importance of writing testable code. In this post, I will</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="f87ab10d-d95b-48b3-a5f2-36908d5ca3d4" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "geoffrey";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="RM8dN3PShCdnQvU9VbrzK999XddPZNRPAYYDLYAbTigk/3uSTl/+QtSYu9K0Wd5EsJjdlSZNXOicNzUPTJVIURlLR8vuNvlCT2oa95stNTKs6ELQzDJTGz0axtjrwoshASn8rQ==" />
+</div></form>
+</body>
+</html>

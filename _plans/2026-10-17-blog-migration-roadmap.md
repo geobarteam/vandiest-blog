@@ -8,7 +8,7 @@ Written 2026-10-17. The spec budgets one weekend for the migration proper; the d
 | # | Deliverable | Depends on | Done when |
 | --- | --- | --- | --- |
 | D1 (done) | Decisions closed and foundation live | — | An empty site answers on the preview URL after a manual workflow run |
-| D2 | Content extracted | D1 | 77 posts and 1 page committed as raw input (BlogML or scraped) |
+| D2 (done) | Content extracted | D1 | 77 posts and 1 page committed as raw input (BlogML or scraped) |
 | D3 | Content converted and media fetched | D2 | `check.mjs` passes on all generated posts; `report.md` lists every miss |
 | D4 | Review pass accepted | D3 | Every post has a report line; you accepted the uncertain ones and the missing-image list |
 | D5 | Preview verified | D4 | All legacy URLs, redirects, feed, 404 and Lighthouse checks pass on the preview URL |
@@ -119,6 +119,28 @@ Open before D7:
 - The raw input is committed once so conversion can be re-run from scratch.
 
 **Risk watched.** Admin export fails on the old build. The scraper was already tested read-only on 2026-10-17: all 77 pages answer 200 over HTTP.
+
+**Status (2026-10-17): done with the scraper; BlogML export not taken.**
+
+`node tools/migrate/scrape.mjs` saved every page over HTTP with no failures. Output is `tools/migrate/raw/` (2.4 MB): one HTML file per URL, the original `sitemap.xml`, and `manifest.json` with status, size and SHA-256 per page.
+
+| Found | Count |
+| --- | --- |
+| Unique posts | 76 (the sitemap lists `/post/2010/03/31/HTTP-caching-divergence-between-IE-Firefox` twice; the "77" in the inventory counted it twice) |
+| Posts by year | 2008 6, 2009 5, 2010 23, 2011 9, 2015 5, 2016 7, 2017 3, 2018 5, 2020 1, 2022 2, 2023 7, 2026 2 |
+| `<pre>` blocks in post bodies | 1,501 |
+| Images in post bodies | 154 |
+| `file.axd` attachments | 2 |
+| Distinct tags | 50 |
+| Static pages | 1 (`/page/gentsbbq`; `/contact.aspx` is the server form and is not migrated) |
+
+Every post has a title, a date and a body. The shortest, "Customize Visual Studio" (2010), is a genuine one-line post.
+
+Findings that change D3 and D5:
+
+- **45 of 76 slugs are mixed case or contain parentheses** (for example `New-version-of-the-WCFMsmqFactory`, `Puzzle-2-iterators-using-the-yield-statement-(intermediate)`). Azure Static Web Apps matches paths case-sensitively (tested on the preview: `/Archive/` and a re-cased post path return 404). So the converter keeps each original slug exactly, and `check.mjs` accepts the legacy slugs; the lowercase-hyphen rule applies to new posts only. IIS served the old URLs case-insensitively, so inbound links with other casing will 404 after cut-over; D5 checks the top inbound links in Search Console.
+- **The Gents BBQ page is a private invitation with a home address.** Its raw file is kept out of the public repository until you decide whether to migrate it, drop it (410 or redirect home), or migrate it without the address.
+- The BlogML export stays optional. If you export it later, save it as `tools/migrate/blogml.xml`; D3 can use it to cross-check dates and tags.
 
 ## D3. Content converted and media fetched
 

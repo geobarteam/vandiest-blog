@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - Many professionals in our industry believe that the key to an effective testing strategy is a robust" />
+	<meta name="author" content="Geoffrey Vandiest" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="Going All-In on UI Testing Automation: a Recipe for Failure! (RSS)" href="/post/feed/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="Going All-In on UI Testing Automation: a Recipe for Failure! (ATOM)" href="/post/feed/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | Going All-In on UI Testing Automation: a Recipe for Failure!
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./going-all-in-on-ui-testing-automation-a-recipe-for-failure?id=e88d8478-1d66-450c-811a-bf49b765c878" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="0ZkHAubS9/fqKldVy9Dg0XX96Aa7CBAWn7LqQ2sUKhYMV3Mv3J7oA1gLmo6b6Ant1DzsIJflFKenF0CatTA2K9R3VE+wZlWt5XiniC4PgODPVLIv1pqFY/MlCLwKSK5oAgDSSrFms8z/LAY2Os0k+Pcr9aYE7nvwhF+H/wM/NNJg0KOVu4Ii/DU+uQGzOF+XAACRj4BTgtLbbVD+ZexWycjdkikLj3KSyXH3xuofX4+/ARAR103gUmzS0y3QBXA8kJB6nwh+OGOVntVAMj6zjY+btiJMm9oiXJGovnPmnUHbGZeNNV21nU5Rj/O0Wd0ddDEjdyJigkbKlyzKNw7Pl5AxAvTX6YAsC5p4EJIks0/eJIekJKH8Xi5OJKNyMvfCqiX1BQaWYI620eJsmnqwkHuZfjPqjSVZpu6jwqugmJkYGgpALtiwOcxSrAeN0ZcvGGTTADW7yW+Z1PAISJeOAnf1Xa6Yw26N0NpFBTzp6Fis0y3juxe/IjpET2altBOYyvFCoBiBpVpLujSuTCxlfT/8V4CsrZrV6mHUjFeW/QWfzgZtasbmL7u2b0bAwWyZ0tz+D+lPErOlmh/r9MMWHbJVtTCj24TGgCGqrrV2K28EoQGweT3rL2nlFzqCWxawjbobCRfQcew81MbX2u7QII9rk2vP1LkiL06oFVPSSbkWyddaezdjJLN3PJ2qngpn7I1KgwCln8iBqNSMNziAYybWCnHJk4k3qLvL2vPdmrC5GXC5WrHfOW3LeEqAvIn46y7ynp7cYzTtm5a42e1gRD7jPCzGQXMgvQNTV/Q42KOdthpT8+3DZhhxTtp0bQ9NxtThD0pKeEA+ClC9WpRE4Sm1GgnO9ZFF3R7Pm79gf9juAgs+p/u0xOIfi51mBgCfYyY5g+Wu98wFdVqh10gxYjJkx1g=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor" class="nav-next">My way to apply the test pyramid to an Onion Style architecture with Blazor</a> |
+    <a href="/post/2023/07/07/best-practices-for-effective-unit-testing-in-c" class="nav-prev">Best Practices for Effective Unit Testing in C#</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure" class="taggedlink">Going All-In on UI Testing Automation: a Recipe for Failure!</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">17. July 2023 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/Admin">Geobarteam</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p><img src="/image.axd?picture=/quote-false-hopes-are-more-dangerous-than-fears-j-r-r-tolkien-41-36-12.jpg" alt="" /></p>
+<p>Many professionals in our industry believe that the key to an effective testing strategy is a robust system of automated tests that interact with the User Interface (UI). Imagine an advanced tool that can meticulously record user interactions and replay them to check for consistent results.</p>
+<p>However, when applied in practice, this approach reveals several problems. The most significant issue is the fragility of these tests. Even minor UI changes can cause numerous tests to fail, resulting in a time-consuming process of re-recording. Moreover, these tests tend to run at a slow pace and require substantial infrastructure to execute effectively. A testing strategy solely focused on automating UI tests is too expensive, delicate, and time intensive.</p>
+<p>My consideration of the effectiveness of automated testing was restored when I discovered the concept of the test pyramid. This concept, integrated within the Software Development Life Cycle (SDLC), organizes tests across different layers of the application stack. Visualize a pyramid with a sturdy and balanced structure. The broad base consists of quick and efficient unit tests, while the narrow peak represents a smaller set of slower, more complex end-to-end tests, often performed through the UI. This approach prioritizes comprehensive coverage at the foundational levels where tests are simpler, faster, and more cost-effective, while still conducting sufficient high-level tests to ensure the harmonious functioning of system components.</p>
+<p><img src="/image.axd?picture=/pyramid.png" alt="" /></p>
+<p>However, the test pyramid does not stop at the base and the peak. It also incorporates an intermediate layer of tests that operate discreetly through an application's service layer. These tests combine the strengths of end-to-end tests while bypassing the complexities of UI frameworks. For applications based on a three-tier architectures, this corresponds to testing through the second tier, the <a href="https://medium.com/mobilepeople/backend-for-frontend-pattern-why-you-need-to-know-it-46f94ce420b0">Backend For Frontend.</a> For two-tier applications, this can be done through the <a href="https://marcoatschaefer.medium.com/onion-architecture-explained-building-maintainable-software-54996ff8e464#:~:text=The%20Application%20Layer%20is%20the,cases)%20instead%20of%20Business%20rules.">Application layer</a>.</p>
+<p>It is also important to note that there can be variations of the test pyramid based on different philosophies or specific needs of a project. It is up to the team to fine-tune the right testing strategy for his project. Here I provide a straightforward strategy that should fit most scenarios but not all. You should take account of your specific circumstances and adapt this strategy to your specific situation.</p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">e88d8478-1d66-450c-811a-bf49b765c878|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure" dc:identifier="http://vandiest.biz/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure" dc:title="Going All-In on UI Testing Automation: a Recipe for Failure!" trackback:ping="http://vandiest.biz/trackback.axd?id=e88d8478-1d66-450c-811a-bf49b765c878" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript">Build your Arduino Robot and program it with Javascript</a><span>In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you w</span><a href="/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing">Building Code Like a Skyscraper: The Scaffolding Magic of Automated Testing!</a><span>Today, I want to chat about how automated testing in software development is like scaffolding in bui</span><a href="/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor">What is the best UI technology: Angular or Blazor ?</a><span>(When you build enterprise business apps using DotNet)
+
+Introduction
+&nbsp;</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="1d436ac7-f74b-43ee-b026-dd607b38568b" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "Admin";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="HZVQzIbfoFYuYWfkgIn3WlT1C1x1O4pW7LetqeaHFJnwXDwuW8W2kOkaBWt1k8EgQASJOXlVhkyKijddGxkD5wfybsHl/NIs9xBKpDDy/+VNxZzWgIuT2T6gcISsBqa9rTd1Bw==" />
+</div></form>
+</body>
+</html>

@@ -1,0 +1,507 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - Testable code stands as a cornerstone in the realm of quality software development. Crafting code th" />
+	<meta name="author" content="Geoffrey Vandiest" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="6 Key Principles to Elevate Testability and Maintainability in C# (RSS)" href="/post/feed/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="6 Key Principles to Elevate Testability and Maintainability in C# (ATOM)" href="/post/feed/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | 6 Key Principles to Elevate Testability and Maintainability in C#
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability?id=540b589a-0543-4cfb-8453-a610b57f5cc7" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="1Shewt14asNcfAkxpqXJ/0PH4iS51ZNVuj5x+wHaKX+8mcJwJpAPdy9fdaLoAAiWA0Id/R90bt2rTLXKxP+q2uJE/toCIHQmbCZw8XdB31J4YxiwfghG5r2DhrEeZx+A0iwrHzWP9aU9lFkPMCSZdsmZ8VI6wT+tJV3pK5az0hlo+qlg1F5BvSyFno70R7W9u3HGrtX/Rj3fvnUOo2av92SrxyHlU6G0+5tN9vqZNuttnrnsysxbIFLVF0v4m9swUEvRjfrfovdAsNsyW/nm8geVoIncU6pZaVw3424QkTvBDwLyKgSw5Qc74AzZHhGe9xzZvg+5Zoil8oOGmK5l/JICATNhpVBMsCOl5zn3ewfqhWkfqUXkdmBFXGq4YUj8yKsup3l1Sd6AIyaUzyScnHpDfgTaQ9PjsHNHIn297jeYMYY7LtFnti/J3gFtf9F+E24PbeUSpvGjnNGVP+LuGYdoSC+7QYekkcHoUQj+mCn5QifNJJalmqUeMJv7YD10KBqPFhGapyv6o0rBLv3vuF+2wwRn0mBg26euF5p7iGLoiiwjx7kbAkGrQyQkwEBS/RyLtglwC6kwdVWW/k+4DsYUcY2J240Rz7lxVPpH2f/zISP58z3Y48x6qPkO9rzi4PU+kOS98ge8WXCQu28bTyne9rcukbw38xdOmMwAI1xLto3mUiFXQK8icHcUPfSs0BPijaFp78MQUwwTBT9S+GQEQ8Yoo5GmQc9DEnW5lDvuynCz21Lt6UbLxG+qp7NgOeADWCohL69B9eMmC+BOx9EcHYg8MMNCvMDT6EWuCIC7eo6LhHgWGnUw7X/2CCrHxgpUn441Q58G72MvLMFSbU4iqoshAGoqolkWcSgEW0I8BuhwO+2jC0+i/BNFpeORV1k6SEIhbQLnfYcx6hwwJ4Cl4dE=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="/post/2023/07/07/best-practices-for-effective-unit-testing-in-c" class="nav-next">Best Practices for Effective Unit Testing in C#</a> |
+    <a href="/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt" class="nav-prev">Chasing the Mythical 80%: When Code Coverage Becomes a Treasure Hunt</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability" class="taggedlink">6 Key Principles to Elevate Testability and Maintainability in C#</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">3. July 2023 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/Admin">Geobarteam</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p><img src="/image.axd?picture=/testable-code.jpg" alt="" /></p>
+<p>Testable code stands as a cornerstone in the realm of quality software development. Crafting code that can be effortlessly verified for correctness through automated testing is not just a skill, but an art. In this blog post, we will embark on a journey through six fundamental principles that serve as the pillars of writing testable and maintainable code in C#. Whether you are an experienced software engineer or taking your first steps in the C# landscape, these principles will equip you with the tools needed to sculpt your code into a masterpiece of quality and reliability.</p>
+<p><strong>1. Single Responsibility Principle (SRP):</strong> Each class or method should have a single responsibility, meaning it should only have one reason to change. If a class or method does too many things, it becomes harder to test because each test must consider the different paths through the code.</p>
+<p><strong>2. Use Dependency Injection</strong>: Dependency injection is a technique where an object's dependencies (the other objects it needs to do its job) are provided to it, rather than creating them itself. This allows the dependencies to be swapped out with fake or mock objects in tests, making the code easier to test. For example, you could inject a database service into your class, and replace it with a mock database service in your tests.</p>
+<!-- HTML generated using hilite.me -->
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">class</span> <span style="color: #bb0066; font-weight: bold;">OrderService</span>
+{
+    <span style="color: #008800; font-weight: bold;">private</span> <span style="color: #008800; font-weight: bold;">readonly</span> IOrderDatabase _database;
+
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #0066bb; font-weight: bold;">OrderService</span>(IOrderDatabase database)
+    {
+        _database = database;
+    }
+
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">PlaceOrder</span>(OrderedParallelQuery order)
+    {
+        <span style="color: #888888;">// ... some logic ...</span>
+        _database.AddOrder(order);
+    }
+
+    <span style="color: #888888;">// ... rest of class ...</span>
+}
+
+<span style="color: #0000cc;">[TestClass]</span>
+<span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">class</span> <span style="color: #bb0066; font-weight: bold;">OrderServiceTests</span>
+{
+<span style="color: #0000cc;">    [TestMethod]</span>
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">PlaceOrder_OrderIsValid_AddsOrderToDatabase</span>()
+    {
+        <span style="color: #888888;">// Arrange</span>
+        <span style="color: #333399; font-weight: bold;">var</span> mockDatabase = <span style="color: #008800; font-weight: bold;">new</span> Mock&lt;IOrderDatabase&gt;();
+        <span style="color: #333399; font-weight: bold;">var</span> orderService = <span style="color: #008800; font-weight: bold;">new</span> OrderService(mockDatabase.Object);
+        <span style="color: #333399; font-weight: bold;">var</span> order = <span style="color: #008800; font-weight: bold;">new</span> Order { <span style="color: #888888;">/* initialize order here */</span> };
+
+        <span style="color: #888888;">// Act</span>
+        orderService.PlaceOrder(order);
+
+        <span style="color: #888888;">// Assert</span>
+        mockDatabase.Verify(db =&gt; db.AddOrder(order), Times.Once, <span style="background-color: #fff0f0;">"Order should be added to database once"</span>);
+    }
+}
+</pre>
+</div>
+<p>&nbsp;</p>
+<p><strong>3. Use Interfaces and Abstractions:</strong> Relying on concrete classes makes your code more tightly coupled and harder to test. By depending on abstractions (like interfaces or abstract classes), you can easily substitute real implementations with mock ones for testing.</p>
+<p><strong>4. Avoid Static and Singleton Classes:</strong> Static methods and singleton classes cannot be substituted with mock implementations, making your code harder to test. They also hold state between tests, leading to tests that are not independent.<br /> <br /> Static and Singleton classes can hinder testability by preventing substitution with mock implementations, making testing more difficult and relying on real-world dependencies. Additionally, static methods and singleton classes can hold state between tests, leading to interdependent tests and potential inconsistencies.<br /><br />While static and singleton classes should usually be avoided, there are cases where using static classes is appropriate. This includes scenarios such as defining utility functions or extension methods, which encapsulate reusable pure functions or extend the behavior of existing types without modifying their source code. In these cases, static classes can provide organization and improve code readability.</p>
+<p>For more explicit examples on when using static methods see the last part: 6.<em> Write Pure Functions When Possible</em></p>
+<p><strong>5. Favor Composition Over Inheritance:</strong> Composition refers to building complex objects by combining simpler ones, while inheritance describes a relationship between parent and child classes. Composition is more flexible and easier to test because you can replace parts of the composed object with mocks.<br /> This example highlights the benefits of using composition for achieving better testable code:<br /><br /></p>
+<!-- HTML generated using hilite.me -->
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #888888;">// Composed object that uses composition instead of inheritance</span>
+<span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">class</span> <span style="color: #bb0066; font-weight: bold;">ComposedObject</span> : ISimpleObject
+{
+    <span style="color: #008800; font-weight: bold;">private</span> <span style="color: #008800; font-weight: bold;">readonly</span> ISimpleObject _simpleObject;
+
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #0066bb; font-weight: bold;">ComposedObject</span>(ISimpleObject simpleObject)
+    {
+        _simpleObject = simpleObject;
+    }
+
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">PerformAction</span>()
+    {
+        <span style="color: #888888;">// Additional logic can be added here</span>
+        Console.WriteLine(<span style="background-color: #fff0f0;">"Performing action in ComposedObject"</span>);
+
+        <span style="color: #888888;">// Delegating the action to the composed object</span>
+        _simpleObject.PerformAction();
+    }
+}
+
+<span style="color: #0000cc;">[TestClass]</span>
+<span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">class</span> <span style="color: #bb0066; font-weight: bold;">ComposedObjectTests</span>
+{
+<span style="color: #0000cc;">    [TestMethod]</span>
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">PerformAction_Should_Call_PerformAction_Method_On_SimpleObject</span>()
+    {
+        <span style="color: #888888;">// Arrange</span>
+        <span style="color: #333399; font-weight: bold;">var</span> mockSimpleObject = <span style="color: #008800; font-weight: bold;">new</span> Mock&lt;ISimpleObject&gt;();
+        <span style="color: #333399; font-weight: bold;">var</span> composedObject = <span style="color: #008800; font-weight: bold;">new</span> ComposedObject(mockSimpleObject.Object);
+
+        <span style="color: #888888;">// Act</span>
+        composedObject.PerformAction();
+
+        <span style="color: #888888;">// Assert</span>
+        mockSimpleObject.Verify(m =&gt; m.PerformAction(), Times.Once);
+    }
+}
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>By favoring composition over inheritance, the code becomes more flexible and easier to test. The example demonstrates how the ComposedObject class is constructed by injecting dependencies through its constructor, allowing for easy substitution of real implementations with mock objects during testing. This decoupling of dependencies enables isolated testing, focusing solely on the behavior of the ComposedObject without being tightly coupled to the implementation details of its dependencies. The ability to inject and replace dependencies with mocks or stubs provides greater control over the testing environment and leads to more reliable and maintainable tests. Embracing composition enhances testability and promotes modular and testable code.</p>
+<p><strong>6. Write Pure Functions When Possible:</strong> A pure function's output is solely determined by its input, and it does not have any side effects (like changing global variables). This makes it easy to test, because you just need to check the output for a given input.<br /><br /></p>
+<p>Take this example where the method &ldquo;StoreAverageOfPrimes&rdquo; is extremely hard to test:</p>
+<p>&nbsp;</p>
+<!-- HTML generated using hilite.me -->
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<table>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td>
+<pre style="margin: 0; line-height: 125%;">    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">StoreAverageOfPrimes</span>(<span style="color: #333399; font-weight: bold;">int</span> number)
+    {
+        List&lt;<span style="color: #333399; font-weight: bold;">int</span>&gt; primeNumbers = <span style="color: #008800; font-weight: bold;">new</span> List&lt;<span style="color: #333399; font-weight: bold;">int</span>&gt;();
+
+        <span style="color: #008800; font-weight: bold;">using</span> (SqlConnection connection = <span style="color: #008800; font-weight: bold;">new</span> SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            <span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #333399; font-weight: bold;">int</span> i = <span style="color: #6600ee; font-weight: bold;">2</span>; i &lt;= number; i++)
+            {
+                <span style="color: #333399; font-weight: bold;">bool</span> isPrime = <span style="color: #008800; font-weight: bold;">true</span>;
+
+                <span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #333399; font-weight: bold;">int</span> j = <span style="color: #6600ee; font-weight: bold;">2</span>; j &lt; i; j++)
+                {
+                    <span style="color: #008800; font-weight: bold;">if</span> (i % j == <span style="color: #6600ee; font-weight: bold;">0</span>)
+                    {
+                        isPrime = <span style="color: #008800; font-weight: bold;">false</span>;
+                        <span style="color: #008800; font-weight: bold;">break</span>;
+                    }
+                }
+
+                <span style="color: #008800; font-weight: bold;">if</span> (isPrime)
+                {
+                    primeNumbers.Add(i);
+
+                    SqlCommand command = <span style="color: #008800; font-weight: bold;">new</span> SqlCommand(<span style="background-color: #fff0f0;">"INSERT INTO PrimeNumbers (Value) VALUES (@Value)"</span>, connection);
+                    command.Parameters.AddWithValue(<span style="background-color: #fff0f0;">"@Value"</span>, i);
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            SqlCommand command = <span style="color: #008800; font-weight: bold;">new</span> SqlCommand(<span style="background-color: #fff0f0;">"INSERT INTO Results (Value) VALUES (@Value)"</span>, connection);
+            command.Parameters.AddWithValue(<span style="background-color: #fff0f0;">"@Value"</span>, primeNumbers.Average());
+            command.ExecuteNonQuery();
+        }
+    }
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>This code suffers from the same challenges when it comes to testing the calculation logic in isolation. The code tightly couples the calculation logic with the database access code, making it difficult to write focused unit tests. The lack of separation and abstraction hinders code reusability and maintainability.</p>
+<p>In the refactored code here under, the StoreAverageOfPrimes method has been modified to separate the calculation logic from the data access code:</p>
+<!-- HTML generated using hilite.me -->
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<table>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td>
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">static</span> List&lt;<span style="color: #333399; font-weight: bold;">int</span>&gt; GetPrimeNumbers(<span style="color: #333399; font-weight: bold;">int</span> number)
+    {
+        List&lt;<span style="color: #333399; font-weight: bold;">int</span>&gt; primeNumbers = <span style="color: #008800; font-weight: bold;">new</span> List&lt;<span style="color: #333399; font-weight: bold;">int</span>&gt;();
+
+        <span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #333399; font-weight: bold;">int</span> i = <span style="color: #6600ee; font-weight: bold;">2</span>; i &lt;= number; i++)
+        {
+            <span style="color: #008800; font-weight: bold;">if</span> (IsPrime(i))
+            {
+                primeNumbers.Add(i);
+            }
+        }
+
+        <span style="color: #008800; font-weight: bold;">return</span> primeNumbers;
+    }
+
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">static</span> <span style="color: #333399; font-weight: bold;">bool</span> <span style="color: #0066bb; font-weight: bold;">IsPrime</span>(<span style="color: #333399; font-weight: bold;">int</span> number)
+    {
+        <span style="color: #008800; font-weight: bold;">if</span> (number &lt; <span style="color: #6600ee; font-weight: bold;">2</span>)
+            <span style="color: #008800; font-weight: bold;">return</span> <span style="color: #008800; font-weight: bold;">false</span>;
+
+        <span style="color: #008800; font-weight: bold;">for</span> (<span style="color: #333399; font-weight: bold;">int</span> i = <span style="color: #6600ee; font-weight: bold;">2</span>; i &lt;= Math.Sqrt(number); i++)
+        {
+            <span style="color: #008800; font-weight: bold;">if</span> (number % i == <span style="color: #6600ee; font-weight: bold;">0</span>)
+                <span style="color: #008800; font-weight: bold;">return</span> <span style="color: #008800; font-weight: bold;">false</span>;
+        }
+
+        <span style="color: #008800; font-weight: bold;">return</span> <span style="color: #008800; font-weight: bold;">true</span>;
+    }
+
+    <span style="color: #008800; font-weight: bold;">public</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">StoreAverageOfPrimes</span>(<span style="color: #333399; font-weight: bold;">int</span> number)
+    {
+        List&lt;<span style="color: #333399; font-weight: bold;">int</span>&gt; primeNumbers = GetPrimeNumbers(number);
+        <span style="color: #333399; font-weight: bold;">double</span> average = primeNumbers.Average();
+
+        <span style="color: #008800; font-weight: bold;">using</span> (SqlConnection connection = <span style="color: #008800; font-weight: bold;">new</span> SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            StorePrimeNumbers(primeNumbers, connection);
+            StoreResult(average, connection);
+        }
+    }
+
+    <span style="color: #008800; font-weight: bold;">private</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">StorePrimeNumbers</span>(List&lt;<span style="color: #333399; font-weight: bold;">int</span>&gt; primeNumbers, SqlConnection connection)
+    {
+        <span style="color: #008800; font-weight: bold;">foreach</span> (<span style="color: #333399; font-weight: bold;">int</span> number <span style="color: #008800; font-weight: bold;">in</span> primeNumbers)
+        {
+            SqlCommand command = <span style="color: #008800; font-weight: bold;">new</span> SqlCommand(<span style="background-color: #fff0f0;">"INSERT INTO PrimeNumbers (Value) VALUES (@Value)"</span>, connection);
+            command.Parameters.AddWithValue(<span style="background-color: #fff0f0;">"@Value"</span>, number);
+            command.ExecuteNonQuery();
+        }
+    }
+
+    <span style="color: #008800; font-weight: bold;">private</span> <span style="color: #008800; font-weight: bold;">void</span> <span style="color: #0066bb; font-weight: bold;">StoreResult</span>(<span style="color: #333399; font-weight: bold;">double</span> result, SqlConnection connection)
+    {
+        SqlCommand command = <span style="color: #008800; font-weight: bold;">new</span> SqlCommand(<span style="background-color: #fff0f0;">"INSERT INTO Results (Value) VALUES (@Value)"</span>, connection);
+        command.Parameters.AddWithValue(<span style="background-color: #fff0f0;">"@Value"</span>, result);
+        command.ExecuteNonQuery();
+    }
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>In this updated code, the pure functions GetPrimeNumbers and IsPrime have been made static. By making them static, they can be accessed directly without an instance of the CalculationService class.</p>
+<p>The static nature of these functions allows them to be more easily testable and promotes code reusability, as they can be used independently without requiring an instance of the class.</p>
+<p>When writing testable code, it is important to consider the nature of the functions you are working with. Pure functions, which have the characteristic of producing the same output for a given set of inputs and having no side effects, are particularly beneficial for testability.</p>
+<p>In the context of testability, pure functions can be made static to further enhance their usability. By making pure functions static, they can be accessed and used directly without the need to create an instance of the class containing them. This eliminates the dependency on the object's state, making the functions more independent and self-contained.</p>
+<p>The static nature of pure functions simplifies the testing process. Since they rely only on the provided input and produce a deterministic output, you can easily write focused unit tests for these functions without the need to set up complex object states or manage external dependencies. You can simply pass different inputs to the functions and verify their outputs against expected results.</p>
+<p>In contrast, functions with side effects, such as those interacting with databases or modifying global variables, are more difficult to test due to their reliance on external resources and potential interference with the test environment. These functions often require complex setup and teardown procedures to isolate and restore the system state, which can complicate the testing process.</p>
+<p>By separating pure functions and making them static, you create modular and testable units of code that are easier to verify in isolation. This promotes code maintainability, reusability, and testability, allowing you to write more effective and reliable tests for your applications.</p>
+<p>&nbsp;</p>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">540b589a-0543-4cfb-8453-a610b57f5cc7|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability" dc:identifier="http://vandiest.biz/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability" dc:title="6 Key Principles to Elevate Testability and Maintainability in C#" trackback:ping="http://vandiest.biz/trackback.axd?id=540b589a-0543-4cfb-8453-a610b57f5cc7" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4">Keyboard support for Menu control Sylverlight 4</a><span>&nbsp;
+Today I tried to validate an &nbsp;Architecture by creating a POC. &nbsp;The architecture is...</span><a href="/post/2023/07/07/best-practices-for-effective-unit-testing-in-c">Best Practices for Effective Unit Testing in C#</a><span>In my previous blog post, I explained the importance of writing testable code. In this post, I will</span><a href="/post/2010/05/04/Design-For-Testability">Design For Testability</a><span>Design for testability
+&nbsp;
+How can we recognize &ldquo;Bad Design&rdquo;? One could argue that ...</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="18e40e87-0155-4fa5-aa29-f70a2d0c2fe3" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "Admin";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="TrX5xibHw7f4/tT/HMwXGCMl31K/ccw6Ws+fo96q2N0jU59Dt8ApP2uDald+NHMVLnzG91rUca4TkSk3cO2R3RnSNJ5o9KeWZsHsFQJ9LTETsKRasjei/5qWH9z1Df3HJIdbVA==" />
+</div></form>
+</body>
+</html>

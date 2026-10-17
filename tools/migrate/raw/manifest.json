@@ -1,0 +1,541 @@
+{
+ "/page/gentsbbq": {
+  "url": "http://vandiest.biz/page/gentsbbq",
+  "status": 200,
+  "bytes": 26769,
+  "sha256": "f32ce5019d93a2c9e5a7e4faeade9f8f7ab497f566b3e1a7d768a3617077bb78",
+  "file": "raw/page/gentsbbq.html"
+ },
+ "/post/2008/09/08/Automated-testing-and-the-software-factory": {
+  "url": "http://vandiest.biz/post/2008/09/08/Automated-testing-and-the-software-factory",
+  "status": 200,
+  "bytes": 29662,
+  "sha256": "bba454fddc7b9519866ff43a0a7d574681ec269d16ca16b6b19e262280a34520",
+  "file": "raw/post/2008/09/08/Automated-testing-and-the-software-factory.html"
+ },
+ "/post/2008/09/11/Unit-testing-what-else": {
+  "url": "http://vandiest.biz/post/2008/09/11/Unit-testing-what-else",
+  "status": 200,
+  "bytes": 22039,
+  "sha256": "5ad0369d68176aeab4451cb40fbc4ed53906745cae7523a717ea0ac5ed45bd43",
+  "file": "raw/post/2008/09/11/Unit-testing-what-else.html"
+ },
+ "/post/2008/09/24/Webservice-Interoperability-with-contract-first-approach": {
+  "url": "http://vandiest.biz/post/2008/09/24/Webservice-Interoperability-with-contract-first-approach",
+  "status": 200,
+  "bytes": 20432,
+  "sha256": "f4ed332eef590de87b62f7ecfa7a08ffad2179793d16a3f925afbc130d2441df",
+  "file": "raw/post/2008/09/24/Webservice-Interoperability-with-contract-first-approach.html"
+ },
+ "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough": {
+  "url": "http://vandiest.biz/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "status": 200,
+  "bytes": 69804,
+  "sha256": "13ba8018607449d5a53eb26452c9ee2518b5030d94fc3ee12033425fe182e2f2",
+  "file": "raw/post/2008/10/07/ASPNET-Web-setup-project-walkthrough.html"
+ },
+ "/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough": {
+  "url": "http://vandiest.biz/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough",
+  "status": 200,
+  "bytes": 27114,
+  "sha256": "23316884e89e30c9af35b699323a21f7d3dd8a976fe644b96aa14dfa4dbf726c",
+  "file": "raw/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough.html"
+ },
+ "/post/2008/12/21/Is-mangling-PRINCE2-and-SCRUM-Agile": {
+  "url": "http://vandiest.biz/post/2008/12/21/Is-mangling-PRINCE2-and-SCRUM-Agile",
+  "status": 200,
+  "bytes": 20496,
+  "sha256": "cb2ccba6445cebc35450f729ee4f78223944d9af4c7a2e07f66e9787adb3d572",
+  "file": "raw/post/2008/12/21/Is-mangling-PRINCE2-and-SCRUM-Agile.html"
+ },
+ "/post/2009/03/24/Extensibility-for-ASPNET-MVC": {
+  "url": "http://vandiest.biz/post/2009/03/24/Extensibility-for-ASPNET-MVC",
+  "status": 200,
+  "bytes": 29686,
+  "sha256": "562209fea27c1f475491af9d9f481c37ad2bc9e3a01e13002f52bafa32f96285",
+  "file": "raw/post/2009/03/24/Extensibility-for-ASPNET-MVC.html"
+ },
+ "/post/2009/07/22/The-5-Pilars-of-Unit-Testing": {
+  "url": "http://vandiest.biz/post/2009/07/22/The-5-Pilars-of-Unit-Testing",
+  "status": 200,
+  "bytes": 22276,
+  "sha256": "ba25a873e964abe045eaf6ffeb62838037a62144e08ca326a154e6205606fbb6",
+  "file": "raw/post/2009/07/22/The-5-Pilars-of-Unit-Testing.html"
+ },
+ "/post/2009/07/30/What-is-the-role-of-a-software-architect-in-an-Agile-Enterprise": {
+  "url": "http://vandiest.biz/post/2009/07/30/What-is-the-role-of-a-software-architect-in-an-Agile-Enterprise",
+  "status": 200,
+  "bytes": 23147,
+  "sha256": "83b8e7b1dd04b4c6180d2e03ac91375b04468a77e1aca22502109d902714491a",
+  "file": "raw/post/2009/07/30/What-is-the-role-of-a-software-architect-in-an-Agile-Enterprise.html"
+ },
+ "/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background": {
+  "url": "http://vandiest.biz/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background",
+  "status": 200,
+  "bytes": 19422,
+  "sha256": "5312fdabd1b63872cdaf1f32eadf2944ca7cb245b749ac02cc0d4349dded0579",
+  "file": "raw/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background.html"
+ },
+ "/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically": {
+  "url": "http://vandiest.biz/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically",
+  "status": 200,
+  "bytes": 41260,
+  "sha256": "5fd32786bf2d762401b149fb3d719b7ba2e41c774dfc1a34cfd4af55af6587e9",
+  "file": "raw/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically.html"
+ },
+ "/post/2010/01/25/Coding-Kata-on-design-patterns-Kata1-The-Abstract-Factory-Pattern": {
+  "url": "http://vandiest.biz/post/2010/01/25/Coding-Kata-on-design-patterns-Kata1-The-Abstract-Factory-Pattern",
+  "status": 200,
+  "bytes": 20094,
+  "sha256": "c92c2b41c0c4404faca5f36440c92dd3654170c860fd93c5ab50c0774ec954ae",
+  "file": "raw/post/2010/01/25/Coding-Kata-on-design-patterns-Kata1-The-Abstract-Factory-Pattern.html"
+ },
+ "/post/2010/01/25/Sharepoint-2007-Certification-Guide": {
+  "url": "http://vandiest.biz/post/2010/01/25/Sharepoint-2007-Certification-Guide",
+  "status": 200,
+  "bytes": 19122,
+  "sha256": "1dd583394d20701c1f786f194c5caa7db14299eb5e32d2cde68715a29536a533",
+  "file": "raw/post/2010/01/25/Sharepoint-2007-Certification-Guide.html"
+ },
+ "/post/2010/01/26/Kata2-The-Decorator-Pattern": {
+  "url": "http://vandiest.biz/post/2010/01/26/Kata2-The-Decorator-Pattern",
+  "status": 200,
+  "bytes": 28054,
+  "sha256": "9d82f369c30d4fb64518783a4713915cfebe732721d62589143c0164d099e16f",
+  "file": "raw/post/2010/01/26/Kata2-The-Decorator-Pattern.html"
+ },
+ "/post/2010/02/09/GIT-with-VisualStudio": {
+  "url": "http://vandiest.biz/post/2010/02/09/GIT-with-VisualStudio",
+  "status": 200,
+  "bytes": 20197,
+  "sha256": "93bd168d8d4521f473748215592e8e52c312956041e05e770cfcb0977cd22a80",
+  "file": "raw/post/2010/02/09/GIT-with-VisualStudio.html"
+ },
+ "/post/2010/03/31/ASPNET-MVC-with-Webforms": {
+  "url": "http://vandiest.biz/post/2010/03/31/ASPNET-MVC-with-Webforms",
+  "status": 200,
+  "bytes": 59998,
+  "sha256": "8550e7b154e63e8d0a0bb0a99aed4abcefeb5dba18e26274b0c6341e569cf550",
+  "file": "raw/post/2010/03/31/ASPNET-MVC-with-Webforms.html"
+ },
+ "/post/2010/03/31/HTTP-caching-divergence-between-IE-Firefox": {
+  "url": "http://vandiest.biz/post/2010/03/31/HTTP-caching-divergence-between-IE-Firefox",
+  "status": 200,
+  "bytes": 21808,
+  "sha256": "343b82fed46ae4fc148b07701714bb4a82d190215a32243509c37014765db9a7",
+  "file": "raw/post/2010/03/31/HTTP-caching-divergence-between-IE-Firefox.html"
+ },
+ "/post/2010/04/11/Cannot-start-Microsoft-Office-outlook-Cannot-open-the-outlook-window": {
+  "url": "http://vandiest.biz/post/2010/04/11/Cannot-start-Microsoft-Office-outlook-Cannot-open-the-outlook-window",
+  "status": 200,
+  "bytes": 19350,
+  "sha256": "95b07351fcf778e2040bdf6045ff2400ae5d36ab5b55cd458fe8d8e09908e204",
+  "file": "raw/post/2010/04/11/Cannot-start-Microsoft-Office-outlook-Cannot-open-the-outlook-window.html"
+ },
+ "/post/2010/04/13/How-to-distinguish-an-integration-test-from-a-unit-test": {
+  "url": "http://vandiest.biz/post/2010/04/13/How-to-distinguish-an-integration-test-from-a-unit-test",
+  "status": 200,
+  "bytes": 20259,
+  "sha256": "3247374a7a6122bbe6c52e76f394d9d1b2b08880beec9a5d6b7db5b1956b4a8f",
+  "file": "raw/post/2010/04/13/How-to-distinguish-an-integration-test-from-a-unit-test.html"
+ },
+ "/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4": {
+  "url": "http://vandiest.biz/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4",
+  "status": 200,
+  "bytes": 19970,
+  "sha256": "225ed86850a69c46621f358364d39f5712d1592fc0d94651b5657b0ccb494959",
+  "file": "raw/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4.html"
+ },
+ "/post/2010/04/14/Why-should-we-test": {
+  "url": "http://vandiest.biz/post/2010/04/14/Why-should-we-test",
+  "status": 200,
+  "bytes": 27348,
+  "sha256": "04a4cc574fccff24c84aa8f648fb9ffaadc18ba6f74663705299389b9be278c1",
+  "file": "raw/post/2010/04/14/Why-should-we-test.html"
+ },
+ "/post/2010/04/16/WCF4-error-message-server-did-not-provide-a-meaningful-reply": {
+  "url": "http://vandiest.biz/post/2010/04/16/WCF4-error-message-server-did-not-provide-a-meaningful-reply",
+  "status": 200,
+  "bytes": 30392,
+  "sha256": "e69a5ff83feb66a6ff777ffa1ea55a8ca8eb8567553eaadd211b89ba3799852e",
+  "file": "raw/post/2010/04/16/WCF4-error-message-server-did-not-provide-a-meaningful-reply.html"
+ },
+ "/post/2010/04/17/Customize-Visual-Studio": {
+  "url": "http://vandiest.biz/post/2010/04/17/Customize-Visual-Studio",
+  "status": 200,
+  "bytes": 18189,
+  "sha256": "37967af5a08e24850b88168135d13764a804f6859f8fe81a84375b4487302337",
+  "file": "raw/post/2010/04/17/Customize-Visual-Studio.html"
+ },
+ "/post/2010/05/04/Design-For-Testability": {
+  "url": "http://vandiest.biz/post/2010/05/04/Design-For-Testability",
+  "status": 200,
+  "bytes": 35965,
+  "sha256": "59ef5e7b6e5b2887117056b96c88caf4cf6241c3a87ef6b69f886b4ae508b040",
+  "file": "raw/post/2010/05/04/Design-For-Testability.html"
+ },
+ "/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure": {
+  "url": "http://vandiest.biz/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure",
+  "status": 200,
+  "bytes": 22045,
+  "sha256": "2c486e8a6cd0a5e9b36e967befe0424418d8f5507626193719218fce422429e2",
+  "file": "raw/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure.html"
+ },
+ "/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor": {
+  "url": "http://vandiest.biz/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor",
+  "status": 200,
+  "bytes": 22486,
+  "sha256": "4f5a12973f54e631140d389933b96f774be972d75442ce05238ca0fc044fdb34",
+  "file": "raw/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor.html"
+ },
+ "/post/2010/05/17/Anti-Pattern-4-Using-Global-State": {
+  "url": "http://vandiest.biz/post/2010/05/17/Anti-Pattern-4-Using-Global-State",
+  "status": 200,
+  "bytes": 29053,
+  "sha256": "f44e7ab9cba073939521305595b2033f15980e5a2199864f5ea4bbc52188e13b",
+  "file": "raw/post/2010/05/17/Anti-Pattern-4-Using-Global-State.html"
+ },
+ "/post/2010/05/27/Anti-Pattern-5-Fat-UIs": {
+  "url": "http://vandiest.biz/post/2010/05/27/Anti-Pattern-5-Fat-UIs",
+  "status": 200,
+  "bytes": 48997,
+  "sha256": "a52ee11b8c18e8271cbb338ed20ced0e39f68f262a62c8cd0ff5d8aa24d97fb7",
+  "file": "raw/post/2010/05/27/Anti-Pattern-5-Fat-UIs.html"
+ },
+ "/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework": {
+  "url": "http://vandiest.biz/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework",
+  "status": 200,
+  "bytes": 22135,
+  "sha256": "6e3e5e2cc81e1e1890e2fbf23a538dda4a50e83a674f95633e8322072c086712",
+  "file": "raw/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework.html"
+ },
+ "/post/2010/05/28/Create-The-Shell": {
+  "url": "http://vandiest.biz/post/2010/05/28/Create-The-Shell",
+  "status": 200,
+  "bytes": 30306,
+  "sha256": "198d8df2497d78054c66e7d96880cee1f0d092f3a3f9b42f97eba0e4e2dd31b6",
+  "file": "raw/post/2010/05/28/Create-The-Shell.html"
+ },
+ "/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions": {
+  "url": "http://vandiest.biz/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions",
+  "status": 200,
+  "bytes": 25259,
+  "sha256": "ca47ba54b5b2355b2d674ec29822904e3a00c5d035226ab7c07c485887ce96ef",
+  "file": "raw/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions.html"
+ },
+ "/post/2010/05/31/Part-3-Add-Views-to-Regions": {
+  "url": "http://vandiest.biz/post/2010/05/31/Part-3-Add-Views-to-Regions",
+  "status": 200,
+  "bytes": 28996,
+  "sha256": "f26050104557edab1901169154c8595c81bf4df9ad00c15eb48e965f7bf919a3",
+  "file": "raw/post/2010/05/31/Part-3-Add-Views-to-Regions.html"
+ },
+ "/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands": {
+  "url": "http://vandiest.biz/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands",
+  "status": 200,
+  "bytes": 39007,
+  "sha256": "04a10313990c96257f7dfb9f0a0cc7d7d2deb5f8d1649bae62bfc3978e4d5d7c",
+  "file": "raw/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands.html"
+ },
+ "/post/2010/06/09/Net-Interview-questions": {
+  "url": "http://vandiest.biz/post/2010/06/09/Net-Interview-questions",
+  "status": 200,
+  "bytes": 23195,
+  "sha256": "5f7275bc58c1b2dbf4ddae1a7c4d6e2deb0873e3114d62a65652b91405621cfb",
+  "file": "raw/post/2010/06/09/Net-Interview-questions.html"
+ },
+ "/post/2010/07/29/New-version-of-the-WCFMsmqFactory": {
+  "url": "http://vandiest.biz/post/2010/07/29/New-version-of-the-WCFMsmqFactory",
+  "status": 200,
+  "bytes": 33436,
+  "sha256": "5eb299147de8ce3563f8d9ac8e1506ab6967f20c4164bb6bb924f98efd22d73f",
+  "file": "raw/post/2010/07/29/New-version-of-the-WCFMsmqFactory.html"
+ },
+ "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams": {
+  "url": "http://vandiest.biz/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams",
+  "status": 200,
+  "bytes": 26098,
+  "sha256": "6534ce4cd7e34711d1f5796e22490c0862a908d04b7c12e0912147ef935497b3",
+  "file": "raw/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams.html"
+ },
+ "/post/2011/03/29/Puzzle-1-Passing-reference-types-by-value-(Beginner)-": {
+  "url": "http://vandiest.biz/post/2011/03/29/Puzzle-1-Passing-reference-types-by-value-(Beginner)-",
+  "status": 200,
+  "bytes": 22678,
+  "sha256": "0233d8d791e85dfbdaf5bc35fa5341feed6bcd3c402c937c3fc79a1e71187263",
+  "file": "raw/post/2011/03/29/Puzzle-1-Passing-reference-types-by-value-(Beginner)-.html"
+ },
+ "/post/2011/04/02/Answer-for-puzzle-1": {
+  "url": "http://vandiest.biz/post/2011/04/02/Answer-for-puzzle-1",
+  "status": 200,
+  "bytes": 18941,
+  "sha256": "d8df41a860a7683107a316106e47674c95eff012e8a093b777a9e5f8f53d78ad",
+  "file": "raw/post/2011/04/02/Answer-for-puzzle-1.html"
+ },
+ "/post/2011/04/02/Puzzle-2-iterators-using-the-yield-statement-(intermediate)": {
+  "url": "http://vandiest.biz/post/2011/04/02/Puzzle-2-iterators-using-the-yield-statement-(intermediate)",
+  "status": 200,
+  "bytes": 32460,
+  "sha256": "60d8473d214bef5874ff33aa18e13a7eeb7073eebc12677c53734df63b98f64b",
+  "file": "raw/post/2011/04/02/Puzzle-2-iterators-using-the-yield-statement-(intermediate).html"
+ },
+ "/post/2011/04/07/Answer-for-Puzzle-2": {
+  "url": "http://vandiest.biz/post/2011/04/07/Answer-for-Puzzle-2",
+  "status": 200,
+  "bytes": 22434,
+  "sha256": "7e0488d21e4f223cf599f13bf1fa3d2e7d1e49e4b2a0926f7003fc8154fb51a8",
+  "file": "raw/post/2011/04/07/Answer-for-Puzzle-2.html"
+ },
+ "/post/2011/04/30/HTML5-Local-Storage": {
+  "url": "http://vandiest.biz/post/2011/04/30/HTML5-Local-Storage",
+  "status": 200,
+  "bytes": 64600,
+  "sha256": "ab405170cf2b45c155db4056e157ded47e0910a51ed05c96f94be9d02620de3f",
+  "file": "raw/post/2011/04/30/HTML5-Local-Storage.html"
+ },
+ "/post/2011/05/14/Creating-an-offline-HTML5-application-for-IOS-with-ASPNET-MVC3": {
+  "url": "http://vandiest.biz/post/2011/05/14/Creating-an-offline-HTML5-application-for-IOS-with-ASPNET-MVC3",
+  "status": 200,
+  "bytes": 109847,
+  "sha256": "f6eb5174b96507d128cb9daaae0b7fe2ccdacd8ecc22d4ff7292fbc48d4035d4",
+  "file": "raw/post/2011/05/14/Creating-an-offline-HTML5-application-for-IOS-with-ASPNET-MVC3.html"
+ },
+ "/post/2011/08/31/The-bowling-game-Kata": {
+  "url": "http://vandiest.biz/post/2011/08/31/The-bowling-game-Kata",
+  "status": 200,
+  "bytes": 16385,
+  "sha256": "5591f45d91b83dc28dd17939e04035996efffe15ba4bee0945fc69ce58b17732",
+  "file": "raw/post/2011/08/31/The-bowling-game-Kata.html"
+ },
+ "/post/2011/09/01/Quality-saves-money-and-time": {
+  "url": "http://vandiest.biz/post/2011/09/01/Quality-saves-money-and-time",
+  "status": 200,
+  "bytes": 19795,
+  "sha256": "a2851318ccf8da6bb506da4672cad5a859b1f8776a5f5e4b115f0a541ca246ab",
+  "file": "raw/post/2011/09/01/Quality-saves-money-and-time.html"
+ },
+ "/post/2015/05/11/how-to-get-the-powershell-version": {
+  "url": "http://vandiest.biz/post/2015/05/11/how-to-get-the-powershell-version",
+  "status": 200,
+  "bytes": 18415,
+  "sha256": "cb8e05501ec4cdf7e992a355a205bd80068fccb6f1417807a2e750a1d322301f",
+  "file": "raw/post/2015/05/11/how-to-get-the-powershell-version.html"
+ },
+ "/post/2015/05/13/gosimple-logging-log4net": {
+  "url": "http://vandiest.biz/post/2015/05/13/gosimple-logging-log4net",
+  "status": 200,
+  "bytes": 21015,
+  "sha256": "eb83de74881bc0d2257de65069f6f0f9353e06f0314e10667dd396cb5b0566d7",
+  "file": "raw/post/2015/05/13/gosimple-logging-log4net.html"
+ },
+ "/post/2015/06/06/learning-programming-with-scratch": {
+  "url": "http://vandiest.biz/post/2015/06/06/learning-programming-with-scratch",
+  "status": 200,
+  "bytes": 21527,
+  "sha256": "936c9d62e8af7cf6b6eb71f65bdeb122fbed6e9cdca1bc44f527c9e27f79e415",
+  "file": "raw/post/2015/06/06/learning-programming-with-scratch.html"
+ },
+ "/post/2015/11/15/learning-arduino-for-beginners": {
+  "url": "http://vandiest.biz/post/2015/11/15/learning-arduino-for-beginners",
+  "status": 200,
+  "bytes": 19627,
+  "sha256": "48f07fa538dc7c42e4c5ac8c33df7de4ac4fccb8250231832e9500e069d42eb2",
+  "file": "raw/post/2015/11/15/learning-arduino-for-beginners.html"
+ },
+ "/post/2015/12/10/learning-kodu-links": {
+  "url": "http://vandiest.biz/post/2015/12/10/learning-kodu-links",
+  "status": 200,
+  "bytes": 21310,
+  "sha256": "5e671ff6bfc1490015c3dd1e4d9fc41a8f6682a84a45d647139b5e4b0940bcdc",
+  "file": "raw/post/2015/12/10/learning-kodu-links.html"
+ },
+ "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure": {
+  "url": "http://vandiest.biz/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "status": 200,
+  "bytes": 25756,
+  "sha256": "a27d49c7f17b935f6f71a519761f9f697f6eb66fe25df4ed9067448d3d1a939b",
+  "file": "raw/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure.html"
+ },
+ "/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps": {
+  "url": "http://vandiest.biz/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps",
+  "status": 200,
+  "bytes": 21484,
+  "sha256": "e298508fba05ad18e47600a061237fb826275ab915e3660c2387b0bcc2aa270b",
+  "file": "raw/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps.html"
+ },
+ "/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build": {
+  "url": "http://vandiest.biz/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build",
+  "status": 200,
+  "bytes": 20638,
+  "sha256": "87247dbcd65b125e9703eb8333a2451ffcd76e29ca8afd253163c505361fc76b",
+  "file": "raw/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build.html"
+ },
+ "/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb": {
+  "url": "http://vandiest.biz/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb",
+  "status": 200,
+  "bytes": 24385,
+  "sha256": "d46018bd3224e447c6d5b06fbf670786111882af340a6174b2d220277433739f",
+  "file": "raw/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb.html"
+ },
+ "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript": {
+  "url": "http://vandiest.biz/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "status": 200,
+  "bytes": 36320,
+  "sha256": "4e2f53564752b1ea5dbc1c550ad24a065cddf7754e35eea33ac78e497f7a1166",
+  "file": "raw/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript.html"
+ },
+ "/post/2016/09/01/building-typescript-with-gulp": {
+  "url": "http://vandiest.biz/post/2016/09/01/building-typescript-with-gulp",
+  "status": 200,
+  "bytes": 20943,
+  "sha256": "18f86d0b69a128b361ffc3c29155f353e8638b07db1705b322b4323c49f380d5",
+  "file": "raw/post/2016/09/01/building-typescript-with-gulp.html"
+ },
+ "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer": {
+  "url": "http://vandiest.biz/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "status": 200,
+  "bytes": 34776,
+  "sha256": "3cc047f42d7ace732830266589485e1ccabb1973d9901877e8e6d52b7a2bc0e8",
+  "file": "raw/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer.html"
+ },
+ "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core": {
+  "url": "http://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core",
+  "status": 200,
+  "bytes": 21869,
+  "sha256": "2b9758df5da3f60a45062eabd3ef78634f67ef8f49c6f6ca1f9cc5904512d77a",
+  "file": "raw/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core.html"
+ },
+ "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1": {
+  "url": "http://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1",
+  "status": 200,
+  "bytes": 29967,
+  "sha256": "faeb6faaa9b6759747b7e6e8b2fa8b8bf73450853fe30a268176765af2ea2456",
+  "file": "raw/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1.html"
+ },
+ "/post/2017/11/10/continous-delivery-can-t-be-bought-in-a-box": {
+  "url": "http://vandiest.biz/post/2017/11/10/continous-delivery-can-t-be-bought-in-a-box",
+  "status": 200,
+  "bytes": 19718,
+  "sha256": "13d1e9818928410240298f5af9bf004605e59de5464eca0a5148608ba2134a26",
+  "file": "raw/post/2017/11/10/continous-delivery-can-t-be-bought-in-a-box.html"
+ },
+ "/post/2018/01/10/continous-delivery-as-a-paradigm-shift": {
+  "url": "http://vandiest.biz/post/2018/01/10/continous-delivery-as-a-paradigm-shift",
+  "status": 200,
+  "bytes": 23870,
+  "sha256": "591378b9c33a50e89b47152ba7e3075db553f9d361bc8f0d5fa475de4a2eac91",
+  "file": "raw/post/2018/01/10/continous-delivery-as-a-paradigm-shift.html"
+ },
+ "/post/2018/09/10/best-practices-on-how-to-architect-for-faster-and-better-delivery-in-the-enterprise": {
+  "url": "http://vandiest.biz/post/2018/09/10/best-practices-on-how-to-architect-for-faster-and-better-delivery-in-the-enterprise",
+  "status": 200,
+  "bytes": 21009,
+  "sha256": "bfbbddbdfa6fc14654447fea64a77ed41d2329d8a357f141c94bf691bb9ab990",
+  "file": "raw/post/2018/09/10/best-practices-on-how-to-architect-for-faster-and-better-delivery-in-the-enterprise.html"
+ },
+ "/post/2018/09/10/bottlenecks-linked-with-big-systems": {
+  "url": "http://vandiest.biz/post/2018/09/10/bottlenecks-linked-with-big-systems",
+  "status": 200,
+  "bytes": 20421,
+  "sha256": "a5c4a5845e509bb613ae70cb6a05924864ba81e9284e5fe6e04341568c073806",
+  "file": "raw/post/2018/09/10/bottlenecks-linked-with-big-systems.html"
+ },
+ "/post/2018/09/24/automate-your-db-deployment-with-dbup": {
+  "url": "http://vandiest.biz/post/2018/09/24/automate-your-db-deployment-with-dbup",
+  "status": 200,
+  "bytes": 19061,
+  "sha256": "7363535907832e6a83eca9fbeb233a54183949e25133056f13158b0e6a6148a2",
+  "file": "raw/post/2018/09/24/automate-your-db-deployment-with-dbup.html"
+ },
+ "/post/2018/10/16/is-my-dream-team-a-feature-team": {
+  "url": "http://vandiest.biz/post/2018/10/16/is-my-dream-team-a-feature-team",
+  "status": 200,
+  "bytes": 20818,
+  "sha256": "fd62b35291f28a1c2b776a664cfe68468287ae5ff89ed7c15e868ec373d1253a",
+  "file": "raw/post/2018/10/16/is-my-dream-team-a-feature-team.html"
+ },
+ "/post/2020/01/06/oidc-with-auth0-angular-and-dotnet-core-3-1": {
+  "url": "http://vandiest.biz/post/2020/01/06/oidc-with-auth0-angular-and-dotnet-core-3-1",
+  "status": 200,
+  "bytes": 19706,
+  "sha256": "57900d707474949508d8fe257b1a356221ec6d2172bfcdb45d1b0bc60cfc6e27",
+  "file": "raw/post/2020/01/06/oidc-with-auth0-angular-and-dotnet-core-3-1.html"
+ },
+ "/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture": {
+  "url": "http://vandiest.biz/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture",
+  "status": 200,
+  "bytes": 21108,
+  "sha256": "3ce5735a0e12d644d34c9db0a64c7d921c737f7daf6bf8f530f2c8865ad181f0",
+  "file": "raw/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture.html"
+ },
+ "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor": {
+  "url": "http://vandiest.biz/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor",
+  "status": 200,
+  "bytes": 55979,
+  "sha256": "3b1f873f76723b3c88cb8ad44ec2e63351c6e72f335716fe5a8a9e6ff23225a7",
+  "file": "raw/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor.html"
+ },
+ "/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing": {
+  "url": "http://vandiest.biz/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing",
+  "status": 200,
+  "bytes": 22005,
+  "sha256": "8b6081707b26a16673a189c2390746921160d296cc794720d84ad55d816d3431",
+  "file": "raw/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing.html"
+ },
+ "/post/2023/06/21/orchestrating-success-the-harmonious-ensemble-behind-automated-testing": {
+  "url": "http://vandiest.biz/post/2023/06/21/orchestrating-success-the-harmonious-ensemble-behind-automated-testing",
+  "status": 200,
+  "bytes": 22489,
+  "sha256": "f96546938533c25e58c083fb1a96cec04a01dee9abd8eca93830b50ab2ae3ef7",
+  "file": "raw/post/2023/06/21/orchestrating-success-the-harmonious-ensemble-behind-automated-testing.html"
+ },
+ "/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt": {
+  "url": "http://vandiest.biz/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt",
+  "status": 200,
+  "bytes": 21757,
+  "sha256": "650bbf3461cb976e4ae774a8d6c1c0b6784fe1b91a06a6526330ed33b900e3a0",
+  "file": "raw/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt.html"
+ },
+ "/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability": {
+  "url": "http://vandiest.biz/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability",
+  "status": 200,
+  "bytes": 39601,
+  "sha256": "44271afead3d96d3a06c281e5d919ba0fe9ce3b5dc36e68fd13a3b79d1b6bd44",
+  "file": "raw/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability.html"
+ },
+ "/post/2023/07/07/best-practices-for-effective-unit-testing-in-c": {
+  "url": "http://vandiest.biz/post/2023/07/07/best-practices-for-effective-unit-testing-in-c",
+  "status": 200,
+  "bytes": 25191,
+  "sha256": "f6d5e96186cda200eb3f279d9fb1aeecf6d3f4a2f74ee2fa39995132d0730938",
+  "file": "raw/post/2023/07/07/best-practices-for-effective-unit-testing-in-c.html"
+ },
+ "/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure": {
+  "url": "http://vandiest.biz/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure",
+  "status": 200,
+  "bytes": 21668,
+  "sha256": "13ba1074aa2b22b0dd57af041c7df0190bf9278470766588d707187911e8445c",
+  "file": "raw/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure.html"
+ },
+ "/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor": {
+  "url": "http://vandiest.biz/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor",
+  "status": 200,
+  "bytes": 26748,
+  "sha256": "271f1b5b4145a4da2fa4804ecb5c2c37e9a078c1eef384d61863896a019e9511",
+  "file": "raw/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor.html"
+ },
+ "/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects": {
+  "url": "http://vandiest.biz/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects",
+  "status": 200,
+  "bytes": 71722,
+  "sha256": "fbc97fbb00e00a2d2848a52e0be2e70f3400fe352086134bbbe095faea9dc998",
+  "file": "raw/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects.html"
+ },
+ "/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control": {
+  "url": "http://vandiest.biz/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control",
+  "status": 200,
+  "bytes": 71158,
+  "sha256": "a1735fe5ba1fee642bc062cca3c4ed1ae5134502e102c211f2db8a9fbba7afd4",
+  "file": "raw/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control.html"
+ }
+}

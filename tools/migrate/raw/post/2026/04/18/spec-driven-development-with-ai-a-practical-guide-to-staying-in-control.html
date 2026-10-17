@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="contents" title="Archive" href="/archive" />
+	<link rel="start" title="Geoffrey Vandiest Blog" href="/" />
+	<link type="application/rsd+xml" rel="edituri" title="RSD" href="http://vandiest.biz/rsd.axd" />
+	<link type="application/rdf+xml" rel="meta" title="SIOC" href="http://vandiest.biz/sioc.axd" />
+	<link type="application/apml+xml" rel="meta" title="APML" href="http://vandiest.biz/apml.axd" />
+	<link type="application/rdf+xml" rel="meta" title="FOAF" href="http://vandiest.biz/foaf.axd" />
+	<link type="application/rss+xml" rel="alternate" title="Geoffrey Vandiest Blog (RSS)" href="http://vandiest.biz/syndication.axd" />
+	<link type="application/atom+xml" rel="alternate" title="Geoffrey Vandiest Blog (ATOM)" href="http://vandiest.biz/syndication.axd?format=atom" />
+	<link type="application/opensearchdescription+xml" rel="search" title="Geoffrey Vandiest Blog" href="http://vandiest.biz/opensearch.axd" />
+	<link href="/Content/Auto/Global.css" rel="stylesheet" type="text/css" /><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/Custom/Themes/SimpleBlog/include/styles.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shCore.css" /><link rel="stylesheet" href="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/styles/shThemeDefault.css" /><link rel="shortcut icon" href="../../../../pics/blogengine.ico" type="image/x-icon" />
+	<script type="text/javascript" src="/en.res.axd"></script>
+	<script type="text/javascript" src="/Scripts/Auto/01-jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/02-jquery.cookie.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/04-jquery-jtemplates.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/05-json2.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Auto/blog.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/XRegExp.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/shActivator.js"></script>
+    <script src="/Custom/Themes/SimpleBlog/include/modernizr.js"></script>
+
+	<meta name="description" content="Geoffrey Vandiest Blog - about software development. - AI coding tools have made it remarkably easy to generate software at speed. They can scaffold featur" />
+	<meta name="author" content="Geoffrey Vandiest" />
+<link rel="last" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" />
+<link rel="first" title="Automated testing and the software factory" href="/post/2008/09/08/Automated-testing-and-the-software-factory" />
+<link type="application/rss+xml" rel="alternate" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control (RSS)" href="/post/feed/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control?format=ATOM" />
+<link type="application/rss+xml" rel="alternate" title="Spec-Driven Development with AI: A Practical Guide to Staying in Control (ATOM)" href="/post/feed/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control?format=ATOM" />
+<!-- Start custom code -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-62789637-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-62789637-1');
+</script>
+<!-- End custom code -->
+<title>
+	Geoffrey Vandiest Blog | Spec-Driven Development with AI: A Practical Guide to Staying in Control
+</title></head>
+
+<!-- You can customize it on Admin - more information: http://seyfolahi.net/ -->
+<body class="default-theme default-header fixnav banner responsive fade">
+
+    <form method="post" action="./spec-driven-development-with-ai-a-practical-guide-to-staying-in-control?id=000ffacf-a865-44a4-949b-fa7cb6df9414" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="+ZhwlgsbIfRIAoTS7MaBnUmoOlrLblJNgdPivPlseYdhEOWI8OwRB9NGnVGXfVmbucS8AISDJ+xw7+tra9ji3quCEQjOM8JgF1MNQMyEd7Kqf1vnRcLXXlKkABRAg2EXdf3MbWXJ4jSCINP0cGExHdO+RTumMtsRgk7hhlLleJbo4X797LUNLLcgmDktj42dW/37unjo0/k0RAulc6WsGFqMufsa7XJ+4s/OOjG4T7fzB5iB+WgOpx/icNr8OS2CEQTz/69hEcD6Qwdzh9I/p2HTSsRegZbSRTsYvcJRaqantY2R28NgHQQB4Nclpl8Op6IZZM61ZtC+S3SIeyqhZYyh7C18/Udv9DDVzigcwGW4Sb3zo0D7TF98n7zf7DVxGxcMA7LFlvbq/XV6QLuYJT9jwuxz6ge3NEU4KJUM6Qc4J4Z1BDZ8HdP9Sd1JCRWBMHESw3ccrvO/J3R1T4QrlxsB8SAO+PBlYhToVvHecZ1k3yTuZLbs7yNLFuy7axMJmnGp5GdJ5U2qPG02Nd4lvfH9qLzTye233GyKuzRizreFbGUCWaAI1tUNg/R10ErLiwYFfASHLy/JJl6GAXEp+OR2JMucn8fySaDiwQ1ygmGu6ta1eOfsb6QiFVjBmapOr17Jkn2dfJ0dIrNSGZov82i+G/f5O/MIrkkR917HBGEk8313HXmDFC9jnaWiFbW/KSAz8A1etc/VpTg35k7C4ycXhZU/wVCTIGArfaj/6J9hjAIEilfPP8RPyqTtHwXu/mveQAvVVItfsZT8oU2jSgDc7fQ9gO/h8mUwmUIdHNTMbPl0Qdyov5Q/c+MvKWKy8HWQEQACAZZHcDUQdjssY+SzpPdZ8nH/esFFolGHMvPzJVXgmPAD9v2CMH/34XcmIorQGuGuWc8ljayIJ3/inmEFgds=" />
+</div>
+
+        <div class="ltr">
+            <header class="header">
+                <div class="line-header">
+                    <div class="container">
+                        <nav class="nav-header navbar float-left">
+                            <ul class="nav" id="nav">
+                                <li><a href="http://vandiest.biz/" rel="home" class="acitve"><span>Home</span></a></li>
+                                <li><a href="http://vandiest.biz/archive">Archive</a></li>
+                                <li><a href="http://vandiest.biz/contact">Contact</a></li>
+                                
+                            </ul>
+                        </nav>
+                        <div class="search float-right">
+                            <div class="btn-toggle-search" title="Search..."></div>
+                            <div id="searchbox">
+<label for="searchfield" style="display:none">Search</label><input type="text" value="Enter search term or APML url" id="searchfield" onkeypress="if(event.keyCode==13) return BlogEngine.search('/','searchfield')" onfocus="BlogEngine.searchClear('Enter search term or APML url','searchfield')" onblur="BlogEngine.searchClear('Enter search term or APML url','searchfield')" /><input type="button" value="Search" id="searchbutton" onclick="BlogEngine.search('/','searchfield');" onkeypress="BlogEngine.search('/','searchfield');" /></div>
+
+                        </div>
+                        <div class="social float-right" id="social">
+                            <ul class="tooltip">
+                                <li class="fb"><a href="http://facebook.com/geoffrey.vandiest" title="Facebook" rel="nofollow" target="_blank"><span>Facebook</span></a></li>
+                                <li class="tw"><a href="http://twitter.com/@GVD8" title="Twitter" rel="nofollow" target="_blank"><span>Twitter</span></a></li>
+                                <li class="gp"><a href="http://plus.google.com/#" title="Google Plus" rel="author" target="_blank"><span>Google Plus</span></a></li>
+                                <li class="rs"><a href="http://vandiest.biz/syndication.axd" title="Subscribe"><span>Subscrib</span></a></li>
+                                <li class="yt"><a href="http://youtube.com/#" title="Youtube" rel="nofollow" target="_blank"><span>Youtube</span></a></li>
+                                <li class="li"><a href="http://linkedin.com/in/#" title="Linkedin" rel="nofollow" target="_blank"><span>LinkedIn</span></a></li>
+                                <li class="is"><a href="http://instagram.com/#" title="Instagram" rel="nofollow" target="_blank"><span>Instagram</span></a></li>
+                                <li class="gi"><a href="http://github.com/geobarteam" title="github" rel="nofollow" target="_blank"><span>github</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-header">
+                    <div class="item-r item-1" id="bg1"></div>
+                    <div class="item-r item-2" id="bg2"></div>
+                    <div class="item-r item-3" id="bg3"></div>
+                    <hgroup class="container title-blog text-center">
+                        <h1>
+                            <a href="http://vandiest.biz/">Geoffrey Vandiest Blog</a>
+                        </h1>
+                        <h2>about software development.</h2>
+                    </hgroup>
+                </div>
+            </header>
+            <section class="container main-section clearfix">
+                <section class="content float-left">
+                    
+                    
+  
+  
+
+  
+<div id="postnavigation">
+    <a href="" class="nav-next"></a> |
+    <a href="/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects" class="nav-prev">From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects</a>
+</div>
+
+ 
+  
+<article class="post" id="post0">
+    <h2 class="post-title">
+        <a href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" class="taggedlink">Spec-Driven Development with AI: A Practical Guide to Staying in Control</a>
+    </h2>
+    <div class="post-info Clear">
+        <span class="post-date">18. April 2026 <span class="separator"></span></span>
+        <span class="post-author"><a href="http://vandiest.biz/author/Admin">Geobarteam</a> <span class="separator"></span></span>
+        <span class="post-category"> </span>
+        <a class="post-comment" rel="nofollow" href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control#comment">Comments (0)</a>
+        <script type="text/javascript">$('#post0 .post-category:has(a)').append('<span class="separator"></span>');</script>
+    </div>
+    <div class="post-body text">
+        <p class="code-line" dir="auto" data-line="6"><img src="/image.axd?picture=/1fa394a0-8add-467d-aceb-e0543ce1007b.png" alt="" /><br />AI coding tools have made it remarkably easy to generate software at speed. They can scaffold features, sketch architecture, wire endpoints, and fill in boilerplate in a matter of minutes. That speed is real, and in the right hands it is valuable. But it also creates a new kind of risk: teams can move from idea to implementation so quickly that they skip the thinking that keeps a system coherent.</p>
+<p class="code-line" dir="auto" data-line="8">This article is about that missing discipline. More specifically, it is about the&nbsp;<strong>spec-driven development process</strong>: how to turn a vague feature request into a clear specification, a reviewed plan, and a sequence of small, testable steps that keep the developer in control. The goal is not to slow AI down. It is to give that speed structure, so that what gets built still reflects deliberate design rather than improvised output.</p>
+<p class="code-line" dir="auto" data-line="10">If Part 1 was about principles and tooling, this article is about workflow. We will look at how specifications, plans, and Red-Green-Refactor with human gates fit together into a practical process you can actually use on a real project.</p>
+<hr class="code-line" dir="auto" data-line="12" />
+<h2 id="the-problem-vibe-coding-feels-fast-until-it-doesnt" class="code-line" dir="auto" data-line="14">The Problem: Vibe Coding Feels Fast Until It Doesn't</h2>
+<p class="code-line" dir="auto" data-line="16">Most teams experimenting with AI coding assistants fall into the same trap.</p>
+<p class="code-line" dir="auto" data-line="18">Someone types:</p>
+<blockquote class="code-line" dir="auto" data-line="20">
+<p class="code-line" dir="auto" data-line="20">"Add a subscriptions feature to the app."</p>
+</blockquote>
+<p class="code-line" dir="auto" data-line="22">The model starts working. Entities appear. Repositories show up. Controllers and DTOs materialize. A page gets scaffolded. Twenty minutes later there are fifteen new files across half the solution, and at first glance it all looks plausible.</p>
+<p class="code-line" dir="auto" data-line="24">That is exactly the danger.</p>
+<p class="code-line" dir="auto" data-line="26">The code often&nbsp;<em>looks</em>&nbsp;coherent long before it actually is. The entity does not match the database schema. The DTO exposes fields the UI never uses and misses fields it needs. The controller returns a shape the client does not expect. Naming drifts away from the rest of the codebase. Tests are missing or meaningless. And the developer, who is still accountable for the result, can no longer explain why the design looks the way it does.</p>
+<p class="code-line" dir="auto" data-line="28">That is what I mean by&nbsp;<strong>vibe coding</strong>: using AI in a way that creates the&nbsp;<em>feeling</em>&nbsp;of momentum while steadily eroding control.</p>
+<p class="code-line" dir="auto" data-line="30">The alternative is&nbsp;<strong>spec-driven development</strong>. Instead of asking the AI to improvise, you give it a clear contract, a reviewed plan, and a tight execution loop. The model still writes code, but it does so inside a process the developer controls.</p>
+<hr class="code-line" dir="auto" data-line="32" />
+<h2 id="the-three-pillars" class="code-line" dir="auto" data-line="34">The Three Pillars</h2>
+<p class="code-line" dir="auto" data-line="36">In practice, spec-driven development with AI rests on three pillars:</p>
+<ol class="code-line" dir="auto" data-line="38">
+<li class="code-line" dir="auto" data-line="38"><strong>Specifications</strong>&nbsp;&mdash; define what should be built before code exists.</li>
+<li class="code-line" dir="auto" data-line="39"><strong>Plans</strong>&nbsp;&mdash; break the work into small vertical slices before implementation starts.</li>
+<li class="code-line" dir="auto" data-line="40"><strong>Red-Green-Refactor with human gates</strong>&nbsp;&mdash; implement one verified step at a time.</li>
+</ol>
+<p class="code-line" dir="auto" data-line="42">Each pillar solves a different failure mode.</p>
+<ul class="code-line" dir="auto" data-line="44">
+<li class="code-line" dir="auto" data-line="44">Specs stop the AI from guessing.</li>
+<li class="code-line" dir="auto" data-line="45">Plans stop the AI from wandering across the architecture.</li>
+<li class="code-line" dir="auto" data-line="46">Red-Green-Refactor with gates stops mistakes from compounding across multiple steps.</li>
+</ul>
+<p class="code-line" dir="auto" data-line="48">Once these three are in place, the AI becomes much more useful. It stops behaving like an overeager intern and starts behaving like a disciplined teammate.</p>
+<hr class="code-line" dir="auto" data-line="50" />
+<h2 id="pillar-1-specifications--the-contract-between-the-developer-and-the-model" class="code-line" dir="auto" data-line="52">Pillar 1: Specifications &mdash; The Contract Between the Developer and the Model</h2>
+<h3 id="why-specs-matter" class="code-line" dir="auto" data-line="54">Why Specs Matter</h3>
+<p class="code-line" dir="auto" data-line="56">Without a spec, the AI is forced to infer intent from a vague prompt.</p>
+<p class="code-line" dir="auto" data-line="58">"Add subscriptions" sounds simple, but it leaves too many decisions open:</p>
+<ul class="code-line" dir="auto" data-line="60">
+<li class="code-line" dir="auto" data-line="60">What properties does a subscription have?</li>
+<li class="code-line" dir="auto" data-line="61">Who is allowed to create one?</li>
+<li class="code-line" dir="auto" data-line="62">Which validation rules apply?</li>
+<li class="code-line" dir="auto" data-line="63">Which endpoints are required?</li>
+<li class="code-line" dir="auto" data-line="64">What happens when there are no subscriptions?</li>
+<li class="code-line" dir="auto" data-line="65">What is intentionally out of scope?</li>
+</ul>
+<p class="code-line" dir="auto" data-line="67">The model will happily answer all of those questions for you. The problem is that it answers them by guessing.</p>
+<p class="code-line" dir="auto" data-line="69">A good specification removes that guesswork. It captures the things the AI should not invent for itself:</p>
+<ul class="code-line" dir="auto" data-line="71">
+<li class="code-line" dir="auto" data-line="71"><strong>Who</strong>&nbsp;the feature is for</li>
+<li class="code-line" dir="auto" data-line="72"><strong>What</strong>&nbsp;the user can do</li>
+<li class="code-line" dir="auto" data-line="73"><strong>Acceptance criteria</strong>&nbsp;for done</li>
+<li class="code-line" dir="auto" data-line="74"><strong>Data model</strong>&nbsp;and constraints</li>
+<li class="code-line" dir="auto" data-line="75"><strong>API surface</strong></li>
+<li class="code-line" dir="auto" data-line="76"><strong>Business rules</strong>&nbsp;and expected error messages</li>
+<li class="code-line" dir="auto" data-line="77"><strong>Edge cases</strong></li>
+<li class="code-line" dir="auto" data-line="78"><strong>Out-of-scope items</strong></li>
+</ul>
+<p class="code-line" dir="auto" data-line="80">Once this exists, the developer and the AI are working from the same contract.</p>
+<h3 id="a-concrete-spec-example" class="code-line" dir="auto" data-line="82">A Concrete Spec Example</h3>
+<p class="code-line" dir="auto" data-line="84">Here is a realistic spec for a "Patient Subscriptions" feature:</p>
+<pre><code class="code-line language-markdown" dir="auto" data-line="86"><span class="hljs-section"># Spec: Patient Subscriptions</span>
+
+<span class="hljs-section">## User Story</span>
+
+<span class="hljs-strong">**As a**</span> patient,
+<span class="hljs-strong">**I want to**</span> view my active medication subscriptions,
+<span class="hljs-strong">**So that**</span> I can track which medications are being dispensed on my behalf.
+
+---
+
+<span class="hljs-section">## Acceptance Criteria</span>
+
+| # | Given | When | Then |
+|---|-------|------|------|
+| AC-1 | Patient is authenticated | They navigate to /subscriptions | A list of active subscriptions is displayed |
+| AC-2 | Patient has no subscriptions | They navigate to /subscriptions | An empty-state message is shown |
+| AC-3 | A subscription has expired | The list is loaded | Expired subscriptions are not shown |
+| AC-4 | Doctor creates a valid subscription | They submit the form | The subscription appears in the patient's list |
+| AC-5 | Doctor submits invalid data | They click Save | Validation errors are shown and nothing is persisted |
+
+---
+
+<span class="hljs-section">## Data Model</span>
+
+<span class="hljs-section">### Entity: `Subscription`</span>
+
+| Property | Type | Required | Constraints |
+|----------|------|----------|-------------|
+| Id | int | PK | Auto-generated |
+| PatientId | int | Yes | FK -&gt; Patient |
+| MedicationName | string | Yes | Max 200 chars |
+| StartDate | DateOnly | Yes | Must be today or later |
+| EndDate | DateOnly | No | Must be after StartDate |
+| CreatedBy | string | Yes | Doctor's national register ID |
+
+---
+
+<span class="hljs-section">## API Endpoints</span>
+
+<span class="hljs-section">### `GET /api/subscriptions?patientId={id}`</span>
+<span class="hljs-strong">**Purpose**</span>: Return active subscriptions for a patient.  
+<span class="hljs-strong">**Auth**</span>: Bearer (patient or doctor role)  
+<span class="hljs-strong">**Response**</span> (200):
+<span class="hljs-code">```json
+[
+  {
+    "id": 1,
+    "medicationName": "Metformin 500mg",
+    "startDate": "2026-04-01",
+    "endDate": "2026-10-01"
+  }
+]
+```</span>
+<span class="hljs-strong">**Error responses**</span>: 401 -&gt; Unauthorized, 403 -&gt; Wrong patient
+
+<span class="hljs-section">### `POST /api/subscriptions`</span>
+<span class="hljs-strong">**Purpose**</span>: Create a new subscription.  
+<span class="hljs-strong">**Auth**</span>: Bearer (doctor role only)  
+<span class="hljs-strong">**Request body**</span>:
+<span class="hljs-code">```json
+{
+  "patientId": 42,
+  "medicationName": "Metformin 500mg",
+  "startDate": "2026-04-01",
+  "endDate": "2026-10-01"
+}
+```</span>
+<span class="hljs-strong">**Response**</span> (201): Created subscription  
+<span class="hljs-strong">**Error responses**</span>: 400 -&gt; Validation errors, 401, 403
+
+---
+
+<span class="hljs-section">## Business Rules</span>
+
+| # | Rule | Error message |
+|---|------|---------------|
+| BR-1 | MedicationName is required | "Medication name is required" |
+| BR-2 | StartDate must be today or later | "Start date cannot be in the past" |
+| BR-3 | EndDate, if provided, must be after StartDate | "End date must be after start date" |
+| BR-4 | Only doctors can create subscriptions | HTTP 403 |
+
+---
+
+<span class="hljs-section">## Out of Scope</span>
+
+<span class="hljs-bullet">-</span> Editing or deleting subscriptions
+<span class="hljs-bullet">-</span> Medication lookup or auto-complete
+<span class="hljs-bullet">-</span> Notifications when a subscription is created
+<span class="hljs-bullet">-</span> Prescription history
+</code></pre>
+<p class="code-line" dir="auto" data-line="178">This is not documentation for documentation's sake. It is the minimum structure needed to stop the AI from improvising on critical details.</p>
+<h3 id="what-the-spec-actually-buys-you" class="code-line" dir="auto" data-line="180">What the Spec Actually Buys You</h3>
+<p class="code-line" dir="auto" data-line="182">The value of a spec is not abstract. It shows up immediately in review.</p>
+<p class="code-line" dir="auto" data-line="184">If the AI writes validation logic using&nbsp;<code>&gt;=</code>&nbsp;instead of&nbsp;<code>&gt;</code>, you can point directly to BR-3. If it adds edit and delete endpoints, you can point to the out-of-scope section. If it makes&nbsp;<code>EndDate</code>&nbsp;required, you can point to the data model.</p>
+<p class="code-line" dir="auto" data-line="186">That changes the developer's role. Instead of arguing with code, you are validating implementation against an agreed contract.</p>
+<h3 id="writing-the-spec-with-ai" class="code-line" dir="auto" data-line="188">Writing the Spec with AI</h3>
+<p class="code-line" dir="auto" data-line="190">This is one of the most useful ways to use AI early in the process.</p>
+<p class="code-line" dir="auto" data-line="192">You do not need to sit down and write the whole spec from a blank page. A better approach is an&nbsp;<strong>interview-style prompt</strong>&nbsp;that asks focused questions and assembles the answers into a structured&nbsp;<code>_specs/&lt;FeatureName&gt;.md</code>&nbsp;file.</p>
+<p class="code-line" dir="auto" data-line="194">That is why this repo now includes a dedicated&nbsp;<code>write-spec</code>&nbsp;prompt. The workflow is simple:</p>
+<ol class="code-line" dir="auto" data-line="196">
+<li class="code-line" dir="auto" data-line="196">The developer brings the feature idea.</li>
+<li class="code-line" dir="auto" data-line="197">The AI runs a short Q&amp;A session.</li>
+<li class="code-line" dir="auto" data-line="198">The AI drafts the user story, acceptance criteria, data model, API surface, business rules, edge cases, and out-of-scope section.</li>
+<li class="code-line" dir="auto" data-line="199">The developer reviews and adjusts the spec.</li>
+<li class="code-line" dir="auto" data-line="200">Only then does planning begin.</li>
+</ol>
+<p class="code-line" dir="auto" data-line="202">This matters because the interview happens at the right level. You are discussing intent, not classes and folders. That keeps the conversation grounded in product and business behaviour before implementation details take over.</p>
+<h3 id="when-to-write-specs" class="code-line" dir="auto" data-line="204">When to Write Specs</h3>
+<p class="code-line" dir="auto" data-line="206">Not every change needs a specification.</p>
+<ul class="code-line" dir="auto" data-line="208">
+<li class="code-line" dir="auto" data-line="208"><strong>Spec required</strong>: new feature, new user-facing behaviour, new API surface</li>
+<li class="code-line" dir="auto" data-line="209"><strong>Spec optional</strong>: larger refactor, infrastructure change, architecture decision</li>
+<li class="code-line" dir="auto" data-line="210"><strong>No spec needed</strong>: bugfix, config correction, 1-2 file change</li>
+</ul>
+<p class="code-line" dir="auto" data-line="212">In this workflow, specs live at&nbsp;<code>_specs/&lt;FeatureName&gt;.md</code>&nbsp;in the repository root.</p>
+<hr class="code-line" dir="auto" data-line="214" />
+<h2 id="pillar-2-plans--turning-intent-into-an-execution-strategy" class="code-line" dir="auto" data-line="216">Pillar 2: Plans &mdash; Turning Intent into an Execution Strategy</h2>
+<h3 id="from-spec-to-plan" class="code-line" dir="auto" data-line="218">From Spec to Plan</h3>
+<p class="code-line" dir="auto" data-line="220">The spec defines&nbsp;<strong>what</strong>&nbsp;should exist. The plan defines&nbsp;<strong>how</strong>&nbsp;the work will be delivered.</p>
+<p class="code-line" dir="auto" data-line="222">That distinction matters.</p>
+<p class="code-line" dir="auto" data-line="224">The spec says, "patients can view subscriptions" and "doctors can create subscriptions." The plan says, "first build the list page with a stubbed service, then wire it to the real API, then build the create form, then wire the create flow." The plan translates intent into an ordered set of implementation steps.</p>
+<p class="code-line" dir="auto" data-line="226">A plan lives at&nbsp;<code>_plans/&lt;FeatureName&gt;.md</code>. Each step is one Red-Green-Refactor cycle with explicit scope, tests, proof criteria, and a human gate.</p>
+<h3 id="the-planning-gate" class="code-line" dir="auto" data-line="228">The Planning Gate</h3>
+<p class="code-line" dir="auto" data-line="230">Before any code is written, the plan must be reviewed and approved.</p>
+<p class="code-line" dir="auto" data-line="232">This is the hard stop between thinking and doing.</p>
+<p class="code-line" dir="auto" data-line="234">The AI should ask a simple question:</p>
+<blockquote class="code-line" dir="auto" data-line="236">
+<p class="code-line" dir="auto" data-line="236">Does this change need a plan?</p>
+</blockquote>
+<table class="code-line" dir="auto" data-line="238">
+<thead class="code-line" dir="auto" data-line="238">
+<tr class="code-line" dir="auto" data-line="238">
+<th>Situation</th>
+<th>Plan required?</th>
+</tr>
+</thead>
+<tbody class="code-line" dir="auto" data-line="240">
+<tr class="code-line" dir="auto" data-line="240">
+<td>New feature or vertical slice</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr class="code-line" dir="auto" data-line="241">
+<td>Change touching 3+ files</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr class="code-line" dir="auto" data-line="242">
+<td>Risk area: auth, PII, DB schema, shared contracts</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr class="code-line" dir="auto" data-line="243">
+<td>1-2 file bugfix</td>
+<td>No, but still test-first</td>
+</tr>
+<tr class="code-line" dir="auto" data-line="244">
+<td>Config correction or simple refactor</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p class="code-line" dir="auto" data-line="246">If the answer is yes, the AI writes the plan and stops. No production code starts until the developer approves it.</p>
+<p class="code-line" dir="auto" data-line="248">That single rule prevents a remarkable amount of wasted work.</p>
+<h3 id="vertical-slices-not-horizontal-layers" class="code-line" dir="auto" data-line="250">Vertical Slices, Not Horizontal Layers</h3>
+<p class="code-line" dir="auto" data-line="252">This is the planning principle that matters most.</p>
+<p class="code-line" dir="auto" data-line="254">The natural instinct, for both humans and models, is to decompose work by layer:</p>
+<pre><code class="code-line" dir="auto" data-line="256">Step 1 &mdash; Create the Subscription entity
+Step 2 &mdash; Add SubscriptionRepository
+Step 3 &mdash; Create SubscriptionCreateHandler
+Step 4 &mdash; Add GET endpoint
+Step 5 &mdash; Add POST endpoint
+Step 6 &mdash; Build the subscriptions list page
+Step 7 &mdash; Build the create form
+</code></pre>
+<p class="code-line" dir="auto" data-line="266">It looks organized. In reality, it delays feedback and pushes integration risk to the end.</p>
+<p class="code-line" dir="auto" data-line="268">By the time you reach the UI, you may discover that the entity shape is wrong, the DTO is incomplete, the query returns the wrong projection, or the route contract does not match the client. Now several "completed" steps have to be reopened.</p>
+<p class="code-line" dir="auto" data-line="270">Vertical slicing avoids that by planning around&nbsp;<strong>user-visible behaviour</strong>&nbsp;instead of technical layers:</p>
+<pre><code class="code-line" dir="auto" data-line="272">Step 1 &mdash; Display subscription list (stubbed)
+Step 2 &mdash; Wire subscription list to real API
+Step 3 &mdash; Create subscription form (stubbed)
+Step 4 &mdash; Wire subscription create to real API
+</code></pre>
+<p class="code-line" dir="auto" data-line="279">Each slice has two phases:</p>
+<ol class="code-line" dir="auto" data-line="281">
+<li class="code-line" dir="auto" data-line="281"><strong>Stub</strong>&nbsp;&mdash; build the UI against a fake or mocked service so the user can validate the experience early.</li>
+<li class="code-line" dir="auto" data-line="282"><strong>Wire</strong>&nbsp;&mdash; replace the stub with real production code from controller to persistence and database.</li>
+</ol>
+<p class="code-line" dir="auto" data-line="284">This gives you three practical advantages:</p>
+<ul class="code-line" dir="auto" data-line="286">
+<li class="code-line" dir="auto" data-line="286"><strong>You fail fast.</strong>&nbsp;Contract mismatches show up on Step 2 instead of Step 7.</li>
+<li class="code-line" dir="auto" data-line="287"><strong>You get UI feedback early.</strong>&nbsp;The user can review the shape of the feature before backend code sprawls.</li>
+<li class="code-line" dir="auto" data-line="288"><strong>You reduce blast radius.</strong>&nbsp;If something changes, one slice moves, not the whole architecture.</li>
+</ul>
+<h3 id="a-concrete-plan-example" class="code-line" dir="auto" data-line="290">A Concrete Plan Example</h3>
+<p class="code-line" dir="auto" data-line="292">Here is a more realistic plan for the subscriptions feature:</p>
+<pre><code class="code-line language-markdown" dir="auto" data-line="294"><span class="hljs-section"># Plan: Patient Subscriptions &mdash; Patient views active medication subscriptions</span>
+
+<span class="hljs-section">## Overview</span>
+Patients can view their active medication subscriptions. Doctors can create new
+subscriptions. Reference feature: <span class="hljs-strong">**Doctors**</span>.
+
+---
+
+<span class="hljs-section">## Step 1 &mdash; Display subscription list (stubbed)</span>
+
+<span class="hljs-strong">**Scope**</span> <span class="hljs-emphasis">*(Presentation only &mdash; stub phase)*</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/ViewModels/SubscriptionsViewModel.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/ServiceClients/ISubscriptionServiceClient.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/ServiceClients/SubscriptionServiceClientStub.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/Pages/Subscriptions.razor`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Contracts/Subscriptions/Api/SubscriptionDto.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Test/Unit/Presentation/Subscriptions/SubscriptionsViewModelTests.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+
+<span class="hljs-strong">**RED**</span>:
+<span class="hljs-bullet">-</span> Test: <span class="hljs-code">`InitializeAsync_WithSubscriptions_LoadsList`</span>
+<span class="hljs-bullet">-</span> Command: <span class="hljs-code">`{{TestExePath}} --filter "SubscriptionsViewModelTests"`</span>
+
+<span class="hljs-strong">**GREEN**</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`SubscriptionDto`</span> with Id, MedicationName, StartDate, EndDate
+<span class="hljs-bullet">-</span> <span class="hljs-code">`ISubscriptionServiceClient`</span> with <span class="hljs-code">`GetByPatientAsync(int patientId)`</span>
+<span class="hljs-bullet">-</span> Stub service returning three fake subscriptions
+<span class="hljs-bullet">-</span> <span class="hljs-code">`SubscriptionsViewModel`</span> with <span class="hljs-code">`IsBusy`</span> guard and <span class="hljs-code">`InitializeAsync`</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`Subscriptions.razor`</span> bound to <span class="hljs-code">`ViewModel.Items`</span>
+
+<span class="hljs-strong">**DB changes**</span>: none
+
+<span class="hljs-strong">**🛑 HUMAN GATE**</span>:
+<span class="hljs-bullet">-</span> [ ] Behavioral: ViewModel test passes and the page renders three stubbed items
+<span class="hljs-bullet">-</span> [ ] Review: Page layout matches the reference feature pattern
+
+---
+
+<span class="hljs-section">## Step 2 &mdash; Wire subscription list to real API</span>
+
+<span class="hljs-strong">**Scope**</span> <span class="hljs-emphasis">*(all backend layers &mdash; wire phase)*</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Core/Domain/Functionalities/Subscriptions/Subscription.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Core/Persistence/EntityTypeConfigurations/SubscriptionConfiguration.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Core/Persistence/Repositories/SubscriptionRepository.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Core/Application/Functionalities/Subscriptions/Queries/GetSubscriptions/`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Host/Client/Controllers/SubscriptionController.cs`</span> <span class="hljs-emphasis">*(create &mdash; GET only)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Database/Scripts/0001_CreateSubscriptionTable.sql`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/ServiceClients/SubscriptionServiceClient.cs`</span> <span class="hljs-emphasis">*(create &mdash; real Refit-backed service client)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Shared/ServiceClients/Bff/Clients/ISubscriptionClient.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Test/Unit/Application/Subscriptions/GetSubscriptionsQueryTests.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Test/Integration/Endpoints/Subscriptions/GetSubscriptionsTest.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+
+<span class="hljs-strong">**RED**</span>:
+<span class="hljs-bullet">-</span> Unit: <span class="hljs-code">`Execute_WithActiveSubscriptions_ReturnsList`</span>
+<span class="hljs-bullet">-</span> Integration: <span class="hljs-code">`GetSubscriptions_Authenticated_ReturnsOk`</span>
+<span class="hljs-bullet">-</span> Integration: <span class="hljs-code">`GetSubscriptions_WrongPatient_ReturnsForbidden`</span>
+
+<span class="hljs-strong">**GREEN**</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`Subscription`</span> entity and repository
+<span class="hljs-bullet">-</span> <span class="hljs-code">`IGetSubscriptionsQuery`</span> and <span class="hljs-code">`GetSubscriptionsQuery`</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`SubscriptionController`</span> GET <span class="hljs-code">`/api/subscriptions?patientId={id}`</span>
+<span class="hljs-bullet">-</span> Refit client + real service client replacing the stub
+<span class="hljs-bullet">-</span> EF configuration + DbUp script
+
+<span class="hljs-strong">**DB changes**</span>: <span class="hljs-code">`src/Database/Scripts/0001_CreateSubscriptionTable.sql`</span>
+
+<span class="hljs-strong">**🛑 HUMAN GATE**</span>:
+<span class="hljs-bullet">-</span> [ ] Behavioral: Integration tests pass and GET <span class="hljs-code">`/api/subscriptions`</span> returns the expected list
+<span class="hljs-bullet">-</span> [ ] Review: Entity, query, repository, and controller follow the reference pattern
+
+---
+
+<span class="hljs-section">## Step 3 &mdash; Create subscription form (stubbed)</span>
+
+<span class="hljs-strong">**Scope**</span> <span class="hljs-emphasis">*(Presentation only &mdash; stub phase)*</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/ViewModels/AddSubscriptionViewModel.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/Pages/AddSubscription.razor`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Contracts/Subscriptions/Api/AddSubscriptionDto.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Test/Unit/Presentation/Subscriptions/AddSubscriptionViewModelTests.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+
+<span class="hljs-strong">**RED**</span>:
+<span class="hljs-bullet">-</span> Test: <span class="hljs-code">`Submit_EmptyMedicationName_ShowsValidationError`</span>
+<span class="hljs-bullet">-</span> Test: <span class="hljs-code">`Submit_ValidData_CallsService`</span>
+
+<span class="hljs-strong">**GREEN**</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`AddSubscriptionDto`</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`AddSubscriptionViewModel`</span> with BR-1 through BR-3 validation
+<span class="hljs-bullet">-</span> Stub submission flow
+<span class="hljs-bullet">-</span> <span class="hljs-code">`AddSubscription.razor`</span> with validated fields
+
+<span class="hljs-strong">**DB changes**</span>: none
+
+<span class="hljs-strong">**🛑 HUMAN GATE**</span>:
+<span class="hljs-bullet">-</span> [ ] Behavioral: Validation errors render correctly and valid submission calls the stub service
+<span class="hljs-bullet">-</span> [ ] Review: Form matches the business rules in the spec
+
+---
+
+<span class="hljs-section">## Step 4 &mdash; Wire subscription create to real API</span>
+
+<span class="hljs-strong">**Scope**</span> <span class="hljs-emphasis">*(all backend layers &mdash; wire phase)*</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Core/Application/Functionalities/Subscriptions/Commands/AddSubscription/`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Host/Client/Controllers/SubscriptionController.cs`</span> <span class="hljs-emphasis">*(modify &mdash; add POST)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Presentation/Subscriptions/ServiceClients/SubscriptionServiceClient.cs`</span> <span class="hljs-emphasis">*(modify &mdash; add AddAsync)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Test/Unit/Application/Subscriptions/AddSubscriptionHandlerTests.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`src/Test/Integration/Endpoints/Subscriptions/PostSubscriptionTest.cs`</span> <span class="hljs-emphasis">*(create)*</span>
+
+<span class="hljs-strong">**RED**</span>:
+<span class="hljs-bullet">-</span> Unit: <span class="hljs-code">`Execute_ValidCommand_ReturnsSuccess`</span>
+<span class="hljs-bullet">-</span> Unit: <span class="hljs-code">`Execute_PastStartDate_ReturnsFailure`</span>
+<span class="hljs-bullet">-</span> Integration: <span class="hljs-code">`PostSubscription_ValidData_ReturnsCreated`</span>
+<span class="hljs-bullet">-</span> Integration: <span class="hljs-code">`PostSubscription_MissingFields_ReturnsBadRequest`</span>
+
+<span class="hljs-strong">**GREEN**</span>:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`AddSubscriptionCommand`</span> and <span class="hljs-code">`AddSubscriptionCommandHandler`</span>
+<span class="hljs-bullet">-</span> POST <span class="hljs-code">`/api/subscriptions`</span>
+<span class="hljs-bullet">-</span> Real <span class="hljs-code">`AddAsync`</span> implementation in the service client
+
+<span class="hljs-strong">**DB changes**</span>: none
+
+<span class="hljs-strong">**🛑 HUMAN GATE**</span>:
+<span class="hljs-bullet">-</span> [ ] Behavioral: Integration tests pass; valid POST creates a record; invalid POST returns 400
+<span class="hljs-bullet">-</span> [ ] Review: Authorization and business rules are enforced correctly
+</code></pre>
+<p class="code-line" dir="auto" data-line="419">The important thing here is not the exact class names. It is the shape of the plan:</p>
+<ul class="code-line" dir="auto" data-line="421">
+<li class="code-line" dir="auto" data-line="421">step names describe behaviour</li>
+<li class="code-line" dir="auto" data-line="422">each slice is completed before the next starts</li>
+<li class="code-line" dir="auto" data-line="423">the stub phase is intentionally narrow</li>
+<li class="code-line" dir="auto" data-line="424">the wire phase crosses layers on purpose</li>
+<li class="code-line" dir="auto" data-line="425">every step has explicit proof and review criteria</li>
+</ul>
+<h3 id="the-interview-before-the-plan" class="code-line" dir="auto" data-line="427">The Interview Before the Plan</h3>
+<p class="code-line" dir="auto" data-line="429">Good planning starts with the right questions.</p>
+<p class="code-line" dir="auto" data-line="431">Before an AI writes a plan, it should confirm that it has enough information to do so safely:</p>
+<ol class="code-line" dir="auto" data-line="433">
+<li class="code-line" dir="auto" data-line="433">Which existing feature is the reference pattern?</li>
+<li class="code-line" dir="auto" data-line="434">What entities and properties are involved?</li>
+<li class="code-line" dir="auto" data-line="435">Is there a database change?</li>
+<li class="code-line" dir="auto" data-line="436">Are there relationships to existing entities?</li>
+<li class="code-line" dir="auto" data-line="437">Which endpoints are needed?</li>
+<li class="code-line" dir="auto" data-line="438">Which UI pages or routes are needed?</li>
+<li class="code-line" dir="auto" data-line="439">Are there auth or claims requirements?</li>
+</ol>
+<p class="code-line" dir="auto" data-line="441">If any of that is missing, the AI should ask now, not halfway through implementation.</p>
+<hr class="code-line" dir="auto" data-line="443" />
+<h2 id="pillar-3-red-green-refactor-with-human-gates" class="code-line" dir="auto" data-line="445">Pillar 3: Red-Green-Refactor with Human Gates</h2>
+<h3 id="the-core-loop" class="code-line" dir="auto" data-line="447">The Core Loop</h3>
+<p class="code-line" dir="auto" data-line="449">Every plan step should run through the same execution loop:</p>
+<pre><code class="code-line" dir="auto" data-line="451">READ      &mdash; Read the plan step and understand the scope.
+RED       &mdash; Write the failing test first. Run it. Confirm it fails.
+GREEN     &mdash; Write the minimum production code needed to pass.
+REFACTOR  &mdash; Clean up without changing behaviour.
+ANALYSE   &mdash; Run static analysis and fix issues.
+PROVE     &mdash; Build, test, and format checks all pass.
+🛑 STOP   &mdash; Present results and wait for human approval.
+MARK DONE &mdash; After approval, update the plan checkboxes.
+</code></pre>
+<p class="code-line" dir="auto" data-line="462">Three rules are non-negotiable:</p>
+<ol class="code-line" dir="auto" data-line="464">
+<li class="code-line" dir="auto" data-line="464"><strong>Never skip RED.</strong>&nbsp;The test must fail before production code exists.</li>
+<li class="code-line" dir="auto" data-line="465"><strong>Never batch steps.</strong>&nbsp;One step, one proof cycle, one review.</li>
+<li class="code-line" dir="auto" data-line="466"><strong>Never skip the human gate.</strong>&nbsp;Approval is part of the workflow, not an optional extra.</li>
+</ol>
+<h3 id="why-red-must-come-first" class="code-line" dir="auto" data-line="468">Why RED Must Come First</h3>
+<p class="code-line" dir="auto" data-line="470">The most common AI mistake is writing the test and the production code at the same time.</p>
+<p class="code-line" dir="auto" data-line="472">It feels efficient, but it breaks the feedback loop.</p>
+<p class="code-line" dir="auto" data-line="474">If the test was never observed failing, you do not know whether it would have caught a real defect. The assertion may be wrong. The mock setup may be too permissive. The test may accidentally validate nothing.</p>
+<p class="code-line" dir="auto" data-line="476">When the test fails first and then passes after the code change, the relationship is clear. The test is meaningful, and the production code is the reason it now passes.</p>
+<p class="code-line" dir="auto" data-line="478">That matters even more with AI-generated tests, because they often look correct while hiding subtle mistakes.</p>
+<h3 id="red-first-in-practice" class="code-line" dir="auto" data-line="480">RED-First in Practice</h3>
+<p class="code-line" dir="auto" data-line="482">Take Step 2 from the subscriptions example: return active subscriptions for a patient.</p>
+<p class="code-line" dir="auto" data-line="484">The AI starts by writing the failing unit test:</p>
+<pre><code class="code-line language-csharp" dir="auto" data-line="486">[<span class="hljs-meta">TestClass</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GetSubscriptionsQueryTests</span>
+{
+    [<span class="hljs-meta">TestMethod</span>]
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task <span class="hljs-title">Execute_WithActiveSubscriptions_ReturnsList</span>()</span>
+    {
+        <span class="hljs-comment">// Arrange</span>
+        <span class="hljs-keyword">var</span> mockRepo = <span class="hljs-keyword">new</span> Mock&lt;ISubscriptionRepository&gt;();
+        mockRepo.Setup(r =&gt; r.GetActiveByPatientAsync(<span class="hljs-number">42</span>))
+            .ReturnsAsync(<span class="hljs-keyword">new</span> List&lt;Subscription&gt;
+            {
+                <span class="hljs-keyword">new</span>()
+                {
+                    Id = <span class="hljs-number">1</span>,
+                    PatientId = <span class="hljs-number">42</span>,
+                    MedicationName = <span class="hljs-string">"Metformin 500mg"</span>,
+                    StartDate = <span class="hljs-keyword">new</span> DateOnly(<span class="hljs-number">2026</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>),
+                    EndDate = <span class="hljs-keyword">new</span> DateOnly(<span class="hljs-number">2026</span>, <span class="hljs-number">10</span>, <span class="hljs-number">1</span>),
+                },
+            });
+
+        <span class="hljs-keyword">var</span> query = <span class="hljs-keyword">new</span> GetSubscriptionsQuery(mockRepo.Object);
+
+        <span class="hljs-comment">// Act</span>
+        <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> query.Execute(<span class="hljs-number">42</span>);
+
+        <span class="hljs-comment">// Assert</span>
+        Assert.AreEqual(<span class="hljs-number">1</span>, result.Count);
+        Assert.AreEqual(<span class="hljs-string">"Metformin 500mg"</span>, result[<span class="hljs-number">0</span>].MedicationName);
+    }
+}
+</code></pre>
+<p class="code-line" dir="auto" data-line="520">At this point the test fails, because&nbsp;<code>GetSubscriptionsQuery</code>&nbsp;does not exist yet. Good. That is exactly what should happen.</p>
+<p class="code-line" dir="auto" data-line="522">Only then does the AI create the minimal production code: the repository contract, the query implementation, the mapping, and the endpoint path needed for the full slice. When the test turns green, you know it turned green for a reason.</p>
+<h3 id="the-human-gate" class="code-line" dir="auto" data-line="524">The Human Gate</h3>
+<p class="code-line" dir="auto" data-line="526">After the proof step, the AI stops and presents results.</p>
+<p class="code-line" dir="auto" data-line="528">For example:</p>
+<pre><code class="code-line language-text" dir="auto" data-line="530">Step 2 &mdash; Wire subscription list to real API
+
+Build:   0 warnings, 0 errors
+Tests:   24 passed, 0 failed
+Format:  no changes required
+
+🛑 HUMAN GATE:
+- [ ] Integration test GetSubscriptions_Authenticated_ReturnsOk passes
+- [ ] Query, repository, controller, and DTO follow the reference feature pattern
+</code></pre>
+<p class="code-line" dir="auto" data-line="542">This is where the developer checks the behaviour and the design:</p>
+<ul class="code-line" dir="auto" data-line="544">
+<li class="code-line" dir="auto" data-line="544">Does the implementation satisfy the spec?</li>
+<li class="code-line" dir="auto" data-line="545">Do the tests cover the acceptance criteria?</li>
+<li class="code-line" dir="auto" data-line="546">Do the file locations and naming match the codebase?</li>
+<li class="code-line" dir="auto" data-line="547">Are risk areas handled correctly?</li>
+</ul>
+<p class="code-line" dir="auto" data-line="549">Only after approval does the next step begin.</p>
+<p class="code-line" dir="auto" data-line="551">That gate is what prevents AI errors from cascading into later steps.</p>
+<h3 id="bugfixes-regression-test-first" class="code-line" dir="auto" data-line="553">Bugfixes: Regression Test First</h3>
+<p class="code-line" dir="auto" data-line="555">The same principle applies to bugfixes, just with a smaller workflow:</p>
+<ol class="code-line" dir="auto" data-line="557">
+<li class="code-line" dir="auto" data-line="557">Investigate the root cause.</li>
+<li class="code-line" dir="auto" data-line="558">Write a regression test that reproduces the bug.</li>
+<li class="code-line" dir="auto" data-line="559">Confirm it fails.</li>
+<li class="code-line" dir="auto" data-line="560">Make the smallest fix.</li>
+<li class="code-line" dir="auto" data-line="561">Confirm the test passes.</li>
+<li class="code-line" dir="auto" data-line="562">Run the standard proof commands.</li>
+</ol>
+<p class="code-line" dir="auto" data-line="564">This keeps bugfixes honest. The AI does not get to poke at code until symptoms disappear. It has to prove it understands the failure first.</p>
+<hr class="code-line" dir="auto" data-line="566" />
+<h2 id="progress-tracking-across-sessions" class="code-line" dir="auto" data-line="568">Progress Tracking Across Sessions</h2>
+<p class="code-line" dir="auto" data-line="570">One of the hardest things about AI-assisted development is that sessions are ephemeral. Context disappears when the conversation ends.</p>
+<p class="code-line" dir="auto" data-line="572">Plan files solve that with a very simple convention: checkboxes on the human gate.</p>
+<pre><code class="code-line language-markdown" dir="auto" data-line="574"><span class="hljs-section">## Step 1 &mdash; Display subscription list (stubbed)</span>
+...
+<span class="hljs-strong">**🛑 HUMAN GATE**</span>:
+<span class="hljs-bullet">-</span> [x] Behavioral: ViewModel test passes and the list renders with stubbed data
+<span class="hljs-bullet">-</span> [x] Review: Layout matches the reference feature
+
+<span class="hljs-section">## Step 2 &mdash; Wire subscription list to real API</span>
+...
+<span class="hljs-strong">**🛑 HUMAN GATE**</span>:
+<span class="hljs-bullet">-</span> [ ] Behavioral: Integration tests pass and GET /api/subscriptions returns data
+<span class="hljs-bullet">-</span> [ ] Review: Query, repository, and controller follow existing patterns
+</code></pre>
+<p class="code-line" dir="auto" data-line="588">When a new session starts, the AI reads the plan and finds the first unchecked box. That is the next step.</p>
+<p class="code-line" dir="auto" data-line="590">No guesswork. No repeated work. No fragile reliance on chat history.</p>
+<hr class="code-line" dir="auto" data-line="592" />
+<h2 id="encoding-the-process-into-ai-instructions" class="code-line" dir="auto" data-line="594">Encoding the Process into AI Instructions</h2>
+<p class="code-line" dir="auto" data-line="596">What makes this approach practical is that the workflow is not just a team convention. It is encoded into the repo's instructions, agents, prompts, and skills.</p>
+<p class="code-line" dir="auto" data-line="598">That gives the model structure before the conversation even begins.</p>
+<h3 id="agentsmd--the-workflow-backbone" class="code-line" dir="auto" data-line="600"><code>AGENTS.md</code>&nbsp;&mdash; The Workflow Backbone</h3>
+<p class="code-line" dir="auto" data-line="602">This file defines the planning gate, the mandatory workflow rules, the vertical-slice strategy, and the stop points.</p>
+<p class="code-line" dir="auto" data-line="604">It is the reason the AI knows that planning comes before coding and that one step must finish before the next begins.</p>
+<h3 id="planneragentmd--the-planning-specialist" class="code-line" dir="auto" data-line="606"><code>planner.agent.md</code>&nbsp;&mdash; The Planning Specialist</h3>
+<p class="code-line" dir="auto" data-line="608">This agent is deliberately constrained. It can read the codebase and produce&nbsp;<code>_plans/&lt;FeatureName&gt;.md</code>, but it cannot write production code.</p>
+<p class="code-line" dir="auto" data-line="610">That separation matters. Planning is a different task from implementation, and mixing the two is where many AI workflows lose discipline.</p>
+<h3 id="copilot-instructionsmd--project-rules-and-boundaries" class="code-line" dir="auto" data-line="612"><code>copilot-instructions.md</code>&nbsp;&mdash; Project Rules and Boundaries</h3>
+<p class="code-line" dir="auto" data-line="614">This file tells the AI what kind of system it is working in: project structure, naming rules, dependency boundaries, verification commands, and critical architectural constraints.</p>
+<p class="code-line" dir="auto" data-line="616">It answers questions the AI should not answer by improvisation.</p>
+<h3 id="write-specpromptmd--ai-assisted-specification-writing" class="code-line" dir="auto" data-line="618"><code>write-spec.prompt.md</code>&nbsp;&mdash; AI-Assisted Specification Writing</h3>
+<p class="code-line" dir="auto" data-line="620">This prompt fills an important gap in the process.</p>
+<p class="code-line" dir="auto" data-line="622">Before planning, it interviews the developer section by section and produces&nbsp;<code>_specs/&lt;FeatureName&gt;.md</code>&nbsp;from the spec template. It turns a vague idea into something concrete enough to plan safely.</p>
+<h3 id="build-featureskillmd--the-execution-engine" class="code-line" dir="auto" data-line="624"><code>build-feature/SKILL.md</code>&nbsp;&mdash; The Execution Engine</h3>
+<p class="code-line" dir="auto" data-line="626">This skill tells the AI how to execute an approved plan step using the right layer patterns and proof loop. It does not replace judgement, but it gives the model reliable rails.</p>
+<h3 id="supporting-project-level-folders" class="code-line" dir="auto" data-line="628">Supporting Project-Level Folders</h3>
+<p class="code-line" dir="auto" data-line="630">The wider workflow also benefits from a small set of project-level folders with clear intent:</p>
+<ul class="code-line" dir="auto" data-line="632">
+<li class="code-line" dir="auto" data-line="632"><code>_specs/</code>&nbsp;for feature specifications</li>
+<li class="code-line" dir="auto" data-line="633"><code>_plans/</code>&nbsp;for approved implementation plans</li>
+<li class="code-line" dir="auto" data-line="634"><code>_decisions/</code>&nbsp;for ADRs and architectural choices</li>
+<li class="code-line" dir="auto" data-line="635"><code>_qa/</code>&nbsp;for smoke-test plans and QA artifacts</li>
+<li class="code-line" dir="auto" data-line="636"><code>_infrastructure/</code>&nbsp;for infrastructure specs and environment records</li>
+</ul>
+<p class="code-line" dir="auto" data-line="638">None of these are complicated. Their value comes from being explicit, predictable, and easy for both humans and AI to discover.</p>
+<hr class="code-line" dir="auto" data-line="640" />
+<h2 id="putting-it-all-together" class="code-line" dir="auto" data-line="642">Putting It All Together</h2>
+<p class="code-line" dir="auto" data-line="644">At a high level, the workflow looks like this:</p>
+<pre><code class="code-line language-text" dir="auto" data-line="646">Idea -&gt; Spec -&gt; Plan -&gt; Step 1 -&gt; Review -&gt; Step 2 -&gt; Review -&gt; Step 3 -&gt; Review -&gt; Step 4 -&gt; Review
+</code></pre>
+<p class="code-line" dir="auto" data-line="650">More concretely:</p>
+<ol class="code-line" dir="auto" data-line="652">
+<li class="code-line" dir="auto" data-line="652">A developer identifies a feature.</li>
+<li class="code-line" dir="auto" data-line="653">The AI helps write the spec through a focused Q&amp;A session.</li>
+<li class="code-line" dir="auto" data-line="654">The planner reads the spec and the codebase, then proposes a vertical-slice plan.</li>
+<li class="code-line" dir="auto" data-line="655">The developer approves the plan.</li>
+<li class="code-line" dir="auto" data-line="656">The AI implements one step at a time using Red-Green-Refactor.</li>
+<li class="code-line" dir="auto" data-line="657">After each step, the AI proves the result and stops for review.</li>
+<li class="code-line" dir="auto" data-line="658">The plan file tracks progress across sessions.</li>
+</ol>
+<p class="code-line" dir="auto" data-line="660">This keeps the developer in control of design while still capturing the speed benefits of AI-assisted implementation.</p>
+<hr class="code-line" dir="auto" data-line="662" />
+<h2 id="summary" class="code-line" dir="auto" data-line="664">Summary</h2>
+<table class="code-line" dir="auto" data-line="666">
+<thead class="code-line" dir="auto" data-line="666">
+<tr class="code-line" dir="auto" data-line="666">
+<th>Aspect</th>
+<th>Vibe Coding</th>
+<th>Spec-Driven Development</th>
+</tr>
+</thead>
+<tbody class="code-line" dir="auto" data-line="668">
+<tr class="code-line" dir="auto" data-line="668">
+<td>Starting point</td>
+<td>Vague prompt</td>
+<td>Structured spec</td>
+</tr>
+<tr class="code-line" dir="auto" data-line="669">
+<td>Planning</td>
+<td>None or implicit</td>
+<td>Explicit plan approved before coding</td>
+</tr>
+<tr class="code-line" dir="auto" data-line="670">
+<td>Decomposition</td>
+<td>Ad hoc or by layer</td>
+<td>By user-visible behaviour</td>
+</tr>
+<tr class="code-line" dir="auto" data-line="671">
+<td>Testing</td>
+<td>Optional or late</td>
+<td>RED-first and mandatory</td>
+</tr>
+<tr class="code-line" dir="auto" data-line="672">
+<td>Verification</td>
+<td>Eyeballing the output</td>
+<td>Build, tests, analysis, format</td>
+</tr>
+<tr class="code-line" dir="auto" data-line="673">
+<td>Human involvement</td>
+<td>Mostly at the end</td>
+<td>At every gate</td>
+</tr>
+<tr class="code-line" dir="auto" data-line="674">
+<td>Session continuity</td>
+<td>Fragile</td>
+<td>Tracked in&nbsp;<code>_plans/</code></td>
+</tr>
+<tr class="code-line" dir="auto" data-line="675">
+<td>Accountability</td>
+<td>Diffuse</td>
+<td>Clear: human owns intent, AI executes</td>
+</tr>
+</tbody>
+</table>
+<p class="code-line" dir="auto" data-line="677">The shift from vibe coding to spec-driven development is not about producing more documents. It is about preserving control.</p>
+<p class="code-line" dir="auto" data-line="679">The spec makes intent explicit. The plan makes execution deliberate. Red-Green-Refactor makes each change verifiable. Human gates keep the developer accountable.</p>
+<p class="code-line" dir="auto" data-line="684">AI is most useful when it accelerates a process you already trust. Without that process, speed just multiplies ambiguity.</p>
+<p class="code-line" dir="auto" data-line="686">With it, you get the best of both worlds: faster delivery and stronger control.</p>
+<hr class="code-line" dir="auto" data-line="688" />
+<p class="code-line" dir="auto" data-line="690"><em>The practices described in this article are encoded in the open-source&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs" data-href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;repository &mdash; a reusable template library of GitHub Copilot and Claude Code configuration files for .NET projects.</em></p>
+<blockquote class="code-line" dir="auto" data-line="692">
+<p class="code-line" dir="auto" data-line="692"><strong>Previous:</strong>&nbsp;<a href="/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects" data-href="BLOGPOST.md">Part 1 &mdash; Best Practices for AI-Assisted Coding</a></p>
+</blockquote>
+    </div>
+    
+    <div class="post-footer clearfix">
+        <div class="ratingcontainer" style="visibility:hidden">000ffacf-a865-44a4-949b-fa7cb6df9414|0|.0|96d5b379-7e1d-4dac-a6ba-1e50db561b04</div>
+        <div class="post-tags">
+            Tags: 
+        </div>
+    </div>
+    <script type="text/javascript">$(".post").addClass("post-single");</script>
+    
+</article>
+
+
+  
+  
+  
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+      <rdf:Description rdf:about="http://vandiest.biz/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" dc:identifier="http://vandiest.biz/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control" dc:title="Spec-Driven Development with AI: A Practical Guide to Staying in Control" trackback:ping="http://vandiest.biz/trackback.axd?id=000ffacf-a865-44a4-949b-fa7cb6df9414" />
+    </rdf:RDF>
+  
+  
+  <div id="relatedPosts"><h3>Related posts</h3><div><a href="/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects">From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects</a><span>An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplin</span><a href="/post/2010/03/31/ASPNET-MVC-with-Webforms">ASP.NET MVC with Webforms</a><span>source code can be found here&nbsp;
+
+It&rsquo;s now generally admitted in the community that Unit ...</span><a href="/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4">Keyboard support for Menu control Sylverlight 4</a><span>&nbsp;
+Today I tried to validate an &nbsp;Architecture by creating a POC. &nbsp;The architecture is...</span></div></div>
+  
+  
+
+<div class="well-global">
+    
+
+    <div id="commentlist" style="display: block">
+            
+    </div>
+</div>
+
+
+
+
+    <div id="comment-form">
+        <img src="/Content/images/blog/ajax-loader.gif" width="24" height="24" alt="Saving the comment" style="display: none" id="ajaxLoader" />
+        <span id="status"></span>
+        
+<div class="commentForm">
+    <h3 id="addcomment">Add comment</h3>
+    <p>
+        <label for="txtName" class="lbl-user">Name*</label>
+        <input type="text" class="txt-user" name="txtName" id="txtName" tabindex="2" />
+    </p>
+    <p>
+        <label for="txtEmail" class="lbl-email">E-mail*</label>
+        <input type="text" class="txt-email" ID="txtEmail" TabIndex="3" />
+        <span id="gravatarmsg"></span>
+    </p>
+    <p>
+        <label for="txtWebsite" class="lbl-website">Website</label>
+        <input type="text" class="txt-website" ID="txtWebsite" TabIndex="4" />
+        </p>
+    <p>
+        <label for="txtContent" class="lbl-content">Comment*</label>
+        <textarea class="txt-content" tabindex="7" id="txtContent" cols="50" rows="10" name="txtContent"></textarea>
+    </p>
+    <p>
+        <input type="checkbox" id="cbNotify" class="cmnt-frm-notify" style="width: auto" tabindex="8" />
+        <label for="cbNotify" style="width: auto; float: none; display: inline; padding-left: 5px">Notify me when new comments are added</label>
+    </p>
+    <p>
+        <input type="button" id="btnSaveAjax" class="btn-save" style="margin-top: 10px" value="Save comment" onclick="return BlogEngine.validateAndSubmitCommentForm()" tabindex="10" />
+    </p>
+</div><input type="hidden" name="ctl00$cphBody$ucCommentList$hiddenReplyTo" id="ctl00_cphBody_ucCommentList_hiddenReplyTo" />
+        <p id="cancelReply" style="display: none;">
+            <a href="javascript:void(0);" onclick="BlogEngine.cancelReply();">Cancel reply to comment</a>
+        </p>
+        <p><label for="simpleCaptchaValue" style="margin-right: 5px;">5+5 = </label><input id="simpleCaptchaValue" name="simpleCaptchaValue" type="text" tabindex="0" maxlength="30" value="" /><span id="spnSimpleCaptchaIncorrect" style="display:none;color:Red;">The captcha value you provided is incorrect.
+</span></p><input type="hidden" name="ctl00$cphBody$ucCommentList$hfCaptcha" id="ctl00_cphBody_ucCommentList_hfCaptcha" value="1e2d52fd-f96a-490f-9a0a-d1f7608efe98" />
+    </div>
+    <script type="text/javascript">
+        BlogEngine.comments.flagImage = BlogEngine.$("imgFlag");
+        BlogEngine.comments.contentBox = BlogEngine.$("txtContent");
+        BlogEngine.comments.moderation = true;
+	    BlogEngine.comments.checkName = true;
+	    BlogEngine.comments.postAuthor = "Admin";
+	    BlogEngine.comments.nameBox = BlogEngine.$("txtName");
+	    BlogEngine.comments.emailBox = BlogEngine.$("txtEmail");
+	    BlogEngine.comments.websiteBox = BlogEngine.$("txtWebsite");
+	    BlogEngine.comments.countryDropDown = BlogEngine.$("ddlCountry");
+	    BlogEngine.comments.controlId = 'ctl00$cphBody$ucCommentList';
+	    BlogEngine.comments.captchaField = BlogEngine.$('ctl00_cphBody_ucCommentList_hfCaptcha');
+        BlogEngine.comments.replyToId = BlogEngine.$("ctl00_cphBody_ucCommentList_hiddenReplyTo");
+    </script>
+
+
+<script type="text/javascript">
+    function toggle_visibility(id, id2) {
+        var e = document.getElementById(id);
+        var h = document.getElementById(id2);
+        if (e.style.display == 'block') {
+            e.style.display = 'none';
+            h.innerHTML = "+";
+        }
+        else {
+            e.style.display = 'block';
+            h.innerHTML = "-";
+        }
+    }
+</script>
+
+
+
+    
+                </section>
+                <aside class="sidebar float-right">
+                    <div id="widgetzone_be_WIDGET_ZONE" class="widgetzone"></div>
+                </aside>
+            </section>
+            <footer class="footer">
+                <div class="footer-widgets container">
+                    <div id="widgetzone_Footer-Widget" class="widgetzone"></div>
+                </div>
+                <div class="footer-line">
+                    <div class="container text-center">
+                        <p>Copyright &copy; 2026<span class="separator separator-1"></span>Powered by <a href="http://dotnetblogengine.net" target="_blank">BlogEngine.NET</a> 3.3.6.0<span class="separator separator-2"></span><a href="http://seyfolahi.net/" title="SimpleBlog theme for BlogEngine 2.9" target="_blank">Design by FS</a><span class="separator separator-3"></span><a href="/Account/login.aspx" id="ctl00_aLogin">Log in</a></p>
+                        <span class="scrollup"></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            var links, index, link;
+            links = document.getElementById('social').getElementsByTagName('a');
+            for (index = 0; index < links.length; ++index) {
+                link = links[index];
+                if (link.href == 'http://facebook.com/') { link.style.display = "none"; }
+                if (link.href == 'http://twitter.com/') { link.style.display = "none"; }
+                if (link.href == 'http://plus.google.com/') { link.style.display = "none"; }
+                if (link.href == 'http://youtube.com/') { link.style.display = "none"; }
+                if (link.href == 'http://linkedin.com/in/') { link.style.display = "none"; }
+                if (link.href == 'http://instagram.com/') { link.style.display = "none"; }
+                if (link.href == 'http://github.com/') { link.style.display = "none"; }
+                if (link.href == 'http://vandiest.biz/') { link.style.display = "none"; }
+            }
+        </script>
+        <script src="/Custom/Themes/SimpleBlog/include/index.js" type="text/javascript"></script>
+    
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AD7AD114" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="LVkVkYSYTHEyUK1ldaw3cOw4M5Cpeko+H9ZczCAcyl6EEdTJcqAA/rrX13kyP/uZ1p73MB/3qLDmXF+3k33yoD13wEn3oc/PSnNb9upBWEmtc+NTzhkeQ53li8Cf3ORQ0WauZA==" />
+</div></form>
+</body>
+</html>
