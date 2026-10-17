@@ -36,7 +36,7 @@ npm ci                         # once
 node tools/build.mjs           # regenerate home, archive, feed, sitemap, search; refresh chrome
 node tools/check.mjs           # validate the whole site (exit 1 on errors)
 node tools/check.mjs <file>    # validate one post
-npm run serve                  # http://localhost:3000
+npm run serve                  # SWA emulator on http://localhost:4280 (same redirects and 404 as Azure)
 ```
 
 Run build, then check, before every commit. The build is deterministic: a second run changes nothing.

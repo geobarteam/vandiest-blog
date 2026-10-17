@@ -3,13 +3,18 @@
   "private": true,
   "type": "module",
   "description": "Plain-HTML blog for vandiest.biz, deployed to Azure Static Web Apps",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "node tools/build.mjs",
     "check": "node tools/check.mjs",
-    "serve": "npx --yes serve@14.2.4 site"
+    "serve": "swa start vandiest-blog"
   },
   "dependencies": {
     "node-html-parser": "6.1.13"
+  },
+  "devDependencies": {
+    "@azure/static-web-apps-cli": "2.0.10"
   }
 }

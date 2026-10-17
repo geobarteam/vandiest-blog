@@ -26,7 +26,7 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --omit=dev
 
       # Regenerate home, archive, feed, sitemap and search index so they can never be stale,
       # then refuse to deploy a site that breaks the conventions.

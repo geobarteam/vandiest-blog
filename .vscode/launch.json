@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Blog: run in Edge (SWA emulator)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4280",
+      "webRoot": "${workspaceFolder}/site",
+      "runtimeExecutable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+      "userDataDir": "${workspaceFolder}/.vscode/.browser-profile/edge",
+      "runtimeArgs": ["--no-first-run", "--no-default-browser-check"],
+      "preLaunchTask": "swa: start",
+      "postDebugTask": "swa: stop"
+    },
+    {
+      "name": "Blog: run in Chrome (SWA emulator)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4280",
+      "webRoot": "${workspaceFolder}/site",
+      "runtimeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "userDataDir": "${workspaceFolder}/.vscode/.browser-profile/chrome",
+      "runtimeArgs": ["--no-first-run", "--no-default-browser-check"],
+      "preLaunchTask": "swa: start",
+      "postDebugTask": "swa: stop"
+    },
+    {
+      "name": "Blog: debug build script",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/build.mjs",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Blog: debug check script",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/check.mjs",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

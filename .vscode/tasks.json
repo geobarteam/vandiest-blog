@@ -1,0 +1,56 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "blog: build",
+      "detail": "Regenerate home, archive, feed, sitemap and search index",
+      "type": "shell",
+      "command": "node tools/build.mjs",
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "blog: check",
+      "detail": "Validate posts and internal links",
+      "type": "shell",
+      "command": "node tools/check.mjs",
+      "problemMatcher": {
+        "owner": "blog-check",
+        "fileLocation": ["relative", "${workspaceFolder}/site"],
+        "pattern": {
+          "regexp": "^(error|warn)\\s+([^:]+):\\s+(.*)$",
+          "severity": 1,
+          "file": 2,
+          "message": 3
+        }
+      },
+      "group": { "kind": "test", "isDefault": true }
+    },
+    {
+      "label": "swa: start",
+      "detail": "Build, then serve site/ through the Static Web Apps emulator on http://localhost:4280",
+      "type": "shell",
+      "command": "npx swa start vandiest-blog",
+      "dependsOn": "blog: build",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "swa",
+        "pattern": { "regexp": "^x{0}$" },
+        "background": {
+          "activesBegins": true,
+          "beginsPattern": "Welcome to Azure Static Web Apps CLI",
+          "endsPattern": "Azure Static Web Apps emulator started"
+        }
+      }
+    },
+    {
+      "label": "swa: stop",
+      "type": "shell",
+      "command": "echo ${input:terminate}",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    { "id": "terminate", "type": "command", "command": "workbench.action.tasks.terminate", "args": "swa: start" }
+  ]
+}

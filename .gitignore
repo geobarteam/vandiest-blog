@@ -6,3 +6,6 @@ Thumbs.db
 # Local agent notes (evolve plugin): kept out of the public repository
 evolution/
 memory/
+
+# Browser profiles used by the VS Code debugger
+.vscode/.browser-profile/

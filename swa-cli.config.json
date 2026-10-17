@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/azure/static-web-apps-cli/schema",
+  "configurations": {
+    "vandiest-blog": {
+      "appLocation": ".",
+      "outputLocation": "site",
+      "port": 4280,
+      "open": false
+    }
+  }
+}
