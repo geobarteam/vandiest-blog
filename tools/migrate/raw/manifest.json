@@ -1,11 +1,4 @@
 {
- "/page/gentsbbq": {
-  "url": "http://vandiest.biz/page/gentsbbq",
-  "status": 200,
-  "bytes": 26769,
-  "sha256": "f32ce5019d93a2c9e5a7e4faeade9f8f7ab497f566b3e1a7d768a3617077bb78",
-  "file": "raw/page/gentsbbq.html"
- },
  "/post/2008/09/08/Automated-testing-and-the-software-factory": {
   "url": "http://vandiest.biz/post/2008/09/08/Automated-testing-and-the-software-factory",
   "status": 200,

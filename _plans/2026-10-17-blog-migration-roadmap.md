@@ -8,7 +8,7 @@ Written 2026-10-17. The spec budgets one weekend for the migration proper; the d
 | # | Deliverable | Depends on | Done when |
 | --- | --- | --- | --- |
 | D1 (done) | Decisions closed and foundation live | — | An empty site answers on the preview URL after a manual workflow run |
-| D2 (done) | Content extracted | D1 | 77 posts and 1 page committed as raw input (BlogML or scraped) |
+| D2 (done) | Content extracted | D1 | 76 posts committed as raw input (scraped) |
 | D3 | Content converted and media fetched | D2 | `check.mjs` passes on all generated posts; `report.md` lists every miss |
 | D4 | Review pass accepted | D3 | Every post has a report line; you accepted the uncertain ones and the missing-image list |
 | D5 | Preview verified | D4 | All legacy URLs, redirects, feed, 404 and Lighthouse checks pass on the preview URL |
@@ -66,7 +66,7 @@ Where the system and the spec disagree, resolved as follows:
 - The three pages (home, post, archive) built from Vandiest Pixel and approved by you on the preview URL; see Design track.
 - `templates/post.html` and `css/site.css` built from the design system and following the HTML conventions (HTML5, canonical, Open Graph, one JSON-LD `BlogPosting` block, `<article>` body, system fonts, readable without CSS).
 - `tools/build.mjs` (index, archive, `rss.xml`, `sitemap.xml`, `search.json`, header/footer refresh) and `tools/check.mjs` (structure, metadata, escaped code, image sizes, internal links). Node 20, one dependency (`node-html-parser`), under a second.
-- Prism JS hosted in the repo, its theme mapped to the code tokens inside `css/site.css`; self-hosted fonts under `site/fonts/`. `404.html`, `robots.txt`, `contact/index.html`, `page/gentsbbq/index.html` placeholder.
+- Prism JS hosted in the repo, its theme mapped to the code tokens inside `css/site.css`; self-hosted fonts under `site/fonts/`. `404.html`, `robots.txt`, `contact/index.html`.
 - `AGENTS.md` with the conventions, the voice rules and "never change a published URL".
 
 **Done when.**
@@ -105,17 +105,17 @@ Open before D7:
 
 ## D2. Content extracted
 
-**Goal.** Get all 77 posts and the one static page out of BlogEngine once, committed as repeatable raw input.
+**Goal.** Get all the posts out of BlogEngine once, committed as repeatable raw input.
 
 **Scope.**
 
 - Primary path: BlogEngine admin, Settings, Export; save as `tools/migrate/blogml.xml`.
-- Fallback (no login): `tools/migrate/scrape.mjs` reads `sitemap.axd`, fetches each post URL and `/page/gentsbbq` over HTTP with a 300 ms pause, saves raw pages under `tools/migrate/raw/` named by URL.
+- Fallback (no login): `tools/migrate/scrape.mjs` reads `sitemap.axd`, fetches each post URL over HTTP with a 300 ms pause, saves raw pages under `tools/migrate/raw/` named by URL.
 - Guard rails in the scraper: HTTP only (HTTPS serves the wrong certificate), at most three requests a second, never follow `/?tag=` or `/category/` listing pages.
 
 **Done when.**
 
-- 77 post entries and 1 page are present in the raw input, with raw HTML bodies, categories, tags and dates.
+- Every post is present in the raw input, with raw HTML bodies, categories, tags and dates.
 - The raw input is committed once so conversion can be re-run from scratch.
 
 **Risk watched.** Admin export fails on the old build. The scraper was already tested read-only on 2026-10-17: all 77 pages answer 200 over HTTP.
@@ -132,14 +132,14 @@ Open before D7:
 | Images in post bodies | 154 |
 | `file.axd` attachments | 2 |
 | Distinct tags | 50 |
-| Static pages | 1 (`/page/gentsbbq`; `/contact.aspx` is the server form and is not migrated) |
+| Static pages | 0 migrated (`/page/gentsbbq` dropped, see below; `/contact.aspx` is the server form, replaced by `/contact/`) |
 
 Every post has a title, a date and a body. The shortest, "Customize Visual Studio" (2010), is a genuine one-line post.
 
 Findings that change D3 and D5:
 
 - **45 of 76 slugs are mixed case or contain parentheses** (for example `New-version-of-the-WCFMsmqFactory`, `Puzzle-2-iterators-using-the-yield-statement-(intermediate)`). Azure Static Web Apps matches paths case-sensitively (tested on the preview: `/Archive/` and a re-cased post path return 404). So the converter keeps each original slug exactly, and `check.mjs` accepts the legacy slugs; the lowercase-hyphen rule applies to new posts only. IIS served the old URLs case-insensitively, so inbound links with other casing will 404 after cut-over; D5 checks the top inbound links in Search Console.
-- **The Gents BBQ page is a private invitation with a home address.** Its raw file is kept out of the public repository until you decide whether to migrate it, drop it (410 or redirect home), or migrate it without the address.
+- **The Gents BBQ page is dropped** (decided 2026-10-17): it was a private invitation with a home address. It is not migrated, its raw file was deleted before any commit, the scraper excludes it, and `/page/gentsbbq` returns the custom 404 on the new site.
 - The BlogML export stays optional. If you export it later, save it as `tools/migrate/blogml.xml`; D3 can use it to cross-check dates and tags.
 
 ## D3. Content converted and media fetched
@@ -156,7 +156,7 @@ Findings that change D3 and D5:
 
 **Done when.**
 
-- 77 posts and the static page are generated; `node tools/check.mjs` passes on the whole `site/`.
+- 76 posts are generated; `node tools/check.mjs` passes on the whole `site/`.
 - `node tools/build.mjs` produces index, archive, feed, sitemap and `search.json`; the site opens locally (Live Server or `npx serve site`).
 - The report lists every missing image and every unguessed code language, with no silent drops.
 
@@ -194,7 +194,7 @@ Findings that change D3 and D5:
 - All 77 legacy post URLs answer 200 at the same path, with and without trailing slash.
 - Every post has title, description, canonical, JSON-LD and at least one tag.
 - `/syndication.axd` and `/syndication.axd?format=atom` return 301 to `/rss.xml`; the feed validates and holds the 20 latest posts in full.
-- `/sitemap.xml` lists 77 posts and 2 pages; `robots.txt` points at it.
+- `/sitemap.xml` lists the home page, the archive, `/contact/` and the 76 posts; `robots.txt` points at it.
 - A wrong URL returns the custom 404 page with status 404.
 - Home shows the 10 latest posts, archive shows all by year, both regenerate on `build.mjs`.
 - Lighthouse performance and accessibility above 95 on mobile.

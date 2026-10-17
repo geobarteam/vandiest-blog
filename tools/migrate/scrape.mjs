@@ -17,6 +17,8 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const RAW = join(HERE, 'raw');
 const FORCE = process.argv.includes('--force');
 const UA = 'vandiest-blog-migration/1.0 (+https://github.com/geobarteam/vandiest-blog)';
+// Pages the owner chose not to migrate (2026-10-17): they answer 404 on the new site.
+const EXCLUDED = new Set(['/page/gentsbbq']);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const sha256 = (buf) => createHash('sha256').update(buf).digest('hex');
@@ -49,6 +51,7 @@ async function main() {
     .map((m) => m[1].trim().replace(/^https:/, 'http:'))
     .filter((u) => {
       const p = new URL(u).pathname;
+      if (EXCLUDED.has(p)) return false;
       return (p.startsWith('/post/') || p.startsWith('/page/')) && !/[?&](tag|category)=/.test(u) && !p.startsWith('/category/');
     });
   const posts = urls.filter((u) => new URL(u).pathname.startsWith('/post/')).length;
