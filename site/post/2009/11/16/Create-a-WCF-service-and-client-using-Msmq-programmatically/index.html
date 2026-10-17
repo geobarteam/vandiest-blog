@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create a WCF service and client, using Msmq, programmatically | Geoffrey Vandiest</title>
+  <meta name="description" content="Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service.">
+  <link rel="canonical" href="https://vandiest.biz/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Create a WCF service and client, using Msmq, programmatically">
+  <meta property="og:description" content="Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service.">
+  <meta property="og:url" content="https://vandiest.biz/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Create a WCF service and client, using Msmq, programmatically",
+    "datePublished": "2009-11-16",
+    "dateModified": "2009-11-16",
+    "description": "Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service.",
+    "keywords": [
+      "WCF",
+      "Architecture"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">WCF</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
+          <h1>Create a WCF service and client, using Msmq, programmatically</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2009-11-16">16 NOV 2009</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>&nbsp; <em><a href="http://www.belgianagencies.com/content/WCFMsmqFactoryExample.zip">download source code</a></em></p>
+          <p>Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service. I dislike this way of configuring client and service in WCF because most of the time it leads to config files that are full of crab and that becomes unmanageable. I prefer to construct my WCF services programmatically. Therefore I&rsquo;ve create a bunch of helper classes that contains most of the configuration settings that are applicable in a particular domain.</p>
+          <p>In this article I discuss one of these classes&nbsp; I use to create local queues. With local I mean queues used by components making part of the same application. This class can be used as a factory to create the service (serviceHost) as well as the client part (Channel) for components communicating through Msmq.</p>
+          <p>This article provides a small tutorial on how to create a simple console app. I demonstrate how to create the client and service host without any configuration by using a helper factory class: WCFMsmqFactory</p>
+          <p>Prerequisite:</p>
+          <p>- This article assumes you&rsquo;ve installed Msmq on your box.&nbsp; If this isn&rsquo;t the case install Msmq see-&gt;&nbsp; <a href="http://technet.microsoft.com/en-us/library/bb684791.aspx">here</a> for Xp &amp; Win server 2003 or <a href="http://technet.microsoft.com/en-us/library/cc731102(WS.10).aspx">here</a> for Vista &amp; Win 2008 &amp; Seven.</p>
+          <p>- If you&rsquo;re a vista user you need to register your namespace for by typing in the command (in administrator mode):<br>netsh http add urlacl url=http://+:8000/BackToOwner/gatewayservice/sms user=[your username]</p>
+          <p>1) Create a new console application project: &lsquo;WCFMsmqFactory&rsquo; and add a reference to</p>
+          <ul>
+          <li>System.ServiceModel </li>
+          <li>System.Messaging </li>
+          <li>System.Transactions </li>
+          </ul>
+          <p><em class="lost">[Image no longer available]</em></p>
+
+          <p>2) Create a the WcfMsmqFactory class by copying the source code here beneath:</p>
+          <pre><code class="language-csharp">public class WcfMsmqFactory&lt;I, T&gt; where T : I
+{
+    private string _queueAddress;
+    public WcfMsmqFactory(string queueAddress)
+    {
+        _queueAddress = queueAddress;
+
+        if (!MessageQueue.Exists(queueAddress))
+            MessageQueue.Create(queueAddress, true);
+    }
+
+    public ServiceHost CreateMsmqServiceHost(string metadataAddress, string namespaceName)
+    {
+        var sHost = new ServiceHost(typeof(T));
+        var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);
+        binding.DeadLetterQueue = DeadLetterQueue.System;
+        binding.Namespace = namespaceName;
+        sHost.AddServiceEndpoint(typeof(I),
+                                       binding,
+                                       new Uri(String.Format(
+                                                   @"msmq.formatname:DIRECT=OS:{0}",
+                                                   _queueAddress)
+                                           )
+            );
+
+        // Expose the service metadata on the metadataAddress
+        var smb = new ServiceMetadataBehavior();
+        smb.HttpGetEnabled = true;
+        smb.HttpGetUrl = new Uri(metadataAddress);
+        sHost.Description.Behaviors.Add(smb);
+
+        return sHost;
+    }
+
+    public I CreateChannel()
+    {
+        var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);
+        var address = new EndpointAddress(String.Format("msmq.formatname:DIRECT=OS:{0}", _queueAddress));
+        var channelFactory = new ChannelFactory&lt;I&gt;(binding, address);
+        return channelFactory.CreateChannel();
+    }
+}</code></pre>
+
+          <p>This class is perfectly reusable in any project and provide an abstraction on how to create programaticaly WCF services using the msmq binding. To instantiate the class we&rsquo;ve to pass the interface and his actual implementation. The interface type we&rsquo;ll be used to create the client &amp; server part. The implementation type (service) will only be used to create the server. <br>The constructor creates a queue if it&rsquo;s not already available. Note that the example don&rsquo;t use security as the transport level security would demand to use active directory. As my pc does not connect to an Active Directory server I had to instantiate the binding without security:</p>
+          <pre><code class="language-javascript">var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);</code></pre>
+
+          <p>Not setting this setting resulted to the following error message: <em>&rdquo; Binding validation failed because the binding's MsmqAuthenticationMode property is set to WindowsDomain but MSMQ is installed with Active Directory integration disabled. The channel factory or service host cannot be opened&rdquo;</em></p>
+          <p>For the dead letter queue I use the default dead letter queue (see comment) settings:</p>
+          <pre><code class="language-csharp">binding.DeadLetterQueue = DeadLetterQueue.System;</code></pre>
+
+          <p>To prevent the service to display the namespace as Tempuri.org it&rsquo;s important to provide the same namespace settings as in your service contract &amp; behavior directive.</p>
+          <pre><code class="language-csharp">binding.Namespace = namespaceName;</code></pre>
+
+          <p>The following code exposes the metadata information (wsdl) on the provided metadata address:</p>
+          <pre><code class="language-javascript">var smb = new ServiceMetadataBehavior();
+smb.HttpGetEnabled = true;
+smb.HttpGetUrl = new Uri(metadataAddress);
+sHost.Description.Behaviors.Add(smb);</code></pre>
+
+          <p>3) Now lets create the message definition.<br>Add a new class SmsMessage:</p>
+          <pre><code class="language-csharp">public class SmsMessage
+{
+        public string Number { get; set; }
+        public string Body { get; set; }
+}</code></pre>
+
+          <p>4) Define the service definition:<br>Add the file SmsService.cs:</p>
+          <pre><code class="language-typescript">[ServiceContract(Namespace = "http://My.Domain.Services.WCF")]
+[ServiceKnownType(typeof(SmsMessage))]
+public interface ISmsService
+{
+    [OperationContract(IsOneWay = true, Action = "*")]
+    void SubmitSms(MsmqMessage&lt;SmsMessage&gt; msg);
+}
+
+[ServiceBehavior(Namespace = "http://My.Domain.Services.WCF")]
+public class SmsService : ISmsService
+{
+    public void SubmitSms(MsmqMessage&lt;SmsMessage&gt; msg)
+    {
+        var sms = msg.Body;
+        Console.WriteLine(string.Format(
+                              "SMS send to {0} with body='{1}'",
+                              sms.Number,
+                              sms.Body)
+            );
+
+    }
+}</code></pre>
+
+          <p>The SmsService class contains the real implementation code. As the purpose of this article is not to demonstrate how to actually send sms messages I didn&rsquo;t provide the real code here. This demo only output the message on the console.</p>
+          <p>5) Finally let&rsquo;s put all the parts together.<br>Add the following code to the main part of the program:</p>
+          <pre><code class="language-javascript"> static void Main(string[] args)
+    {
+        //define variables
+        const string queueAddress = @".\private$\sms";
+        const string metadataAddress = "http://localhost:8000/BackToOwner/gatewayservice/sms";
+        const string nameSpaceName = "http://My.Domain.Services.WCF";
+        var message = new SmsMessage()
+                          {
+                              Number = "+322678821",
+                              Body = "This is a sample sms message!"
+                          };
+        var msmqMessage = new MsmqMessage&lt;SmsMessage&gt;(message);
+
+        //define factory
+        var factory = new WcfMsmqFactory&lt;ISmsService, SmsService&gt;(queueAddress);
+
+        //Do the work
+        using(var serviceHost = factory.CreateMsmqServiceHost(metadataAddress,nameSpaceName))
+        {
+            Console.WriteLine("Starting the server...");
+            serviceHost.Open();
+            Console.WriteLine("Instantiating the client channel...");
+            var channel = factory.CreateChannel();
+            using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
+            {
+                Console.WriteLine("Sending the message...");
+                channel.SubmitSms(msmqMessage);
+                scope.Complete();
+            }
+            Thread.Sleep(1000);
+            Console.WriteLine("Closing the server...");
+            serviceHost.Close();
+        }
+        Console.ReadLine();
+    }
+}</code></pre>
+
+          <p>&nbsp;&nbsp; Running the application should display a console with:<br><em>Starting the server...<br>Instantiating the client channel...<br>Sending the message...<br>SMS send to +322678821 with body='This is a sample sms message!'<br>Closing the server...</em></p>
+          <p>The real magic happens here:</p>
+          <pre><code class="language-javascript">var factory = new WcfMsmqFactory&lt;ISmsService, SmsService&gt;(queueAddress);</code></pre>
+
+          <p>With this few line of code we&rsquo;ve instantiated a factory that is able to create the client as the server of our service. The only thing we&rsquo;ve to pass is the queue address &ndash; the rest of the configuration is encapsulated in our Factory class and can be easily reused.&nbsp;&nbsp; We can provide our factory classes to all the enterprise and create a framework on top of WCF that will standardize and facilitate how WCF is used inside our company.</p>
+          <p>GVD</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New version of the WCFMsmqFactory | Geoffrey Vandiest</title>
+  <meta name="description" content="Create a WCF service and client, using Msmq, programmatically I've updated the MsmqFactory class.">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/07/29/New-version-of-the-WCFMsmqFactory/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="New version of the WCFMsmqFactory">
+  <meta property="og:description" content="Create a WCF service and client, using Msmq, programmatically I've updated the MsmqFactory class.">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/07/29/New-version-of-the-WCFMsmqFactory/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "New version of the WCFMsmqFactory",
+    "datePublished": "2010-07-29",
+    "dateModified": "2010-07-29",
+    "description": "Create a WCF service and client, using Msmq, programmatically I've updated the MsmqFactory class.",
+    "keywords": [
+      "WCF",
+      "MSMQ"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">WCF</span></li><li><span class="chip chip--quiet">MSMQ</span></li></ul>
+          <h1>New version of the WCFMsmqFactory</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-07-29">29 JUL 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>Based on the comments I recieved on the article:</p>
+          <p><a href="/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically/">Create a WCF service and client, using Msmq, programmatically</a> I've updated the MsmqFactory class.</p>
+
+          <p>Here is the new version:</p>
+          <pre><code class="language-csharp">using System;
+using System.Messaging;
+using System.ServiceModel;
+using System.ServiceModel.MsmqIntegration;
+
+namespace BelgianAgencies.Wcf
+
+{
+
+    public class WcfMsmqFactory&lt;I&gt;
+
+    {
+
+        private string _queueAddress;
+
+        private string _netmsmqAddress;
+
+        public WcfMsmqFactory(string queueName)
+
+        {
+
+            _queueAddress = String.Format(@".\private$\{0}", queueName);
+
+            _netmsmqAddress = String.Format(@"msmq.formatname:DIRECT=OS:{0}", _queueAddress);
+
+            if (!MessageQueue.Exists(_queueAddress))
+
+                MessageQueue.Create(_queueAddress, true);
+
+        }
+
+        public bool UseCustomDeadLetterQueue
+
+        {
+
+            get;
+
+            set;
+
+        }
+
+        /// &lt;summary&gt;
+
+        /// Is the queue on a device connected to active directory.
+
+        /// Standard = false.
+
+        /// &lt;/summary&gt;
+
+        /// &lt;value&gt;&lt;c&gt;true&lt;/c&gt; if [in active directory]; otherwise, &lt;c&gt;false&lt;/c&gt;.&lt;/value&gt;
+
+        public bool InActiveDirectory
+
+        {
+
+            get; set;
+
+        }
+
+        public ServiceHost CreateService&lt;T&gt;(string namespaceName)
+
+        {
+
+            var sHost = new ServiceHost(typeof(T));
+
+            MsmqIntegrationBinding binding;
+
+            binding = InActiveDirectory ? new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.Transport) : new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);
+
+            // Retry at most 5 times
+
+            binding.ReceiveRetryCount = 1;
+
+            // Max amount of retries before cancel message
+
+            //  (1 + MaxRetryCycles) * (ReceiveRetryCount + 1) = total amount of retries
+
+            binding.MaxRetryCycles = 3;
+
+            // time before timout when unable to get message out of the queue
+
+            binding.ReceiveTimeout = new TimeSpan(0, 0, 5);
+
+            // when unable to dequeue put message on dead letter queue
+
+            //TODO: set to reject on msmq 4.0
+
+            binding.ReceiveErrorHandling = ReceiveErrorHandling.Fault;
+
+            // this message is not volatile, when hard reboot message will not get lost
+
+            binding.Durable = true;
+
+            // timout when opening connection
+
+            binding.OpenTimeout = new TimeSpan(0, 0, 5);
+
+            // timout when closing connection
+
+            binding.CloseTimeout = new TimeSpan(0, 0, 5);
+
+            binding.Namespace = namespaceName;
+
+            sHost.AddServiceEndpoint(
+
+                typeof(I),
+
+                binding,
+
+                new Uri(_netmsmqAddress)
+
+                             );
+
+            return sHost;
+
+        }
+
+        public I CreateChannel()
+
+        {
+
+            var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);
+
+            var address = new EndpointAddress(String.Format("msmq.formatname:DIRECT=OS:{0}", _queueAddress));
+
+            var channelFactory = new ChannelFactory&lt;I&gt;(binding, address);
+
+            return channelFactory.CreateChannel();
+
+        }
+
+    }
+
+}</code></pre>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Is a Single Page Application and when should we use it? | Geoffrey Vandiest</title>
+  <meta name="description" content="There are two general approaches to building web applications today: traditional web applications also called Multi Page Applications (MPA’s) because they are…">
+  <link rel="canonical" href="https://vandiest.biz/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Is a Single Page Application and when should we use it?">
+  <meta property="og:description" content="There are two general approaches to building web applications today: traditional web applications also called Multi Page Applications (MPA’s) because they are…">
+  <meta property="og:url" content="https://vandiest.biz/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What Is a Single Page Application and when should we use it?",
+    "datePublished": "2022-09-10",
+    "dateModified": "2022-09-10",
+    "description": "There are two general approaches to building web applications today: traditional web applications also called Multi Page Applications (MPA’s) because they are…",
+    "keywords": [
+      "Single-page apps"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Single-page apps</span></li></ul>
+          <h1>What Is a Single Page Application and when should we use it?</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2022-09-10">10 SEP 2022</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>There are two general approaches to building web applications today: traditional web applications also called Multi Page Applications (MPA&rsquo;s) because they are made of multiple pages. These perform most of the application logic on the server.&nbsp; On the other hand, you have single-page applications (SPAs) that perform most of the user interface logic in a web browser, communicating with the web server primarily using web APIs. A hybrid approach is also possible, the simplest being to host one or more rich SPA-like sub applications within a larger traditional web application.</p>
+          <p>MPA reloads the entire page and displays the new one when a user interacts with the web app.&nbsp;</p>
+          <p>A SPA is more like a traditional application because it&rsquo;s initially loaded and then it refreshes part of the page without reloading it. When a user interacts with the application, it displays content without the need to be fully updated since different pieces of content are downloaded automatically as per request. It is possible thanks to AJAX technology. In single-page applications, there is only one HTML page, and this one page downloads a bunch of assets, CSS, images but typically also a lot of JavaScript. Speaking of the latter, the code will then listen to clicks on links and then re-render parts of the DOM in the loaded page whenever a user need something.</p>
+          <p>Although SPA applications are extremely popular because they usually account for a better user experience it does not mean that every web application should be built with a SPA architecture. Let&rsquo;s take, for instance, a news site like CNN. It is a good example of a multi-page application. How can we see it? Just click any link and watch the reload icon on the top of your browser. You see that reloading has started because a browser is now reaching out to our public server and fetching that page and all the resources needed. The interesting thing about multi-page applications is that every new page is downloaded. Every request we send to the server, like whenever we type a new URL or click on a link, leads to a new page being sent back from the server. Notable examples of multiple page applications are giants like Amazon or eBay. Using them, you always get a new file for every request.</p>
+          <p>MPA is an excellent choice for websites that provides mostly read-only content. SPAs usually supplies a better user experience when our application is more like an interactive application.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

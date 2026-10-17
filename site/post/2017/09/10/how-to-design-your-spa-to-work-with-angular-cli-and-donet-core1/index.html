@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to design your SPA to work with Angular CLI and DoNet Core | Geoffrey Vandiest</title>
+  <meta name="description" content="When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…">
+  <link rel="canonical" href="https://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to design your SPA to work with Angular CLI and DoNet Core">
+  <meta property="og:description" content="When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…">
+  <meta property="og:url" content="https://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to design your SPA to work with Angular CLI and DoNet Core",
+    "datePublished": "2017-09-10",
+    "dateModified": "2017-09-10",
+    "description": "When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…",
+    "keywords": [
+      "Angular",
+      "JavaScript",
+      "Single-page apps"
+    ],
+    "image": "https://vandiest.biz/img/2017/how-to-design-your-spa-to-work-with-angular-cli-01.png",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">JavaScript</span></li><li><span class="chip chip--quiet">Single-page apps</span></li></ul>
+          <h1>How to design your SPA to work with Angular CLI and DoNet Core</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2017-09-10">10 SEP 2017</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>When building new apps, you need both client and server-side pieces.&nbsp; This article focusses on how to structure a SPA that is made out of angular for the client and dotnet core for the server.</p>
+          <p>There are numerous questions I needed to answers when mixing these technologies.</p>
+          <ul>
+          <li>Should I host my angular app inside an MVC View or just serve the angular app from static files.</li>
+          <li>Should I host the angular app inside the same application that serve the Web-Api or serve it from a separate site?</li>
+          <li>How to setup a productive development environment?</li>
+          <li>How should I integrate angular-cli together with a ASP.NET Core app?</li>
+          <li>Should I use Vs.Code or VisualStudio ?</li>
+          <li>How to package and deploy the application for on prem or in the cloud?</li>
+          </ul>
+          <p>Of course, the answer to all these questions is always the same: it depends! After experimenting with several options, I finally decided that I should go for the simplest solution that could possibly work and started with just serving static files inside a Web-Api application.&nbsp; Yet, during development, what I found the most productive, is to completely separate the Angular app from the Web-Api solution. I like that my Angular and the ASP.NET Web-Api apps live separate folders beside each other. It&rsquo;s only at build time that Msbuild assemble the parts by calling &ldquo;ng build&rdquo;. &nbsp;To do that I needed to configured angular-cli to output the build in the \wwwroot folder of the ASP.NET app.</p>
+          <p>Concerning the IDE, what I found the most productivity was to develop my angular app using Vs.Code. &nbsp;Thus far, for the Web-Api part I tend to prefer VisualStudio and Resharper. So, I optimized my Angular app for working with Vs.Code and my Web-Api project for VisualStudio.&nbsp; During development I usually run the backend and launch the Webpack dev server through an &ldquo;npm start&rdquo; command.&nbsp; At publish everything is nicely packaged together inside a ASP.NET app, so deploying to Azure can simply be done by using the VisualStudio publish wizard.&nbsp;&nbsp;</p>
+          <p>On my github project <a href="https://github.com/geobarteam/core-angular-example">core-angular-example</a>, you can download the solution template I use for making SPA&rsquo;s with Angular-cli and DotNet Core.</p>
+          <p>Here I explain the steps you need to follow to setup the basis of such an app:</p>
+          <p>0) First you need to install:</p>
+          <ul>
+          <li><a href="https://code.visualstudio.com/">Code</a></li>
+          <li><a href="https://www.microsoft.com/net/core#windowscmd">Donetcore</a></li>
+          <li><a href="https://nodejs.org/en/">js</a></li>
+          <li><a href="https://github.com/angular/angular-cli#installation">Angular-cl</a>i</li>
+          </ul>
+          <p>1) From a powershell console:</p>
+          <pre><code class="language-powershell">mkdir angular-dotnetcore
+cd angular-dotnetcore
+mkdir web-api
+cd web-api
+dotnet new webapi
+cd ..
+ng new angular-app</code></pre>
+          <p>2) Open VisualStudio code and open the angular-dotnetcore folder</p>
+          <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-01.png" alt width="290" height="563" loading="lazy"></p>
+          <p>3) Disable TypeScript compilation<br> Since we will eventually have TypeScript files in our project, we should also disable any TypeScript compilation errors. Open the web-api.csproj file and modify the top PropertyGroup:</p>
+
+          <pre><code class="language-html">&lt;PropertyGroup&gt;
+
+  &lt;TargetFramework&gt;netcoreapp2.0&lt;/TargetFramework&gt;
+
+  &lt;TypeScriptCompileBlocked&gt;true&lt;/TypeScriptCompileBlocked&gt;
+
+  &lt;TypeScriptToolsVersion&gt;Latest&lt;/TypeScriptToolsVersion&gt;
+
+  &lt;IsPackable&gt;false&lt;/IsPackable&gt;
+
+&lt;/PropertyGroup&gt;</code></pre>
+
+          <p>4) Configure Startup.cs<br> As our web-api app will also serve the static files we need to configure the Stratup.cs file as follow:</p>
+          <pre><code class="language-html">public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+
+    app.UseDefaultFiles();
+    app.UseStaticFiles();
+
+    app.Use(async (context, next) =&gt; {
+        await next();
+        if (context.Response.StatusCode == 404 &amp;&amp;
+            !Path.HasExtension(context.Request.Path.Value) &amp;&amp;
+            !context.Request.Path.Value.StartsWith("/api/")) {
+                context.Request.Path = "/index.html";
+                await next();
+            }
+    });
+
+    // Configure application for usage as API
+    // with deafult route '/api/[Controller]'
+    app.UseMvcWithDefaultRoute();
+
+    // Serve static files
+    app.UseStaticFiles();
+}</code></pre>
+
+          <p>5) Configure angular-cli to output the build inside the wwroot of the web-api app =&gt; <br> edit the .angular-cli.json file and change the OutDir parameter:</p>
+          <pre><code class="language-javascript"></code></pre>
+          <pre><code class="language-javascript">"apps": [
+    {
+      "root": "src",
+      "outDir": "../web-api/wwwroot",</code></pre>
+          <p>Now when running ng build inside the angular-app angular-cli should output the result inside the wwroot folder of the web-api app.</p>
+          <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-02.png" alt width="1752" height="1000" loading="lazy">6) Modify the angular app to consume data from your web-api<br> Edit the following files under /angular-app/src/app file=&gt;</p>
+          <p>App.module.ts:</p>
+          <pre><code class="language-javascript">import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { HttpModule } from '@angular/http';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre>
+          <p>Modify app.component.ts:</p>
+          <pre><code class="language-javascript">import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http'
+@Component({
+   selector: 'app-root',
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+   constructor(private _httpService: Http) { }
+   title = "DotNet Core Angular Example";
+   apiValues: string[] = [];
+   ngOnInit() {
+      this._httpService.get('/api/values').subscribe(values =&gt; {
+         this.apiValues = values.json() as string[];
+      });
+   }
+}</code></pre>
+          <p>Edit app.component.html and add this as last lines of the html file:</p>
+          <pre><code class="language-javascript">  &lt;li&gt;
+    &lt;h2&gt;Values from ValuesController&lt;/h2&gt;
+    &lt;p *ngFor="let value of apiValues"&gt;{{value}}&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          <p>7) Redirect api calls to your DotNet core app</p>
+          <p>To be able to redirect api calls from your angular app when running&nbsp; in the webpack dev server you should create a proxy.conf.json file on the root of your angular app.&nbsp; Here my dotnet webapi runs on port 5000:</p>
+          <pre><code class="language-javascript">{
+    "/api": {
+      "target": "http://localhost:5000/",
+      "secure": false
+    }
+}</code></pre>
+          <p>You can already test your app:</p>
+          <ul>
+          <li>launch the web-api app with</li>
+          </ul>
+          <p>dotnet run</p>
+          <ul>
+          <li>Launch the angular app and pass the proxy configuration:</li>
+          </ul>
+          <p>ng serve --proxy-config proxy.conf.json</p>
+          <ul>
+          <li>Launch Chrome and open http://localhost:4200/</li>
+          </ul>
+          <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-03.png" alt width="1805" height="783" loading="lazy"></p>
+          <p>8)&nbsp;To be able to use npm script commands edit the package.json of the angular-app and edit the script section:</p>
+          <pre><code class="language-javascript">"scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "ng build",
+    "build-prd": "ng build --prod --env=prod",</code></pre>
+          <p>9) To be able to invoke these commands from you web-api, add a package.json inside the root of the web-api app containing.&nbsp; Here we declare the same commands but first cd to the angular-app:</p>
+          <pre><code class="language-javascript">{
+    "name": "core-angular-example",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "install": "cd ../angular-app &amp; npm install",
+        "start": "cd ../angular-app &amp; npm start",
+        "build": "cd ../angular-app &amp; npm run-script build",
+        "build-prd": "cd ../angular-app &amp; npm run-script build-prd"
+    }
+}</code></pre>
+          <p>10) Finally, we configure our web-api MsBuild script to invoke the ng build script when running a release build. Therefore, we add the following targets to it:</p>
+          <pre><code class="language-xml">&lt;Target Name="EnsureNode"&gt;
+  &lt;Exec Command="node --version" ContinueOnError="true"&gt;
+    &lt;Output TaskParameter="ExitCode" PropertyName="ErrorCode" /&gt;
+  &lt;/Exec&gt;
+  &lt;Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." /&gt;
+&lt;/Target&gt;
+
+&lt;Target Name="ReleaseRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' "&gt;
+  &lt;CallTarget Targets="EnsureNode" /&gt;
+  &lt;Message Importance="high" Text="Install packages..." /&gt;
+  &lt;Exec Command="npm install" /&gt;
+  &lt;Message Importance="high" Text="Performing ng build for prd build..." /&gt;
+  &lt;Exec Command="npm run-script build-prd" /&gt;
+&lt;/Target&gt;</code></pre>
+          <p>Now when you launch a Release build everything will be build together.&nbsp;</p>
+          <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-04.png" alt width="1083" height="411" loading="lazy"></p>
+          <p>You can get a package containing all your app by using the publish command.</p>
+          <p>If you want to publish your site to azure simply use the VisualStudio publish wizard or the Azure Powershell Publish commands.</p>
+          <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-05.png" alt width="1083" height="603" loading="lazy"></p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

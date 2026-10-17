@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoSimple.Logging.Log4Net | Geoffrey Vandiest</title>
+  <meta name="description" content="Wouldn’t it be great if I ‘had a central place where I could keep and work on all my little nuggets of utility code I’ve written over the years.">
+  <link rel="canonical" href="https://vandiest.biz/post/2015/05/13/gosimple-logging-log4net/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GoSimple.Logging.Log4Net">
+  <meta property="og:description" content="Wouldn’t it be great if I ‘had a central place where I could keep and work on all my little nuggets of utility code I’ve written over the years.">
+  <meta property="og:url" content="https://vandiest.biz/post/2015/05/13/gosimple-logging-log4net/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "GoSimple.Logging.Log4Net",
+    "datePublished": "2015-05-13",
+    "dateModified": "2015-05-13",
+    "description": "Wouldn’t it be great if I ‘had a central place where I could keep and work on all my little nuggets of utility code I’ve written over the years.",
+    "keywords": [
+      "Logging"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Logging</span></li></ul>
+          <h1>GoSimple.Logging.Log4Net</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2015-05-13">13 MAY 2015</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>Wouldn&rsquo;t it be great if I &lsquo;had a central place where I could keep and work on all my little nuggets of utility code I&rsquo;ve written over the years. Also be able to download them from&nbsp;<a href="https://web.archive.org/web/20151020034159/https://www.nuget.org/packages/GoSimple.Logging.Log4Net/">nuget</a>&nbsp;would be very convenient. This is why I&rsquo;ve decided to setup a new project on&nbsp;<a href="https://web.archive.org/web/20151020034159/https://github.com/geobarteam/gosimple">Github</a>. There I just posted the first library of my personal Swiss army knife framework.</p>
+          <p>These libraries where primarily designed to build loosely-coupled applications where you can swap out particular components without affecting the rest of the application. Most of my libraries are just small layers above existing frameworks providing a common API that simplify their usage (for me at least). The libraries ease the use of these frameworks by providing standard configurations and exposing only the functionalities&nbsp;I found useful for me through what I saw as a &ldquo;common API&rdquo;.</p>
+          <p>The first library I uploaded is:&nbsp;<strong><em>Go.Simple.Logging</em></strong></p>
+          <p>GoSimple.Logging is a small and simple library that provides a common interface for logging. It comes together with an implementation for Log4Net: GoSimple.Logging.Log4Net.</p>
+          <p>It provides a&nbsp;<em><strong>simple logging interface</strong></em>&nbsp;(Logger.Debug(..), Logger.info(..), Logger.warn(&hellip;), Logger.Error(&hellip;),&hellip;.). &nbsp;I use this nuget package&nbsp;in all my projects to&nbsp;<em><strong>easily integrate with Log4Net</strong></em>without having to remember how to configuer &amp; setup Log4Net.</p>
+          <p>The library comes with an appender to send the logs through&nbsp;<em><strong>syslog</strong></em>&nbsp;to a&nbsp;<em><strong>Splunk</strong></em>&nbsp;server. The TcpSyslogAppender you&rsquo;ll find in the Log4Net implementation was extensively tested and fine-tuned on many large scale applications running in production.</p>
+          <p>You can download it through nugget by using the nugget console:</p>
+          <p><strong><em><a href="https://web.archive.org/web/20151020034159/https://www.nuget.org/packages/GoSimple.Logging.Log4Net/">Install-Package GoSimple.Logging.Log4Net</a></em></strong></p>
+          <p>The most valuable extensions you&rsquo;ll find in this project are:</p>
+          <ul>
+          <li><em><strong>Syslog Appender</strong></em>: used to send your logs over TCP or UDP to a syslog server like Splunk, Logstach or Kiwi.</li>
+          <li><em><strong>Rolling File Appender</strong></em>: when GoSimple rolls a log file, it saves and closes the old file and starts a new file.</li>
+          </ul>
+          <p>GoSimple.Logging comes with a sample project, you&rsquo;ll find it on the&nbsp;<a href="https://web.archive.org/web/20151020034159/https://www.nuget.org/packages/GoSimple.Logging.Log4Net/">github project home</a>. It provides an example of how to configure your application for GoSimple.Logging in just one line of code. You&rsquo;ll also find a sample Log4Net config file with example config sections for each appender.</p>
+          <p>To enable it on your project you need to :</p>
+          <ul>
+          <li>1) Review the Log4Net.config file on the application root.</li>
+          <li>2) In VS set the property &ldquo;Copy to output directory&rdquo; of the Log4Net.config file to &ldquo;Copy always&rdquo;</li>
+          <li>3) In your application entry point (bootstrapper/main) initialize the Logger:<br><em>Logger.Initialize(new Log4NetLogger());</em></li>
+          </ul>
+          <p>Voil&agrave; that&rsquo;s all you need to configure to enable logging in your application.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

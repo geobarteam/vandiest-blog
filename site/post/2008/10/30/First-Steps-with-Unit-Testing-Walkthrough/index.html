@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First Steps with Unit Testing Walkthrough | Geoffrey Vandiest</title>
+  <meta name="description" content="In this article I introduce through a walkthrough the basics of how to write a good well structured unit test.">
+  <link rel="canonical" href="https://vandiest.biz/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="First Steps with Unit Testing Walkthrough">
+  <meta property="og:description" content="In this article I introduce through a walkthrough the basics of how to write a good well structured unit test.">
+  <meta property="og:url" content="https://vandiest.biz/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "First Steps with Unit Testing Walkthrough",
+    "datePublished": "2008-10-30",
+    "dateModified": "2008-10-30",
+    "description": "In this article I introduce through a walkthrough the basics of how to write a good well structured unit test.",
+    "keywords": [
+      "Testing",
+      "Unit testing"
+    ],
+    "image": "https://vandiest.biz/img/2008/first-steps-with-unit-testing-walkthrough-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li></ul>
+          <h1>First Steps with Unit Testing Walkthrough</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2008-10-30">30 OCT 2008</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>&nbsp;In this article I&nbsp;introduce through a walkthrough the basics of how to write a good well structured unit test. This post is the first of a series about Unit testing and TDD. I&rsquo;ll not be doing TDD for now&nbsp;because I first want to&nbsp;start with the&nbsp;basics of creating well structured unit tests.&nbsp; In later posts we will build on this to&nbsp;practice TDD. Therefor the tests of this first walkthrough will seem overly simple, but let&rsquo;s crawls before we start running.<br>The details on how we should write tests vary with the programming framework &amp; unit test framework. For this walkthrough I've choosen to implement&nbsp; the tests and examples witrh C# and&nbsp;VSTS .Nevertheless the core principle of how to implement automated tests stays applicable in any technology.&nbsp;&nbsp;If you desire to get the walkthroughs for NUnit or for other programming frameworks post a demand in this blog.&nbsp;&nbsp;You can download the completed walkthrough project&nbsp;<a href="http://www.belgianagencies.com/content/blogs/post5/firststeps_finished.zip">here</a>.<br><br>&nbsp;</p>
+          <pre><code class="language-csharp">public class Fleet : IDisposable
+{
+    private List _planes { get; set; }
+
+    public Fleet()
+    {
+        this._planes = new List();
+    }
+
+    public Plane this[string index]
+    {
+        get
+        {
+            return this._planes.Find(p =&gt; p.Name == index);
+        }
+    }
+
+    public void Add(string name)
+    {
+        this._planes.Add(new Plane(name));
+    }
+
+
+    public int Count
+    {
+        get
+        {
+            return this._planes.Count;
+        }
+    }
+
+    public void Dispose()
+    {
+        this._planes = null;
+    }
+}
+
+public class Plane
+{
+    public Plane(string name)
+    {
+        this.Name = name;
+    }
+
+    public int PlaneID { get; set; }
+    public string Name { get; set; }
+
+}</code></pre>
+          <p><br><br><br><br>Examine the code of Fleet and Plane. The Fleet class represents an aero fleet (a simple Model) this class is a sort of collection of planes. The fleet class contains a property &ldquo;Count&rdquo; that counts the number of planes in the fleet.<br>Create a new Test Project File, right click solution, add, new, Project, select C#, Test, name your Project:&rdquo;FirstStepsTest&rdquo;.<br>Launch all tests: Ctrl R,A or Test, Windows, Test View<br>VS should launch the TestMethod1 and it should pass.<br><img src="/img/2008/first-steps-with-unit-testing-walkthrough-01.jpg" alt width="320" height="124" loading="lazy"><br><br><br><br><br><br><br><br><br><br>&nbsp;Replace the generated TestMethod() with the following test:</p>
+          <p><br>[TestMethod()]<br>public void NewFleet_WithNoPlanes_CountWillReturn0()<br>{<br>&nbsp;&nbsp;&nbsp;//Setup<br>&nbsp;&nbsp;Fleet fleet = new Fleet();<br><br>&nbsp; //Execute<br>&nbsp; int actual = fleet.Count;<br><br>&nbsp; //Verify<br>&nbsp; Assert.AreEqual(0, actual);<br>}</p>
+          <p>Run the test by right click on the test name and select &ldquo;Run Test&rdquo;.<br>The test above is a public method whose giving the attribute [TestMethod] the test class itself is been annotated with the attribute [TestClass]. This enable the testRunner of VSTS to retrieve all test methods. <br><br>Every test will always consist of 3 parts:<br>&bull; The setup: to be able to test our SUT we&rsquo;ve to put him in a certain state so it can be tested.<br>&bull; The test execution: when our SUT is prepared to be test we can call the actual execution unit on our SUT.<br>&bull; The verification: A test generally ends with the comparison on the expected results and the actual outcome of our execution.<br><br>The last part of our test uses an assertion method of our unit testing framework. Knowing what to assert about in your tests is pretty much 90% of the battle. An assertion is basically taking an expected value and comparing it to an actual value. If the expected value does not match the actual value, then the test will fail. <br><br>There are many other type of assertions but for simplicity and for readability when debuging I prefer to only use the Assert.Equals(). Assert equals is the most generic form of assertion and it will always display a meaningful message like Assert.AreEqual failed. Expected:. Actual:.Add following new tests to the test class:<br><br>&nbsp;</p>
+          <pre><code class="language-csharp">[TestMethod()]
+public void Add_OnePlane_WillIncrementCountByOne()
+{
+    //Setup
+    Fleet fleet = new Fleet();
+
+    //Execute
+    fleet.Add("X2938");
+
+    //Verify
+    Assert.AreEqual(1, fleet.Count);
+}
+
+[TestMethod()]
+public void RetriveByIndex_APlane_WillReturnThePlane()
+{
+    //Setup
+    Fleet fleet = new Fleet();
+    fleet.Add("X2938");
+
+    //Execute
+    String actual = fleet["X2938"].Name;
+
+    //Verify
+    Assert.AreEqual("X2938", actual);
+}</code></pre>
+          <p><br><br>Examine the tests and run them, they should all pass.<br><br>We'll refactor a little bit our code because the test contains some parts of code that are repeated and repeating ourselves is always bad!<br>First we will remove the magic string: &ldquo;X2938&rdquo; and will instantiate a string field flightName containing this value. Replace &ldquo;X238&rdquo; with this new variable. <br>We will also promote the fleet object in each test to a new private field. We will use the [TestInitialize] attribute to instantiate this field.<br>Also imagine that our Fleet class implements IDisposable because it uses somehow an expensive resource that isn&rsquo;t automatically disposed by the garbage collector. We could call fleet.Dispose() after the Assertion but what if our test fails? The dispose method would never been called and the object will remain in memory.<br>The result should look like that:<br>&nbsp;</p>
+          <pre><code class="language-csharp">[TestClass]
+public class FleetTest
+{
+    private Fleet fleet;
+    const string flightName = "X2938";
+
+    [TestInitialize()]
+    public void TestInitialize()
+    {
+        fleet = new Fleet();
+    }
+    [TestCleanup()]
+    public void TearDown()
+    {
+         fleet.Dispose();
+    }
+
+
+    [TestMethod()]
+    public void NewFleet_WithNoPlanes_CountWillReturn0()
+    {
+
+        //Execute
+        int actual = fleet.Count;
+
+        //Verify
+        Assert.AreEqual(0, actual);
+    }
+
+    [TestMethod()]
+    public void Add_OnePlane_WillIncrementCountByOne()
+    {
+
+        //Execute
+        fleet.Add(flightName);
+
+        //Verify
+        Assert.AreEqual(1, fleet.Count);
+    }
+
+    [TestMethod()]
+    public void RetriveByIndex_APlane_WillReturnThePlane()
+    {
+        //Setup
+        fleet.Add(flightName);
+
+        //Execute
+        String actual = fleet[flightName].Name;
+
+        //Verify
+        Assert.AreEqual(flightName, actual);
+    }
+}</code></pre>
+          <p><br><br>We've defined a SetUp() and TearDown() pair of methods. In major XUnit frameworks, these are used to create Fixtures. A Fixture is some resource all tests in a test case have in common and which sets the context of the test (the situation in which we're testing), as well as other repetitive objects or resources.<br>VSTS uses the attributes [TestInitialize()] for the Setup, this part is run before each test and [TestCleanup()] for the teardown, run after each test.<br>Because each test must be isolated (cannot share information) these methods will tell the Framework to create our Fixture (a Fleet instance) before each test, and destroy it after. So each test gets a shiny new version to play with, free of anything a previous test may have done.<br><br>The test case above is a good small start and I hope you enjoyed this first walkthrough on unit testing, don&rsquo;t hesitate to post some feedback!</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

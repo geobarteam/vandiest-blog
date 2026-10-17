@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unit testing, what else? | Geoffrey Vandiest</title>
+  <meta name="description" content="In the preceding post I stressed why automated testing is so important for the distributed team, but I didn’t really specify what automated testing is.">
+  <link rel="canonical" href="https://vandiest.biz/post/2008/09/11/Unit-testing-what-else/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Unit testing, what else?">
+  <meta property="og:description" content="In the preceding post I stressed why automated testing is so important for the distributed team, but I didn’t really specify what automated testing is.">
+  <meta property="og:url" content="https://vandiest.biz/post/2008/09/11/Unit-testing-what-else/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Unit testing, what else?",
+    "datePublished": "2008-09-11",
+    "dateModified": "2008-09-11",
+    "description": "In the preceding post I stressed why automated testing is so important for the distributed team, but I didn’t really specify what automated testing is.",
+    "keywords": [
+      "Testing",
+      "Unit testing"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li></ul>
+          <h1>Unit testing, what else?</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2008-09-11">11 SEP 2008</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <div>In the preceding post I stressed why automated testing is so important for the distributed team, but I didn&rsquo;t really specify what automated testing is. Automated testing is not just about uni tests and all tests created with a unit testing framework are not really unit tests!&nbsp;There are many flavors and terms to define automated testing. &nbsp;There exist lots of other kinds of testing and this list is absolutely not exhaustive nevertheless it lists the most common types of automated tests:</div>
+
+          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Unit testing</em></div>
+          <div>Unit test target a single class or package. They are written by the developer to test one single unit of code and must be isolated from all other components.</div>
+          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Integration testing</em></div>
+          <div>Integration testing tests the integration of the different unit of code.&nbsp;In an integration test the different program units are combined and tested as groups in multiple ways.&nbsp;Integration testis can be done through the use of a unit testing framework of with black box testing tools.</div>
+          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>User acceptance tests</em></div>
+          <div>These can be block box test or integration test but used in the context of the acceptance of the application. They can be performed by the provider before delivery to the customer or by the customer before transferring ownership.</div>
+          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Black box testing</em></div>
+          <div>Usually performed by Q&amp;A but they can also sometimes used by developers having to change legacy systems that don&rsquo;t have unit or pre existing integration tests.&nbsp;These tests take an external perspective of the SUT to derive test cases. These tests can be functional or non-functional, though usually functional. The test designer selects valid and invalid input and determines the correct output. There is no knowledge of the test object's internal structure.&nbsp;</div>
+          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Performance/Load/stress testing</em></div>
+          <div>Although these terms are used to define different techniques they share the same purpose.&nbsp;Their goal is to test the performance of a system and not to find bugs.</div>
+
+          <div>As described in my previous post testing must occur at every stage of the development and by each part of the production unit.&nbsp;Nevertheless the types of tests used at a specific stage differ.&nbsp;Unit tests will be written during the implementation phase by developers. To avoid long and painful integration phases it is also recommended that developers write integration tests. They should test as soon as possible if their components integrate well with other already available components.&nbsp;Black box and load tests should be done after the implementation stage by Q&amp;A teams.&nbsp;This is at the end of iteration when using an iterative process like Xp, Scrum or RUP or before deployment when using a linear process like waterfall.&nbsp;</div>
+
+          <p>GVD</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

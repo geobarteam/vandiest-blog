@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automated testing and the software factory | Geoffrey Vandiest</title>
+  <meta name="description" content="There is a theory in software engineering asserting that a relationship exists between the structure of a development organization and the architecture of the…">
+  <link rel="canonical" href="https://vandiest.biz/post/2008/09/08/Automated-testing-and-the-software-factory/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Automated testing and the software factory">
+  <meta property="og:description" content="There is a theory in software engineering asserting that a relationship exists between the structure of a development organization and the architecture of the…">
+  <meta property="og:url" content="https://vandiest.biz/post/2008/09/08/Automated-testing-and-the-software-factory/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Automated testing and the software factory",
+    "datePublished": "2008-09-08",
+    "dateModified": "2008-09-08",
+    "description": "There is a theory in software engineering asserting that a relationship exists between the structure of a development organization and the architecture of the…",
+    "keywords": [
+      "Testing"
+    ],
+    "image": "https://vandiest.biz/img/2008/automated-testing-and-the-software-factory-01.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li></ul>
+          <h1>Automated testing and the software factory</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2008-09-08">08 SEP 2008</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>&nbsp;There is a theory in software engineering asserting that a relationship exists between the structure of a development organization and the architecture of the products that this organization produces. Recently a Harvard Business School <a href="http://www.hbs.edu/research/pdf/08-039.pdf">study</a> has shown that distributed teams tend to produce more modular software. <br>In my opinion the fact that distributed teams produce more modular software isn&rsquo;t only because the communication dynamics force the distributed teams to align on interfaces but also because they realise that their software has to be tested thoroughly.&nbsp;&nbsp;&nbsp; <br>To be able to enhance the testability of their software they need to make it modular and modular software is better software!&nbsp;<br>Nevertheless testing has not only an impact on the product it has also a huge impact on the organization of the team.&nbsp;<br>In this first post I enlighten why a&nbsp;distributed software factory should practice&nbsp;automated testing and how it affects the team.</p>
+
+          <div><strong>
+          <p>Prevent waste</p>
+          </strong></div>
+          <p>Producing software is similar as producing consumer goods, both needs an efficient assembly line. The assembly line contains several parts, there is a customer team, a product owner, one or more development teams and a QA team. Like in a real factory these parts of the assembly line can be globally distributed. Every part of the assembly line is settled where the efficiency is the most optimal but all these pieces are working together for producing working software in one product development stream.&nbsp;They are all working with queues so that the teams can work asynchronously, maintaining a working speed dependent on one another.&nbsp;&nbsp; </p>
+
+          <p>The productivity of a factory is measured by the speed at which products flaws from the production line and the effectiveness of the production line.&nbsp;As one may think, the speed at which products flaws out of the factory is not the average speed of each part of the production line but it depend mostly on the throughput of the slowest part of this production line.&nbsp;So if you want to increase the overall production capacity of a factory you&rsquo;ve to synchronize every part of the production line and make sure that each part works at a constant peace and that every part is synchronized with his neighbours.&nbsp;The worsted thing that can happen in an assembly line is that a defect is caused in a part of the line and is paced at the next part.&nbsp;The defect will not only cause the part were the defect is detected to stop but the defect part has also to be resent to the responsible part so it can be fixed.&nbsp;This will desynchronize the production line and diminish the overall productivity of the factory. </p>
+
+          <div><strong>
+          <p>Prevent defects to happen</p>
+          </strong></div>
+          <p>In our modern industries when a defect happen in a manufacturing process, engineers will try to find the root cause of the problem and they will change the production process so that the defect can&rsquo;t happen again.&nbsp;The way engineers are doing this is by incorporating automated testing devices in their production process.&nbsp;Software automated tests serve the same purpose as the automated testing devices in manufacturing.&nbsp;The automated tests are not made to detect malfunctions but to prevent defects to occur.&nbsp;The real value of our automated tests is not that they can detect defects but that they overcome defects to happen!&nbsp;</p>
+
+          <div>
+          <table>
+          <tbody>
+          <tr>
+          <td>
+          <p><br>Type-G Toyaoda automated loom<br></p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+
+          <div>
+          <table>
+          <tbody>
+          <tr>
+          <td>
+          <p><img src="/img/2008/automated-testing-and-the-software-factory-01.webp" alt="Type-G Toyoda Automatic Loom" width="1200" height="832" loading="lazy"></p>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+
+          <div>
+          <table>
+          <tbody>
+          <tr>
+          <td>
+          <p>The Type-G Toyoda Automatic Loom, the world's first automatic loom with a non-stop shuttle-change motion, was invented by Sakichi Toyoda in 1924. This loom automatically stopped when it detected a problem such as thread breakage.</p>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+
+          <div><strong>
+          <p>Reduce amount of unfinished features</p>
+          </strong></div>
+          <p>Another core concept of modern manufacturing is Just-InTime.&nbsp;"Just-in-Time" means making only "what is needed, when it is needed, and in the amount needed." Supplying "what is needed, when it is needed, and in the amount needed" according to this production plan can eliminate waste, inconsistencies, and unreasonable requirements, resulting in improved productivity.&nbsp;The worst enemy of Just-InTime is stock.&nbsp;The overall Just-InTime process is meant to eliminate every unnecessary stock.&nbsp;Stock means financial investing; they take in a lot of place resulting in more costs.&nbsp;Stock also dissimilates inefficiency in the assembly line. </p>
+
+          <p>Unfinished features are what best represent stock in a software factory.&nbsp;By unfinished features we mean code that is not delivered to the customer.&nbsp;The main reasons why code is not delivered to the customer is that we don&rsquo;t know if it works or worse that we now for sure it don&rsquo;t work because it&rsquo;s bugged. Developers automated testing help us to reduce the amount of unfinished features.&nbsp;It shortens the Q&amp;A cycle and the release cycle and helps us answer to the question, is the piece of code done.</p>
+
+          <p><strong>
+
+          <strong>
+          <p>Improve the </p>
+          throughout put</strong></strong></p>
+
+          <p>It&rsquo;s true that automated tests are increasing the initial cost of development part. In my experience writing automated tests tend to cost the same amount of time as writing production code.&nbsp;But this cost is more than re-gain because the other steps of the production process shorten. The amount of defects detected by the Q&amp;A team is drastically falling and a lot of time is won because the Q&amp;A team can work faster. Even the overall throughout put of the development teams increases at the end because a time is not loosed anymore in correcting a lot of defects detected by the Q&amp;A team. The project manager is far better at estimated the project status.&nbsp;At the end the trust of the customer increases because they get features build on a constant pace and because the overall delivered quality increases.</p>
+
+          <p>
+          <p>GVD</p>
+          </p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

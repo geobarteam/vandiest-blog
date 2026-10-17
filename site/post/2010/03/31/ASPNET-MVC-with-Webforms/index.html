@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASP.NET MVC with Webforms | Geoffrey Vandiest</title>
+  <meta name="description" content="It’s now generally admitted in the community that Unit testing and TDD (Test Driven Development) are valuable techniques when it comes to increasing the…">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/03/31/ASPNET-MVC-with-Webforms/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ASP.NET MVC with Webforms">
+  <meta property="og:description" content="It’s now generally admitted in the community that Unit testing and TDD (Test Driven Development) are valuable techniques when it comes to increasing the…">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/03/31/ASPNET-MVC-with-Webforms/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ASP.NET MVC with Webforms",
+    "datePublished": "2010-03-31",
+    "dateModified": "2010-03-31",
+    "description": "It’s now generally admitted in the community that Unit testing and TDD (Test Driven Development) are valuable techniques when it comes to increasing the…",
+    "keywords": [
+      "ASP.NET",
+      "ASP.NET MVC",
+      "Webforms"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">ASP.NET</span></li><li><span class="chip chip--quiet">ASP.NET MVC</span></li><li><span class="chip chip--quiet">Webforms</span></li></ul>
+          <h1>ASP.NET MVC with Webforms</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-03-31">31 MAR 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>
+          <h2><a href="http://www.codeplex.com/mvcexample">source code can be found here&nbsp;</a></h2>
+          </p>
+          <p>It&rsquo;s now generally admitted in the community that Unit testing and TDD (Test Driven Development) are valuable techniques when it comes to increasing the overall quality of our code. Nevertheless unit testing can be costly especially when you&rsquo;ve applications with a lot of logic implemented in the UI. Therefore if we want to make our application testable we need to separates the UI from the rest of the application.</p>
+          <p>Martin Fowler described on his site some patterns that separate and diminish the UI logic to a bare minimum. They are all variants of the classical MVC (Model View Controller) pattern. The MVC split the application in 3 parts: the view handles the display, the controller that responds to user gestures and the model that contains the domain logic. The MVC is the foundation of very popular portal frameworks like Ruby on Rails.</p>
+          <p>To build web sites applying the MVC pattern with .Net developers can choose among several MVC frameworks like Monorail or the new ASP.NET MVC. In anyway, MVC frameworks like ASP.NET MVC are based on completely different paradigm as the ASP.NET Webforms framework. This means that you have to re-learn to program web apps from scratch. Another setback is that there are no ways to refactor your old ASP.NET applications so that they can fit into the MVC framework. I want to make myself clear, I believe that frameworks like Monorail or the coming System.Web.MVC are the future way of programming web apps in .NET but it demands a considerable amount of effort to learn new frameworks. It&rsquo;s difficult for someone like me who has invested lots of years in mastering the classical ASP.NET code-behind model to re-learn everything from scratch. In the meantime this should not be an excuse to not make my code more testable.</p>
+          <p>In this post I will explicit through a simple example how to use the model view controller pattern on top of the code-behind model. We will create a login form with the MVC pattern.</p>
+          <p>Setup your solution</p>
+          <p>Create a new solution &ldquo;Zoo&rdquo; with 3 projects &ndash;&gt;</p>
+          <ul>
+          <li>ZooWebsite-&gt; ASP.NET web appplication </li>
+          <li>ZooLibrary -&gt; Class library&nbsp; </li>
+          <li>ZooTest - Class library </li>
+          <li>Create a reference from ZooWebsite to ZooLibrary
+          <p>(ZooWebsite , add reference, project tab select ZooLibrary)</p>
+          </li>
+          <li>On ZooLibrary add a reference to System.Web</li>
+          </ul>
+          <p><em class="lost">[Image no longer available: ne project]</em></p>
+          <h4><em></em>&nbsp;</h4>
+          <h2>The View</h2>
+          <p>To make our code testable it&rsquo;s very important to be able to decouple the UI from the ASP.NET code-behind.&nbsp; Therefore we will create an interface our ASP.NET page should implement.&nbsp; This View interface will represent the contract the UI as to conform to.&nbsp; When we will test our controller we will not do this with our actual web page but through a mock object that implements the View interface.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p>Add an interface ILoginView on the project ZooLibrary:</p>
+          <pre><code class="language-typescript">namespace ZooApplication.Library
+{
+     public interface ILoginView
+    {
+        string ErrorMessage { get;set;}
+        string EmailAddress { get;set;}
+        string Password { get;set;}
+        void RedirectFromLoginPage();
+        System.Web.UI.WebControls.Button BtnLogin { get;set;}
+    }
+}</code></pre>
+
+          <ul>
+          <li>Edit the default aspx page and enter: Welcome you are authenticated! </li>
+          <li>Add the login.aspx to the ZooWebsite project. </li>
+          <li>Edit the source of the login.aspx part -&gt; add two textboxes, a button, and validators:</li>
+          </ul>
+          <pre><code class="language-html">&lt;%@ Page Language="C#" AutoEventWireup="true" Codebehind="Login.aspx.cs" Inherits="ZooApplication.Website.Login" %&gt;</code></pre>
+          <pre><code class="language-xml">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head runat="server"&gt;
+    &lt;title&gt;Login page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form id="form1" runat="server"&gt;
+        &lt;div&gt;
+                Login form&lt;br /&gt;
+                &lt;asp:Label ID="LblErrorMsg" runat="server" Text="Invalid login" Visible="false" &gt;&lt;/asp:Label&gt;&lt;br /&gt;
+                Email Address:
+                &lt;asp:TextBox ID="TxbEmailAddress" runat="server"&gt;&lt;/asp:TextBox&gt;
+                &lt;asp:RequiredFieldValidator ID="RfvEmailAddress" runat="server" ErrorMessage="Enter your email address!"
+                    ControlToValidate="TxbEmailAddress"&gt;
+                &lt;/asp:RequiredFieldValidator&gt;
+                &lt;asp:RegularExpressionValidator ID="RevEmailAddress" runat="server" ControlToValidate="TxbEmailAddress"
+                    ErrorMessage="Invalid email address!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"&gt;
+                &lt;/asp:RegularExpressionValidator&gt;&lt;/div&gt;
+            &lt;div&gt;
+                Password:
+                &lt;asp:TextBox ID="TxbPassword" runat="server"&gt;&lt;/asp:TextBox&gt;
+                &lt;asp:RequiredFieldValidator ID="RfvPassword" runat="server" ErrorMessage="Enter your password!"
+                    ControlToValidate="TxbPassword"&gt;
+                &lt;/asp:RequiredFieldValidator&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;asp:Button ID="PageBtnLogin" runat="server" Text="Login" /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+          <p>Because the code-behind is not testable and don&rsquo;t make part of the SUT (Subject Under Test) we want to diminish the code-behind logic to a bare minimum.&nbsp;&nbsp; The view responsibility is limited to output&nbsp; the data coming from our model in a human readable way and to expose user input to the controller.</p>
+          <p>Therefore we implement our interface through an aspx page that only contains a set of properties that binds data coming from the controller with our web controls.&nbsp;</p>
+          <p>Generally we will try to implement all the presentation logic into the controller. The only exception here will be the RedirectFromLoginPage() method.</p>
+          <pre><code class="language-csharp">using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using ZooApplication.Library;
+
+namespace ZooApplication.Website
+{
+    public partial class Login : System.Web.UI.Page, ZooApplication.Library.ILoginView
+    {
+
+        public string EmailAddress
+        {
+            get
+            {
+                return TxbEmailAddress.Text;
+            }
+            set
+            {
+                TxbEmailAddress.Text = value;
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get
+            {
+                return LblErrorMsg.Text;
+            }
+            set
+            {
+                LblErrorMsg.Text = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return TxbPassword.Text;
+            }
+            set
+            {
+                TxbPassword.Text = value;
+            }
+        }
+
+        public Button BtnLogin
+        {
+            get
+            {
+                return PageBtnLogin;
+            }
+            set
+            {
+                PageBtnLogin = value;
+            }
+        }
+
+        public void RedirectFromLoginPage()
+        {
+            FormsAuthentication.RedirectFromLoginPage(this.EmailAddress, false);
+        }
+    }
+}</code></pre>
+
+          <h2>The model</h2>
+          <p>It&rsquo;s our model that is responsible to validate the user login and password against the DB.&nbsp;</p>
+          <p>We create a DB named ZooDB:</p>
+          <ul>
+          <li>Add an APP_Data folder to your ZooWebsite project </li>
+          <li>APP_Data, new item, Database</li>
+          </ul>
+          <p>Execute this script to create a table Profiles on the ZooDB:</p>
+          <pre><code class="language-sql">CREATE TABLE [dbo].[Profiles](
+      [ProfileID] [int] IDENTITY(1,1) NOT NULL,
+      [EmailAddress] [nvarchar](255) NOT NULL,
+      [Password] [nvarchar](255) NOT NULL,
+ CONSTRAINT [PK_Profiles] PRIMARY KEY CLUSTERED
+(
+      [ProfileID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]</code></pre>
+          <p>Now configure your web.config file to add the connectionstring and the authentication part:</p>
+          <pre><code class="language-xml">&lt;?xml version="1.0"?&gt;
+&lt;configuration&gt;
+  &lt;connectionStrings&gt;
+    &lt;add name="ZooDB" connectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=.\App_Data\ZooDB.mdf;Integrated Security=True"/&gt;
+  &lt;/connectionStrings&gt;
+    &lt;system.web&gt;
+      &lt;authentication mode="Forms"&gt;
+        &lt;forms name="AuthCookie" path="/" loginUrl="login.aspx" protection="All" timeout="10"&gt;
+        &lt;/forms&gt;
+      &lt;/authentication&gt;
+      &lt;authorization&gt;
+        &lt;deny users="?"/&gt;
+      &lt;/authorization&gt;
+    &lt;/system.web&gt;
+&lt;/configuration&gt;</code></pre>
+
+          <p><em class="lost">[Image no longer available: image002]</em></p>
+          <p>Test the application, it should compile and we should be redirected to the login page</p>
+          <p><em class="lost">[Image no longer available: image004]</em></p>
+          <p>Our model implements an Authenticate method. Again we will make use of interfaces to decouple the model from the controller.</p>
+          <p>On the ZooLibrary project create an interface ILoginModel:</p>
+          <pre><code class="language-typescript">namespace ZooApplication.Library
+{
+    public interface ILoginModel
+    {
+        bool Authenticate(string emailAddress, string password);
+    }
+}</code></pre>
+
+          <p>The method Authenticate of the class LoginModel will check the validity of supplied email address and password.&nbsp; You can implement the model with your preferred data access code.&nbsp; Personally I use <a href="http://www.subsonicproject.com/">Subsonic</a> because it&rsquo;s really simple to use and it&rsquo;s based on the active record pattern, the same pattern used in Rails.</p>
+          <p>But for the moment let&rsquo;s use standard ADO.NET code:</p>
+          <pre><code class="language-sql">using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data.SqlClient;
+using System.Configuration;
+
+namespace ZooApplication.Library
+{
+    public class LoginModel : ILoginModel
+    {
+        public bool Authenticate(string emailAddress, string password)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ZooDB"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(
+                "SELECT count(EmailAddress) FROM [Profiles] " +
+                "WHERE EmailAddress=@EmailAddress AND Password=@Password",
+                conn);
+            cmd.Parameters.AddWithValue("@EmailAddress", emailAddress);
+            cmd.Parameters.AddWithValue("@Password", password);
+            try
+            {
+                conn.Open();
+                if((int)cmd.ExecuteScalar()==1)
+                    return true;
+
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+    }
+}</code></pre>
+
+          <h2>The controller</h2>
+          <p>The controller job is to figure out how the view should display the model. Therefore the controller should have an association with the model and the view.</p>
+          <ul>
+          <li>Add a new class to ZooLibrary name it LoginController.</li>
+          </ul>
+          <p>We start by defining a constructor that takes a ILoginView and a ILoginModel as parameters.<br>The Initialize method will be called by the page to instruct the controller to take control over the view and the model.<br>In the initialize method we will prepare the view to be rendered and subscribe to the events triggered by the view.</p>
+          <pre><code class="language-csharp">using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ZooApplication.Library
+{
+    public class LoginController
+    {
+        private ILoginView _view;
+        private ILoginModel _model;
+
+
+        public LoginControler(ILoginView view, ILoginModel model)
+        {
+            this._view = view;
+            this._model = model;
+        }
+
+        public void Initialize()
+        {
+            this._view.ErrorMessage = "";
+            this._view.BtnLogin.Click += new EventHandler(BtnLogin_Click);
+        }
+
+        public void BtnLogin_Click(object sender, EventArgs e)
+        {
+            if (this._model.Authenticate(this._view.EmailAddress, this._view.Password))
+                this._view.RedirectFromLoginPage();
+            else
+                this._view.ErrorMessage = "Invalid emailaddress or password!";
+        }
+    }
+}</code></pre>
+
+          <p><em class="lost">[Image no longer available: clip_image002]</em></p>
+
+          <h4><em>Integrating the MVC into the page</em></h4>
+          <p>When we program against an asmx page it&rsquo;s always the page that receive the initial control from the ASP.NET framework. <br>So it&rsquo;s the page that need to instantiate the model, the view and the controller.</p>
+          <pre><code class="language-csharp">public partial class Login : System.Web.UI.Page, ZooApplication.Library.ILoginView
+{
+    private LoginController controller;
+
+    protected override void OnInit(EventArgs e)
+    {
+        base.OnInit(e);
+
+        ILoginModel model = new LoginModel();
+        controller = new LoginController(this, model);
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        controller.Initialize();
+    }
+    …
+ }</code></pre>
+
+          <h2>Testing</h2>
+          <p>We are now able with the help of mocking frameworks to test the logic in the model and the controller.</p>
+          <p>The code here uses NMock but you can use your prefered mocking framework to implement your tests:<br>In the meantime the test for our LoginController should look like this:</p>
+          <pre><code class="language-csharp">public void LoginController_LoginTest()
+{
+    ILoginView view = mocks.NewMock&lt;ILoginView&gt;();
+
+    ILoginModel model = mocks.NewMock&lt;ILoginModel&gt;();
+    LoginController target = new LoginController(view, model);
+
+    Expect.AtLeastOnce.On(view).GetProperty("BtnLogin").Will(Return.Value(new System.Web.UI.WebControls.Button()));
+    Expect.AtLeastOnce.On(view).GetProperty("EmailAddress").Will(Return.Value("unitEmail@test.be"));
+    Expect.AtLeastOnce.On(view).GetProperty("Password").Will(Return.Value("password"));
+    Expect.Once.On(model).Method("Authenticate").With(view.EmailAddress, view.Password).Will(Return.Value(true));
+    Expect.Once.On(view).SetProperty("ErrorMessage").To("");
+    Expect.AtLeastOnce.On(view).Method("RedirectFromLoginPage");
+
+    target.Initialize();
+    target.BtnLogin_Click(view.BtnLogin, null);
+
+    mocks.VerifyAllExpectationsHaveBeenMet();
+
+}</code></pre>
+
+          <p>I hope this introduction to the MVC pattern has been profitable to you.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

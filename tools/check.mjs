@@ -4,6 +4,7 @@
 //   node tools/check.mjs <file> [...]    only those files (used by the edit hook)
 // Exits 1 on any error. Warnings (e.g. TODO markers) never fail the run.
 import { readFile, stat } from 'node:fs/promises';
+import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'node-html-parser';
@@ -13,7 +14,13 @@ import { SITE } from './layout.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_DIR = join(ROOT, 'site');
 const MAX_IMAGE = 300 * 1024;
-const POST_RE = /^post\/(\d{4})\/(\d{2})\/(\d{2})\/([a-z0-9]+(?:-[a-z0-9]+)*)\/index\.html$/;
+const POST_RE = /^post\/(\d{4})\/(\d{2})\/(\d{2})\/([^/]+)\/index\.html$/;
+const NEW_SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+// Slugs of the old blog keep their exact spelling (Azure Static Web Apps paths are case-sensitive).
+const LEGACY_FILE = join(ROOT, 'tools', 'legacy-urls.txt');
+const LEGACY = new Set(existsSync(LEGACY_FILE)
+  ? readFileSync(LEGACY_FILE, 'utf8').split('\n').map((l) => l.trim()).filter((l) => l.startsWith('/post/'))
+  : []);
 const LANG_RE = /^language-(csharp|cs|bash|shell|powershell|xml|markup|html|json|javascript|js|typescript|sql|yaml|css|plaintext|none)$/;
 
 const errors = [];
@@ -52,8 +59,9 @@ async function checkLinks(rel, root) {
 
 async function checkPost(rel, html, root) {
   const m = rel.split(sep).join('/').match(POST_RE);
-  if (!m) return err(rel, 'post path must be post/yyyy/mm/dd/slug/index.html with a lowercase hyphenated slug');
+  if (!m) return err(rel, 'post path must be post/yyyy/mm/dd/slug/index.html');
   const [, y, mo, d, slug] = m;
+  if (!NEW_SLUG_RE.test(slug) && !LEGACY.has(`/post/${y}/${mo}/${d}/${slug}`)) return err(rel, 'slug must be lowercase ASCII with hyphens (only the legacy URLs in tools/legacy-urls.txt are exempt)');
   const iso = `${y}-${mo}-${d}`;
   const canonical = `${SITE.url}/post/${y}/${mo}/${d}/${slug}/`;
 

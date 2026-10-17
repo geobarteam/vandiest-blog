@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spec-Driven Development with AI: A Practical Guide to Staying in Control | Geoffrey Vandiest</title>
+  <meta name="description" content="AI coding tools have made it remarkably easy to generate software at speed. They can scaffold features, sketch architecture, wire endpoints, and fill in…">
+  <link rel="canonical" href="https://vandiest.biz/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Spec-Driven Development with AI: A Practical Guide to Staying in Control">
+  <meta property="og:description" content="AI coding tools have made it remarkably easy to generate software at speed. They can scaffold features, sketch architecture, wire endpoints, and fill in…">
+  <meta property="og:url" content="https://vandiest.biz/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Spec-Driven Development with AI: A Practical Guide to Staying in Control",
+    "datePublished": "2026-04-18",
+    "dateModified": "2026-04-18",
+    "description": "AI coding tools have made it remarkably easy to generate software at speed. They can scaffold features, sketch architecture, wire endpoints, and fill in…",
+    "keywords": [
+      "AI development",
+      "Testing",
+      "Architecture"
+    ],
+    "image": "https://vandiest.biz/img/2026/spec-driven-development-with-ai-a-practical-guid-01.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">AI development</span></li><li><span class="chip chip--quiet">Testing</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
+          <h1>Spec-Driven Development with AI: A Practical Guide to Staying in Control</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2026-04-18">18 APR 2026</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2026/spec-driven-development-with-ai-a-practical-guid-01.webp" alt width="800" height="1200" loading="lazy"><br>AI coding tools have made it remarkably easy to generate software at speed. They can scaffold features, sketch architecture, wire endpoints, and fill in boilerplate in a matter of minutes. That speed is real, and in the right hands it is valuable. But it also creates a new kind of risk: teams can move from idea to implementation so quickly that they skip the thinking that keeps a system coherent.</p>
+          <p>This article is about that missing discipline. More specifically, it is about the&nbsp;<strong>spec-driven development process</strong>: how to turn a vague feature request into a clear specification, a reviewed plan, and a sequence of small, testable steps that keep the developer in control. The goal is not to slow AI down. It is to give that speed structure, so that what gets built still reflects deliberate design rather than improvised output.</p>
+          <p>If Part 1 was about principles and tooling, this article is about workflow. We will look at how specifications, plans, and Red-Green-Refactor with human gates fit together into a practical process you can actually use on a real project.</p>
+          <hr>
+          <h2>The Problem: Vibe Coding Feels Fast Until It Doesn't</h2>
+          <p>Most teams experimenting with AI coding assistants fall into the same trap.</p>
+          <p>Someone types:</p>
+          <blockquote>
+          <p>"Add a subscriptions feature to the app."</p>
+          </blockquote>
+          <p>The model starts working. Entities appear. Repositories show up. Controllers and DTOs materialize. A page gets scaffolded. Twenty minutes later there are fifteen new files across half the solution, and at first glance it all looks plausible.</p>
+          <p>That is exactly the danger.</p>
+          <p>The code often&nbsp;<em>looks</em>&nbsp;coherent long before it actually is. The entity does not match the database schema. The DTO exposes fields the UI never uses and misses fields it needs. The controller returns a shape the client does not expect. Naming drifts away from the rest of the codebase. Tests are missing or meaningless. And the developer, who is still accountable for the result, can no longer explain why the design looks the way it does.</p>
+          <p>That is what I mean by&nbsp;<strong>vibe coding</strong>: using AI in a way that creates the&nbsp;<em>feeling</em>&nbsp;of momentum while steadily eroding control.</p>
+          <p>The alternative is&nbsp;<strong>spec-driven development</strong>. Instead of asking the AI to improvise, you give it a clear contract, a reviewed plan, and a tight execution loop. The model still writes code, but it does so inside a process the developer controls.</p>
+          <hr>
+          <h2>The Three Pillars</h2>
+          <p>In practice, spec-driven development with AI rests on three pillars:</p>
+          <ol>
+          <li><strong>Specifications</strong>&nbsp;&mdash; define what should be built before code exists.</li>
+          <li><strong>Plans</strong>&nbsp;&mdash; break the work into small vertical slices before implementation starts.</li>
+          <li><strong>Red-Green-Refactor with human gates</strong>&nbsp;&mdash; implement one verified step at a time.</li>
+          </ol>
+          <p>Each pillar solves a different failure mode.</p>
+          <ul>
+          <li>Specs stop the AI from guessing.</li>
+          <li>Plans stop the AI from wandering across the architecture.</li>
+          <li>Red-Green-Refactor with gates stops mistakes from compounding across multiple steps.</li>
+          </ul>
+          <p>Once these three are in place, the AI becomes much more useful. It stops behaving like an overeager intern and starts behaving like a disciplined teammate.</p>
+          <hr>
+          <h2>Pillar 1: Specifications &mdash; The Contract Between the Developer and the Model</h2>
+          <h3>Why Specs Matter</h3>
+          <p>Without a spec, the AI is forced to infer intent from a vague prompt.</p>
+          <p>"Add subscriptions" sounds simple, but it leaves too many decisions open:</p>
+          <ul>
+          <li>What properties does a subscription have?</li>
+          <li>Who is allowed to create one?</li>
+          <li>Which validation rules apply?</li>
+          <li>Which endpoints are required?</li>
+          <li>What happens when there are no subscriptions?</li>
+          <li>What is intentionally out of scope?</li>
+          </ul>
+          <p>The model will happily answer all of those questions for you. The problem is that it answers them by guessing.</p>
+          <p>A good specification removes that guesswork. It captures the things the AI should not invent for itself:</p>
+          <ul>
+          <li><strong>Who</strong>&nbsp;the feature is for</li>
+          <li><strong>What</strong>&nbsp;the user can do</li>
+          <li><strong>Acceptance criteria</strong>&nbsp;for done</li>
+          <li><strong>Data model</strong>&nbsp;and constraints</li>
+          <li><strong>API surface</strong></li>
+          <li><strong>Business rules</strong>&nbsp;and expected error messages</li>
+          <li><strong>Edge cases</strong></li>
+          <li><strong>Out-of-scope items</strong></li>
+          </ul>
+          <p>Once this exists, the developer and the AI are working from the same contract.</p>
+          <h3>A Concrete Spec Example</h3>
+          <p>Here is a realistic spec for a "Patient Subscriptions" feature:</p>
+          <pre><code class="language-csharp"># Spec: Patient Subscriptions
+
+## User Story
+
+**As a** patient,
+**I want to** view my active medication subscriptions,
+**So that** I can track which medications are being dispensed on my behalf.
+
+---
+
+## Acceptance Criteria
+
+| # | Given | When | Then |
+|---|-------|------|------|
+| AC-1 | Patient is authenticated | They navigate to /subscriptions | A list of active subscriptions is displayed |
+| AC-2 | Patient has no subscriptions | They navigate to /subscriptions | An empty-state message is shown |
+| AC-3 | A subscription has expired | The list is loaded | Expired subscriptions are not shown |
+| AC-4 | Doctor creates a valid subscription | They submit the form | The subscription appears in the patient's list |
+| AC-5 | Doctor submits invalid data | They click Save | Validation errors are shown and nothing is persisted |
+
+---
+
+## Data Model
+
+### Entity: `Subscription`
+
+| Property | Type | Required | Constraints |
+|----------|------|----------|-------------|
+| Id | int | PK | Auto-generated |
+| PatientId | int | Yes | FK -&gt; Patient |
+| MedicationName | string | Yes | Max 200 chars |
+| StartDate | DateOnly | Yes | Must be today or later |
+| EndDate | DateOnly | No | Must be after StartDate |
+| CreatedBy | string | Yes | Doctor's national register ID |
+
+---
+
+## API Endpoints
+
+### `GET /api/subscriptions?patientId={id}`
+**Purpose**: Return active subscriptions for a patient.
+**Auth**: Bearer (patient or doctor role)
+**Response** (200):
+```json
+[
+  {
+    "id": 1,
+    "medicationName": "Metformin 500mg",
+    "startDate": "2026-04-01",
+    "endDate": "2026-10-01"
+  }
+]
+```
+**Error responses**: 401 -&gt; Unauthorized, 403 -&gt; Wrong patient
+
+### `POST /api/subscriptions`
+**Purpose**: Create a new subscription.
+**Auth**: Bearer (doctor role only)
+**Request body**:
+```json
+{
+  "patientId": 42,
+  "medicationName": "Metformin 500mg",
+  "startDate": "2026-04-01",
+  "endDate": "2026-10-01"
+}
+```
+**Response** (201): Created subscription
+**Error responses**: 400 -&gt; Validation errors, 401, 403
+
+---
+
+## Business Rules
+
+| # | Rule | Error message |
+|---|------|---------------|
+| BR-1 | MedicationName is required | "Medication name is required" |
+| BR-2 | StartDate must be today or later | "Start date cannot be in the past" |
+| BR-3 | EndDate, if provided, must be after StartDate | "End date must be after start date" |
+| BR-4 | Only doctors can create subscriptions | HTTP 403 |
+
+---
+
+## Out of Scope
+
+- Editing or deleting subscriptions
+- Medication lookup or auto-complete
+- Notifications when a subscription is created
+- Prescription history</code></pre>
+          <p>This is not documentation for documentation's sake. It is the minimum structure needed to stop the AI from improvising on critical details.</p>
+          <h3>What the Spec Actually Buys You</h3>
+          <p>The value of a spec is not abstract. It shows up immediately in review.</p>
+          <p>If the AI writes validation logic using&nbsp;<code>&gt;=</code>&nbsp;instead of&nbsp;<code>&gt;</code>, you can point directly to BR-3. If it adds edit and delete endpoints, you can point to the out-of-scope section. If it makes&nbsp;<code>EndDate</code>&nbsp;required, you can point to the data model.</p>
+          <p>That changes the developer's role. Instead of arguing with code, you are validating implementation against an agreed contract.</p>
+          <h3>Writing the Spec with AI</h3>
+          <p>This is one of the most useful ways to use AI early in the process.</p>
+          <p>You do not need to sit down and write the whole spec from a blank page. A better approach is an&nbsp;<strong>interview-style prompt</strong>&nbsp;that asks focused questions and assembles the answers into a structured&nbsp;<code>_specs/&lt;FeatureName&gt;.md</code>&nbsp;file.</p>
+          <p>That is why this repo now includes a dedicated&nbsp;<code>write-spec</code>&nbsp;prompt. The workflow is simple:</p>
+          <ol>
+          <li>The developer brings the feature idea.</li>
+          <li>The AI runs a short Q&amp;A session.</li>
+          <li>The AI drafts the user story, acceptance criteria, data model, API surface, business rules, edge cases, and out-of-scope section.</li>
+          <li>The developer reviews and adjusts the spec.</li>
+          <li>Only then does planning begin.</li>
+          </ol>
+          <p>This matters because the interview happens at the right level. You are discussing intent, not classes and folders. That keeps the conversation grounded in product and business behaviour before implementation details take over.</p>
+          <h3>When to Write Specs</h3>
+          <p>Not every change needs a specification.</p>
+          <ul>
+          <li><strong>Spec required</strong>: new feature, new user-facing behaviour, new API surface</li>
+          <li><strong>Spec optional</strong>: larger refactor, infrastructure change, architecture decision</li>
+          <li><strong>No spec needed</strong>: bugfix, config correction, 1-2 file change</li>
+          </ul>
+          <p>In this workflow, specs live at&nbsp;<code>_specs/&lt;FeatureName&gt;.md</code>&nbsp;in the repository root.</p>
+          <hr>
+          <h2>Pillar 2: Plans &mdash; Turning Intent into an Execution Strategy</h2>
+          <h3>From Spec to Plan</h3>
+          <p>The spec defines&nbsp;<strong>what</strong>&nbsp;should exist. The plan defines&nbsp;<strong>how</strong>&nbsp;the work will be delivered.</p>
+          <p>That distinction matters.</p>
+          <p>The spec says, "patients can view subscriptions" and "doctors can create subscriptions." The plan says, "first build the list page with a stubbed service, then wire it to the real API, then build the create form, then wire the create flow." The plan translates intent into an ordered set of implementation steps.</p>
+          <p>A plan lives at&nbsp;<code>_plans/&lt;FeatureName&gt;.md</code>. Each step is one Red-Green-Refactor cycle with explicit scope, tests, proof criteria, and a human gate.</p>
+          <h3>The Planning Gate</h3>
+          <p>Before any code is written, the plan must be reviewed and approved.</p>
+          <p>This is the hard stop between thinking and doing.</p>
+          <p>The AI should ask a simple question:</p>
+          <blockquote>
+          <p>Does this change need a plan?</p>
+          </blockquote>
+          <table>
+          <thead>
+          <tr>
+          <th>Situation</th>
+          <th>Plan required?</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>New feature or vertical slice</td>
+          <td><strong>Yes</strong></td>
+          </tr>
+          <tr>
+          <td>Change touching 3+ files</td>
+          <td><strong>Yes</strong></td>
+          </tr>
+          <tr>
+          <td>Risk area: auth, PII, DB schema, shared contracts</td>
+          <td><strong>Yes</strong></td>
+          </tr>
+          <tr>
+          <td>1-2 file bugfix</td>
+          <td>No, but still test-first</td>
+          </tr>
+          <tr>
+          <td>Config correction or simple refactor</td>
+          <td>No</td>
+          </tr>
+          </tbody>
+          </table>
+          <p>If the answer is yes, the AI writes the plan and stops. No production code starts until the developer approves it.</p>
+          <p>That single rule prevents a remarkable amount of wasted work.</p>
+          <h3>Vertical Slices, Not Horizontal Layers</h3>
+          <p>This is the planning principle that matters most.</p>
+          <p>The natural instinct, for both humans and models, is to decompose work by layer:</p>
+          <pre><code class="language-plaintext">Step 1 — Create the Subscription entity
+Step 2 — Add SubscriptionRepository
+Step 3 — Create SubscriptionCreateHandler
+Step 4 — Add GET endpoint
+Step 5 — Add POST endpoint
+Step 6 — Build the subscriptions list page
+Step 7 — Build the create form</code></pre>
+          <p>It looks organized. In reality, it delays feedback and pushes integration risk to the end.</p>
+          <p>By the time you reach the UI, you may discover that the entity shape is wrong, the DTO is incomplete, the query returns the wrong projection, or the route contract does not match the client. Now several "completed" steps have to be reopened.</p>
+          <p>Vertical slicing avoids that by planning around&nbsp;<strong>user-visible behaviour</strong>&nbsp;instead of technical layers:</p>
+          <pre><code class="language-plaintext">Step 1 — Display subscription list (stubbed)
+Step 2 — Wire subscription list to real API
+Step 3 — Create subscription form (stubbed)
+Step 4 — Wire subscription create to real API</code></pre>
+          <p>Each slice has two phases:</p>
+          <ol>
+          <li><strong>Stub</strong>&nbsp;&mdash; build the UI against a fake or mocked service so the user can validate the experience early.</li>
+          <li><strong>Wire</strong>&nbsp;&mdash; replace the stub with real production code from controller to persistence and database.</li>
+          </ol>
+          <p>This gives you three practical advantages:</p>
+          <ul>
+          <li><strong>You fail fast.</strong>&nbsp;Contract mismatches show up on Step 2 instead of Step 7.</li>
+          <li><strong>You get UI feedback early.</strong>&nbsp;The user can review the shape of the feature before backend code sprawls.</li>
+          <li><strong>You reduce blast radius.</strong>&nbsp;If something changes, one slice moves, not the whole architecture.</li>
+          </ul>
+          <h3>A Concrete Plan Example</h3>
+          <p>Here is a more realistic plan for the subscriptions feature:</p>
+          <pre><code class="language-csharp"># Plan: Patient Subscriptions — Patient views active medication subscriptions
+
+## Overview
+Patients can view their active medication subscriptions. Doctors can create new
+subscriptions. Reference feature: **Doctors**.
+
+---
+
+## Step 1 — Display subscription list (stubbed)
+
+**Scope** *(Presentation only — stub phase)*:
+- `src/Presentation/Subscriptions/ViewModels/SubscriptionsViewModel.cs` *(create)*
+- `src/Presentation/Subscriptions/ServiceClients/ISubscriptionServiceClient.cs` *(create)*
+- `src/Presentation/Subscriptions/ServiceClients/SubscriptionServiceClientStub.cs` *(create)*
+- `src/Presentation/Subscriptions/Pages/Subscriptions.razor` *(create)*
+- `src/Contracts/Subscriptions/Api/SubscriptionDto.cs` *(create)*
+- `src/Test/Unit/Presentation/Subscriptions/SubscriptionsViewModelTests.cs` *(create)*
+
+**RED**:
+- Test: `InitializeAsync_WithSubscriptions_LoadsList`
+- Command: `{{TestExePath}} --filter "SubscriptionsViewModelTests"`
+
+**GREEN**:
+- `SubscriptionDto` with Id, MedicationName, StartDate, EndDate
+- `ISubscriptionServiceClient` with `GetByPatientAsync(int patientId)`
+- Stub service returning three fake subscriptions
+- `SubscriptionsViewModel` with `IsBusy` guard and `InitializeAsync`
+- `Subscriptions.razor` bound to `ViewModel.Items`
+
+**DB changes**: none
+
+**🛑 HUMAN GATE**:
+- [ ] Behavioral: ViewModel test passes and the page renders three stubbed items
+- [ ] Review: Page layout matches the reference feature pattern
+
+---
+
+## Step 2 — Wire subscription list to real API
+
+**Scope** *(all backend layers — wire phase)*:
+- `src/Core/Domain/Functionalities/Subscriptions/Subscription.cs` *(create)*
+- `src/Core/Persistence/EntityTypeConfigurations/SubscriptionConfiguration.cs` *(create)*
+- `src/Core/Persistence/Repositories/SubscriptionRepository.cs` *(create)*
+- `src/Core/Application/Functionalities/Subscriptions/Queries/GetSubscriptions/` *(create)*
+- `src/Host/Client/Controllers/SubscriptionController.cs` *(create — GET only)*
+- `src/Database/Scripts/0001_CreateSubscriptionTable.sql` *(create)*
+- `src/Presentation/Subscriptions/ServiceClients/SubscriptionServiceClient.cs` *(create — real Refit-backed service client)*
+- `src/Presentation/Shared/ServiceClients/Bff/Clients/ISubscriptionClient.cs` *(create)*
+- `src/Test/Unit/Application/Subscriptions/GetSubscriptionsQueryTests.cs` *(create)*
+- `src/Test/Integration/Endpoints/Subscriptions/GetSubscriptionsTest.cs` *(create)*
+
+**RED**:
+- Unit: `Execute_WithActiveSubscriptions_ReturnsList`
+- Integration: `GetSubscriptions_Authenticated_ReturnsOk`
+- Integration: `GetSubscriptions_WrongPatient_ReturnsForbidden`
+
+**GREEN**:
+- `Subscription` entity and repository
+- `IGetSubscriptionsQuery` and `GetSubscriptionsQuery`
+- `SubscriptionController` GET `/api/subscriptions?patientId={id}`
+- Refit client + real service client replacing the stub
+- EF configuration + DbUp script
+
+**DB changes**: `src/Database/Scripts/0001_CreateSubscriptionTable.sql`
+
+**🛑 HUMAN GATE**:
+- [ ] Behavioral: Integration tests pass and GET `/api/subscriptions` returns the expected list
+- [ ] Review: Entity, query, repository, and controller follow the reference pattern
+
+---
+
+## Step 3 — Create subscription form (stubbed)
+
+**Scope** *(Presentation only — stub phase)*:
+- `src/Presentation/Subscriptions/ViewModels/AddSubscriptionViewModel.cs` *(create)*
+- `src/Presentation/Subscriptions/Pages/AddSubscription.razor` *(create)*
+- `src/Contracts/Subscriptions/Api/AddSubscriptionDto.cs` *(create)*
+- `src/Test/Unit/Presentation/Subscriptions/AddSubscriptionViewModelTests.cs` *(create)*
+
+**RED**:
+- Test: `Submit_EmptyMedicationName_ShowsValidationError`
+- Test: `Submit_ValidData_CallsService`
+
+**GREEN**:
+- `AddSubscriptionDto`
+- `AddSubscriptionViewModel` with BR-1 through BR-3 validation
+- Stub submission flow
+- `AddSubscription.razor` with validated fields
+
+**DB changes**: none
+
+**🛑 HUMAN GATE**:
+- [ ] Behavioral: Validation errors render correctly and valid submission calls the stub service
+- [ ] Review: Form matches the business rules in the spec
+
+---
+
+## Step 4 — Wire subscription create to real API
+
+**Scope** *(all backend layers — wire phase)*:
+- `src/Core/Application/Functionalities/Subscriptions/Commands/AddSubscription/` *(create)*
+- `src/Host/Client/Controllers/SubscriptionController.cs` *(modify — add POST)*
+- `src/Presentation/Subscriptions/ServiceClients/SubscriptionServiceClient.cs` *(modify — add AddAsync)*
+- `src/Test/Unit/Application/Subscriptions/AddSubscriptionHandlerTests.cs` *(create)*
+- `src/Test/Integration/Endpoints/Subscriptions/PostSubscriptionTest.cs` *(create)*
+
+**RED**:
+- Unit: `Execute_ValidCommand_ReturnsSuccess`
+- Unit: `Execute_PastStartDate_ReturnsFailure`
+- Integration: `PostSubscription_ValidData_ReturnsCreated`
+- Integration: `PostSubscription_MissingFields_ReturnsBadRequest`
+
+**GREEN**:
+- `AddSubscriptionCommand` and `AddSubscriptionCommandHandler`
+- POST `/api/subscriptions`
+- Real `AddAsync` implementation in the service client
+
+**DB changes**: none
+
+**🛑 HUMAN GATE**:
+- [ ] Behavioral: Integration tests pass; valid POST creates a record; invalid POST returns 400
+- [ ] Review: Authorization and business rules are enforced correctly</code></pre>
+          <p>The important thing here is not the exact class names. It is the shape of the plan:</p>
+          <ul>
+          <li>step names describe behaviour</li>
+          <li>each slice is completed before the next starts</li>
+          <li>the stub phase is intentionally narrow</li>
+          <li>the wire phase crosses layers on purpose</li>
+          <li>every step has explicit proof and review criteria</li>
+          </ul>
+          <h3>The Interview Before the Plan</h3>
+          <p>Good planning starts with the right questions.</p>
+          <p>Before an AI writes a plan, it should confirm that it has enough information to do so safely:</p>
+          <ol>
+          <li>Which existing feature is the reference pattern?</li>
+          <li>What entities and properties are involved?</li>
+          <li>Is there a database change?</li>
+          <li>Are there relationships to existing entities?</li>
+          <li>Which endpoints are needed?</li>
+          <li>Which UI pages or routes are needed?</li>
+          <li>Are there auth or claims requirements?</li>
+          </ol>
+          <p>If any of that is missing, the AI should ask now, not halfway through implementation.</p>
+          <hr>
+          <h2>Pillar 3: Red-Green-Refactor with Human Gates</h2>
+          <h3>The Core Loop</h3>
+          <p>Every plan step should run through the same execution loop:</p>
+          <pre><code class="language-plaintext">READ      — Read the plan step and understand the scope.
+RED       — Write the failing test first. Run it. Confirm it fails.
+GREEN     — Write the minimum production code needed to pass.
+REFACTOR  — Clean up without changing behaviour.
+ANALYSE   — Run static analysis and fix issues.
+PROVE     — Build, test, and format checks all pass.
+🛑 STOP   — Present results and wait for human approval.
+MARK DONE — After approval, update the plan checkboxes.</code></pre>
+          <p>Three rules are non-negotiable:</p>
+          <ol>
+          <li><strong>Never skip RED.</strong>&nbsp;The test must fail before production code exists.</li>
+          <li><strong>Never batch steps.</strong>&nbsp;One step, one proof cycle, one review.</li>
+          <li><strong>Never skip the human gate.</strong>&nbsp;Approval is part of the workflow, not an optional extra.</li>
+          </ol>
+          <h3>Why RED Must Come First</h3>
+          <p>The most common AI mistake is writing the test and the production code at the same time.</p>
+          <p>It feels efficient, but it breaks the feedback loop.</p>
+          <p>If the test was never observed failing, you do not know whether it would have caught a real defect. The assertion may be wrong. The mock setup may be too permissive. The test may accidentally validate nothing.</p>
+          <p>When the test fails first and then passes after the code change, the relationship is clear. The test is meaningful, and the production code is the reason it now passes.</p>
+          <p>That matters even more with AI-generated tests, because they often look correct while hiding subtle mistakes.</p>
+          <h3>RED-First in Practice</h3>
+          <p>Take Step 2 from the subscriptions example: return active subscriptions for a patient.</p>
+          <p>The AI starts by writing the failing unit test:</p>
+          <pre><code class="language-csharp">[TestClass]
+public class GetSubscriptionsQueryTests
+{
+    [TestMethod]
+    public async Task Execute_WithActiveSubscriptions_ReturnsList()
+    {
+        // Arrange
+        var mockRepo = new Mock&lt;ISubscriptionRepository&gt;();
+        mockRepo.Setup(r =&gt; r.GetActiveByPatientAsync(42))
+            .ReturnsAsync(new List&lt;Subscription&gt;
+            {
+                new()
+                {
+                    Id = 1,
+                    PatientId = 42,
+                    MedicationName = "Metformin 500mg",
+                    StartDate = new DateOnly(2026, 4, 1),
+                    EndDate = new DateOnly(2026, 10, 1),
+                },
+            });
+
+        var query = new GetSubscriptionsQuery(mockRepo.Object);
+
+        // Act
+        var result = await query.Execute(42);
+
+        // Assert
+        Assert.AreEqual(1, result.Count);
+        Assert.AreEqual("Metformin 500mg", result[0].MedicationName);
+    }
+}</code></pre>
+          <p>At this point the test fails, because&nbsp;<code>GetSubscriptionsQuery</code>&nbsp;does not exist yet. Good. That is exactly what should happen.</p>
+          <p>Only then does the AI create the minimal production code: the repository contract, the query implementation, the mapping, and the endpoint path needed for the full slice. When the test turns green, you know it turned green for a reason.</p>
+          <h3>The Human Gate</h3>
+          <p>After the proof step, the AI stops and presents results.</p>
+          <p>For example:</p>
+          <pre><code class="language-plaintext">Step 2 — Wire subscription list to real API
+
+Build:   0 warnings, 0 errors
+Tests:   24 passed, 0 failed
+Format:  no changes required
+
+🛑 HUMAN GATE:
+- [ ] Integration test GetSubscriptions_Authenticated_ReturnsOk passes
+- [ ] Query, repository, controller, and DTO follow the reference feature pattern</code></pre>
+          <p>This is where the developer checks the behaviour and the design:</p>
+          <ul>
+          <li>Does the implementation satisfy the spec?</li>
+          <li>Do the tests cover the acceptance criteria?</li>
+          <li>Do the file locations and naming match the codebase?</li>
+          <li>Are risk areas handled correctly?</li>
+          </ul>
+          <p>Only after approval does the next step begin.</p>
+          <p>That gate is what prevents AI errors from cascading into later steps.</p>
+          <h3>Bugfixes: Regression Test First</h3>
+          <p>The same principle applies to bugfixes, just with a smaller workflow:</p>
+          <ol>
+          <li>Investigate the root cause.</li>
+          <li>Write a regression test that reproduces the bug.</li>
+          <li>Confirm it fails.</li>
+          <li>Make the smallest fix.</li>
+          <li>Confirm the test passes.</li>
+          <li>Run the standard proof commands.</li>
+          </ol>
+          <p>This keeps bugfixes honest. The AI does not get to poke at code until symptoms disappear. It has to prove it understands the failure first.</p>
+          <hr>
+          <h2>Progress Tracking Across Sessions</h2>
+          <p>One of the hardest things about AI-assisted development is that sessions are ephemeral. Context disappears when the conversation ends.</p>
+          <p>Plan files solve that with a very simple convention: checkboxes on the human gate.</p>
+          <pre><code class="language-plaintext">## Step 1 — Display subscription list (stubbed)
+...
+**🛑 HUMAN GATE**:
+- [x] Behavioral: ViewModel test passes and the list renders with stubbed data
+- [x] Review: Layout matches the reference feature
+
+## Step 2 — Wire subscription list to real API
+...
+**🛑 HUMAN GATE**:
+- [ ] Behavioral: Integration tests pass and GET /api/subscriptions returns data
+- [ ] Review: Query, repository, and controller follow existing patterns</code></pre>
+          <p>When a new session starts, the AI reads the plan and finds the first unchecked box. That is the next step.</p>
+          <p>No guesswork. No repeated work. No fragile reliance on chat history.</p>
+          <hr>
+          <h2>Encoding the Process into AI Instructions</h2>
+          <p>What makes this approach practical is that the workflow is not just a team convention. It is encoded into the repo's instructions, agents, prompts, and skills.</p>
+          <p>That gives the model structure before the conversation even begins.</p>
+          <h3><code>AGENTS.md</code>&nbsp;&mdash; The Workflow Backbone</h3>
+          <p>This file defines the planning gate, the mandatory workflow rules, the vertical-slice strategy, and the stop points.</p>
+          <p>It is the reason the AI knows that planning comes before coding and that one step must finish before the next begins.</p>
+          <h3><code>planner.agent.md</code>&nbsp;&mdash; The Planning Specialist</h3>
+          <p>This agent is deliberately constrained. It can read the codebase and produce&nbsp;<code>_plans/&lt;FeatureName&gt;.md</code>, but it cannot write production code.</p>
+          <p>That separation matters. Planning is a different task from implementation, and mixing the two is where many AI workflows lose discipline.</p>
+          <h3><code>copilot-instructions.md</code>&nbsp;&mdash; Project Rules and Boundaries</h3>
+          <p>This file tells the AI what kind of system it is working in: project structure, naming rules, dependency boundaries, verification commands, and critical architectural constraints.</p>
+          <p>It answers questions the AI should not answer by improvisation.</p>
+          <h3><code>write-spec.prompt.md</code>&nbsp;&mdash; AI-Assisted Specification Writing</h3>
+          <p>This prompt fills an important gap in the process.</p>
+          <p>Before planning, it interviews the developer section by section and produces&nbsp;<code>_specs/&lt;FeatureName&gt;.md</code>&nbsp;from the spec template. It turns a vague idea into something concrete enough to plan safely.</p>
+          <h3><code>build-feature/SKILL.md</code>&nbsp;&mdash; The Execution Engine</h3>
+          <p>This skill tells the AI how to execute an approved plan step using the right layer patterns and proof loop. It does not replace judgement, but it gives the model reliable rails.</p>
+          <h3>Supporting Project-Level Folders</h3>
+          <p>The wider workflow also benefits from a small set of project-level folders with clear intent:</p>
+          <ul>
+          <li><code>_specs/</code>&nbsp;for feature specifications</li>
+          <li><code>_plans/</code>&nbsp;for approved implementation plans</li>
+          <li><code>_decisions/</code>&nbsp;for ADRs and architectural choices</li>
+          <li><code>_qa/</code>&nbsp;for smoke-test plans and QA artifacts</li>
+          <li><code>_infrastructure/</code>&nbsp;for infrastructure specs and environment records</li>
+          </ul>
+          <p>None of these are complicated. Their value comes from being explicit, predictable, and easy for both humans and AI to discover.</p>
+          <hr>
+          <h2>Putting It All Together</h2>
+          <p>At a high level, the workflow looks like this:</p>
+          <pre><code class="language-plaintext">Idea -&gt; Spec -&gt; Plan -&gt; Step 1 -&gt; Review -&gt; Step 2 -&gt; Review -&gt; Step 3 -&gt; Review -&gt; Step 4 -&gt; Review</code></pre>
+          <p>More concretely:</p>
+          <ol>
+          <li>A developer identifies a feature.</li>
+          <li>The AI helps write the spec through a focused Q&amp;A session.</li>
+          <li>The planner reads the spec and the codebase, then proposes a vertical-slice plan.</li>
+          <li>The developer approves the plan.</li>
+          <li>The AI implements one step at a time using Red-Green-Refactor.</li>
+          <li>After each step, the AI proves the result and stops for review.</li>
+          <li>The plan file tracks progress across sessions.</li>
+          </ol>
+          <p>This keeps the developer in control of design while still capturing the speed benefits of AI-assisted implementation.</p>
+          <hr>
+          <h2>Summary</h2>
+          <table>
+          <thead>
+          <tr>
+          <th>Aspect</th>
+          <th>Vibe Coding</th>
+          <th>Spec-Driven Development</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>Starting point</td>
+          <td>Vague prompt</td>
+          <td>Structured spec</td>
+          </tr>
+          <tr>
+          <td>Planning</td>
+          <td>None or implicit</td>
+          <td>Explicit plan approved before coding</td>
+          </tr>
+          <tr>
+          <td>Decomposition</td>
+          <td>Ad hoc or by layer</td>
+          <td>By user-visible behaviour</td>
+          </tr>
+          <tr>
+          <td>Testing</td>
+          <td>Optional or late</td>
+          <td>RED-first and mandatory</td>
+          </tr>
+          <tr>
+          <td>Verification</td>
+          <td>Eyeballing the output</td>
+          <td>Build, tests, analysis, format</td>
+          </tr>
+          <tr>
+          <td>Human involvement</td>
+          <td>Mostly at the end</td>
+          <td>At every gate</td>
+          </tr>
+          <tr>
+          <td>Session continuity</td>
+          <td>Fragile</td>
+          <td>Tracked in&nbsp;<code>_plans/</code></td>
+          </tr>
+          <tr>
+          <td>Accountability</td>
+          <td>Diffuse</td>
+          <td>Clear: human owns intent, AI executes</td>
+          </tr>
+          </tbody>
+          </table>
+          <p>The shift from vibe coding to spec-driven development is not about producing more documents. It is about preserving control.</p>
+          <p>The spec makes intent explicit. The plan makes execution deliberate. Red-Green-Refactor makes each change verifiable. Human gates keep the developer accountable.</p>
+          <p>AI is most useful when it accelerates a process you already trust. Without that process, speed just multiplies ambiguity.</p>
+          <p>With it, you get the best of both worlds: faster delivery and stronger control.</p>
+          <hr>
+          <p><em>The practices described in this article are encoded in the open-source&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;repository &mdash; a reusable template library of GitHub Copilot and Claude Code configuration files for .NET projects.</em></p>
+          <blockquote>
+          <p><strong>Previous:</strong>&nbsp;<a href="/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects/">Part 1 &mdash; Best Practices for AI-Assisted Coding</a></p>
+          </blockquote>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

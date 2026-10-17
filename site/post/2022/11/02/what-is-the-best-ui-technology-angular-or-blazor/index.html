@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What is the best UI technology: Angular or Blazor ? | Geoffrey Vandiest</title>
+  <meta name="description" content="This post compares and explains in detail the pros and cons of the 2 most used SPA frameworks by .net developers, Angular and Blazor.">
+  <link rel="canonical" href="https://vandiest.biz/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What is the best UI technology: Angular or Blazor ?">
+  <meta property="og:description" content="This post compares and explains in detail the pros and cons of the 2 most used SPA frameworks by .net developers, Angular and Blazor.">
+  <meta property="og:url" content="https://vandiest.biz/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What is the best UI technology: Angular or Blazor ?",
+    "datePublished": "2022-11-02",
+    "dateModified": "2022-11-02",
+    "description": "This post compares and explains in detail the pros and cons of the 2 most used SPA frameworks by .net developers, Angular and Blazor.",
+    "keywords": [
+      "Angular",
+      "ASP.NET",
+      "JavaScript"
+    ],
+    "image": "https://vandiest.biz/img/2022/what-is-the-best-ui-technology-angular-or-blazor-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">ASP.NET</span></li><li><span class="chip chip--quiet">JavaScript</span></li></ul>
+          <h1>What is the best UI technology: Angular or Blazor ?</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2022-11-02">02 NOV 2022</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><em>What is the best UI technology: Angular or Blazor ?&nbsp; </em></p>
+          <p><em>(When you build enterprise business apps using DotNet)</em></p>
+          <p><em><img src="/img/2022/what-is-the-best-ui-technology-angular-or-blazor-01.jpg" alt width="624" height="373" loading="lazy"></em></p>
+          <h2>Introduction</h2>
+          <p>This post compares and explains in detail the pros and cons of the 2 most used SPA frameworks by .net developers, Angular and Blazor.</p>
+          <p>My customers are enterprises that use .Net for building their line of business applications. I compared these 2 UI technologies, to find which one is the best fit for them and when they should use them instead of traditional ASP.NET MVC.</p>
+          <p>This study is primarily based on my many years of experience in architecting and developing solutions based on Angular and .NET. It is based on research over the internet and the feedback of other architects and IT consultants. Because I had no formal experience with Blazor I invested time in studying the Blazor framework and in building some small applications with Blazor. I also interviewed other developers that had experience with Blazor and integrated their feedback into this study.</p>
+          <h2>Single Page Applications</h2>
+          <p>There are two general approaches to building web applications today: traditional web applications also called Multi Page Applications (MPA&rsquo;s) because they are made of multiple pages. These perform most of the application logic on the server. On the other hand, you have single-page applications (SPAs) that perform most of the user interface logic in a web browser, communicating with the web server primarily using web APIs. A hybrid approach is also possible, the simplest being to host one or more rich SPA-like sub-applications within a larger traditional web application.</p>
+          <p><img src="/img/2022/what-is-the-best-ui-technology-angular-or-blazor-02.png" alt width="624" height="773" loading="lazy"></p>
+          <p>MPA reloads the entire page and displays the new one when a user interacts with the web app.&nbsp;</p>
+          <p>A SPA is more like a traditional application because it&rsquo;s initially loaded and then it refreshes part of the page without reloading it. When a user interacts with the application, it displays content without the need to be fully updated since different pieces of content are downloaded automatically as per request. It is possible thanks to AJAX technology. In single-page applications, there is only one HTML page, and this one page downloads a bunch of assets, CSS, and images but typically also a lot of JavaScript. Speaking of the latter, the code will then listen to clicks on links and then re-render parts of the DOM in the loaded page whenever a user needs something.&nbsp;</p>
+          <p>Although SPA applications are extremely popular because they usually account for a better user experience it does not mean that every web application should be built with a SPA architecture. Let&rsquo;s take, for instance, a news portal like CNN. It is a good example of a multi-page application. How can we see it? Just click any link and watch the reload icon on the top of your browser. You see that reloading has started because a browser is now reaching out to our public server and fetching that page and all the resources needed. The interesting thing about multi-page applications is that every new page is downloaded. Every request we send to the server, like whenever we type a new URL or click on a link, leads to a new page being sent back from the server. Notable examples of multiple-page applications are giants like Amazon or eBay. Using them, you always get a new file for every request.</p>
+          <p>ASP. Net Core MVC is an excellent choice for websites that are better developed as MPAs (see later). But as explained here above SPAs usually supplies a better user experience when our application is more like an interactive application.&nbsp; &nbsp;</p>
+          <h2>Angular</h2>
+          <p>Angular still is by far the most used SPA framework by .NET developers. This is because it has a lot of similarities with the .Net ecosystem.</p>
+          <ul>
+          <li>TypeScript: Angular use TypeScript by default. This means that all documentation, articles, and source code are provided in TypeScript. TypeScript is a superset of JavaScript that compiles JavaScript. C# and Typescript are both designed by Anders Hejlsberg, and in many ways, TypeScript feels like the result of adding parts of C# to JavaScript. They share similar features and syntax, and both use the compiler to check for type safety. So, it's more straightforward to learn TypeScript for a C# dev as JavaScript.</li>
+          <li>MVVM: Angular uses the MVVM pattern. This Pattern was invented for WPF &amp; Silverlight (.NET). So many developers coming from .NET that wanted to do Web development have turned to Angular because it used the same pattern.</li>
+          <li>All in the box: Unlike other Js frameworks like Vue or React, Angular is a complete framework that tends to supply everything you need, libs, and tooling and spare you of the dependency hell so that you can focus on your application. Just like the .NET framework.&nbsp;</li>
+          </ul>
+          <p>&nbsp;Most of the other Js frameworks are exactly the opposite. They only focus on one aspect but leave you with a lot of choices. Although focusing on one thing results in frameworks that are simpler to learn, .NET enterprise developers are annoyed when they must make a lot of choices. They prefer opinionated frameworks that help them in getting productive faster with better supportability.</p>
+          <p>Angular is a part of the&nbsp;<a href="https://www.altexsoft.com/blog/engineering/javascript-ecosystem-38-tools-for-front-and-back-end-development/">JavaScript ecosystem</a>&nbsp;and one of the most popular SPA frameworks today. AngularJs the preceding version, was introduced by Google in 2009 and was largely adopted by the development community.</p>
+          <p>In September 2016, Google released Angular 2. It was a complete rewrite of the framework by the same team. The recent version of the framework uses TypeScript as a programming language.&nbsp;<a href="https://www.sitepoint.com/typescript-tutorial-for-beginners/">TypeScript</a>&nbsp;is a typed superset of JavaScript which has been built and maintained by Microsoft. The presence of types makes the code written in TypeScript less prone to run-time errors. As explained here above, TypeScript is the primary reason Angular is so popular in the .NET community.</p>
+          <p>The difference between the old Angular and the second version is so radical that you can&rsquo;t update from AngularJs (the older version). Migrating the applications to Angular requires too many modifications due to different syntax and architecture. This means that upgrading our existing AngularJs apps to the new Angular framework will lead to a complete rewrite.&nbsp;</p>
+          <p>TypeScript compiles JavaScript and integrates perfectly with the JavaScript ecosystem. So Angular is part of the JavaScript ecosystem and uses npm to manage dependencies. It can count on the largest community and number of libraries today. With Angular, you use the largest open-source ecosystem where you can find everything that you need.&nbsp;</p>
+          <p>But the vast number of packages and their fast-changing rate is also a challenge in the enterprise. Making these packages available is the biggest challenge. Take a new Angular application as a sample. An empty new Angular application has the following direct dependencies:</p>
+          <ul>
+          <li><em>@angular</em></li>
+          <li><em>@angular/cli</em></li>
+          <li><em>@ngrx</em></li>
+          <li><em>rxjs</em></li>
+          <li><em>typescript</em></li>
+          <li><em>tslint</em></li>
+          <li><em>codelyzer</em></li>
+          <li><em>zone.js</em></li>
+          <li><em>core-js</em></li>
+          </ul>
+
+          <p>And now let&rsquo;s install all the dependencies by typing:</p>
+          <p>npm i<br> ... one eternity later ...<br> added 1174 packages in 116.846s</p>
+          <p>A new regular Angular application without any add-on uses already 1200 packages!&nbsp;</p>
+          <p>When your ecosystem has this number of dependencies, you can&rsquo;t inspect them all yourself. You can&rsquo;t hope they&rsquo;re all secure. You can&rsquo;t assume they&rsquo;ve all got permissive licenses. You can&rsquo;t maintain your registry by hand. You can&rsquo;t formally approve packages by comity, and you can&rsquo;t maintain this as many packages you&rsquo;re using will get an update every single hour. You must move from manual, discrete processes to automated, continuous processes.&nbsp;</p>
+          <p>Angular comes with great tools, supported by a large community. Angular has been around for over a decade, while Blazor has been in the market for only a few years. Angular is a production-ready framework with full support for MVVM applications and it is being used by many large companies. Blazor, while being used by some large brands, is early in its lifecycle. Angular and other popular Js frameworks like Razor or View come with much more content in the form of courses, books, blogs, videos, and other materials. Angular has dedicated tech events held worldwide, a huge community, and it supplies a broad choice of third-party integrations.</p>
+          <p>To illustrate the difference in adoption, consider the graphic here that compares the number of jobs offered by frontend technology. Angular comes second when Blazor is somewhere between the others:</p>
+          <p><img src="/img/2022/what-is-the-best-ui-technology-angular-or-blazor-03.png" alt width="624" height="354" loading="lazy"></p>
+          <p>As illustrated here above, despite being one of the oldest and one of the most mature SPA frameworks Angular is not the most used or loved framework in the JavaScript community. This is primarily due to his complexity. Even for seasoned JavaScript developers, Angular is difficult to master. His strength of being an opinionated framework using TypeScript comes at the expense of a steep learning curve.&nbsp;</p>
+          <p>This is even more challenging for most .NET developers who usually have only a marginal knowledge of JavaScript. They not only have to learn a new language they also must learn an entirely new ecosystem and framework. In my own experience, this is the greatest challenge for organizations using .NET. This can be solved by recruiting Angular specialists that focus on the frontend part. Having a frontend specialist usually improves the user experience but it comes at the expense of having to segregate your devs in frontend (Angular) and backend devs (.NET).&nbsp;</p>
+          <p>Mixing two technologies coming from different worlds diminishes the flexibility of resource allocation. People must specialize and the potential number of tasks they can work on diminishes. It also increases development time as you need to put more effort into integrating both technologies.</p>
+          <p>My own experience with working with .net developers having to learn Angular confirms that the learning curve is very steep for them. In the past, to cope with this problem, we recruited Angular specialists to coach our .Net teams. We also had to invest in our CI/CD pipeline to support our new technology stack. As a .Net shop that desired to adopt Angular, we had to make a considerable investment in recruiting the right profiles, supplying the right guidance, and investing in building and adapting our package management process and tools to the high velocity and number of packages that are typical for the Javascript ecosystem. Also recruiting the right skills was a challenge for the reasons explained here above and because Angular is somewhat losing traction in the Js community.</p>
+          <h3><strong>When to choose Angular over ASP.NET MVC?</strong></h3>
+          <p>If the team is unfamiliar with JavaScript or TypeScript but is familiar with pure server-side MVC development, then they will probably be able to deliver a traditional MVC App more quickly than an Angular app. Unless the team has already learned Angular or unless the user experience afforded by Angular is needed, the traditional MVC is the more productive choice.&nbsp;</p>
+          <h2>Blazor</h2>
+          <p>Blazor is a relatively new Microsoft ASP.NET Core web framework that allows developers to write code for browsers in C#. Blazor is based on existing web technologies like HTML and CSS but then allows the developer to use C# and Razor syntax instead of JavaScript. Razor is the template markup syntax used by ASP.NET MVC and MVC developers can reuse most of their skills to build apps with Blazor.&nbsp;</p>
+          <p>Blazor is very promising for .NET developers as it enables them to create SPA applications using C#, without the need for significant JavaScript skills.&nbsp;</p>
+          <p>An advantage of Blazor is that it uses the latest web standards and does not need added plugins or add-ons to run in different deployment models. It can run in the browser using WebAssembly and offers a server-side ASP.NET Core option.&nbsp;&nbsp;</p>
+          <p>Learning Blazor for .NET developers is nothing compared to Angular or other Js frameworks. First, they don&rsquo;t need to master JavaScript and TypeScript but also, but they can use the enterprise-friendly .NET ecosystem they already know. For a .NET dev already accustomed to web development through MVC, we can say that developers can be productive in a matter of days/weeks compared to months/years with Angular.</p>
+          <p>But the biggest advantage of Blazor is its productivity. It allows .NET developers to build entire applications with only C#. It feels more like building desktop apps than web apps. When using the server-side version developers don&rsquo;t have to think about data transfer between client and server. Also, with the client-side version, it&rsquo;s a lot easier than with Angular as it&rsquo;s all integrated within one .NET solution.&nbsp;</p>
+          <p>Blazor seems even more productive than traditional MVC as it doesn&rsquo;t require the developer to cope with server page refreshes and can use client rendering and events. It feels like what was developing with Silverlight or WPF but using Razor, Html, and CSS instead of Xaml. This was also confirmed by our discussion with a consultant at Gartner. They confirmed that based on experiences with several customers, Blazor was the most productive technology for building UIs inside the .NET ecosystem, even compared to MVC.</p>
+          <p>The adoption of Blazor outside the .NET community will probably remain low. Blazor is hard to sell to the current web developer because it means leaving behind many of the libraries and technologies that have been up for over a decade of modern JavaScript development. This means that Blazor will probably stay a niche technology. Blazor is and will be used by teams that know .NET for building internal business applications but will probably not be adopted outside this community. That means that the community and tools will mostly be supported by Microsoft. The tool and libraries support from the open-source community and vendors will remain less compared to Angular or other mainstream Js frameworks.&nbsp;</p>
+          <p>One of the impediments to Blazor adoption by the .NET community is that Blazor will be the next Silverlight. They fear that it will be around only for a brief period. More than 10 years after the final Microsoft Silverlight release, some developers&nbsp;<a href="https://visualstudiomagazine.com/articles/2021/08/17/silverlighted.aspx">still fear being 'Silverlighted,'</a>&nbsp;or seeing a development product in which they have invested heavily abandoned by Microsoft. This is because both technologies are similar, both are developed by Microsoft and allow us to use the .NET platform to create web applications. They both share the same core idea: Instead of using JavaScript, we can use C# as the programming language to create web applications.&nbsp;</p>
+          <p>Inside the enterprise, this risk is largely mitigated by the fact that Microsoft has always supplied relatively long support periods. Even for Silverlight Microsoft continued to support it for nearly 10 years before retiring it. This risk has also a lot less impact as Blazor is not dependent on a browser plugin. Microsoft learned a lot from this story. First, ASP.NET and later ASP.NET Core do not require any browser plugins to run. Also, Microsoft decided to only use open web standards for Blazor. As long as the browsers support those open web standards, they will also support Blazor.</p>
+
+          <h3><strong>Client Side (Wasm) vs. Server Side Blazor</strong></h3>
+          <p>Blazor has a separation between how it calculates UI changes (app/component model) and how those changes are applied (renderer). This decouples the renderer from the platform and allows to have the same programming model for different platforms.&nbsp;</p>
+          <p><img src="/img/2022/what-is-the-best-ui-technology-angular-or-blazor-04.png" alt width="231" height="257" loading="lazy"></p>
+          <p>Currently, Microsoft supports only 2 renderers, Blazor client (WebAssembly Renderer) and Blazor Sever (Remote Renderer). The implementation code is the same but what differs is the configuration of the hosting middleware. A good practice is to isolate your code from changes to the hosting model by using a class library where you put all the rendering code. This will ease the job if you later must migrate to another hosting model or when you need to support another supplementary model.</p>
+          <h3><strong>Blazor Server</strong></h3>
+          <p>With Blazor Server you use a classic ASP.NET Core website like ASP.NET MVC but the UI refreshes are handled over a SignalR connection.&nbsp;&nbsp;</p>
+          <p><img src="/img/2022/what-is-the-best-ui-technology-angular-or-blazor-05.png" alt width="265" height="168" loading="lazy"></p>
+          <p>As for a SPA, one page is displayed on the browser and then parts of it are refreshed. On the server at the first request, the Html is generated from the Razor pages. When UI updates are triggered by user interaction and app events a UI diff is calculated and sent to the client over a SignalR connection. Then, the client-side Js library used by Blazor server applies the changes in the browser.&nbsp;&nbsp;</p>
+          <p>Using Blazor Server behind load balancers or proxy servers requires special attention. As described in the&nbsp;<a href="https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/proxy-load-balancer?view=aspnetcore-6.0&amp;viewFallbackFrom=aspnetcore-2.2#other-proxy-server-and-load-balancer-scenarios">article here</a>, forwarded headers should be enabled (default configuration in IIS) and the load balancers should support sticky sessions. You can also use Redis to create a backplane as described&nbsp;<a href="https://medium.com/it-dead-inside/lets-learn-blazor-blazor-server-with-signalr-457bec513d99">here</a>.&nbsp;</p>
+          <h3><strong>Blazor Client (WebAssembly)</strong></h3>
+          <p><strong><img src="/img/2022/what-is-the-best-ui-technology-angular-or-blazor-06.png" alt width="255" height="215" loading="lazy"></strong></p>
+          <p>Here .Net code is running inside the browsers. The application code is compiled in WebAssembly (a sort of Assembly language for the web) and sent together with the .Net runtime to the browser. The Blazor WebAssembly runtime uses JavaScript interop to handle DOM manipulation and browser API calls.</p>
+          <p>WebAssembly is an open web standard and is supported by all modern web browsers. Blazor is not the only technology using WebAssembly, most of the other big vendors develop tools and platforms that make use of WebAssembly.</p>
+
+          <h3><strong>Blazor Server vs. client recommendation</strong></h3>
+          <p>For traditional enterprise business applications, Blazor Server seems usually the best option but for certain scenarios, Blazor Wasm has clear advantages :</p>
+          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the responsiveness of your app must be optimal, the low latency of Blazor server will optimize the responsiveness.</p>
+          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You need offline support.</p>
+          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You expect many users (&gt;100). Blazor Server is a less scalable solution as many users require server resources to handle multiple client connections and client states.</p>
+          <table>
+          <tbody>
+          <tr>
+          <td>&nbsp;</td>
+          <td>
+          <p><strong>Weight</strong></p>
+          </td>
+          <td>
+          <p><strong>Blazor Server</strong></p>
+          </td>
+          <td>
+          <p><strong>Score</strong></p>
+          </td>
+          <td>
+          <p><strong>Total</strong></p>
+          </td>
+          <td>
+          <p><strong>Blazor Client</strong></p>
+          </td>
+          <td>
+          <p><strong>Score</strong></p>
+          </td>
+          <td>
+          <p><strong>Total</strong></p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Learning curve</strong></p>
+          </td>
+          <td>
+          <p>5</p>
+          </td>
+          <td>
+          <p>Easier to configuration because security model.</p>
+          </td>
+          <td>
+          <p>8</p>
+          </td>
+          <td>
+          <p>40</p>
+          </td>
+          <td>
+          <p>More complex, same problems as with SPA but not significantly harder as server side Blazor.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>35</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Productivity</strong></p>
+          </td>
+          <td>
+          <p>5</p>
+          </td>
+          <td>
+          <p>Enable to build 2 tier apps that demand less effort as 3 tier apps.</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>45</p>
+          </td>
+          <td>
+          <p>Enforce 3 tier and use of API.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>35</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Supportability </strong></p>
+          </td>
+          <td>
+          <p>5</p>
+          </td>
+          <td>
+          <p>The same as traditional MVC apps.</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>45</p>
+          </td>
+          <td>
+          <p>More difficult to support due to security model.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>35</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Maturity</strong></p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>First version with production support.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>28</p>
+          </td>
+          <td>
+          <p>Came later but now it's supported in production by Microsoft.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>28</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Community</strong></p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>For the moment adoption seems better.</p>
+          </td>
+          <td>
+          <p>6</p>
+          </td>
+          <td>
+          <p>18</p>
+          </td>
+          <td>
+          <p>WebAssembly has highest buzz so probably the most adoption in the long run.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>21</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Enforce Best practice</strong></p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>Does not enforce 3 tiers or MVVM.</p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>12</p>
+          </td>
+          <td>
+          <p>Enforce 3 tiers, using 3 tiers is usually a good practice.</p>
+          </td>
+          <td>
+          <p>8</p>
+          </td>
+          <td>
+          <p>24</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Performance</strong></p>
+          </td>
+          <td>
+          <p>2</p>
+          </td>
+          <td>
+          <p>Better performance at load time but a lot less scalable.</p>
+          </td>
+          <td>
+          <p>6</p>
+          </td>
+          <td>
+          <p>12</p>
+          </td>
+          <td>
+          <p>Longer load time but a lot more scalable.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>14</p>
+          </td>
+          </tr>
+          <tr>
+          <td>&nbsp;</td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>&nbsp;</td>
+          <td>
+
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Risk</strong></p>
+          </td>
+          <td>
+          <p>Impact</p>
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>&nbsp;</td>
+          <td>
+
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Security </strong></p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>No more risk as a classical MVC.</p>
+          </td>
+          <td>
+          <p>0</p>
+          </td>
+          <td>
+          <p>0</p>
+          </td>
+          <td>
+          <p>Higher risk for misconfiguration.</p>
+          </td>
+          <td>
+          <p>-1</p>
+          </td>
+          <td>
+          <p>-4</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Lifecycle support</strong></p>
+          </td>
+          <td>
+          <p>5</p>
+          </td>
+          <td>
+          <p>No dependency on browser support.</p>
+          </td>
+          <td>
+          <p>0</p>
+          </td>
+          <td>
+          <p>0</p>
+          </td>
+          <td>
+          <p>Browsers need to continue to support WebAssembly standard, but the probability is low.</p>
+          </td>
+          <td>
+          <p>-1</p>
+          </td>
+          <td>
+          <p>-5</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Total (Max 360)</strong></p>
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+          <p><strong>200</strong></p>
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+          <p><strong>183</strong></p>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+
+          <h3><strong>When to choose Blazor over ASP.NET MVC ?</strong></h3>
+          <p>As developing or maintaining apps using Blazor is more productive than ASP.NET MVC and easy to learn, Blazor is usually the best choice except when:</p>
+          <p><em>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your application has simple, possibly read-only requirements.</em></p>
+          <p>Many web applications are primarily consumed in a read-only fashion by most of their users. Read-only (or read-mostly) applications tend to be much simpler than those applications that maintain and manipulate a great deal of state. For example, our intranet or public websites where anonymous users can easily make requests, and there is little need for client-side logic. This type of public-facing web site usually consists mainly of content with little client-side behavior. Such applications are easily built as traditional ASP.NET MVC web applications, which perform logic on the web server and render HTML to be displayed in the browser. The fact that each unique page of the site has its own URL that can be bookmarked and indexed by search engines (by default, without having to add this functionality as a separate feature of the application) is also a clear benefit in such scenarios.</p>
+          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your application ecosystem is based on MVC and is too small or too simple to invest in Blazor.</p>
+          <p>When your applications consist mainly of server-side processes and your UI is quite simple (e.g., Dashboard, back-office CRUD apps, &hellip;) and you&rsquo;ve already made a strong investment in MVC then adding Blazor could not be worth the investment.</p>
+          <h2>Angular vs. Blazor Score Card</h2>
+          <p>Here we selected several criteria and attributed weight to the function of the specific needs and environment of Enterprises using .Net as their main technology stack. But, each organization is unique and adapt the scoring based on its specific needs.&nbsp; &nbsp;</p>
+          <p>The weight ranges from 1 to 5. 5 indicates an especially important criterion, starting from 1 as minor importance to 5 as the top priority.</p>
+          <p>The score for each criterion ranges from 0 to 10. 10 shows an exceptionally high-quality attribute, 1 is the minimum.</p>
+          <p>We also take account of Risks at the bottom of the scorecard. Here the weight indicates the risk potential impact and the score the probability. Staring from 0 as 0% probability to -10 indicates a risk that will occur with 100% probability.</p>
+          <ul>
+          <li>Learning curve: the amount time a developer, on average, needs to invest to become productive with the technology.</li>
+          <li>Productivity: how productive the developers are with the given platform once it has mastered the technology.</li>
+          <li>Supportability: how well can we efficiently support the platform?</li>
+          <li>Community: how valuable, responsive and broad is the developer's community? When a platform has a strong community the organization, its developers and its users all benefit.</li>
+          <li>Maturity: is the platform used for long enough that most of its first faults and inherent problems have been removed or reduced?</li>
+          <li>Full Stack efficiency: how efficient is it for the project to work and to cope with the separation of the frontend and the backend? Does the adoption of this technology diminish the efficiency of the project teams and the organization because they must deal with different skill sets for backend and frontend?</li>
+          <li>Finding resources: how easy is it to recruit developers on the market?</li>
+          <li>Libraries choices: a good library well suited for the needs and well maintained improves productivity while minimizing the TCO. A large choice of libraries increases the probability of finding a library that satisfies the needs.</li>
+          <li>Opinionated: a platform that believes a certain way of approaching a problem is inherently better and enables the developer to spend less time finding the right way of solving a problem.</li>
+          <li>Performance: which platform has the fastest render time, load time, and refresh time, and consumes a minimal number of resources?</li>
+          </ul>
+
+          <table>
+          <tbody>
+          <tr>
+          <td>&nbsp;</td>
+          <td>
+          <p><strong>Weight</strong></p>
+          </td>
+          <td>
+          <p><strong>Blazor</strong></p>
+          </td>
+          <td>
+          <p><strong>Score</strong></p>
+          </td>
+          <td>
+          <p><strong>Total</strong></p>
+          </td>
+          <td>
+          <p><strong>Angular</strong></p>
+          </td>
+          <td>
+          <p><strong>Score</strong></p>
+          </td>
+          <td>
+          <p><strong>Total</strong></p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Learning curve</strong></p>
+          </td>
+          <td>
+          <p>5</p>
+          </td>
+          <td>
+          <p>Easy to learn for .Net devs, especially with MVC/Razor experience.&nbsp; Non-included features require Js integration (limited).</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>45</p>
+          </td>
+          <td>
+          <p>Steep learning curve even for experimented Js devs.</p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>15</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Productivity</strong></p>
+          </td>
+          <td>
+          <p>5</p>
+          </td>
+          <td>
+          <p>More tuned for RAD as Angular, even more productive as bare MVC (Gartner)</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>45</p>
+          </td>
+          <td>
+          <p>Lot of ceremony but good tooling is provided (e.g., Visual Studio Code).</p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>20</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Supportability </strong></p>
+          </td>
+          <td>
+          <p>5</p>
+          </td>
+          <td>
+          <p>Included in. Net6 &amp; Visual Studio, Server Blazor Server is same as MVC web app towards supportability. (Blazor server is included in .Net 6 =&gt; not a Nuget package)</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>45</p>
+          </td>
+          <td>
+          <p>Big challenges with lifecycle due to number of packages.</p>
+          </td>
+          <td>
+          <p>2</p>
+          </td>
+          <td>
+          <p>10</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Community</strong></p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>Backed by Micrsosoft but small community made out exclusively of .NET devs.</p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>12</p>
+          </td>
+          <td>
+          <p>Backed by Google and exceptionally large community.</p>
+          </td>
+          <td>
+          <p>8</p>
+          </td>
+          <td>
+          <p>32</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Maturity</strong></p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>Is supported since .NET core 3.1.&nbsp; and is considered by community as mature since .NET 6.</p>
+          </td>
+          <td>
+          <p>6</p>
+          </td>
+          <td>
+          <p>24</p>
+          </td>
+          <td>
+          <p>Very mature &amp; battle tested.</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>36</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Full Stack efficiency</strong></p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>Although some devs specialize in backend or frontend work, Blazor is an integrated environment with 1 stack where 1 dev can easily work on both with high efficiency.</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>27</p>
+          </td>
+          <td>
+          <p>Some Angular/.NET real full stack devs are available. Experience shows that when 2 different stacks (.NET &amp; Angular) are used this often leads to a segregation of devs in frontend and backend devs what diminish efficiency.</p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>12</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Finding resources</strong></p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>Finding experienced Blazor devs is more difficult as finding Angular devs. Nevertheless, for MVC devs, learning Blazor is easy.</p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>12</p>
+          </td>
+          <td>
+          <p>Angular is one of the mainstream Js frameworks but a lot of JS frameworks exist and finding Angular devs that know .Net is not easy.</p>
+          </td>
+          <td>
+          <p>6</p>
+          </td>
+          <td>
+          <p>18</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Libraries choices</strong></p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>Limited choice of Open-source library. Major vendors Teleric or DevExpress have Blazor component UI libraries.&nbsp;</p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>9</p>
+          </td>
+          <td>
+          <p>Large choice open source and commercial libraries.</p>
+          </td>
+          <td>
+          <p>8</p>
+          </td>
+          <td>
+          <p>24</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Opinionated</strong></p>
+          </td>
+          <td>
+          <p>2</p>
+          </td>
+          <td>
+          <p>Although it's a full framework with databinding, Devs have more choices to make as with Angular.</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>14</p>
+          </td>
+          <td>
+          <p>Angular is very opinionated and complete.</p>
+          </td>
+          <td>
+          <p>8</p>
+          </td>
+          <td>
+          <p>16</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Performance</strong></p>
+          </td>
+          <td>
+          <p>2</p>
+          </td>
+          <td>
+          <p>Less performant but still very acceptable</p>
+          </td>
+          <td>
+          <p>7</p>
+          </td>
+          <td>
+          <p>14</p>
+          </td>
+          <td>
+          <p>Framework was tuned over the years towards performance.</p>
+          </td>
+          <td>
+          <p>8</p>
+          </td>
+          <td>
+          <p>16</p>
+          </td>
+          </tr>
+          <tr>
+          <td>&nbsp;</td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>&nbsp;</td>
+          <td>
+
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Risk</strong></p>
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>&nbsp;</td>
+          <td>
+
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p>Abandon technology within 5J</p>
+          </td>
+          <td>
+          <p>4</p>
+          </td>
+          <td>
+          <p>Taking Ms lifecycle into consideration the chance is extremely low for 5Y.</p>
+          </td>
+          <td>
+          <p>-1</p>
+          </td>
+          <td>
+          <p>-4</p>
+          </td>
+          <td>
+          <p>Chances are low but AngularJs has proven that even when the tech is successful vendors can abandon it.</p>
+          </td>
+          <td>
+          <p>-1</p>
+          </td>
+          <td>
+          <p>-4</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p>Adoption falls within the community</p>
+          </td>
+          <td>
+          <p>3</p>
+          </td>
+          <td>
+          <p>The probability is low but exists that .NET devs don't continue to adopt the tech due to "Silverlight" history.</p>
+          </td>
+          <td>
+          <p>-2</p>
+          </td>
+          <td>
+          <p>-6</p>
+          </td>
+          <td>
+          <p>Angular has a large community but it's losing traction.</p>
+          </td>
+          <td>
+          <p>-1</p>
+          </td>
+          <td>
+          <p>-3</p>
+          </td>
+          </tr>
+          <tr>
+          <td>
+          <p><strong>Total (Max 360)</strong></p>
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+          <p><strong>237</strong></p>
+          </td>
+          <td>
+
+          </td>
+          <td>
+
+          </td>
+          <td>
+          <p><strong>192</strong></p>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

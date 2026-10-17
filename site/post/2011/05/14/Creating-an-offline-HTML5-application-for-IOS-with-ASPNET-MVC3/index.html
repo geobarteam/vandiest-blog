@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create an offline HTML5 application for IOS with ASP.NET MVC3 | Geoffrey Vandiest</title>
+  <meta name="description" content="You need to build an application for the IPad or IPhone but you don’t have the time to learn objective-c and cocoa. The good news is that you don't need to!">
+  <link rel="canonical" href="https://vandiest.biz/post/2011/05/14/Creating-an-offline-HTML5-application-for-IOS-with-ASPNET-MVC3/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Create an offline HTML5 application for IOS with ASP.NET MVC3">
+  <meta property="og:description" content="You need to build an application for the IPad or IPhone but you don’t have the time to learn objective-c and cocoa. The good news is that you don't need to!">
+  <meta property="og:url" content="https://vandiest.biz/post/2011/05/14/Creating-an-offline-HTML5-application-for-IOS-with-ASPNET-MVC3/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Create an offline HTML5 application for IOS with ASP.NET MVC3",
+    "datePublished": "2011-05-14",
+    "dateModified": "2011-05-14",
+    "description": "You need to build an application for the IPad or IPhone but you don’t have the time to learn objective-c and cocoa. The good news is that you don't need to!",
+    "keywords": [
+      "ASP.NET",
+      "iPad",
+      "iPhone",
+      "ASP.NET MVC",
+      "JavaScript"
+    ],
+    "image": "https://vandiest.biz/img/2011/creating-an-offline-html5-application-for-ios-wi-01.png",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">ASP.NET</span></li><li><span class="chip chip--quiet">iPad</span></li><li><span class="chip chip--quiet">iPhone</span></li><li><span class="chip chip--quiet">ASP.NET MVC</span></li><li><span class="chip chip--quiet">JavaScript</span></li></ul>
+          <h1>Create an offline HTML5 application for IOS with ASP.NET MVC3</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2011-05-14">14 MAY 2011</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2011/creating-an-offline-html5-application-for-ios-wi-01.png" alt width="285" height="177" loading="lazy"></p>
+          <p>&nbsp;You need to build an application for the IPad or IPhone but you don&rsquo;t have the time to learn objective-c and cocoa.&nbsp; The good news is that you don't need to!&nbsp;</p>
+          <p>This walkthrough demonstrate how to use the&nbsp;.Net web technology stack to create applications&nbsp;for the IOS platform.&nbsp;&nbsp;Because we want to be capable of using the application also offline, the&nbsp;UI need to rely purely on HTML and Javascript and we can't use any server side markup generation. Nevertheless we'll need ASP.NET MVC for the creation of web services&nbsp;and his brand new model binding feature to deserialize the JASON message back to a server side model.</p>
+          <p>We'll first create a new Visual Studio Asp.Net MVC3 empty web application and add an &ldquo;index.htm&rdquo; page to the project root:</p>
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Subscription Form&lt;/title&gt;
+    &lt;link href="Content/Site.css" rel="stylesheet" type="text/css" /&gt;
+    &lt;script src="/Scripts/jquery-1.5.1.min.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/Scripts/jquery.validate.min.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="page"&gt;
+        &lt;header&gt;
+            &lt;div id="title"&gt;
+               Subscription Form
+            &lt;/div&gt;
+
+        &lt;/header&gt;
+        &lt;section id="main"&gt;
+        &lt;span id="resultmessage"&gt;&lt;/span&gt;
+        &lt;form id="sub_form" method="" action=""&gt;
+            &lt;table&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;
+                        Firstname:
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input type="text" id="firstname" name="firstname" /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        Lastname:
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input type="text" id="lastname" name="lastname" /&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;
+                        E-mail:
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input type="text" id="email" name="email" /&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        Phone:
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input type="text" id="phone" name="phone" /&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;
+                        &lt;input type="button" id="create_subscription" value="Create" &gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input type="button" id="send_data" value="Send" /&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+        &lt;footer&gt;
+            &lt;div&gt;
+                &lt;span id="busy"&gt;&lt;img src="/Content/wait.gif" alt="wait" /&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/footer&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+    &lt;script src="/Scripts/index.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <p>The first line uses the Html5 doctype and the header links to jQuery. We uses two buttons, one to create the profiles in the browser local storage and another the send the profiles to the server.</p>
+          <p>To create red boxes arround our input boxes when jQuery detects some validation we need to add these few lines of css to stylesheet:</p>
+          <div>
+          <div>input.error { border: 2px solid red; }</div>
+          </div>
+          <p>Now it&rsquo;s time to implement our UI logic with javascript. By creating a separate file for our javascript we keep the&nbsp; html page clean.</p>
+          <p>Add a &ldquo;index.js&rdquo; to the script folder:</p>
+          <pre><code class="language-javascript">var root = '/Subscription';
+var subscriptionsUploaded = 0;
+
+//jQuery on document ready handler
+$(function () {
+    //Show the busy indicator during ajax calls
+    $("#busy").hide();
+    $("#busy").ajaxStart(function () { $("#busy").show(); })
+    $("#busy").ajaxStop(function () { $("#busy").hide(); })
+    var x = $("#createSubscription");
+    //When the createSubscription button is clicked create a subscription
+    $("#create_subscription").click(createSubscriptionClick);
+
+    //When the sendData button is clicked retrieve the subscriptions stored in the local storage and send the data to the server
+    $("#send_data").click(sendDataClick);
+
+    //Define jQuery validation rules and execute the validation when the form is validated
+    $("#sub_form").validate({
+        rules: {
+            firstname: {
+                required: true,
+                minlength: 2
+            },
+            lastname: {
+                required: true,
+                minlength: 2
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            phone: {
+                required: true,
+                number: true,
+                minlength: 9,
+                maxlength: 9
+            }
+        },
+        messages: {
+            firstname: "",
+            lastname: "",
+            email: "",
+            phone: ""
+        }
+    });
+});
+
+function sendDataClick() {
+    //Iterate over the subscriptions stored in the local storage
+    for (var i = 0; i &lt; window.localStorage.length; i++) {
+        //Retrieve the serialized subscription
+        var json = window.localStorage.getItem(window.localStorage.key(i));
+        try {
+            //Send the subscription to the server
+            sendData(
+                    json,
+            //On success remove the subscription from the local storage
+                    function (data) {
+                        window.localStorage.removeItem(window.localStorage.key(data.Message));
+                        subscriptionsUploaded++;
+                        $("#resultmessage").html(subscriptionsUploaded + " subscriptions uploaded!");
+                    },
+            //On error
+                    function (xhr) {
+                        alert(xhr.responseText);
+                    });
+        }
+        catch (e) { alert(e); }
+    };
+}
+
+//Stores a subscription into the local storage
+function createSubscriptionClick() {
+    //check the jQuery validation rules
+    if ($("#sub_form").valid()) {
+        var person = getSubscription();
+        //seialize the subscription
+        var jsData = JSON.stringify(person);
+        //store the subscription
+        window.localStorage.setItem($("#email").val(), jsData);
+        //update the resultMessage
+        $("#resultmessage").html($("#email").val() + " stored in local storage");
+        clearAll();
+    }
+}
+
+//Create a subscription object and bind to the input boxes values
+function getSubscription() {
+    var firstname = $("#firstname").val();
+    var lastname = $("#lastname").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    return { Firstname: firstname, Lastname: lastname, Email: email, Phone: phone };
+}
+
+//Clear the input boxes values
+function clearAll() {
+    $("#firstname").attr("value", "");
+    $("#lastname").attr("value", "");
+    $("#email").attr("value", "");
+    $("#phone").attr("value", "");
+}
+
+//Ajax: post the json serilized subscriptions
+function sendData(json, success, error) {
+    $.ajax({
+        url: root + '/save',
+        type: 'POST',
+        dataType: 'json',
+        data: json,
+        contentType: 'application/json; charset=utf-8',
+        success: success,
+        error: error
+    });
+}</code></pre>
+          <p>When the user click on the create button the createSubscription function is called, this function is responsible for serializing the data into a Json object and to store it in the isolated storage.&nbsp; Isolated storage is a feature defined in the Html5 spec. For each domain the browser provide access&nbsp; to private key/value pair collection where data can be stored&nbsp; and retrieved. The sendData button is attached with an anonymous function that iterate over the key/value pair collection that contains the JSON serialized subscriptions and post the JSON serialized subscription object.</p>
+          <p>The MVC 3 includes built-in JSON binding support that enables action methods to receive JSON-encoded data and model-bind it to action-method parameters. We will now create our Model to bind to, add a SubscriptionModel class to the models of the MVC app:</p>
+          <pre><code class="language-csharp">public class SubscriptionModel
+{
+    [Required]
+    [Display(Name = "Firstname")]
+    public string Firstname { get; set; }
+
+    [Required]
+    [Display(Name = "Lastname")]
+    public string Lastname { get; set; }
+
+    [Display(Name = "Phone")]
+    public string Phone { get; set; }
+
+    [Required]
+    [DataType(DataType.EmailAddress)]
+    [Display(Name = "Email address")]
+    public string Email { get; set; }
+
+    public void Save()
+    {
+        //store the object in db
+        //...
+    }
+}</code></pre>
+          <p>The MVC3 model binder will automatically bind all properties that matches the properties in the JSON encoded data.&nbsp; Now we will define our action method to post to, add a SubscriptionController class to the controllers folder:</p>
+          <pre><code class="language-csharp">[HttpPost]
+public ActionResult Save(SubscriptionModel inputModel)
+{
+    //Server side validation
+    if (ModelState.IsValid)
+    {
+        //If the model is valid we can call the save method
+        inputModel.Save();
+        string message = inputModel.Email;
+
+        //We return the email so that when a subscription has been successfully stored we can remove it from the localstorage.
+        //--&gt; SendData function in index.js-&gt; window.localStorage.removeItem(window.localStorage.key(data.Message));
+        return Json(new { Message = message });
+    }
+    else
+    {
+        //When server side validation fails we return in the details about the validation rules that failed.
+        string errorMessage = "&lt;div class=\"validation-summary-errors\"&gt;"
+                + "The following errors occurred:&lt;ul&gt;";
+        foreach (var key in ModelState.Keys)
+        {
+            var error = ModelState[key].Errors.FirstOrDefault();
+            if (error != null)
+            {
+                errorMessage += "&lt;li class=\"field-validation-error\"&gt;"
+                    + error.ErrorMessage + "&lt;/li&gt;";
+            }
+        }
+        errorMessage += "&lt;/ul&gt;";
+        return Json(new { Message = errorMessage });
+    }
+}</code></pre>
+          <p>Now you should be able to test the application.&nbsp;</p>
+          <p>Set a breakpoint on the Save method of the SubscriptionModel. When you enter data in the form and push on create profiles are added to the local storage, when you click on send you should hit the breakpoint and all properties of the model should been set.</p>
+          <p>To be able to load the application when we are offline we need to use a new feature available in the latest browser like IE9, the Html5:&rdquo;offline application&rdquo;.&nbsp; More info of this feature can be found <a href="http://diveintohtml5.org/offline.html">here.</a></p>
+          <p>Add a cache.manifest file to the root of the application:</p>
+          <pre><code class="language-plaintext">CACHE MANIFEST
+/index.htm
+/Content/Site.css
+/Scripts/index.js
+/Scripts/jquery-1.5.1.min.js
+/Scripts/jquery.validate.min.js
+/Content/wait.gif</code></pre>
+          <p>Change the doctype of the index.htm file:</p>
+          <pre><code class="language-html">&lt;html manifest="cache.manifest"&gt;</code></pre>
+          <p>You will also need to change the http header that is returned by the IIS server when serving the manifest file.&nbsp; Therefore in IIS7 you need to click on HTTP Headers, open IIS console manager, navigate to the cache.manifest file, click on http headers, add for the name set-&gt; manifest,value-&gt;text/cache-manifest.</p>
+          <p>If you want an optimal experience when deploying your app on the IPhone or IPad you should also add the following meta tags inside the HTML header:</p>
+          <pre><code class="language-html">&lt;meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" /&gt;
+&lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
+&lt;meta name="apple-mobile-web-app-status-bar-style" content="black" /&gt;
+&lt;link rel="apple-touch-icon" href="/Content/applogo.gif" /&gt;
+&lt;link rel="apple-touch-startup-image" href="/Content/startuplogo.gif" /&gt;</code></pre>
+          <p>You should also add your own image files (applogo &amp; startuplogo) in the content folder so that the startup and app icon is set on the IPhone.</p>
+          <p>Now you can navigate to the page with your IOS device, click on &ldquo;+&rdquo; button of the safari browser, add shortcut and voil&agrave; you&rsquo;ve an offline application for your IPhone/IPad made entirely in HTML5/Javascript/ASP.NET MVC3.</p>
+          <p>Have fun!</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

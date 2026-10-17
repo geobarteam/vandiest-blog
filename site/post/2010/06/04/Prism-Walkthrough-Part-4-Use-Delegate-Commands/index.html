@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prism Walkthrough Part 4: Use Delegate Commands | Geoffrey Vandiest</title>
+  <meta name="description" content="In this post we’ll bind a Command to our Menu so that it’s able to add views to the MainRegion.">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prism Walkthrough Part 4: Use Delegate Commands">
+  <meta property="og:description" content="In this post we’ll bind a Command to our Menu so that it’s able to add views to the MainRegion.">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Prism Walkthrough Part 4: Use Delegate Commands",
+    "datePublished": "2010-06-04",
+    "dateModified": "2010-06-04",
+    "description": "In this post we’ll bind a Command to our Menu so that it’s able to add views to the MainRegion.",
+    "keywords": [
+      "WPF",
+      "Prism",
+      "MVVM",
+      "Unity"
+    ],
+    "image": "https://vandiest.biz/img/2010/prism-walkthrough-part-4-use-delegate-commands-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">WPF</span></li><li><span class="chip chip--quiet">Prism</span></li><li><span class="chip chip--quiet">MVVM</span></li><li><span class="chip chip--quiet">Unity</span></li></ul>
+          <h1>Prism Walkthrough Part 4: Use Delegate Commands</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-06-04">04 JUN 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><em>The final source code can be downloaded </em><a href="http://www.belgianagencies.com/content/PrismWalktrhough-Final.zip"><em>here</em></a><em>!</em></p>
+          <p>In this post we&rsquo;ll bind a Command to our Menu so that it&rsquo;s able to add views to the MainRegion.</p>
+          <p>Create a MenuViewModel:</p>
+
+          <p><img src="/img/2010/prism-walkthrough-part-4-use-delegate-commands-01.jpg" alt width="263" height="173" loading="lazy"></p>
+
+          <p>Insert following code into the MenuViewModel:</p>
+          <pre><code class="language-plaintext"></code></pre>
+
+          <p>Here we created our first ViewModel that will be the target of our View binding.&nbsp;&nbsp; Our View reference our ViewModel but&nbsp;the ViewModel does not need a reference to a view. The view binds to properties on a ViewModel, which, in turn, exposes data contained in model objects and other state specific to the view. The bindings between view and ViewModel are simple to construct because a ViewModel object is set as the DataContext of a view. If property values in the ViewModel change, those new values automatically propagate to the view via data binding.&nbsp;</p>
+
+          <p>When implementing MVVM you need to bind the View and ViewModel, therefore you have the choice between several options.&nbsp; You can declare the ViewModel as a resource in your view xaml, you can also use&nbsp; a presenter class that is responsible to instantiate and bind the View to the ViewModel.&nbsp; This strategy is useful when you need to bind different Views to the same ViewModel.&nbsp; Because we don&rsquo;t need this flexibility here we chooses for a simpler design; here it&rsquo;s the view itself that instantiate and bind to his ViewModel.&nbsp; Some could claim that I&rsquo;m not implementing the pure MVVM pattern as in this application the View knows his ViewModel.&nbsp;&nbsp;I nevertheless chooses for this approach because it&rsquo;s the simplest way to implement MVVM and also because it enable me to handle UI events like KeyboardPress events gracefully&nbsp; (see folowing post).&nbsp;</p>
+
+          <p>In this design, the ViewModel, never the View, performs all modifications made to the model data. The ViewModel and model are unaware of the View but the View reference his ViewModel.&nbsp;&nbsp;This design still provide loose coupling in the sence that the ViewModel does not know about the View but it makes some concessions to the purity of MVVM.&nbsp; Nevertheless these concessions pays dividends in many ways, as you will see in the next series.</p>
+
+          <p>To setup this binding update the MenuView class:</p>
+
+          <pre><code class="language-csharp">public partial class MenuView : UserControl
+{
+    public MenuView(IRegionManager regionManager,IUnityContainer container)
+    {
+        InitializeComponent();
+        this.DataContext = new MenuViewModel(regionManager, container);
+    }
+
+    public MenuViewModel ViewModel
+    {
+        get
+        {
+            return this.DataContext as MenuViewModel;
+        }
+    }
+}</code></pre>
+
+          <p>When the user clicks a MenuItem in the MenuView, a command on the MenuViewModel should execute to display a view in the MainRegion (see line 36 - MenuViewModel).&nbsp;&nbsp; Here we use the Prism DelegateCommand to implement the Command pattern.&nbsp;</p>
+
+          <p>To retrieve the right View we choose for convention over configuration.&nbsp; The&nbsp; LoadViewCommand takes a parameter that is the the name of the View without the suffix View.&nbsp;</p>
+          <p>The ViewModel has exactly the same name as the View but ends with ViewModel -&gt;see MenuViewModel line 39.<br><br>To implement this convention we need to register the Views with a name parameter via the Unity container in the Module Initialization &ndash;&gt; see Coremodule line 8 &amp; 9.</p>
+
+          <p>Add the following code to the CoreModule.cs:</p>
+
+          <pre><code class="language-csharp">public void Initialize()
+{
+    this.RegisterViewsWithRegions();
+}
+
+protected virtual void RegisterViewsWithRegions()
+{
+    this.regionManager.RegisterViewWithRegion(RegionNames.MenuRegion, typeof(MenuView));
+    this.regionManager.RegisterViewWithRegion(RegionNames.StatusbarRegion, typeof(StatusbarView));
+}</code></pre>
+
+          <p><br>Update the MenuViewModel:</p>
+
+          <pre><code class="language-csharp">public class MenuViewModel : INotifyPropertyChanged
+{
+    private readonly IRegionManager _regionManager;
+    private readonly IUnityContainer _container;
+
+    public MenuViewModel(IRegionManager regionManager,IUnityContainer container)
+    {
+        this._regionManager = regionManager;
+        this._container = container;
+        this.LoadViewCommand = new DelegateCommand&lt;object&gt;(this.LoadView, this.CanLoad);
+
+    }
+
+    #region PropertyChanged
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private void OnPropertyChanged(string propertyName)
+    {
+        PropertyChangedEventHandler handler = this.PropertyChanged;
+        if (handler != null)
+        {
+            handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+    #endregion
+
+    #region LoadViewCommand
+    public DelegateCommand&lt;object&gt; LoadViewCommand { get; private set; }
+    public event EventHandler&lt;DataEventArgs&lt;string&gt;&gt; LoadedView;
+
+    private bool CanLoad(object arg)
+    {
+        return true;
+    }
+
+    private void LoadView(object obj)
+    {
+        IRegion mainRegion = this._regionManager.Regions[RegionNames.MainRegion];
+        string viewName = obj.ToString() + "View";
+        var view = this._container.Resolve&lt;IView&gt;(viewName);
+        mainRegion.Add(view,viewName);
+        mainRegion.Activate(view);
+        this.OnLoadView(new DataEventArgs&lt;string&gt;(obj.ToString()));
+    }
+
+    private void OnLoadView(DataEventArgs&lt;string&gt; e)
+    {
+        EventHandler&lt;DataEventArgs&lt;string&gt;&gt; loadHandler = this.LoadedView;
+        if (loadHandler != null)
+        {
+            loadHandler(this, e);
+        }
+    }
+    #endregion
+}</code></pre>
+
+          <p>Bind the LoadViewCommand in our MenuItem.xaml:</p>
+
+          <pre><code class="language-html">&lt;Menu Name="menu1"&gt;
+    &lt;MenuItem Header="File"&gt;
+        &lt;MenuItem Header="New"  CommandParameter="CreateFile" Command="{Binding Path=LoadViewCommand}"/&gt;
+        &lt;MenuItem Header="Folder"  CommandParameter="CreateFolder" Command="{Binding Path=LoadViewCommand}" /&gt;
+    &lt;/MenuItem&gt;
+&lt;/Menu&gt;</code></pre>
+
+          <p>You should be able to run the application and when you click the menu File, you should see :</p>
+
+          <p><img src="/img/2010/prism-walkthrough-part-4-use-delegate-commands-02.jpg" alt width="525" height="350" loading="lazy"></p>
+
+          <p>This end the Walkthrough series.&nbsp; In these 4 parts we setup the foundation of our client application implementing the MVVM pattern and learned how to use Prism to&nbsp;create a&nbsp;modular architecture.&nbsp;&nbsp;</p>
+
+          <p>In the following posts I&rsquo;ll provide a complete application build on the architecture&nbsp;described in part 0 -&gt; (WPF/WCF/EntityFramework).&nbsp;&nbsp; The application extends this basic design and provide an example on how to use the asynchronous behavior of web services to&nbsp;create responsive applications.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

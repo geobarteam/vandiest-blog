@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASP.NET Web setup project walkthrough | Geoffrey Vandiest</title>
+  <meta name="description" content="This post contains a walkthrough that will help you understand the basic tasks to accomplish to create an MSI packages for deploying your web application.">
+  <link rel="canonical" href="https://vandiest.biz/post/2008/10/07/ASPNET-Web-setup-project-walkthrough/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ASP.NET Web setup project walkthrough">
+  <meta property="og:description" content="This post contains a walkthrough that will help you understand the basic tasks to accomplish to create an MSI packages for deploying your web application.">
+  <meta property="og:url" content="https://vandiest.biz/post/2008/10/07/ASPNET-Web-setup-project-walkthrough/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ASP.NET Web setup project walkthrough",
+    "datePublished": "2008-10-07",
+    "dateModified": "2008-10-07",
+    "description": "This post contains a walkthrough that will help you understand the basic tasks to accomplish to create an MSI packages for deploying your web application.",
+    "keywords": [
+      "DevOps",
+      ".NET",
+      "ASP.NET"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">DevOps</span></li><li><span class="chip chip--quiet">.NET</span></li><li><span class="chip chip--quiet">ASP.NET</span></li></ul>
+          <h1>ASP.NET Web setup project walkthrough</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2008-10-07">07 OCT 2008</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>
+          <table>
+          <tbody>
+          <tr>
+          <td>&nbsp;</td>
+          </tr>
+          <tr>
+          <td>
+
+          <div>This&nbsp;post contains a walkthrough that will help you understand the basic tasks to accomplish to create an MSI packages for deploying your web application. The walkthrough describes the most common scenario of deploying a web project.&nbsp; We will create a standard Web setup project.&nbsp; This project will generate as output an msi package that will create and configure the application IIS and copy the application&rsquo;s file to a specific location on the server.&nbsp;&nbsp; This walkthrough also describes how to modify the web.config file for providing a connectionstring or change any of the configuration sections.&nbsp;</div>
+          <div>Because msi packages are mostly deployed by system engineers from the command line, this walkthrough will also pay attention on how to enable quiet installs and how to pass parameters to the installer from the command line.</div>
+
+          <p><b>1.&nbsp;&nbsp;&nbsp;&nbsp; Create a &ldquo;Hello World&rdquo; web service</b></p>
+          <div><br>
+          To be able to create a setup will need a sample project that will be deployed by the setup project.&nbsp; So we create a new empty ASP.NET website application.</div>
+          <div>- File-&gt;new -&gt;ASP.NET WebService</div>
+          <div><em class="lost">[Image no longer available: image001]</em></div>
+
+          <div>Add&nbsp; a Class library project to your solution.<br>
+          - File-&gt;Add-&gt;Class Librrary</div>
+          <div><em class="lost">[Image no longer available: image003]</em></div>
+
+          <div>Now we should have 2 projects inside our solution.</div>
+          <div>- Add a static method SayHello() to the class1.</div>
+          <div><em class="lost">[Image no longer available: image006]</em>&nbsp;</div>
+
+          <div>Reference this class in your web service project:<br>
+          - Add Reference-&gt; Projects-&gt;SayHelloLibrary</div>
+          <div>&nbsp;<em class="lost">[Image no longer available: image007]</em></div>
+
+          <div>- Change the code of the Hello world method to use the Library static method SayHello()</div>
+          <div>&nbsp;<em class="lost">[Image no longer available: image010]</em></div>
+
+          <div>- Hit F5, your solution should compile.&nbsp; <br>
+          - Test the application through the invoke button of the test web page, you should see the following:</div>
+          <div>&nbsp;<em class="lost">[Image no longer available: image011]</em></div>
+
+          <div>
+
+          <h2><b>2.&nbsp;&nbsp;&nbsp;&nbsp; Add a Web setup project</b></h2>
+          </div>
+          <div><br>
+          We will add the web setup deployment project to the solution.<br>
+          - File-&gt;Add-&gt;New Project-&gt;Other Project Types-&gt;Web Setup Project</div>
+          <div><em class="lost">[Image no longer available: image013]</em></div>
+
+          <div>Now our solution should look like this:</div>
+          <div>&nbsp;<em class="lost">[Image no longer available: image016]</em></div>
+
+          <div>Now the real work begins, we will configure our web setup project to hold our content and our compiled assemblies.</div>
+
+          <div>
+
+          <h2><b>3.&nbsp;&nbsp;&nbsp;&nbsp; Add content and assemblies to your web setup project</b><b><br>
+          </b></h2>
+          </div>
+
+          <div>First we will add the content of our web service project.&nbsp; These are the asmx pages and the content of the APP_CODE folder.&nbsp; They will be compiled by the host IIS server the first time the site will be hit.</div>
+
+          <div>Right click on the setup project-&gt;Add-&gt;Project output.</div>
+          <div><em class="lost">[Image no longer available: image018]</em></div>
+
+          <div>A &ldquo;Add project output Group&rdquo; dialog box should appear.</div>
+          <div><em class="lost">[Image no longer available: image019]</em></div>
+
+          <div>Because our Web setup project does not have any compiled assemblies as output we only can select &ldquo;Content Files&rdquo;.&nbsp; &nbsp;</div>
+          <div>&nbsp;<em class="lost">[Image no longer available: image022]</em></div>
+
+          <div>You should be in the file system view. If you don&rsquo;t see the above screen.<br>
+          - &nbsp;right-click on the web project setup folder and choose view-&gt;File system.</div>
+          <div>Now we will add our web service application compiled assemblies.&nbsp; <br>
+          - Right-click again on the web-setup project and choose Add-&gt;Project Output and select the SayHelloLibrary project and click on &ldquo;Primary Output&rdquo;.</div>
+          <div><em class="lost">[Image no longer available: image025]</em>&nbsp;</div>
+
+          <div>After we click on the ok button Visual studio has added the &ldquo;Primary Output&rdquo; to the root of the Web Application Folder. This will result in a compile error the first time we try to hit the application we deploy.</div>
+          <div>To correct this error we must move the &ldquo;Primary output&rdquo; to the Bin folder of our web application.&nbsp; <br>
+          - Simply drag &amp; drop the &ldquo;Primary Output&rdquo; to the bin folder.</div>
+          <div><em class="lost">[Image no longer available: image027]</em></div>
+          <div><em class="lost">[Image no longer available: image029]</em>&nbsp;</div>
+
+          <div>Before we test our first installation package we&rsquo;ve to compile it because Visual studio will not compile it as part of the solution. When we compile our project, visual studio will generate an msi file containing all parts of our application.</div>
+          <div>It&rsquo;s time to test our first installation packet.&nbsp; <br>
+          - Select the setup project-&gt;richt-click-&gt;Install</div>
+          <div><em class="lost">[Image no longer available: image031]</em>&nbsp;</div>
+
+          <div>The setup wizard pops-up, click next.</div>
+          <div><em class="lost">[Image no longer available: image033]</em>&nbsp;</div>
+
+          <div>You can change the default value of the&nbsp; Virtual directory textbox.&nbsp; The default Virtual Directory is a property of your &ldquo;Web application folder&rdquo; available in the File system view.&nbsp; Important: If you want to be able of passing the virtual directory as a parameter through the console for a quiet installation you should set this property to a blank field otherwise the msi package will overwrite a blank value with the value of the property.</div>
+          <div>When the installation is completed successfully the web service should be available on the your local IIS server under the path http://localhost/HelloWorldSetup/service.asmx</div>
+          <div><em class="lost">[Image no longer available: image035]</em>&nbsp;</div>
+
+          <div>The application should also be visible in the &ldquo;Add or Remove Programs&rdquo; in the Windows Control Panel.</div>
+          <div><em class="lost">[Image no longer available: image037]</em>&nbsp;</div>
+
+          <p><b>4.&nbsp;Adapt the connectionString property of the Web.Config file.</b><b><br>
+          &nbsp;</b>The web setup project wizard alow us to change common IIS settings through the File System view (View-&gt;File System) by changing the properties of the &ldquo;Web Application Folder&rdquo;.&nbsp;</p>
+          <div><em class="lost">[Image no longer available: image039]</em>&nbsp;</div>
+
+          <div>We can also add prerequisits of our solution (the .net framework2 is a standard prerequisit).</div>
+          <div>To adapt the connectionString property of our Web.Config file we will have to add custom code to our project that will edit the config file.&nbsp; To be able to this type of actions during a setup we&rsquo;ve to create custom actions.&nbsp; Custom actions are code that is executed during the installation process.&nbsp; Therefore we&rsquo;ve to create a new ClassLibrary project.&nbsp;</div>
+          <div>- Add a classlibrary project and name it HelloWorldCustomActions.</div>
+          <div>- Add following assemblys references: System.Configuration.dll,</div>
+          <div><em class="lost">[Image no longer available: image041]</em></div>
+
+          <div>System.Configuration.Install.dll, System.Web.dll.</div>
+          <div>- Add a new class to MyCustomAction.cs your project that will be used during the installation of your project.&nbsp;&nbsp;&nbsp; This class must inherit from &ldquo;System.Configuration.Install.Installer&rdquo; class and be annotated with the RunInstaller(True) attribute. using System;</div>
+          <div>using System;</div>
+          <div>using System.Collections.Generic;</div>
+          <div>using System.Text;</div>
+          <div>using System.Configuration.Install;</div>
+          <div>using System.ComponentModel;&nbsp; </div>
+          <div>namespace HelloWorldCustomActions</div>
+          <div>{&nbsp;&nbsp;&nbsp; </div>
+          <div>&nbsp; [RunInstaller(true)]&nbsp;&nbsp;&nbsp; </div>
+          <div>&nbsp; publicclassMyCustomAction:Installer&nbsp;&nbsp;&nbsp; </div>
+          <div>&nbsp; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          <div>&nbsp;&nbsp;&nbsp; publicoverridevoid Install(System.Collections.IDictionary stateSaver)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          <div>&nbsp;&nbsp;&nbsp; {&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; base.Install(stateSaver);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          <div>&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp; </div>
+          <div>&nbsp;}
+          <div>}</div>
+          </div>
+
+          <div>Now we need to create our custom action and associate it with our class.<br>
+          First we need to add the output of the HelloWorldCustomActions assembly in our Setup project.<br>
+          - Right-click &ldquo;HelloWorldSetup&rdquo; project-&gt;Add-&gt;Primary Output</div>
+          <div><em class="lost">[Image no longer available: image044]</em>&nbsp;</div>
+
+          <div>- From the File System View move the &ldquo;Primary output from HelloWorld actions&rdquo; to the bin folder.</div>
+          <div>Now we will make sure that our code is executed as a custom action during the installation.<br>
+          - Right-click the project folder-&gt;view-&gt;CustomActions.</div>
+          <div>The Custom action view should be displayed.<br>
+          - Right-click on the install folder-&gt;Add Custom Action-&gt;select &ldquo;Primary output from HelloWorldCustomActions (Active)&rdquo;.</div>
+
+          <div><em class="lost">[Image no longer available: image046]</em>&nbsp;</div>
+
+          <div>The web setup project wizard contains a form where the user must select the application site and the virtual directory. To be able to locate and change the web.config file of our application we need to read these parameters.&nbsp; We can also pass these arguments by the command line and provide a targetdirectory.&nbsp;</div>
+          <div>To be able to access these parameters we need to declare them in the &ldquo;CustomActionData&rdquo; property of our CustomAction:&nbsp; <br>
+          - Select your custom action-&gt;In the property window select &ldquo;CustomActionData&rdquo; Insert the following values: <br>
+          /targetdir=&quot;[TARGETDIR]\&quot; /targetvdir=&quot;[TARGETVDIR]&quot; /targetsite=&quot;[TARGETSITE]&quot; /targetconn=&quot;[EDITA1]&quot;&nbsp; /db=&quot;[DB]&quot;</div>
+
+          <div><em class="lost">[Image no longer available: image048]</em></div>
+
+          <div>We will now add a screen to our wizard that prompts the user for a connectionString.&nbsp; <br>
+          - Right click the project-&gt;View -&gt;User Interface.<br>
+          - Right click start-&gt; Add Dialog</div>
+          <div><em class="lost">[Image no longer available: image050]</em>&nbsp;</div>
+
+          <div>- Select Textboxes(A) and move it between &ldquo;Installation Address&rdquo; and &ldquo;Confirm Installation&rdquo;.</div>
+          <div>- Set the following properties:</div>
+
+          <div><em class="lost">[Image no longer available: image054]</em>&nbsp;</div>
+
+          <div>Now we will code our custom action.<br>
+          - First check you have following references in you CustomAction project.</div>
+          <div><em class="lost">[Image no longer available: image056]</em>&nbsp;</div>
+
+          <div>- Set following using statements in your CustomAction class:</div>
+          <div>using System;</div>
+          <div>using System.Configuration;</div>
+          <div>using System.Configuration.Install;</div>
+          <div>using System.ComponentModel;</div>
+          <div>using System.Diagnostics;</div>
+          <div>using System.IO;</div>
+          <div>using System.DirectoryServices;</div>
+          <div>using System.Web.Configuration;</div>
+          <div>using System.Windows.Forms;
+
+          </div>
+
+          <div>your install method should look like:</div>
+
+          <div>&nbsp;publicoverridevoid Install(System.Collections.IDictionary stateSaver)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          <div>{&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; base.Install(stateSaver);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Retrieve configuration settings&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string targetSite = Context.Parameters[&quot;targetsite&quot;];</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string targetVDir = Context.Parameters[&quot;targetvdir&quot;];</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string targetDirectory = Context.Parameters[&quot;targetdir&quot;];</div>
+          <div>string targetConnectionString = Context.Parameters[&quot;targetconn&quot;];</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //if this is a quiet install //the connectionstring is passed as with a parameter named &quot;db&quot;</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (targetConnectionString.Length &lt; 1)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; targetConnectionString = Context.Parameters[&quot;db&quot;];</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (targetConnectionString.Length &lt; 1)thrownewInstallException(&quot;Please provide a connectionstring!&quot;);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (targetSite == null)thrownewInstallException(&quot;IIS Site Name Not Specified!&quot;);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (targetSite.StartsWith(&quot;/LM/&quot;))&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; targetSite = targetSite.Substring(4);&nbsp; ConfigureWebConfig(targetSite, targetVDir, targetConnectionString);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp; </div>
+          <div><br>
+          Add the ConfigureWebConfig method:</div>
+          <div>&nbsp;void ConfigureWebConfig(string targetSite, string targetVDir, string targetConn)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          <div>{&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // Retrieve &quot;Friendly Site Name&quot; from IIS for TargetSite</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DirectoryEntry entry = &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; newDirectoryEntry(&quot;IIS://LocalHost/&quot; + targetSite);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string friendlySiteName = &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; entry.Properties[&quot;ServerComment&quot;].Value.ToString();</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Open Application's Web.Config&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Configuration config = &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WebConfigurationManager.OpenWebConfiguration(&quot;/&quot; + targetVDir, friendlySiteName);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; addConnectionStringAttribute(targetConn, config);&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; togleCompilationAttribute(config);</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Persist web.config settings&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; config.Save();</div>
+          <div>&nbsp;
+          <div>&nbsp; &nbsp; &nbsp; &nbsp; }</div>
+          </div>
+
+          <div>Method to add the connectionstring to your web.config:</div>
+          <div>privatestaticvoid addConnectionStringAttribute(string connectionStringValue, Configuration config)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          <div>{&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ConnectionStringSettings appDatabase = newConnectionStringSettings();</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appDatabase.Name = &quot;db&quot;;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; appDatabase.ConnectionString = connectionStringValue;</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; appDatabase.ProviderName = &quot;System.Data.SqlClient&quot;;</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; config.ConnectionStrings.ConnectionStrings.Clear();</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; config.ConnectionStrings.ConnectionStrings.Add(appDatabase);</div>
+          <div>&nbsp;
+          <div>&nbsp; &nbsp; &nbsp; &nbsp; }</div>
+          <div><br>
+          This method will set the compilation attribute to debug=false</div>
+          <div>privatestaticvoid togleCompilationAttribute(Configuration config)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+          </div>
+          <div>{&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CompilationSection compilation;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; compilation = config.GetSection(&quot;system.web/compilation&quot;) asCompilationSection;</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (compilation != null)&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; compilation.Debug = !compilation.Debug;</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div>&nbsp; &nbsp; &nbsp; &nbsp; }</div>
+          <div>Now you can test your installation package.&nbsp; <br>
+          - Right-click Setup project-&gt;Install.<br>
+          <br>
+          The second screen should ask for a connectionstring.</div>
+          </div>
+          <div><em class="lost">[Image no longer available: image061]</em>&nbsp;</div>
+
+          <div><b>5.&nbsp;&nbsp;&nbsp;&nbsp; Quiet install <br>
+          &nbsp;</b></div>
+          <div>When distributing a setup package you will mostly install the application through a quiet install.&nbsp; Therefore you&rsquo;ve to pass the parameter through the command line.&nbsp;&nbsp; I experienced that the parameters you pass through the console are sometimes overwritten by the parameters you&rsquo;ve added in your custom screens.&nbsp; This is why I added a supplementary parameter &ldquo;db&rdquo; and don&rsquo;t use the parameter &ldquo;targetconn&rdquo;.&nbsp; The installer first checks if the parameter is empty.&nbsp; This will be the case if you install the application through a quiet install.&nbsp;</div>
+          <div>You will find this parameter in the CustomactionData property of the custom action:<br>
+          /targetdir=&quot;[TARGETDIR]\&quot; /targetvdir=&quot;[TARGETVDIR]&quot; /targetsite=&quot;[TARGETSITE]&quot; /targetconn=&quot;[EDITA1]&quot;&nbsp; /db=&quot;[DB]&quot;</div>
+          <div>&nbsp;The code that handles the parameter in the Install method:<br>
+          if (targetConnectionString.Length &lt; 1)</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; targetConnectionString = Context.Parameters[&quot;db&quot;];</div>
+          <div>You can launch the msi setup package with the folowing command line: (First navigate to the directory containing the builded release version of the msi)</div>
+          <div>&gt;HelloWorldSetup.msi /qb targetvdir=&quot;HelloWorld&quot; db=&quot;Test for connectionstring&quot;</div>
+          <div>If you want to specify the target website you need to specify the website IIS metabase targetsite path.&nbsp; This path mostly begins with &ldquo;/LM/W3SVC/&rdquo; followed by the site id.&nbsp;</div>
+          <div>A trick to find the site id or to debug the setup application is to use the /l* option.&nbsp; Launch the installer with the /l* option and follow the wizard.&nbsp; The /l* will log all the parameters passed to the installation program.&nbsp; After the installation completes you can retrieve website metabase path by searching for the &ldquo;targetsite&rdquo; in the log file.<br>
+          &gt;HelloWorldSetup.msi /l* log.txt</div>
+          <div>I hope this tutorial help you to understand the basics of creating a web setup project.&nbsp; This type of setup will enable you creating testable and repeatable deployment scenarios.&nbsp; It will also help our IT engineers to deploy web applications gracefully on production machines.</div>
+
+          <div>GVD</div>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

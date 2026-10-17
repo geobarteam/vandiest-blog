@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML5 Local Storage | Geoffrey Vandiest</title>
+  <meta name="description" content="There is a feature in HTML5 that enables you to store named key/value pairs in the local storage of your browser.">
+  <link rel="canonical" href="https://vandiest.biz/post/2011/04/30/HTML5-Local-Storage/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="HTML5 Local Storage">
+  <meta property="og:description" content="There is a feature in HTML5 that enables you to store named key/value pairs in the local storage of your browser.">
+  <meta property="og:url" content="https://vandiest.biz/post/2011/04/30/HTML5-Local-Storage/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "HTML5 Local Storage",
+    "datePublished": "2011-04-30",
+    "dateModified": "2011-04-30",
+    "description": "There is a feature in HTML5 that enables you to store named key/value pairs in the local storage of your browser.",
+    "keywords": [
+      "HTML5",
+      "Local storage",
+      "JavaScript"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">HTML5</span></li><li><span class="chip chip--quiet">Local storage</span></li><li><span class="chip chip--quiet">JavaScript</span></li></ul>
+          <h1>HTML5 Local Storage</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2011-04-30">30 APR 2011</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>There is a feature in HTML5 that enables you to store named key/value pairs in the local storage of your browser.&nbsp; The advantage over using regular cookies is that your data is never send to the remote web server and that you can store a lot more compared to the 4KB limitation of cookie storage space.</p>
+          <p>As the local storage is a feature making part of the HTML5 specification, only modern browser supports is;<br>Safari 4.0, Opera 10.5,IE8, FireFox 3.5, Chrome 4.0 and IOS above version 2.0.</p>
+          <p>As for any feature of HTML5 before using it you should check if your browser supports the feature:</p>
+          <pre><code class="language-javascript">1: function can_use_html5() {
+2:    try {
+3:        return 'localStorage' in window &amp;&amp; window['localStorage'] !== null;
+4:    }
+5:    catch (e) {
+6:        return false;
+7:    }
+8: }</code></pre>
+          <p>To store or retrieve an item from the local storage:</p>
+          <pre><code class="language-csharp">1: //Retireve an item:
+2: var item = localStorage.getItem("mykey");
+3: //Store an item:
+4: localStorage.setItem("myKey", "myValue");</code></pre>
+          <p>To clear an item from the local storage or remove all items:</p>
+          <pre><code class="language-csharp">1: //Remove an item
+2: localStorage.removeItem("myKey");
+3: //Remove all
+4: localStorage.clear();</code></pre>
+
+          <p>With this feature we are now able to build web applications that can work offline.&nbsp; Here under I build an application that stores persons profiles in the local storage.&nbsp; I use the JSON.stringify method to serialize the persons before storing the JSON strings in the local storage and JQuery to retrieve the values and bind the events:</p>
+          <pre><code class="language-javascript">  1: &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+  2: &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+  3: &lt;head&gt;
+  4:     &lt;title&gt;Local Storage&lt;/title&gt;
+  5:     &lt;script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.js" type="text/javascript"&gt;&lt;/script&gt;
+  6: &lt;/head&gt;
+  7:
+  8: &lt;body&gt;
+  9:     &lt;div id="resultMessage"&gt;&amp;nbsp;&lt;/div&gt;
+ 10:     &lt;table style="position: absolute; left: 10px;"&gt;
+ 11:         &lt;tr&gt;
+ 12:             &lt;td&gt;
+ 13:             Firstname:
+ 14:             &lt;/td&gt;
+ 15:             &lt;td&gt;&lt;input type="text" id="firstname" /&gt;
+ 16:             &lt;/td&gt;
+ 17:         &lt;/tr&gt;
+ 18:         &lt;tr&gt;
+ 19:             &lt;td&gt;
+ 20:             Lastname:
+ 21:             &lt;/td&gt;
+ 22:             &lt;td&gt;&lt;input type="text" id="lastname" /&gt;
+ 23:             &lt;/td&gt;
+ 24:         &lt;/tr&gt;
+ 25:         &lt;tr&gt;
+ 26:             &lt;td&gt;
+ 27:             E-mail:
+ 28:             &lt;/td&gt;
+ 29:             &lt;td&gt;&lt;input type="text" id="email" /&gt;
+ 30:             &lt;/td&gt;
+ 31:         &lt;/tr&gt;
+ 32:          &lt;tr&gt;
+ 33:             &lt;td&gt;
+ 34:                 &lt;input type="button" id="save"  value="Create" /&gt;
+ 35:             &lt;/td&gt;
+ 36:             &lt;td&gt;
+ 37:                 &lt;input type="button" id="print"  value="Print"/&gt;
+ 38:             &lt;/td&gt;
+ 39:         &lt;/tr&gt;
+ 40:     &lt;/table&gt;
+ 41:     &lt;script type="text/javascript"&gt;
+ 42:         $(function () {
+ 43:             if (!can_use_html5()) {
+ 44:                 alert("This browser does not support Html5 storage, upgrade or change your browser!");
+ 45:             }
+ 46:         });
+ 47:
+ 48:         $(function () {
+ 49:             $("#save").click(function () {
+ 50:
+ 51:                 var person = getPerson();
+ 52:
+ 53:                 //simple validation
+ 54:                 if (person == null) {
+ 55:                     alert("Fill in all fields please!");
+ 56:                     return;
+ 57:                 }
+ 58:
+ 59:                 var jsData = JSON.stringify(person);
+ 60:                 localStorage.setItem($("#email").val(), jsData);
+ 61:
+ 62:                 $("#resultMessage").html($("#email").val() + " stored in local storage");
+ 63:                 clearAllText();
+ 64:             })
+ 65:         });
+ 66:
+ 67:         $(function () {
+ 68:             $("#print").click(function () {
+ 69:                 for (var i = 0; i &lt; window.localStorage.length; i++) {
+ 70:                     document.write('&lt;div id="record_' + i + '"&gt; ' + localStorage[localStorage.key(i)] + '&lt;/div&gt;');
+ 71:                 }
+ 72:                 localStorage.clear();
+ 73:             })
+ 74:         });
+ 75:
+ 76:         function getPerson() {
+ 77:             var firstname = $("#firstname").val();
+ 78:             var lastname = $("#lastname").val();
+ 79:             var email = $("#email").val();
+ 80:             //simple validation
+ 81:             return (firstname == "" || lastname == "" || email == "") ? null : { Firstname: firstname, Lastname: lastname, Email: email };
+ 82:         }
+ 83:
+ 84:         function can_use_html5() {
+ 85:             try {
+ 86:                 return 'localStorage' in window &amp;&amp; window['localStorage'] !== null;
+ 87:             }
+ 88:             catch (e) {
+ 89:                 return false;
+ 90:             }
+ 91:         }
+ 92:
+ 93:         function clearAllText() {
+ 94:
+ 95:             $("#firstname").attr("value", "");
+ 96:             $("#lastname").attr("value", "");
+ 97:             $("#email").attr("value", "");
+ 98:         }
+ 99:     &lt;/Script&gt;
+100: &lt;/body&gt;
+101: &lt;/html&gt;</code></pre>
+          <p>HTML5 enables new possibilities for all types of scenarios like creating IPAD/IPhone web applications without having to program in objective c and/or upload the app to the app store.&nbsp; In a future post I will demonstrate how you can extend this application to create such an application. &nbsp;&nbsp;</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

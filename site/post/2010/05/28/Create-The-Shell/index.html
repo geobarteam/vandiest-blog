@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prism walkthrough - Part 1: Create The Shell | Geoffrey Vandiest</title>
+  <meta name="description" content="The client side application is made out of three assemblies:">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/05/28/Create-The-Shell/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prism walkthrough - Part 1: Create The Shell">
+  <meta property="og:description" content="The client side application is made out of three assemblies:">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/05/28/Create-The-Shell/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Prism walkthrough - Part 1: Create The Shell",
+    "datePublished": "2010-05-28",
+    "dateModified": "2010-05-28",
+    "description": "The client side application is made out of three assemblies:",
+    "keywords": [
+      "Prism",
+      "WPF",
+      "MVVM"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Prism</span></li><li><span class="chip chip--quiet">WPF</span></li><li><span class="chip chip--quiet">MVVM</span></li></ul>
+          <h1>Prism walkthrough - Part 1: Create The Shell</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-05-28">28 MAY 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>The client side application is made out of three assemblies:</p>
+          <ul>
+          <li>The Shell (PrismWalkthrough.Shell) </li>
+          <li>The Modules ( PrismWalkthrough.Modules) </li>
+          <li>The Infrastructure (PrismWalkthrough.Infrastructure)</li>
+          </ul>
+          <p>The foundation of the application is &ldquo;The Shell&rdquo;.&nbsp; The Shell is the top-level window of an application based on the Prism Composite Application Library. This window is a place to host different user interface (UI) components that exposes a way for itself to be dynamically populated by others, and it may also contain common UI elements, such as menus and toolbars. The Shell window sets the overall appearance of the application.</p>
+
+          <p>In our application it&rsquo;s the shell that is responsible to load the Modules. A module represents a set of related concerns. It can include components such as views, business logic, and pieces of infrastructure, such as services for logging or authenticating users. Modules are independent of one another but can communicate with each other in a loosely coupled fashion.&nbsp; In this walkthrough our application will contain only one module: the CoreModule nevertheless the modular architecture enable us to easily extend the application adding new modules later on.</p>
+
+          <p>The Infrastructure Assembly is a shared library referenced by both the shell project and the module projects, and holds shared types such as constants, event types, entity definitions and interfaces.</p>
+
+          <h2>Create the Solution</h2>
+
+          <ol>
+          <li>Create the Shell project (PrismWalkthrough.Shell) application with Visual Studio-&gt; File, Project, WPF Application. </li>
+          <li>Add the Modules project and Infrastructure project &ndash;&gt; File, Add New Project, Classlibrary </li>
+          <li>The three projects should reference the Composite Application Library assemblies, add the following reference:<br>(These assemblies can be found in the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=387c7a59-b217-4318-ad1b-cbc2ea453f40&amp;displaylang=en">october 2009 Guidance</a> of Prism -&nbsp; you will need to compile the sample application) <ol>
+          <li>&nbsp;
+          <ul>
+          <li><strong>Microsoft.Practices.Composite.dll</strong> </li>
+          <li><strong>Microsoft.Practices.Composite.Presentation.dll</strong> </li>
+          <li><strong>Microsoft.Practices.Composite.UnityExtensions.dll</strong> </li>
+          <li><strong>Microsoft.Practices.Unity.dll</strong> </li>
+          <li><strong>Microsoft.Practices.ServiceLocation.dll</strong></li>
+          </ul>
+          </li>
+          </ol></li>
+          <li>Add a reference to the Modules and Shell&nbsp;projects referencing the Infrastructure assembly. </li>
+          <li>Add a refrence to the Shell&nbsp;project referencing the Modules assembly. </li>
+          <li>Add a refrence to the Modules and infrastructure that reference to the WindowsBase &amp; PresentationCore and PresentationFramework &ndash;&gt; Reference, Add, .Net tab.</li>
+          </ol>
+
+          <p>Your solution should look like this:</p>
+
+          <p><em class="lost">[Image no longer available]</em></p>
+
+          <h2>Initialize the application</h2>
+          <p>To enable modularity and dependency injection in our application we need to make some changes to the standard WPF application we just created.&nbsp; First we setup a bootstrapper.&nbsp; The bootstrapper is responsible for the initialization of the application, this is realized by overriding the CreateShell method.</p>
+          <ol>
+          <li>Add a new class on the root of the application containing the shell (PrismWalkthrough.Shell), name it Bootstrapper </li>
+          <li>The Bootstrapper should inherit from Microsoft.Practices.Composite.UnityExtensions.UnityBootstrapper class and override the CreateShell method. You need to instantiate the Shell through the Unity conatiner and call his Show method</li>
+          </ol>
+          <pre><code class="language-csharp">public class Bootstrapper : UnityBootstrapper</code></pre>
+          <pre><code class="language-csharp">{</code></pre>
+          <pre><code class="language-plaintext">protected override System.Windows.DependencyObject CreateShell()</code></pre>
+          <pre><code class="language-csharp">{</code></pre>
+          <pre><code class="language-csharp">Shell shell = this.Container.Resolve&lt;Shell&gt;();</code></pre>
+          <pre><code class="language-csharp">shell.Show();</code></pre>
+          <pre><code class="language-csharp">return shell;</code></pre>
+          <pre><code class="language-csharp">}</code></pre>
+          <pre><code class="language-csharp">}</code></pre>
+
+          <p>To be able to run the bootstrapper at least one module should be registered in our application.&nbsp;</p>
+          <ol>
+          <li>Add a class to the PrismWalkthrough.Module and name it CoreModule.cs </li>
+          <li>This class should implement the IModule interface:</li>
+          </ol>
+          <pre><code class="language-csharp">namespace PrismWalkthrough.Modules</code></pre>
+          <pre><code class="language-csharp">{</code></pre>
+          <pre><code class="language-csharp">public class CoreModule : IModule</code></pre>
+          <pre><code class="language-csharp">{</code></pre>
+          <pre><code class="language-csharp">public void Initialize()</code></pre>
+          <pre><code class="language-csharp">{</code></pre>
+          <pre><code class="language-plaintext"></code></pre>
+          <pre><code class="language-csharp">}</code></pre>
+          <pre><code class="language-csharp">}</code></pre>
+          <pre><code class="language-csharp">}</code></pre>
+
+          <p>Through the bootstrapper you must configure which Modules are available in our Shell. You need to register at least one module in your bootstrapper.</p>
+          <ol>
+          <li>Override the InitializeModules in the bootstrapper:</li>
+          </ol>
+          <pre><code class="language-csharp">protected override void  InitializeModules()</code></pre>
+          <pre><code class="language-csharp">{</code></pre>
+          <pre><code class="language-csharp">IModule coreModule = this.Container.Resolve&lt;CoreModule&gt;();</code></pre>
+          <pre><code class="language-csharp">coreModule.Initialize();</code></pre>
+          <pre><code class="language-csharp">}</code></pre>
+
+          <p>The WPF Application class needs to execute the bootstrapper by calling his Run method.&nbsp;</p>
+          <ol>
+          <li>First you should delete the <strong>StartupUri </strong>in the App.Xaml file.
+          <pre><code class="language-xml">&lt;Application x:Class="PrismWalkthrough.Shell.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
+&lt;/Application&gt;</code></pre>
+          </li>
+          <li>Override the OnStartup method in the App.cs file:</li>
+          </ol>
+          <pre><code class="language-csharp">protected override void OnStartup(StartupEventArgs e)</code></pre>
+          <pre><code class="language-csharp">{</code></pre>
+          <pre><code class="language-csharp">base.OnStartup(e);</code></pre>
+          <pre><code class="language-csharp">Bootstrapper bootstrapper = new Bootstrapper();</code></pre>
+          <pre><code class="language-csharp">bootstrapper.Run();</code></pre>
+          <pre><code class="language-csharp">}</code></pre>
+
+          <p>Now you should be able to run you application, you should see a white screen.</p>
+          <p><a href="/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions/">Next ---&gt;</a></p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1259 @@
+{
+ "/file.axd?file=/ppt/Continuous Delivery in the Enterprise.pptx": {
+  "status": "ok",
+  "target": "/files/Continuous-Delivery-in-the-Enterprise.pptx",
+  "post": "/post/2018/09/10/best-practices-on-how-to-architect-for-faster-and-better-delivery-in-the-enterprise",
+  "kind": "link",
+  "via": "original",
+  "bytes": 3975358,
+  "note": "over 300 KB"
+ },
+ "/image.axd?picture=/1_NR534YpHhNuOd51nL5EfCA.png": {
+  "status": "ok",
+  "target": "/img/2023/best-practices-for-effective-unit-testing-in-c-02.png",
+  "post": "/post/2023/07/07/best-practices-for-effective-unit-testing-in-c",
+  "kind": "img",
+  "via": "original",
+  "bytes": 72017,
+  "width": 450,
+  "height": 348
+ },
+ "/image.axd?picture=/1fa394a0-8add-467d-aceb-e0543ce1007b.png": {
+  "status": "ok",
+  "target": "/img/2026/spec-driven-development-with-ai-a-practical-guid-01.webp",
+  "post": "/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control",
+  "kind": "img",
+  "via": "original",
+  "bytes": 184132,
+  "width": 800,
+  "height": 1200,
+  "resized": true
+ },
+ "/image.axd?picture=/20180727130354856.png": {
+  "status": "ok",
+  "target": "/img/2011/creating-an-offline-html5-application-for-ios-wi-01.png",
+  "post": "/post/2011/05/14/Creating-an-offline-HTML5-application-for-IOS-with-ASPNET-MVC3",
+  "kind": "img",
+  "via": "original",
+  "bytes": 38612,
+  "width": 285,
+  "height": 177
+ },
+ "/image.axd?picture=/80f1f36a-01b1-41fc-992d-dd40a10d5377 (1).png": {
+  "status": "ok",
+  "target": "/img/2026/from-vibe-coding-to-spec-driven-development-a-re-01.png",
+  "post": "/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects",
+  "kind": "img",
+  "via": "original",
+  "bytes": 212294,
+  "width": 800,
+  "height": 533,
+  "resized": true
+ },
+ "/image.axd?picture=/AAM1.png": {
+  "status": "ok",
+  "target": "/img/2016/get-started-with-asp-net-core-angular-and-mongod-01.png",
+  "post": "/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb",
+  "kind": "img",
+  "via": "original",
+  "bytes": 30417,
+  "width": 949,
+  "height": 515
+ },
+ "/image.axd?picture=/ATeam.png": {
+  "status": "ok",
+  "target": "/img/2018/is-my-dream-team-a-feature-team-01.png",
+  "post": "/post/2018/10/16/is-my-dream-team-a-feature-team",
+  "kind": "img",
+  "via": "original",
+  "bytes": 86792,
+  "width": 446,
+  "height": 299,
+  "resized": true
+ },
+ "/image.axd?picture=/AngularVsBlazor/AngularVsBlazor.jpg": {
+  "status": "ok",
+  "target": "/img/2022/what-is-the-best-ui-technology-angular-or-blazor-01.jpg",
+  "post": "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 13928,
+  "width": 624,
+  "height": 373
+ },
+ "/image.axd?picture=/AngularVsBlazor/BlazorServer.png": {
+  "status": "ok",
+  "target": "/img/2022/what-is-the-best-ui-technology-angular-or-blazor-05.png",
+  "post": "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 17975,
+  "width": 265,
+  "height": 168
+ },
+ "/image.axd?picture=/AngularVsBlazor/BlazorWasm.png": {
+  "status": "ok",
+  "target": "/img/2022/what-is-the-best-ui-technology-angular-or-blazor-06.png",
+  "post": "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 18603,
+  "width": 255,
+  "height": 215
+ },
+ "/image.axd?picture=/AngularVsBlazor/PageLifecycle.png": {
+  "status": "ok",
+  "target": "/img/2022/what-is-the-best-ui-technology-angular-or-blazor-02.png",
+  "post": "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 56061,
+  "width": 624,
+  "height": 773
+ },
+ "/image.axd?picture=/AngularVsBlazor/blazor1.png": {
+  "status": "ok",
+  "target": "/img/2022/what-is-the-best-ui-technology-angular-or-blazor-04.png",
+  "post": "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 23206,
+  "width": 231,
+  "height": 257
+ },
+ "/image.axd?picture=/AngularVsBlazor/jobs.png": {
+  "status": "ok",
+  "target": "/img/2022/what-is-the-best-ui-technology-angular-or-blazor-03.png",
+  "post": "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 36060,
+  "width": 624,
+  "height": 354
+ },
+ "/image.axd?picture=/ParadigmPicture1.png": {
+  "status": "ok",
+  "target": "/img/2018/continous-delivery-as-a-paradigm-shift-01.png",
+  "post": "/post/2018/01/10/continous-delivery-as-a-paradigm-shift",
+  "kind": "img",
+  "via": "original",
+  "bytes": 135042,
+  "width": 623,
+  "height": 507,
+  "resized": true
+ },
+ "/image.axd?picture=/Pictureshit.png": {
+  "status": "ok",
+  "target": "/img/2018/bottlenecks-linked-with-big-systems-01.png",
+  "post": "/post/2018/09/10/bottlenecks-linked-with-big-systems",
+  "kind": "img",
+  "via": "original",
+  "bytes": 65704,
+  "width": 215,
+  "height": 217
+ },
+ "/image.axd?picture=/Scaffolding-FEATURE-compressed.jpg": {
+  "status": "ok",
+  "target": "/img/2023/building-code-like-a-skyscraper-the-scaffolding-01.jpg",
+  "post": "/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing",
+  "kind": "img",
+  "via": "original",
+  "bytes": 197168,
+  "width": 1200,
+  "height": 700
+ },
+ "/image.axd?picture=/Test-Pyramid-Picture1.png": {
+  "status": "ok",
+  "target": "/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-02.png",
+  "post": "/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 53519,
+  "width": 601,
+  "height": 601
+ },
+ "/image.axd?picture=/Testing-Pyramid-Picture2.png": {
+  "status": "ok",
+  "target": "/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-03.png",
+  "post": "/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 52208,
+  "width": 602,
+  "height": 159
+ },
+ "/image.axd?picture=/amazon-1.jpg": {
+  "status": "ok",
+  "target": "/img/2017/continous-delivery-can-t-be-bought-in-a-box-01.jpg",
+  "post": "/post/2017/11/10/continous-delivery-can-t-be-bought-in-a-box",
+  "kind": "img",
+  "via": "original",
+  "bytes": 84469,
+  "width": 606,
+  "height": 403
+ },
+ "/image.axd?picture=/arduino-workshop-cover.png": {
+  "status": "ok",
+  "target": "/img/2015/learning-arduino-for-beginners-01.png",
+  "post": "/post/2015/11/15/learning-arduino-for-beginners",
+  "kind": "img",
+  "via": "original",
+  "bytes": 59125,
+  "width": 1000,
+  "height": 1000
+ },
+ "/image.axd?picture=/d1.png": {
+  "status": "ok",
+  "target": "/img/2016/update-your-azure-infrastructure-as-part-of-a-bu-01.png",
+  "post": "/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build",
+  "kind": "img",
+  "via": "original",
+  "bytes": 105690,
+  "width": 1202,
+  "height": 933
+ },
+ "/image.axd?picture=/d2.png": {
+  "status": "ok",
+  "target": "/img/2016/update-your-azure-infrastructure-as-part-of-a-bu-02.png",
+  "post": "/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build",
+  "kind": "img",
+  "via": "original",
+  "bytes": 86995,
+  "width": 1202,
+  "height": 933
+ },
+ "/image.axd?picture=/dnca1.png": {
+  "status": "ok",
+  "target": "/img/2017/how-to-design-your-spa-to-work-with-angular-cli-01.png",
+  "post": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1",
+  "kind": "img",
+  "via": "original",
+  "bytes": 27062,
+  "width": 290,
+  "height": 563
+ },
+ "/image.axd?picture=/dnca2.png": {
+  "status": "ok",
+  "target": "/img/2017/how-to-design-your-spa-to-work-with-angular-cli-02.png",
+  "post": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1",
+  "kind": "img",
+  "via": "original",
+  "bytes": 190669,
+  "width": 1752,
+  "height": 1000
+ },
+ "/image.axd?picture=/dnca3.png": {
+  "status": "ok",
+  "target": "/img/2017/how-to-design-your-spa-to-work-with-angular-cli-03.png",
+  "post": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1",
+  "kind": "img",
+  "via": "original",
+  "bytes": 171435,
+  "width": 1805,
+  "height": 783
+ },
+ "/image.axd?picture=/dnca4.png": {
+  "status": "ok",
+  "target": "/img/2017/how-to-design-your-spa-to-work-with-angular-cli-04.png",
+  "post": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1",
+  "kind": "img",
+  "via": "original",
+  "bytes": 26186,
+  "width": 1083,
+  "height": 411
+ },
+ "/image.axd?picture=/dnca5.png": {
+  "status": "ok",
+  "target": "/img/2017/how-to-design-your-spa-to-work-with-angular-cli-05.png",
+  "post": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1",
+  "kind": "img",
+  "via": "original",
+  "bytes": 73270,
+  "width": 1083,
+  "height": 603
+ },
+ "/image.axd?picture=/ftd2.png": {
+  "status": "ok",
+  "target": "/img/2016/how-to-use-azure-resource-manager-in-visual-stud-02.png",
+  "post": "/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps",
+  "kind": "img",
+  "via": "original",
+  "bytes": 125664,
+  "width": 1888,
+  "height": 1309
+ },
+ "/image.axd?picture=/generatedHeaderImage-1671189608216.jpg": {
+  "status": "ok",
+  "target": "/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-01.jpg",
+  "post": "/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor",
+  "kind": "img",
+  "via": "original",
+  "bytes": 117257,
+  "width": 1200,
+  "height": 630,
+  "resized": true
+ },
+ "/image.axd?picture=/htd1.png": {
+  "status": "ok",
+  "target": "/img/2016/how-to-use-azure-resource-manager-in-visual-stud-01.png",
+  "post": "/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps",
+  "kind": "img",
+  "via": "original",
+  "bytes": 43461,
+  "width": 941,
+  "height": 653
+ },
+ "/image.axd?picture=/htd3.png": {
+  "status": "ok",
+  "target": "/img/2016/how-to-use-azure-resource-manager-in-visual-stud-03.png",
+  "post": "/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps",
+  "kind": "img",
+  "via": "original",
+  "bytes": 162367,
+  "width": 1578,
+  "height": 1189
+ },
+ "/image.axd?picture=/htd4.png": {
+  "status": "ok",
+  "target": "/img/2016/how-to-use-azure-resource-manager-in-visual-stud-04.png",
+  "post": "/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps",
+  "kind": "img",
+  "via": "original",
+  "bytes": 23164,
+  "width": 807,
+  "height": 340
+ },
+ "/image.axd?picture=/htd5.png": {
+  "status": "ok",
+  "target": "/img/2016/how-to-use-azure-resource-manager-in-visual-stud-05.png",
+  "post": "/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps",
+  "kind": "img",
+  "via": "original",
+  "bytes": 19077,
+  "width": 486,
+  "height": 421
+ },
+ "/image.axd?picture=/images-fun-1.jpg": {
+  "status": "ok",
+  "target": "/img/2023/best-practices-for-effective-unit-testing-in-c-01.jpg",
+  "post": "/post/2023/07/07/best-practices-for-effective-unit-testing-in-c",
+  "kind": "img",
+  "via": "original",
+  "bytes": 7792,
+  "width": 300,
+  "height": 168
+ },
+ "/image.axd?picture=/orchester.png": {
+  "status": "ok",
+  "target": "/img/2023/orchestrating-success-the-harmonious-ensemble-be-01.png",
+  "post": "/post/2023/06/21/orchestrating-success-the-harmonious-ensemble-behind-automated-testing",
+  "kind": "img",
+  "via": "original",
+  "bytes": 296428,
+  "width": 1191,
+  "height": 641,
+  "resized": true
+ },
+ "/image.axd?picture=/presnt-prtscn.png": {
+  "status": "ok",
+  "target": "/img/2018/best-practices-on-how-to-architect-for-faster-an-01.png",
+  "post": "/post/2018/09/10/best-practices-on-how-to-architect-for-faster-and-better-delivery-in-the-enterprise",
+  "kind": "img",
+  "via": "original",
+  "bytes": 66110,
+  "width": 2256,
+  "height": 1504
+ },
+ "/image.axd?picture=/pyramid.png": {
+  "status": "ok",
+  "target": "/img/2023/going-all-in-on-ui-testing-automation-a-recipe-f-02.png",
+  "post": "/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure",
+  "kind": "img",
+  "via": "original",
+  "bytes": 34068,
+  "width": 731,
+  "height": 490
+ },
+ "/image.axd?picture=/quote-false-hopes-are-more-dangerous-than-fears-j-r-r-tolkien-41-36-12.jpg": {
+  "status": "ok",
+  "target": "/img/2023/going-all-in-on-ui-testing-automation-a-recipe-f-01.jpg",
+  "post": "/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure",
+  "kind": "img",
+  "via": "original",
+  "bytes": 51957,
+  "width": 850,
+  "height": 400
+ },
+ "/image.axd?picture=/r1.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-02.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 12172,
+  "width": 463,
+  "height": 151
+ },
+ "/image.axd?picture=/r2.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-03.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 53817,
+  "width": 742,
+  "height": 544
+ },
+ "/image.axd?picture=/r3.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-04.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 11721,
+  "width": 375,
+  "height": 205
+ },
+ "/image.axd?picture=/r4.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-05.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 12617,
+  "width": 733,
+  "height": 100
+ },
+ "/image.axd?picture=/r5.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-06.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 14753,
+  "width": 587,
+  "height": 140
+ },
+ "/image.axd?picture=/r6.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-07.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 31844,
+  "width": 524,
+  "height": 399
+ },
+ "/image.axd?picture=/r7.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-08.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 21670,
+  "width": 915,
+  "height": 177
+ },
+ "/image.axd?picture=/r8.png": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-09.png",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 15937,
+  "width": 900,
+  "height": 70
+ },
+ "/image.axd?picture=/sonarquality.png": {
+  "status": "ok",
+  "target": "/img/2023/chasing-the-mythical-80-when-code-coverage-becom-02.png",
+  "post": "/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt",
+  "kind": "img",
+  "via": "original",
+  "bytes": 27044,
+  "width": 404,
+  "height": 287
+ },
+ "/image.axd?picture=/testable-code.jpg": {
+  "status": "ok",
+  "target": "/img/2023/crafting-c-code-for-success-6-key-principles-to-01.jpg",
+  "post": "/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability",
+  "kind": "img",
+  "via": "original",
+  "bytes": 27463,
+  "width": 550,
+  "height": 367
+ },
+ "/image.axd?picture=/treasure.jpg": {
+  "status": "ok",
+  "target": "/img/2023/chasing-the-mythical-80-when-code-coverage-becom-01.jpg",
+  "post": "/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt",
+  "kind": "img",
+  "via": "original",
+  "bytes": 82165,
+  "width": 602,
+  "height": 301
+ },
+ "/image.axd?picture=/wii_bowling-13520.jpg": {
+  "status": "ok",
+  "target": "/img/2011/the-bowling-game-kata-01.jpg",
+  "post": "/post/2011/08/31/The-bowling-game-Kata",
+  "kind": "img",
+  "via": "original",
+  "bytes": 174360,
+  "width": 500,
+  "height": 306
+ },
+ "/image.axd?picture=2010%2f4%2fSharepointMCT.jpg": {
+  "status": "missing",
+  "post": "/post/2010/01/25/Sharepoint-2007-Certification-Guide",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f4%2fUnit+vs+integration.gif": {
+  "status": "missing",
+  "post": "/post/2010/04/13/How-to-distinguish-an-integration-test-from-a-unit-test",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f4%2fabstractF.gif": {
+  "status": "missing",
+  "post": "/post/2010/01/25/Coding-Kata-on-design-patterns-Kata1-The-Abstract-Factory-Pattern",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f4%2fdecorator.gif": {
+  "status": "missing",
+  "post": "/post/2010/01/26/Kata2-The-Decorator-Pattern",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f4%2fff_vs_ie.jpg": {
+  "status": "ok",
+  "target": "/img/2010/http-caching-divergence-between-ie-firefox-01.jpg",
+  "post": "/post/2010/03/31/HTTP-caching-divergence-between-IE-Firefox",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20110823194809id_/http://geoffrey.vandiest.biz/image.axd?picture=2010%2f4%2fff_vs_ie.jpg",
+  "bytes": 76987,
+  "width": 470,
+  "height": 327
+ },
+ "/image.axd?picture=2010%2f4%2fgitvs.jpg": {
+  "status": "ok",
+  "target": "/img/2010/git-with-visualstudio-01.jpg",
+  "post": "/post/2010/02/09/GIT-with-VisualStudio",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20110823194659id_/http://geoffrey.vandiest.biz/image.axd?picture=2010%2f4%2fgitvs.jpg",
+  "bytes": 3351,
+  "width": 131,
+  "height": 131
+ },
+ "/image.axd?picture=2010%2f4%2fraleur-320262.jpg": {
+  "status": "missing",
+  "post": "/post/2010/04/14/Why-should-we-test",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f4%2freally-cool-keyboard.jpg": {
+  "status": "missing",
+  "post": "/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2f225629_fat_guy_in_car.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/27/Anti-Pattern-5-Fat-UIs",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2f3981-0123705975-vlsi-test-principles-and-architectures-design-for-testability-systems-on-silicon.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/04/Design-For-Testability",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2fModel.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2fPart2Result.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2fPart3End.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/31/Part-3-Add-Views-to-Regions",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2fRIA-Architecture.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2fSolution.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/28/Create-The-Shell",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f5%2fViews.jpg": {
+  "status": "ok",
+  "target": "/img/2010/part-3-add-views-to-regions-01.jpg",
+  "post": "/post/2010/05/31/Part-3-Add-Views-to-Regions",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20110823194423id_/http://geoffrey.vandiest.biz/image.axd?picture=2010%2f5%2fViews.jpg",
+  "bytes": 19592,
+  "width": 207,
+  "height": 164
+ },
+ "/image.axd?picture=2010%2f5%2fgreenpix-solar-pv-facade-curtain-wall-led-china-beijing.jpg": {
+  "status": "ok",
+  "target": "/img/2010/anti-pattern2-coupling-between-domain-infrastruc-01.jpg",
+  "post": "/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20110823194951id_/http://geoffrey.vandiest.biz/image.axd?picture=2010%2f5%2fgreenpix-solar-pv-facade-curtain-wall-led-china-beijing.jpg",
+  "bytes": 87394,
+  "width": 468,
+  "height": 547
+ },
+ "/image.axd?picture=2010%2f5%2foverload-your-trailer.jpg": {
+  "status": "missing",
+  "post": "/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "/image.axd?picture=2010%2f6%2finterviewq.jpg": {
+  "status": "ok",
+  "target": "/img/2010/net-interview-questions-01.jpg",
+  "post": "/post/2010/06/09/Net-Interview-questions",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20110817040038id_/http://geoffrey.vandiest.biz/image.axd?picture=2010%2f6%2finterviewq.jpg",
+  "bytes": 69711,
+  "width": 583,
+  "height": 450
+ },
+ "/image.axd?picture=2010%2f6%2fmenuviewmodel.jpg": {
+  "status": "ok",
+  "target": "/img/2010/prism-walkthrough-part-4-use-delegate-commands-01.jpg",
+  "post": "/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20110817040911id_/http://geoffrey.vandiest.biz/image.axd?picture=2010%2f6%2fmenuviewmodel.jpg",
+  "bytes": 28957,
+  "width": 263,
+  "height": 173
+ },
+ "/image.axd?picture=2010%2f6%2fresult.jpg": {
+  "status": "ok",
+  "target": "/img/2010/prism-walkthrough-part-4-use-delegate-commands-02.jpg",
+  "post": "/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20110817040100id_/http://geoffrey.vandiest.biz/image.axd?picture=2010%2f6%2fresult.jpg",
+  "bytes": 20795,
+  "width": 525,
+  "height": 350
+ },
+ "http://1.bp.blogspot.com/_abE3ofiRYcI/SQd5ffD-9UI/AAAAAAAAAUs/H1TEyitmiOY/s1600-h/image001.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough",
+  "kind": "link",
+  "note": "not an image or file (text/html; charset=ISO-8859-1); Wayback capture unusable: not an image or file (text/html; charset=UTF-8)"
+ },
+ "http://1.bp.blogspot.com/_abE3ofiRYcI/SQd5ffD-9UI/AAAAAAAAAUs/H1TEyitmiOY/s320/image001.jpg": {
+  "status": "ok",
+  "target": "/img/2008/first-steps-with-unit-testing-walkthrough-01.jpg",
+  "post": "/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20131030042318id_/http://1.bp.blogspot.com/_abE3ofiRYcI/SQd5ffD-9UI/AAAAAAAAAUs/H1TEyitmiOY/s320/image001.jpg",
+  "bytes": 14596,
+  "width": 320,
+  "height": 124
+ },
+ "http://1.bp.blogspot.com/_abE3ofiRYcI/Sq6cJ5DRgTI/AAAAAAAAAhQ/_3V1_wXERuI/s320/Untitled.jpg": {
+  "status": "ok",
+  "target": "/img/2009/visual-studio-textmate-font-black-background-01.jpg",
+  "post": "/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20131030090228id_/http://1.bp.blogspot.com/_abE3ofiRYcI/Sq6cJ5DRgTI/AAAAAAAAAhQ/_3V1_wXERuI/s320/Untitled.jpg",
+  "bytes": 17590,
+  "width": 320,
+  "height": 195
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_1280_998_xpng_2579043_2ccb1a7912f69d685dab68fc35d1f3ec.png": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_160_294_jpeg_2579043_b59ae8d67c9e1de99a4c443f04a59a41.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_315_444_jpeg_2579043_27d35b455f48aef59226646a3bff020e.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_324_386_png_2579043_546dbb7baa4c3f47b6f175ebca7328c8.png": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_372_228_pjpeg_2579043_0a604c21ff81a0da2f41e26d387c88fe.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_467_382_xpng_2579043_ae649169388e9bdc358abdd6985cd8a3.png": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_516_298_jpeg_2579043_ccd2c5538c929a9ec28ac8845779071d.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_636_173_jpeg_2579043_64c5657ceb75a17fe91d42d757598dbe.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_681_445_xpng_2579043_03aa9b85b440d723f3f453281786c437.png": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_681_495_png_2579043_64cb3becd5431808660c3b13133b492d.png": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070817/dyn006_original_800_600_png_2579043_923fa52d8037f903758fa8554616bc59.png": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_163_306_pjpeg_2579043_b0e1d22f62d17a46c28bbe3e9659cb6f.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_169_229_pjpeg_2579043_69f5168c248a0834aaa1eb5f49f4e050.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_308_410_pjpeg_2579043_59d1cd7b4d0bc12f33154a516514d085.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_312_202_pjpeg_2579043_1d0eb9012eb86a46360742ea6905dac0.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_324_386_pjpeg_2579043_40d3d8fd995da51e9074dd7a30a43a62.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_324_386_pjpeg_2579043_79afe1879ee4d093d8d1493bd3e0605a.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_408_297_pjpeg_2579043_f5f7ac605e5b7ba2cdbda18a8cbec0ba.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_420_300_pjpeg_2579043_3f918e6618737bee53331b6b532dca71.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_503_414_pjpeg_2579043_7f0f1e33951dd15222e731c3d87de7eb.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_503_414_pjpeg_2579043_87afaeb4d57f92cf2c8ba510b68adf1d.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_604_439_pjpeg_2579043_165f6273f0bd7fe4237deeeb02dde3cd.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_604_483_pjpeg_2579043_b8a5a31807551915aa1631c42094da53.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_605_443_pjpeg_2579043_9207dcfe8fb76d1c7a37e7ec7bd65559.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_605_454_pjpeg_2579043_2a9a6f2c245bc3acf1c3bc2058895d00.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_660_207_pjpeg_2579043_aded358643c4e56d2d71ff50936aa136.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20070827/dyn003_original_660_228_pjpeg_2579043_5ae2c4dec2d4fb9b4177c2eab5453dc9.jpg": {
+  "status": "missing",
+  "post": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20080209/dyn004_original_1024_651_pjpeg_2579043_0cf30808f852df31dc1182842c584ff2.jpg": {
+  "status": "missing",
+  "post": "/post/2010/03/31/ASPNET-MVC-with-Webforms",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20080209/dyn004_original_276_355_pjpeg_2579043_7bcff7bf45228d0d6eb1ec24d5c2b51e.jpg": {
+  "status": "missing",
+  "post": "/post/2010/03/31/ASPNET-MVC-with-Webforms",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20080209/dyn004_original_522_567_pjpeg_2579043_7ec28fcd0ce0daca16984cc44c404202.jpg": {
+  "status": "missing",
+  "post": "/post/2010/03/31/ASPNET-MVC-with-Webforms",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://blogsimages.skynet.be/images_v2/002/579/043/20080209/dyn004_original_797_607_pjpeg_2579043_0cfb9b9da651d32b784855910022b243.jpg": {
+  "status": "missing",
+  "post": "/post/2010/03/31/ASPNET-MVC-with-Webforms",
+  "kind": "img",
+  "note": "ENOTFOUND; no Wayback capture"
+ },
+ "http://geoffrey.vandiest.biz/pics/jopack/baby.jpg": {
+  "status": "missing",
+  "post": "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://geoffrey.vandiest.biz/pics/jopack/catalog.jpg": {
+  "status": "missing",
+  "post": "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://geoffrey.vandiest.biz/pics/jopack/dependencies.jpg": {
+  "status": "missing",
+  "post": "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://geoffrey.vandiest.biz/pics/jopack/jopacklifecycle.jpg": {
+  "status": "missing",
+  "post": "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://geoffrey.vandiest.biz/pics/jopack/sharedassemblies.jpg": {
+  "status": "missing",
+  "post": "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams",
+  "kind": "img",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://web.archive.org/web/20160305222449/http://www.vandiest.biz/wp-content/uploads/2016/01/pic2.png": {
+  "status": "missing",
+  "post": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://web.archive.org/web/20160305222449/http://www.vandiest.biz/wp-content/uploads/2016/01/pic3.png": {
+  "status": "missing",
+  "post": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://web.archive.org/web/20160305222449/http://www.vandiest.biz/wp-content/uploads/2016/01/pic4.png": {
+  "status": "missing",
+  "post": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "http://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2016/01/pic1-300x164.png": {
+  "status": "ok",
+  "target": "/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-01.png",
+  "post": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 17676,
+  "width": 300,
+  "height": 164
+ },
+ "http://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2016/01/pic2-300x165.png": {
+  "status": "ok",
+  "target": "/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-02.png",
+  "post": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 32697,
+  "width": 300,
+  "height": 165
+ },
+ "http://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2016/01/pic3-300x165.png": {
+  "status": "ok",
+  "target": "/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-03.png",
+  "post": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 24399,
+  "width": 300,
+  "height": 165
+ },
+ "http://web.archive.org/web/20160305222449im_/http://www.vandiest.biz/wp-content/uploads/2016/01/pic4-300x165.png": {
+  "status": "ok",
+  "target": "/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-04.png",
+  "post": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 29923,
+  "width": 300,
+  "height": 165
+ },
+ "http://www.belgianagencies.com/content/WCFMsmqFactoryExample.gif": {
+  "status": "missing",
+  "post": "/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically",
+  "kind": "img",
+  "note": "UND_ERR_CONNECT_TIMEOUT; no Wayback capture"
+ },
+ "http://www.jpo.go.jp/seido_e/rekishi_e/images/toyota-ggata.gif": {
+  "status": "ok",
+  "target": "/img/2008/automated-testing-and-the-software-factory-01.webp",
+  "post": "/post/2008/09/08/Automated-testing-and-the-software-factory",
+  "kind": "img",
+  "via": "wayback",
+  "archived": "https://web.archive.org/web/20060501025926id_/http://www.jpo.go.jp:80/seido_e/rekishi_e/images/toyota-ggata.gif",
+  "bytes": 82838,
+  "width": 1200,
+  "height": 832,
+  "resized": true
+ },
+ "https://cdn-images-1.medium.com/max/2000/1*niTWITOPa7RMGv-EZsPqEQ.jpeg": {
+  "status": "ok",
+  "target": "/img/2016/angular2-vs-react-from-the-perspective-of-a-net-01.jpg",
+  "post": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer",
+  "kind": "img",
+  "via": "original",
+  "bytes": 152712,
+  "width": 1200,
+  "height": 704,
+  "resized": true
+ },
+ "https://web.archive.org/web/20151020034159/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/06/curiosity.jpg": {
+  "status": "missing",
+  "post": "/post/2015/06/06/learning-programming-with-scratch",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20151020034159im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/06/curiosity-300x62.jpg": {
+  "status": "ok",
+  "target": "/img/2015/learning-programming-with-scratch-01.jpg",
+  "post": "/post/2015/06/06/learning-programming-with-scratch",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 7202,
+  "width": 300,
+  "height": 62
+ },
+ "https://web.archive.org/web/20151020034159im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/06/foreverloop-300x222.png": {
+  "status": "ok",
+  "target": "/img/2015/learning-programming-with-scratch-02.png",
+  "post": "/post/2015/06/06/learning-programming-with-scratch",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 51206,
+  "width": 300,
+  "height": 222
+ },
+ "https://web.archive.org/web/20151020034159im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/06/left.png": {
+  "status": "ok",
+  "target": "/img/2015/learning-programming-with-scratch-04.png",
+  "post": "/post/2015/06/06/learning-programming-with-scratch",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 3721,
+  "width": 207,
+  "height": 47
+ },
+ "https://web.archive.org/web/20151020034159im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/06/right.png": {
+  "status": "ok",
+  "target": "/img/2015/learning-programming-with-scratch-05.png",
+  "post": "/post/2015/06/06/learning-programming-with-scratch",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 3948,
+  "width": 223,
+  "height": 47
+ },
+ "https://web.archive.org/web/20151020034159im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/06/up.png": {
+  "status": "ok",
+  "target": "/img/2015/learning-programming-with-scratch-03.png",
+  "post": "/post/2015/06/06/learning-programming-with-scratch",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 3587,
+  "width": 203,
+  "height": 45
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/Johnny5-Radar_bb.png": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/accelerometer.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-04.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "via": "web.archive.org (already archived)",
+  "bytes": 19165,
+  "width": 265,
+  "height": 265
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/compass.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-06.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "via": "web.archive.org (already archived)",
+  "bytes": 13813,
+  "width": 265,
+  "height": 265
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/comports.png": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console1.png": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console2.png": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/dashboard.png": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/design.jpg": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robot.jpg": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robotshop.jpg": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/schematicsaccel.jpg": {
+  "status": "missing",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "note": "HTTP 404; no Wayback capture"
+ },
+ "https://web.archive.org/web/20160305222449/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/ultrasonic.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-02.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "link",
+  "via": "web.archive.org (already archived)",
+  "bytes": 14198,
+  "width": 265,
+  "height": 265
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/Johnny5-Radar_bb-300x274.png": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-10.png",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 67158,
+  "width": 300,
+  "height": 274
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/accelerometer.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-05.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 19165,
+  "width": 265,
+  "height": 265
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/compass.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-07.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 13813,
+  "width": 265,
+  "height": 265
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/comports-225x300.png": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-12.png",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 37238,
+  "width": 225,
+  "height": 300
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console1-300x158.png": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-13.png",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 33651,
+  "width": 300,
+  "height": 158
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/console2-300x137.png": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-14.png",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 16702,
+  "width": 300,
+  "height": 137
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/dashboard-300x283.png": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-15.png",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 46129,
+  "width": 300,
+  "height": 283
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/design-224x300.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-08.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 10915,
+  "width": 224,
+  "height": 300
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robot-300x225.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-09.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 20767,
+  "width": 300,
+  "height": 225
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/robotshop-300x300.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-01.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 22867,
+  "width": 300,
+  "height": 300
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/schematicsaccel-300x159.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-11.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 14033,
+  "width": 300,
+  "height": 159
+ },
+ "https://web.archive.org/web/20160305222449im_/http://geoffreyvandiest.azurewebsites.net/wp-content/uploads/2015/09/ultrasonic.jpg": {
+  "status": "ok",
+  "target": "/img/2016/build-your-arduino-robot-and-program-it-with-jav-03.jpg",
+  "post": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript",
+  "kind": "img",
+  "via": "web.archive.org (already archived)",
+  "bytes": 14198,
+  "width": 265,
+  "height": 265
+ }
+}

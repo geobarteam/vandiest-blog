@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design For Testability | Geoffrey Vandiest</title>
+  <meta name="description" content="How can we recognize “Bad Design”? One could argue that a design can be qualified as “Bad” when it can’t be changed easily.">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/05/04/Design-For-Testability/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Design For Testability">
+  <meta property="og:description" content="How can we recognize “Bad Design”? One could argue that a design can be qualified as “Bad” when it can’t be changed easily.">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/05/04/Design-For-Testability/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Design For Testability",
+    "datePublished": "2010-05-04",
+    "dateModified": "2010-05-04",
+    "description": "How can we recognize “Bad Design”? One could argue that a design can be qualified as “Bad” when it can’t be changed easily.",
+    "keywords": [
+      "Testing",
+      "Testability",
+      "Design"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Testability</span></li><li><span class="chip chip--quiet">Design</span></li></ul>
+          <h1>Design For Testability</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-05-04">04 MAY 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <h2>Design for testability</h2>
+          <p>&nbsp;<em class="lost">[Image no longer available]</em></p>
+          <p>How can we recognize &ldquo;Bad Design&rdquo;? One could argue that a design can be qualified as &ldquo;Bad&rdquo; when it can&rsquo;t be changed easily. When one small change in the code implies to make a lot of other changes or when the program break in many places when a single change is introduced. Because the parts are highly dependent on each other no effort will be invested in separating the modules that can be reused. Therefore a badly designed application will also tend to not be reused. The root of these symptoms is caused by the interdependencies between the building blocks of the application. The art of good design is to break these dependencies.</p>
+
+          <p>An interesting fact is that code that is interdependent is also difficult to test. That&rsquo;s why our unit test are the most effective way to evaluate our design. Well designed applications made of loosely coupled parts will be easy to unit test. The opposite is also true, code that is easy to unit test is code that is generally well designed.&nbsp; Unit testing is not about detecting existing defects but it&rsquo;s an act of design. Unit tests help us in defining and evaluate our design. A piece of code that is difficult to test is a smell of bad design. <strong>When our code is difficult to test we should not try to write a test for it, we should first change it so it can be easily tested.</strong></p>
+          <p><em>&ldquo;If the answer is not obvious, or it looks like the test would be ugly or hard to write, then take that as a warning signal. Your design probably needs to be modified; change things around until the code is easy to test, and your design will end up being far better for the effort.&rdquo; [Hunt, Thomas. Pragmatic Unit Testing in Java with JUnit.</em></p>
+          <p>In this series I describe what make our code hard to test therefore I provide several typical design anti-patterns&nbsp; that makes our code hard to test and explain how these can be fixed. I provide also some patterns that can be applied in our SUT that can facilitate testing and enforce loose coupling.</p>
+
+          <h3>Anti-patterns</h3>
+
+          <h4>1) The new keyword is used to construct anything you could replace with a test-double.</h4>
+          <p>The most common cause making our test hard to test is violating the single responsibility principle. Look at the example here beneath, the SUT is responsible to construct his own collaborators. When your class has to instantiate and initialize its collaborators, the result tends to be an inflexible and prematurely coupled design. Such classes shut off the ability to inject test collaborators when testing. Do not create collaborators in your constructor or methods, but pass them in. (Don&rsquo;t look for things! Ask for things!)</p>
+          <pre><code class="language-csharp">public class Invoice
+{
+    private int _balance;
+
+    public Invoice(int clientID)
+    {
+        DataLayer _db = new DataLayer();
+
+        MeteringValues[] dailyValues = _db.GetMeteringValues(clientID);
+        int offPeakPrice = _db.GetOffPeakPrice();
+        int peakPrice = _db.GetPeakPrice();
+        int peakConsumption = CalculatePeakConsumtion(dailyValues);
+        int offPeakConsumtion = CalculateOffPeakConsumtion(dailyValues);
+        int advances = _db.GetAdvances(clientID);
+
+        _balance = (peakConsumption * peakPrice +
+                    offPeakConsumtion * offPeakPrice) –
+                    advances;
+    }
+
+    public int Balance
+    {
+        get { return _balance; }
+    }
+
+    private int CalculateOffPeakConsumtion(MeteringValues[] values)
+    {
+        …
+    }
+
+    private int CalculatePeakConsumtion(MeteringValues[] values)
+    {
+        …
+    }
+}</code></pre>
+
+          <p>In the example here above, we can never replace the _db field with a test-double.&nbsp; It&rsquo;s true that the Invoice is easy to instantiate but this come at the cost of flexibility.&nbsp; Because the DataLayer represents something expensive to access it is also not very testable .&nbsp; To be able to inject a stubbed DataLayer into the Invoice we add a dataLayer parameter to the constructor:</p>
+          <pre><code class="language-csharp">public class Invoice
+{
+    private int _balance;
+
+    public Invoice(int clientID, DataLayer db)
+    {
+        MeteringValues[] dailyValues = db.GetMeteringValues(clientID);
+        int offPeakPrice = db.GetOffPeakPrice();
+        int peakPrice = db.GetPeakPrice();
+        int peakConsumption = CalculatePeakConsumtion(dailyValues);
+        int offPeakConsumtion = CalculateOffPeakConsumtion(dailyValues);
+        int advances = db.GetAdvances(clientID);
+
+        _balance = CalculateBalance(
+                        peakConsumption,
+                        peakPrice,
+                        offPeakConsumtion,
+                        offPeakPrice,
+                        advances
+                   );
+    }
+
+    protected int CalculateBalance(int peakConsumption, int peakPrice, int offPeakConsumtion, int offPeakPrice, int advances)
+    {
+        return (peakConsumption * peakPrice +
+                offPeakConsumtion * offPeakPrice) –
+                advances;
+    }
+
+    protected int CalculateOffPeakConsumtion(MeteringValues[] values)
+    {
+        …
+    }
+
+    protected int CalculatePeakConsumtion(MeteringValues[] values)
+    {
+        …
+    }
+
+    public int Balance
+    {
+        get { return _balance; }
+    }
+}</code></pre>
+
+          <p>Here we dispose of a SUT that is a lot more testable because we are now able to inject a test doubles into the Invoice .&nbsp; These test doubles can simply be a subtype based on DataLayer that returns default hard coded values.&nbsp; A more advance technique is making use of a mocking framework to generate a stub/mock from the DataLayer class -&gt;</p>
+
+          <pre><code class="language-csharp"> 1: public void Construct_WithSampleValues_BalanceEqualsSampleBalance()
+
+ 2: {
+
+ 3:     //Arrange
+
+ 4:     var dalStub = MockRepository.GenerateStub&lt;DataLayer&gt;();
+
+ 5:     dalStub.Stub(m =&gt; m.GetMeteringValues(SampleClientID)).Return(SampleMeteringValues);
+
+ 6:     dalStub.Stub(m =&gt; m.GetOffPeakPrice()).Return(SampleOffPeakPrice);
+
+ 7:     dalStub.Stub(m =&gt; m.GetPeakPrice()).Return(SamplePeakPrice);
+
+ 8:     dalStub.Stub(m =&gt; m.GetAdvances(SampleClientID)).Return(SampleAdvances);
+
+ 9:
+
+10:     //Act
+
+11:     var subject = new Invoice(1, dalStub);
+
+12:
+
+13:     //Assert
+
+14:
+
+15:     Assert.AreEqual(SampleBalance, subject.Balance);
+
+16: }
+
+17:</code></pre>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

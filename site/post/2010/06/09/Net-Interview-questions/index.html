@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>.Net Interview questions | Geoffrey Vandiest</title>
+  <meta name="description" content="This morning a colleague of mine asked me for a list of questions to prepare for a .Net technical interview.">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/06/09/Net-Interview-questions/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content=".Net Interview questions">
+  <meta property="og:description" content="This morning a colleague of mine asked me for a list of questions to prepare for a .Net technical interview.">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/06/09/Net-Interview-questions/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": ".Net Interview questions",
+    "datePublished": "2010-06-09",
+    "dateModified": "2010-06-09",
+    "description": "This morning a colleague of mine asked me for a list of questions to prepare for a .Net technical interview.",
+    "keywords": [
+      ".NET",
+      "Career",
+      "Architecture"
+    ],
+    "image": "https://vandiest.biz/img/2010/net-interview-questions-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">.NET</span></li><li><span class="chip chip--quiet">Career</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
+          <h1>.Net Interview questions</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-06-09">09 JUN 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2010/net-interview-questions-01.jpg" alt width="583" height="450" loading="lazy"></p>
+          <p>This morning a colleague of mine asked me for a list of questions to prepare for a .Net technical interview.</p>
+          <p>I thought it would be useful to share this list with everyone.</p>
+          <h2>A) Developer</h2>
+
+          <blockquote>
+          <h3>1) OO</h3>
+          <ul>
+          <li>Explain principles of Object Orientation? </li>
+          <li>Can you use abstract classes in place of Inheritance ? What are the differences between these two concepts? </li>
+          <li>Explain polymorphism and write an example in code (C#). </li>
+          </ul>
+          <h3>2) Patterns</h3>
+          <ul>
+          <li>What are Patterns? </li>
+          <li>List some patterns you&rsquo;ve already used. </li>
+          <li>Explicit one pattern by writing a small example. </li>
+          <li>Explain following patterns: Repository, Factory, Root Aggregate. </li>
+          </ul>
+          <h3>3) UML</h3>
+          <ul>
+          <li>What are the most useful UML diagrams? (list &amp; explain at least 5) . </li>
+          </ul>
+          <h3>4) Net &amp; C#</h3>
+          <ul>
+          <li>What is .Net? (Managed Code - CLR - Runtime) ? </li>
+          <li>Explain concepts as JIT, CLR, GAC, GC? </li>
+          <li>Explain series of processing steps an ASP.NET page goes through (= page lifecycle of ASP.NET) ? </li>
+          <li>Explain following c# keywords: Static, ReadOnly, Const? </li>
+          <li>What is: a Webservice,WCF, WPF, Silverlight and how do these technologies/concepts relate to each other? </li>
+          </ul>
+          <h3>5) DB</h3>
+          <ul>
+          <li>Write simple query that joins 2 tables via a 1-to-N relation that contains a filter and a group by clause. </li>
+          <li>Explain what is a Transaction. </li>
+          <li>What are the properties of a transaction (-&gt; ACID) </li>
+          <li>Explain concepts as Primary Key &amp; Clustered Index and how these concepts relates? </li>
+          <li>Is a GUID a good Clustered index, explain why? </li>
+          </ul>
+          </blockquote>
+          <h2>&nbsp;</h2>
+          <h2>B) Architect</h2>
+          <ul>
+          <li>List and explains the Enterprise Integration patterns, provide advantage/inconvenient for each of them? -&gt;(Primary integration patterns: Database, WebServices, Messaging) </li>
+          <li>What are non functional requirements, provide some examples (e.g. Accessibility, Availability, Security&hellip;)? </li>
+          <li>Explain concept Authentication/Authorization how does these concept relates? </li>
+          <li>What is Asynchronous Messaging - what type of infra do you need to set it up? </li>
+          <li>Explain &ndash; what is an ESB? </li>
+          <li>What is SOA &amp; list and explain SOA Tenets? </li>
+          </ul>
+          <h2>&nbsp;</h2>
+          <h2>C) Senior Developer / Team Lead</h2>
+          <ul>
+          <li>What is IOC - What is the Goal - which frameworks do you know? </li>
+          <li>Explain what are Unit tests and Integration tests, what differentiate these two types of tests? </li>
+          <li>Provide a small list of programming practices that you would enforce/setup in your dev team? </li>
+          <li>What is Waterfall/Prince2/RUP/Agile/XP/Scrum - how does these concepts relates ? </li>
+          <li>What is DDD? </li>
+          </ul>
+
+          <p>Some other useful/funny resources:</p>
+
+          <ul>
+          <li>C# design patterns:<br><a title="http://www.dofactory.com/Patterns/Patterns.aspx" href="http://www.dofactory.com/Patterns/Patterns.aspx">http://www.dofactory.com/Patterns/Patterns.aspx</a> </li>
+          <li>Techinterviews.com : <a href="http://www.techinterviews.com/interview-questions/net">http://www.techinterviews.com/interview-questions/net</a> *** </li>
+          <li>Megasolutions.net: <a href="http://www.megasolutions.net/">http://www.megasolutions.net/</a> </li>
+          <li>Scott Hanslemann post on the same subject: <a href="http://www.hanselman.com/blog/CommentView.aspx?guid=d835178f-a649-45f5-907f-28ad1177d8d5">http://www.hanselman.com/blog/CommentView.aspx?guid=d835178f-a649-45f5-907f-28ad1177d8d5</a> </li>
+          <li>Sample interviews: <a href="http://simasc.com/attachments/046_SampleInterviewQuestionBook(1).pdf">http://simasc.com/attachments/046_SampleInterviewQuestionBook(1).pdf</a> </li>
+          <li>The guerilla guide to interview: <a href="http://www.joelonsoftware.com/articles/fog0000000073.html">http://www.joelonsoftware.com/articles/fog0000000073.html</a>&nbsp; </li>
+          <li>Some funny Interviews @ Microsoft (this was for an advertisement for Ms technical certifications): </li>
+          <li><a href="http://www.youtube.com/watch?v=0cvurGdIOjs">http://www.youtube.com/watch?v=0cvurGdIOjs</a>&nbsp; </li>
+          <li>Video of interview process @Microsoft (real one this time): <a href="http://channel9.msdn.com/shows/WM_IN/Zoe-Goldring-and-Gretchen-Ledgard-What-is-it-like-to-interview-at-Microsoft/">http://channel9.msdn.com/shows/WM_IN/Zoe-Goldring-and-Gretchen-Ledgard-What-is-it-like-to-interview-at-Microsoft/</a> </li>
+          </ul>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

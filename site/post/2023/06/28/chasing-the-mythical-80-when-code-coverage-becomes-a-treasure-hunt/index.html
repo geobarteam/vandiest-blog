@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chasing the Mythical 80%: When Code Coverage Becomes a Treasure Hunt | Geoffrey Vandiest</title>
+  <meta name="description" content="Ah, the famous 80% code coverage - the golden number that many developers I've encountered seem to believe has magical powers to keep all the coding gremlins…">
+  <link rel="canonical" href="https://vandiest.biz/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Chasing the Mythical 80%: When Code Coverage Becomes a Treasure Hunt">
+  <meta property="og:description" content="Ah, the famous 80% code coverage - the golden number that many developers I've encountered seem to believe has magical powers to keep all the coding gremlins…">
+  <meta property="og:url" content="https://vandiest.biz/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Chasing the Mythical 80%: When Code Coverage Becomes a Treasure Hunt",
+    "datePublished": "2023-06-28",
+    "dateModified": "2023-06-28",
+    "description": "Ah, the famous 80% code coverage - the golden number that many developers I've encountered seem to believe has magical powers to keep all the coding gremlins…",
+    "keywords": [
+      "Testing"
+    ],
+    "image": "https://vandiest.biz/img/2023/chasing-the-mythical-80-when-code-coverage-becom-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li></ul>
+          <h1>Chasing the Mythical 80%: When Code Coverage Becomes a Treasure Hunt</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2023-06-28">28 JUN 2023</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2023/chasing-the-mythical-80-when-code-coverage-becom-01.jpg" alt width="602" height="301" loading="lazy"></p>
+          <p>Ah, the famous 80% code coverage - the golden number that many developers I've encountered seem to believe has magical powers to keep all the coding gremlins away. It means that 80% of the new code should be put to the test, as if saying, &ldquo;Prove your worth, code!&rdquo; This bar is high, no doubt, and is set to make sure that most of our codebase is given a good check.</p>
+          <p>However, let&rsquo;s not get too starry-eyed about this 80%. Sometimes, depending on the type of project or part of the code, it&rsquo;s like trying to fit a square peg in a round hole. It just doesn&rsquo;t work! In such cases, it&rsquo;s smarter to focus on creating solid, quality tests rather than running a race to hit that 80%.</p>
+          <p>Now, when deciding how much testing is just right, we need to think about complexity and risk. Imagine them as partners in crime &ndash; when complexity goes up, risk is right there with it. That means more chances of things going wrong. To set the right target for code coverage, you have to keep an eye on how complicated the code is. The SonarQube Coverage Overview report is like a helpful friend in this mission. It&rsquo;s easy on the eyes and shows the connection between code coverage and complexity.</p>
+          <p><img src="/img/2023/chasing-the-mythical-80-when-code-coverage-becom-02.png" alt width="404" height="287" loading="lazy"></p>
+          <p>Here&rsquo;s the quick tour of what the report shows:</p>
+          <ul>
+          <li> Bottom-right corner: This is where complex but well-tested code hangs out. Think of it like a tough puzzle that&rsquo;s been solved.</li>
+          <li> Bottom-left corner: The dream zone! Code here is simple and has been tested a lot. It&rsquo;s where you&rsquo;d want most of your code to be.</li>
+          <li> Top-right corner: Red alert area! Code here is like a tangled mess and hasn&rsquo;t been tested enough. It&rsquo;s risky and needs attention ASAP.</li>
+          <li> Top-left corner: This area has simple code, but it hasn&rsquo;t been tested much. It&rsquo;s not ideal, but not a total disaster.</li>
+          </ul>
+
+          <p>So, in summary, this report is like a handy map for your code. It helps you see what needs your attention and testing effort. This way, you can make sure your software is in good shape. But always remember, 80% is a guiding light, not a magic spell!</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

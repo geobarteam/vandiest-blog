@@ -43,7 +43,7 @@ Run build, then check, before every commit. The build is deterministic: a second
 
 ## Post conventions
 
-1. One post is `site/post/yyyy/mm/dd/slug/index.html`. The path date is the publication date. The slug is lowercase ASCII with hyphens.
+1. One post is `site/post/yyyy/mm/dd/slug/index.html`. The path date is the publication date. A new slug is lowercase ASCII with hyphens. The 76 legacy posts in `tools/legacy-urls.txt` keep their original mixed-case slugs: Azure Static Web Apps paths are case-sensitive, so never rename them.
 2. Complete HTML5: `<html lang>`, `<title>`, `<meta name="description">` (about 150 characters), `<link rel="canonical">` with the full `https://vandiest.biz/post/.../` URL, and `og:title`, `og:description`, `og:url`, `og:type`.
 3. Metadata lives in one `<script type="application/ld+json">` block of type `BlogPosting`: `headline`, `datePublished`, `dateModified`, `description`, `keywords` (the tags, at least one), optional `image`. No front matter, no second source of truth. The build rewrites the tag chips from `keywords`.
 4. Body: `<main>` > `<article>` > `<header class="post__head">` with the `<h1>` and a `<time datetime>`, then `<div class="post-body">`. Headings inside the body start at `<h2>`.

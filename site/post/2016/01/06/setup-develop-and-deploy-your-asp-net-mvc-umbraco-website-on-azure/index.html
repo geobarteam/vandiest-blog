@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Setup, develop and deploy your ASP.NET MVC Umbraco website on Azure | Geoffrey Vandiest</title>
+  <meta name="description" content="To run Umbraco on Azure you can choose to use the build in Azure template.">
+  <link rel="canonical" href="https://vandiest.biz/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Setup, develop and deploy your ASP.NET MVC Umbraco website on Azure">
+  <meta property="og:description" content="To run Umbraco on Azure you can choose to use the build in Azure template.">
+  <meta property="og:url" content="https://vandiest.biz/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Setup, develop and deploy your ASP.NET MVC Umbraco website on Azure",
+    "datePublished": "2016-01-06",
+    "dateModified": "2016-01-06",
+    "description": "To run Umbraco on Azure you can choose to use the build in Azure template.",
+    "keywords": [
+      "ASP.NET",
+      "Azure",
+      "DevOps"
+    ],
+    "image": "https://vandiest.biz/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-01.png",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">ASP.NET</span></li><li><span class="chip chip--quiet">Azure</span></li><li><span class="chip chip--quiet">DevOps</span></li></ul>
+          <h1>Setup, develop and deploy your ASP.NET MVC Umbraco website on Azure</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2016-01-06">06 JAN 2016</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <div>
+          <div>
+          <div>
+          <div>
+          <header></header>
+          <div>
+          <p>To run Umbraco on Azure you can choose to use the build in Azure template.</p>
+          <p><img src="/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-01.png" alt="pic1" width="300" height="164" loading="lazy"></p>
+
+          <p>For simple websites this could do the job but if you want to extend the portal with your own code or if you want to version control your site you&rsquo;re better of starting with a blank MVC website.</p>
+
+          <h2>Umbraco development lifecycle</h2>
+          <p>Managing the lifecycle of an Umbraco application is somewhat challenging as Umbraco is one platform made out of several components (code/DB/content) and it&rsquo;s not always clear what you need to deploy to promote content or features.&nbsp; Especially deploying database changes can be cumbersome.&nbsp; I personally chooses to avoid to have to stage DB changes by running all my environments (local/integration/production&hellip;) on a single DB hosted on Azure.</p>
+          <p>Because Umbraco already has a notion of staging you can for most cases work safely on the production database from your local machine without fearing to impact production. &nbsp;&nbsp;Nevertheless when I need to make risky changes to my application or when I need to test a major Umbraco upgrade then I setup a clone of my production DB and do the development and testing on the clone.</p>
+          <p>For most of the changes my development cycle goes as follow:</p>
+          <ol>
+          <li>All my changes are made locally through the local umbraco portal (running on my local machine) or for Extensions through Visual Studio.</li>
+          <li>When new content is added to the site I make sure these are included in my local Visual Studio project.</li>
+          <li>I make sure that everything run nice locally.</li>
+          <li>I check-in all the changes</li>
+          <li>Publish the changes to Azure through the publish wizard.</li>
+          <li>Test that everything runs fine in production.</li>
+          <li>Promote the content once everything is tested</li>
+          </ol>
+          <h2>Umbraco first deployment</h2>
+          <p>In this part I explain the steps to take to deploy the skeleton of an empty ASP.NET MVC Umbraco website.</p>
+          <p>Through the Azure portal:</p>
+          <ul>
+          <li>Create a SQL server DB, don&rsquo;t forget to note your password!</li>
+          <li>Create a new web app</li>
+          </ul>
+          <p>Open VS: Start new project, Web, Asp.Net web application</p>
+          <p>Manage Nuget packages, umbracoCms</p>
+
+          <p><img src="/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-02.png" alt="pic2" width="300" height="165" loading="lazy"></p>
+
+          <p>Click RUN in VisualStudio and launch the website locally.</p>
+          <p>Enter you Name, email &amp; password and click Customize.</p>
+          <p>As Database type choose Microsoft SQL Azure.</p>
+          <p>You can find your connection details from the Azure portal (via old portal): select your DB, dashboard, Show Connection strings.<br>Use the ADO.NET connectionstring, copy each relevant part in the textboxes, for the server you need to provide the &ldquo;server&rdquo; part but without the leading &ldquo;tcp&rdquo;.<br>Click next.</p>
+          <p>Before publishing your website to Azure you first need to include files/folders to your project:</p>
+          <ul>
+          <li>App_browsers</li>
+          <li>App_Plugins</li>
+          <li>umbraco</li>
+          <li>umbraco_client</li>
+          <li>config\splashes</li>
+          <li>css</li>
+          <li>js</li>
+          <li>media</li>
+          <li>scripts<br>If you used a template also include the cshtml files under the Views folder.</li>
+          </ul>
+
+          <p><img src="/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-03.png" alt="pic3" width="300" height="165" loading="lazy"></p>
+          <p>Also set the build actions of the following web.config files to &ldquo;none&rdquo;.</p>
+          <p>&ndash; \umbraco\install\web.config</p>
+          <p>&ndash; \umbraco\Xslt\Web.config</p>
+
+          <p><img src="/img/2016/setup-develop-and-deploy-your-asp-net-mvc-umbrac-04.png" alt="pic4" width="300" height="165" loading="lazy"></p>
+          <p>Now publish the website: right-click your web project, choose publish.<br>Select your Azure Web App, the connectionstring should be retrieved by VS from your project.</p>
+
+          <p>If you followed everything in the exact order you should see your website running on Azure!</p>
+          </div>
+
+          </div>
+          </div>
+          </div>
+          </div>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

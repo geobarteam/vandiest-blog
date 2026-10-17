@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6 Key Principles to Elevate Testability and Maintainability in C# | Geoffrey Vandiest</title>
+  <meta name="description" content="Testable code stands as a cornerstone in the realm of quality software development.">
+  <link rel="canonical" href="https://vandiest.biz/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="6 Key Principles to Elevate Testability and Maintainability in C#">
+  <meta property="og:description" content="Testable code stands as a cornerstone in the realm of quality software development.">
+  <meta property="og:url" content="https://vandiest.biz/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "6 Key Principles to Elevate Testability and Maintainability in C#",
+    "datePublished": "2023-07-03",
+    "dateModified": "2023-07-03",
+    "description": "Testable code stands as a cornerstone in the realm of quality software development.",
+    "keywords": [
+      "Testing",
+      "Unit testing",
+      ".NET"
+    ],
+    "image": "https://vandiest.biz/img/2023/crafting-c-code-for-success-6-key-principles-to-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">.NET</span></li></ul>
+          <h1>6 Key Principles to Elevate Testability and Maintainability in C#</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2023-07-03">03 JUL 2023</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2023/crafting-c-code-for-success-6-key-principles-to-01.jpg" alt width="550" height="367" loading="lazy"></p>
+          <p>Testable code stands as a cornerstone in the realm of quality software development. Crafting code that can be effortlessly verified for correctness through automated testing is not just a skill, but an art. In this blog post, we will embark on a journey through six fundamental principles that serve as the pillars of writing testable and maintainable code in C#. Whether you are an experienced software engineer or taking your first steps in the C# landscape, these principles will equip you with the tools needed to sculpt your code into a masterpiece of quality and reliability.</p>
+          <p><strong>1. Single Responsibility Principle (SRP):</strong> Each class or method should have a single responsibility, meaning it should only have one reason to change. If a class or method does too many things, it becomes harder to test because each test must consider the different paths through the code.</p>
+          <p><strong>2. Use Dependency Injection</strong>: Dependency injection is a technique where an object's dependencies (the other objects it needs to do its job) are provided to it, rather than creating them itself. This allows the dependencies to be swapped out with fake or mock objects in tests, making the code easier to test. For example, you could inject a database service into your class, and replace it with a mock database service in your tests.</p>
+
+          <div>
+          <pre><code class="language-csharp">public class OrderService
+{
+    private readonly IOrderDatabase _database;
+
+    public OrderService(IOrderDatabase database)
+    {
+        _database = database;
+    }
+
+    public void PlaceOrder(OrderedParallelQuery order)
+    {
+        // ... some logic ...
+        _database.AddOrder(order);
+    }
+
+    // ... rest of class ...
+}
+
+[TestClass]
+public class OrderServiceTests
+{
+    [TestMethod]
+    public void PlaceOrder_OrderIsValid_AddsOrderToDatabase()
+    {
+        // Arrange
+        var mockDatabase = new Mock&lt;IOrderDatabase&gt;();
+        var orderService = new OrderService(mockDatabase.Object);
+        var order = new Order { /* initialize order here */ };
+
+        // Act
+        orderService.PlaceOrder(order);
+
+        // Assert
+        mockDatabase.Verify(db =&gt; db.AddOrder(order), Times.Once, "Order should be added to database once");
+    }
+}</code></pre>
+          </div>
+
+          <p><strong>3. Use Interfaces and Abstractions:</strong> Relying on concrete classes makes your code more tightly coupled and harder to test. By depending on abstractions (like interfaces or abstract classes), you can easily substitute real implementations with mock ones for testing.</p>
+          <p><strong>4. Avoid Static and Singleton Classes:</strong> Static methods and singleton classes cannot be substituted with mock implementations, making your code harder to test. They also hold state between tests, leading to tests that are not independent.<br> <br> Static and Singleton classes can hinder testability by preventing substitution with mock implementations, making testing more difficult and relying on real-world dependencies. Additionally, static methods and singleton classes can hold state between tests, leading to interdependent tests and potential inconsistencies.<br><br>While static and singleton classes should usually be avoided, there are cases where using static classes is appropriate. This includes scenarios such as defining utility functions or extension methods, which encapsulate reusable pure functions or extend the behavior of existing types without modifying their source code. In these cases, static classes can provide organization and improve code readability.</p>
+          <p>For more explicit examples on when using static methods see the last part: 6.<em> Write Pure Functions When Possible</em></p>
+          <p><strong>5. Favor Composition Over Inheritance:</strong> Composition refers to building complex objects by combining simpler ones, while inheritance describes a relationship between parent and child classes. Composition is more flexible and easier to test because you can replace parts of the composed object with mocks.<br> This example highlights the benefits of using composition for achieving better testable code:<br><br></p>
+
+          <div>
+          <pre><code class="language-csharp">// Composed object that uses composition instead of inheritance
+public class ComposedObject : ISimpleObject
+{
+    private readonly ISimpleObject _simpleObject;
+
+    public ComposedObject(ISimpleObject simpleObject)
+    {
+        _simpleObject = simpleObject;
+    }
+
+    public void PerformAction()
+    {
+        // Additional logic can be added here
+        Console.WriteLine("Performing action in ComposedObject");
+
+        // Delegating the action to the composed object
+        _simpleObject.PerformAction();
+    }
+}
+
+[TestClass]
+public class ComposedObjectTests
+{
+    [TestMethod]
+    public void PerformAction_Should_Call_PerformAction_Method_On_SimpleObject()
+    {
+        // Arrange
+        var mockSimpleObject = new Mock&lt;ISimpleObject&gt;();
+        var composedObject = new ComposedObject(mockSimpleObject.Object);
+
+        // Act
+        composedObject.PerformAction();
+
+        // Assert
+        mockSimpleObject.Verify(m =&gt; m.PerformAction(), Times.Once);
+    }
+}</code></pre>
+          </div>
+
+          <p>By favoring composition over inheritance, the code becomes more flexible and easier to test. The example demonstrates how the ComposedObject class is constructed by injecting dependencies through its constructor, allowing for easy substitution of real implementations with mock objects during testing. This decoupling of dependencies enables isolated testing, focusing solely on the behavior of the ComposedObject without being tightly coupled to the implementation details of its dependencies. The ability to inject and replace dependencies with mocks or stubs provides greater control over the testing environment and leads to more reliable and maintainable tests. Embracing composition enhances testability and promotes modular and testable code.</p>
+          <p><strong>6. Write Pure Functions When Possible:</strong> A pure function's output is solely determined by its input, and it does not have any side effects (like changing global variables). This makes it easy to test, because you just need to check the output for a given input.<br><br></p>
+          <p>Take this example where the method &ldquo;StoreAverageOfPrimes&rdquo; is extremely hard to test:</p>
+
+          <div>
+          <table>
+          <tbody>
+          <tr>
+          <td>&nbsp;</td>
+          <td>
+          <pre><code class="language-sql">public void StoreAverageOfPrimes(int number)
+{
+    List&lt;int&gt; primeNumbers = new List&lt;int&gt;();
+
+    using (SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        connection.Open();
+
+        for (int i = 2; i &lt;= number; i++)
+        {
+            bool isPrime = true;
+
+            for (int j = 2; j &lt; i; j++)
+            {
+                if (i % j == 0)
+                {
+                    isPrime = false;
+                    break;
+                }
+            }
+
+            if (isPrime)
+            {
+                primeNumbers.Add(i);
+
+                SqlCommand command = new SqlCommand("INSERT INTO PrimeNumbers (Value) VALUES (@Value)", connection);
+                command.Parameters.AddWithValue("@Value", i);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        SqlCommand command = new SqlCommand("INSERT INTO Results (Value) VALUES (@Value)", connection);
+        command.Parameters.AddWithValue("@Value", primeNumbers.Average());
+        command.ExecuteNonQuery();
+    }
+}</code></pre>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+
+          <p>This code suffers from the same challenges when it comes to testing the calculation logic in isolation. The code tightly couples the calculation logic with the database access code, making it difficult to write focused unit tests. The lack of separation and abstraction hinders code reusability and maintainability.</p>
+          <p>In the refactored code here under, the StoreAverageOfPrimes method has been modified to separate the calculation logic from the data access code:</p>
+
+          <div>
+          <table>
+          <tbody>
+          <tr>
+          <td>&nbsp;</td>
+          <td>
+          <pre><code class="language-sql">public static List&lt;int&gt; GetPrimeNumbers(int number)
+{
+    List&lt;int&gt; primeNumbers = new List&lt;int&gt;();
+
+    for (int i = 2; i &lt;= number; i++)
+    {
+        if (IsPrime(i))
+        {
+            primeNumbers.Add(i);
+        }
+    }
+
+    return primeNumbers;
+}
+
+public static bool IsPrime(int number)
+{
+    if (number &lt; 2)
+        return false;
+
+    for (int i = 2; i &lt;= Math.Sqrt(number); i++)
+    {
+        if (number % i == 0)
+            return false;
+    }
+
+    return true;
+}
+
+public void StoreAverageOfPrimes(int number)
+{
+    List&lt;int&gt; primeNumbers = GetPrimeNumbers(number);
+    double average = primeNumbers.Average();
+
+    using (SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        connection.Open();
+
+        StorePrimeNumbers(primeNumbers, connection);
+        StoreResult(average, connection);
+    }
+}
+
+private void StorePrimeNumbers(List&lt;int&gt; primeNumbers, SqlConnection connection)
+{
+    foreach (int number in primeNumbers)
+    {
+        SqlCommand command = new SqlCommand("INSERT INTO PrimeNumbers (Value) VALUES (@Value)", connection);
+        command.Parameters.AddWithValue("@Value", number);
+        command.ExecuteNonQuery();
+    }
+}
+
+private void StoreResult(double result, SqlConnection connection)
+{
+    SqlCommand command = new SqlCommand("INSERT INTO Results (Value) VALUES (@Value)", connection);
+    command.Parameters.AddWithValue("@Value", result);
+    command.ExecuteNonQuery();
+}</code></pre>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+          </div>
+
+          <p>In this updated code, the pure functions GetPrimeNumbers and IsPrime have been made static. By making them static, they can be accessed directly without an instance of the CalculationService class.</p>
+          <p>The static nature of these functions allows them to be more easily testable and promotes code reusability, as they can be used independently without requiring an instance of the class.</p>
+          <p>When writing testable code, it is important to consider the nature of the functions you are working with. Pure functions, which have the characteristic of producing the same output for a given set of inputs and having no side effects, are particularly beneficial for testability.</p>
+          <p>In the context of testability, pure functions can be made static to further enhance their usability. By making pure functions static, they can be accessed and used directly without the need to create an instance of the class containing them. This eliminates the dependency on the object's state, making the functions more independent and self-contained.</p>
+          <p>The static nature of pure functions simplifies the testing process. Since they rely only on the provided input and produce a deterministic output, you can easily write focused unit tests for these functions without the need to set up complex object states or manage external dependencies. You can simply pass different inputs to the functions and verify their outputs against expected results.</p>
+          <p>In contrast, functions with side effects, such as those interacting with databases or modifying global variables, are more difficult to test due to their reliance on external resources and potential interference with the test environment. These functions often require complex setup and teardown procedures to isolate and restore the system state, which can complicate the testing process.</p>
+          <p>By separating pure functions and making them static, you create modular and testable units of code that are easier to verify in isolation. This promotes code maintainability, reusability, and testability, allowing you to write more effective and reliable tests for your applications.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

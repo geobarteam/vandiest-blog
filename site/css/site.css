@@ -142,6 +142,7 @@ img{max-width:100%;height:auto}
 .post-body th,.post-body td{padding:var(--space-2) var(--space-3);text-align:left;vertical-align:top;border-bottom:4px solid var(--surface-sunken)}
 .post-body th{font-family:var(--font-label);font-size:9px;line-height:1.4;text-transform:uppercase;font-weight:400}
 .post-body :not(pre)>code{font-family:var(--font-code);font-size:.9em;padding:.1em .3em;background:var(--surface-sunken)}
+.post-body em.lost{color:var(--ink-muted);font-size:15px}
 .post-body iframe{max-width:100%;border:0;box-shadow:var(--px-border);margin:4px}
 
 /* Callout: <aside class="callout"> or <aside class="callout callout--warn"> inside a post */

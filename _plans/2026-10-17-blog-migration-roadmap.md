@@ -9,7 +9,7 @@ Written 2026-10-17. The spec budgets one weekend for the migration proper; the d
 | --- | --- | --- | --- |
 | D1 (done) | Decisions closed and foundation live | — | An empty site answers on the preview URL after a manual workflow run |
 | D2 (done) | Content extracted | D1 | 76 posts committed as raw input (scraped) |
-| D3 | Content converted and media fetched | D2 | `check.mjs` passes on all generated posts; `report.md` lists every miss |
+| D3 (done) | Content converted and media fetched | D2 | `check.mjs` passes on all generated posts; `report.md` lists every miss |
 | D4 | Review pass accepted | D3 | Every post has a report line; you accepted the uncertain ones and the missing-image list |
 | D5 | Preview verified | D4 | All legacy URLs, redirects, feed, 404 and Lighthouse checks pass on the preview URL |
 | D6 | Authoring toolkit | D1 (parallel with D2 to D5) | A test article goes from "new post" to live in under 10 minutes, no manual git |
@@ -161,6 +161,37 @@ Findings that change D3 and D5:
 - The report lists every missing image and every unguessed code language, with no silent drops.
 
 **Risk watched.** A styled line that is prose, not code, merged into a code block. Mitigation lives in D4: the review diffs text content before and after.
+
+**Status (2026-10-17): done, committed locally.** The pipeline is three scripts, run in this order:
+
+```bash
+node tools/migrate/media.mjs [--retry-missing]   # download images and attachments, Wayback fallback
+node tools/migrate/shrink.mjs                    # bring every image under 300 KB
+node tools/migrate/convert.mjs                   # write site/post/**, report.md, tools/legacy-urls.txt
+node tools/build.mjs && node tools/check.mjs     # 76 posts, 0 errors
+```
+
+| Result | Count |
+| --- | --- |
+| Posts converted, check passing | 76 |
+| Code blocks written, from 1,492 raw `<pre>` lines or blocks | 144 |
+| Code blocks whose text changed beyond whitespace | 0 |
+| Languages | C# 73, JavaScript 23, HTML 12, TypeScript 7, XML 6, SQL 4, PowerShell 4, plain text 15 |
+| Images placed | 81 |
+| Images lost, replaced by a one-line note | 51 |
+| Badges removed ("kick it", LinkedIn) | 22 |
+| Posts with at least one inferred tag (marked * in the report) | 65 |
+| Site size | 9.9 MB |
+
+How the hard parts were solved:
+
+- **Code.** Five Live Writer formats collapse into one `<pre><code class="language-…">` each: `div.csharpcode` line-per-`<pre>`, the `codeSnippet` wrapper, `<pre>` inside `<pre>`, runs of styled sibling `<pre>`s, and SyntaxHighlighter or GitHub blocks whose language is read from their class. 796 line-number spans are stripped. A non-whitespace character comparison proves no code text changed. The 15 plain-text blocks are directory trees, step lists and prose, not code.
+- **Images.** 51 came from the original URL, 10 from the Wayback Machine's capture index (matched across the three old host spellings), and 24 were already on web.archive.org and are now self-hosted. The 31 skynet images, 19 old blog images and 1 belgianagencies image have no capture anywhere. Nine oversized images were resized; two became WebP, including an animated GIF from 2008.
+- **Tags.** 56 posts had none. Existing tags are normalised (for example "Unit Testing", "unit test" and "Unit testing" become one). Each post's leading tag, which is the chip on its card, is inferred from a fixed vocabulary scored on title and body.
+- **Links.** Links to the old hosts, including `.aspx` URLs, resolve to the legacy path with its exact casing. Tag-listing, comment and Live Writer local links are dropped with their text kept.
+- **URLs.** `tools/legacy-urls.txt` lists the 76 legacy paths. `check.mjs` accepts their mixed-case slugs; new posts must still be lowercase.
+
+Left for D4: the report flags posts with lost images and inferred tags for the review agent, and you choose whether lost images get a replacement or stay as a note.
 
 ## D4. Review pass accepted
 

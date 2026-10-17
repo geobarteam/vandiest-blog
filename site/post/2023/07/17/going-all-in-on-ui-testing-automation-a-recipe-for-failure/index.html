@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Going All-In on UI Testing Automation: a Recipe for Failure! | Geoffrey Vandiest</title>
+  <meta name="description" content="Many professionals in our industry believe that the key to an effective testing strategy is a robust system of automated tests that interact with the User…">
+  <link rel="canonical" href="https://vandiest.biz/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Going All-In on UI Testing Automation: a Recipe for Failure!">
+  <meta property="og:description" content="Many professionals in our industry believe that the key to an effective testing strategy is a robust system of automated tests that interact with the User…">
+  <meta property="og:url" content="https://vandiest.biz/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Going All-In on UI Testing Automation: a Recipe for Failure!",
+    "datePublished": "2023-07-17",
+    "dateModified": "2023-07-17",
+    "description": "Many professionals in our industry believe that the key to an effective testing strategy is a robust system of automated tests that interact with the User…",
+    "keywords": [
+      "Testing"
+    ],
+    "image": "https://vandiest.biz/img/2023/going-all-in-on-ui-testing-automation-a-recipe-f-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li></ul>
+          <h1>Going All-In on UI Testing Automation: a Recipe for Failure!</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2023-07-17">17 JUL 2023</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2023/going-all-in-on-ui-testing-automation-a-recipe-f-01.jpg" alt width="850" height="400" loading="lazy"></p>
+          <p>Many professionals in our industry believe that the key to an effective testing strategy is a robust system of automated tests that interact with the User Interface (UI). Imagine an advanced tool that can meticulously record user interactions and replay them to check for consistent results.</p>
+          <p>However, when applied in practice, this approach reveals several problems. The most significant issue is the fragility of these tests. Even minor UI changes can cause numerous tests to fail, resulting in a time-consuming process of re-recording. Moreover, these tests tend to run at a slow pace and require substantial infrastructure to execute effectively. A testing strategy solely focused on automating UI tests is too expensive, delicate, and time intensive.</p>
+          <p>My consideration of the effectiveness of automated testing was restored when I discovered the concept of the test pyramid. This concept, integrated within the Software Development Life Cycle (SDLC), organizes tests across different layers of the application stack. Visualize a pyramid with a sturdy and balanced structure. The broad base consists of quick and efficient unit tests, while the narrow peak represents a smaller set of slower, more complex end-to-end tests, often performed through the UI. This approach prioritizes comprehensive coverage at the foundational levels where tests are simpler, faster, and more cost-effective, while still conducting sufficient high-level tests to ensure the harmonious functioning of system components.</p>
+          <p><img src="/img/2023/going-all-in-on-ui-testing-automation-a-recipe-f-02.png" alt width="731" height="490" loading="lazy"></p>
+          <p>However, the test pyramid does not stop at the base and the peak. It also incorporates an intermediate layer of tests that operate discreetly through an application's service layer. These tests combine the strengths of end-to-end tests while bypassing the complexities of UI frameworks. For applications based on a three-tier architectures, this corresponds to testing through the second tier, the <a href="https://medium.com/mobilepeople/backend-for-frontend-pattern-why-you-need-to-know-it-46f94ce420b0">Backend For Frontend.</a> For two-tier applications, this can be done through the <a href="https://marcoatschaefer.medium.com/onion-architecture-explained-building-maintainable-software-54996ff8e464#:~:text=The%20Application%20Layer%20is%20the,cases)%20instead%20of%20Business%20rules.">Application layer</a>.</p>
+          <p>It is also important to note that there can be variations of the test pyramid based on different philosophies or specific needs of a project. It is up to the team to fine-tune the right testing strategy for his project. Here I provide a straightforward strategy that should fit most scenarios but not all. You should take account of your specific circumstances and adapt this strategy to your specific situation.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get started with ASP.NET Core, Angular and MongoDB | Geoffrey Vandiest</title>
+  <meta name="description" content="Here I’ll start a series of little post that will build a new application based on the following stack: ASP.NET MVC5, Angular 1.5.x and MongoDB.">
+  <link rel="canonical" href="https://vandiest.biz/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Get started with ASP.NET Core, Angular and MongoDB">
+  <meta property="og:description" content="Here I’ll start a series of little post that will build a new application based on the following stack: ASP.NET MVC5, Angular 1.5.x and MongoDB.">
+  <meta property="og:url" content="https://vandiest.biz/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Get started with ASP.NET Core, Angular and MongoDB",
+    "datePublished": "2016-03-06",
+    "dateModified": "2016-03-06",
+    "description": "Here I’ll start a series of little post that will build a new application based on the following stack: ASP.NET MVC5, Angular 1.5.x and MongoDB.",
+    "keywords": [
+      "Angular",
+      "ASP.NET",
+      ".NET"
+    ],
+    "image": "https://vandiest.biz/img/2016/get-started-with-asp-net-core-angular-and-mongod-01.png",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">ASP.NET</span></li><li><span class="chip chip--quiet">.NET</span></li></ul>
+          <h1>Get started with ASP.NET Core, Angular and MongoDB</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2016-03-06">06 MAR 2016</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>Here I&rsquo;ll start a series of little post that will build a new application based on the following stack: ASP.NET MVC5, Angular 1.5.x and MongoDB.</p>
+          <p>The code used in these tutorials can be found under my git hub project:&nbsp;<a href="https://github.com/geobarteam/myClub">myClub</a></p>
+          <p>Every post has his own dedicated branch, so you can just use&nbsp; &ldquo;git checkout &lt;branchname&gt;&rdquo; to find all the source code of the post you&rsquo;re interesting in.</p>
+          <h2>1.0&nbsp; Create a new MVC core project<br><br></h2>
+          <p>To generate a new project we&rsquo;ll use&nbsp;<a href="http://yeoman.io/">Yeomen</a>.&nbsp; Open a commend prompt/bash shell or powershell shell on the location you want to put your new project.</p>
+
+          <pre><code class="language-powershell">mkdir myClub
+cd myClub
+yo aspnet</code></pre>
+
+          <p><img src="/img/2016/get-started-with-asp-net-core-angular-and-mongod-01.png" alt width="949" height="515" loading="lazy"></p>
+          <p>Choose Web Application Basic</p>
+          <p>Provide a name.</p>
+          <h2>1.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add Angular to MVC app</h2>
+
+          <p><strong>1) Add Angular, from command line inside you project dir:&nbsp;</strong><br><br></p>
+          <pre><code class="language-powershell">bower install angular angular-ui-router –save</code></pre>
+          <p><strong>&nbsp;Add angular to _layout.cshtml :&nbsp;</strong></p>
+          <p>&lt;script src="~/lib/angular/angular.min.js"&gt;&lt;/script&gt;</p>
+          <h4>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Create two js scripts under wwwroot</h4>
+          <p><br>app.config.js</p>
+          <pre><code class="language-javascript">(function () {
+    'use strict';
+
+    angular.module('myClub')
+    .config(initrouter);
+
+    function initrouter($stateProvider, $locationProvider, $urlRouterProvider) {
+        $locationProvider.html5Mode(true);
+        $urlRouterProvider.otherwise('/');
+        $stateProvider
+            .state(
+                'home',
+                {
+                    url: '/',
+                    templateUrl: 'app/home.html',
+                    controller: "HomeController",
+                    controllerAs: 'vm'
+                }
+            )
+            .state(
+                'myteam',
+                {
+                    url: '/myteam',
+                    templateUrl: 'app/myTeam.html',
+                    controller: "MyTeamController",
+                    controllerAs: 'vm'
+                }
+            );
+    }
+})();</code></pre>
+          <p><em>app.module.js</em></p>
+          <pre><code class="language-javascript">(function() {
+    'use strict';
+
+    angular.module('myClub', ['ui.router']);
+})();</code></pre>
+          <h4>&nbsp; 3) Add two controllers</h4>
+          <p><em><em>myTeam.controller.js&nbsp;</em><br></em></p>
+          <pre><code class="language-javascript">(function () {
+    'use strict';
+
+    angular
+        .module('myClub')
+        .controller('HomeController', myTeam);
+
+    myTeam.$inject = ['$location'];
+
+    function myTeam($location) {
+        /* jshint validthis:true */
+        var vm = this;
+        vm.players = [];
+
+
+        vm.title = 'Home';
+
+        activate();
+
+        function activate() {
+
+        }
+    }
+})();</code></pre>
+          <p><em>home.controller.js</em></p>
+          <p>(function () {</p>
+          <p>&nbsp;&nbsp;&nbsp; 'use strict';</p>
+
+          <p>&nbsp;&nbsp;&nbsp; angular</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .module('myClub')</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .controller('HomeController', myTeam);</p>
+
+          <p>&nbsp;&nbsp;&nbsp; myTeam.$inject = ['$location'];</p>
+
+          <p>&nbsp;&nbsp;&nbsp; function myTeam($location) {</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* jshint validthis:true */</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var vm = this;</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vm.players = [];</p>
+
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vm.title = 'Home';</p>
+
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; activate();</p>
+
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function activate() {</p>
+
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+          <p>&nbsp;&nbsp;&nbsp; }</p>
+          <p>})();</p>
+          <h4>&nbsp; &nbsp; &nbsp; 4) Add two html pages</h4>
+          <p>home.html</p>
+          <pre><code class="language-javascript">&lt;div class="jumbotron"&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;MyClub&lt;/h1&gt;
+        &lt;p&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+
+&lt;/div&gt;</code></pre>
+          <p>myteam.html</p>
+          <pre><code class="language-html">&lt;div&gt;
+
+    &lt;p&gt;My Team&lt;/p&gt;
+
+&lt;/div&gt;</code></pre>
+
+          <p><strong>5) Reference the js scripts in _layout.cshtml</strong><br><br></p>
+          <pre><code class="language-html"> &lt;script src="~/lib/angular/angular.min.js"&gt;&lt;/script&gt;
+&lt;script src="~/lib/angular-ui-router/release/angular-ui-router.js"&gt;&lt;/script&gt;
+&lt;script src="~/app/app.module.js"&gt;&lt;/script&gt;
+&lt;script src="~/app/app.config.js"&gt;&lt;/script&gt;
+&lt;script src="~/app/home.controller.js"&gt;&lt;/script&gt;
+&lt;script src="~/app/myTeam.controller.js"&gt;&lt;/script&gt;</code></pre>
+
+          <h4>6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add angular app inside and move the navbar from _layout.html to index.cshtml</h4>
+          <p><em>Index.cshtml</em></p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build your Arduino Robot and program it with Javascript | Geoffrey Vandiest</title>
+  <meta name="description" content="In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you want to build your own.">
+  <link rel="canonical" href="https://vandiest.biz/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Build your Arduino Robot and program it with Javascript">
+  <meta property="og:description" content="In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you want to build your own.">
+  <meta property="og:url" content="https://vandiest.biz/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Build your Arduino Robot and program it with Javascript",
+    "datePublished": "2016-05-03",
+    "dateModified": "2016-05-03",
+    "description": "In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you want to build your own.",
+    "keywords": [
+      "Arduino",
+      "JavaScript",
+      "Git"
+    ],
+    "image": "https://vandiest.biz/img/2016/build-your-arduino-robot-and-program-it-with-jav-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Arduino</span></li><li><span class="chip chip--quiet">JavaScript</span></li><li><span class="chip chip--quiet">Git</span></li></ul>
+          <h1>Build your Arduino Robot and program it with Javascript</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2016-05-03">03 MAY 2016</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <div>
+          <p>In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you want to build your own. I explain which design choices I made, which frameworks and technologies I used and how I program and configured the robot. Here you can find a video of the end result.<br><iframe src="//www.youtube.com/embed/l7mypzAhCl4" width="425" height="350"></iframe></p>
+          <h2>What is needed?</h2>
+          <p>The robot is based on a RoverV2 + Bluetooth Arduino robotic kit sold by&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.robotshop.com/en/dfrobotshop-rover-tracked-robot-bluetooth-kit.html">Robotshop</a>.&nbsp; This kit contains:</p>
+          <ul>
+          <li>A compatible Arduino board including:
+          <ul>
+          <li>Dual H-bridge and onboard voltage regulator</li>
+          <li>An onboard charger</li>
+          </ul>
+          </li>
+          <li>A Bluetooth module</li>
+          <li>An aluminum frame</li>
+          <li>Tamiya Twin-Motor Gear Box</li>
+          <li>Tamiya Track and Wheel Set</li>
+          <li>Lithium Polymer Battery Cell &ndash; 3.7V 1000mAh</li>
+          </ul>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-01.jpg" alt="robotshop" width="300" height="300" loading="lazy"></p>
+          <p>The kit is complete and well documented but if you want to go hard core and start with a classic Arduino board,&nbsp;you can obtain the same result with following components:</p>
+          <ul>
+          <li>An Arduino compatible board</li>
+          <li>An Arduino motor shield</li>
+          <li>A pair of two 5v motors and 4 Wheels &amp; frame</li>
+          <li>A Bluetooth module</li>
+          <li>4xAA battery &amp; holder</li>
+          </ul>
+          <p>The goal of this article is to set the basic building blocks to build a robotic platform that you can extend to finally build an autonomous robot.&nbsp; Therefore, to enable the robot to sense his environment we extend the base platform with:</p>
+          <p>3 x ultrasonic sensors HC-SR04</p>
+          <p><a href="/img/2016/build-your-arduino-robot-and-program-it-with-jav-02.jpg"><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-03.jpg" alt="ultrasonic" width="265" height="265" loading="lazy"></a></p>
+          <p>1x Accelerometer MMA7361.</p>
+          <p><a href="/img/2016/build-your-arduino-robot-and-program-it-with-jav-04.jpg"><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-05.jpg" alt="accelerometer" width="265" height="265" loading="lazy"></a></p>
+          <p>1x Compass HMC5883L</p>
+          <p><a href="/img/2016/build-your-arduino-robot-and-program-it-with-jav-06.jpg"><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-07.jpg" alt="compass" width="265" height="265" loading="lazy"></a></p>
+          <p>You can find all these components, including the wheels &amp; frames in shops selling Arduino compatible boards online like&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.sainsmart.com/">SainSmart</a>&nbsp;or&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.robotshop.com/">Robotshop</a>.</p>
+
+          <h2>Design</h2>
+          <p>For the design I choosed to remotely control the robot from a server (a laptop or pc).&nbsp; This design overcomes the limited processing &amp; storage of the Arduino board but it comes at the expense of autonomy. My robot will not be able to evolve without be connected by Bluetooth to his server.&nbsp; This is a concession I&rsquo;ve to make but it provides me quasi infinitely processing power and makes my robot accessible through the internet.</p>
+          <p>The Arduino board plays the role of central nervous system and the PC is the brain. Another advantage that offers this design is that the robot can be controlled from anywhere in the world as it is exposed through http by a&nbsp;<a href="https://web.archive.org/web/20160305222449/https://nodejs.org/">node.js</a>&nbsp;application.</p>
+          <p>On the Arduino board runs a small program named&nbsp;<a href="https://web.archive.org/web/20160305222449/https://www.arduino.cc/en/reference/firmata">&ldquo;Firmata&rdquo;</a>.&nbsp; This program enables you to control the Arduino board remotely through the Firmata protocol.&nbsp; You&rsquo;ll send commands from the server to the robot through a serial connection.&nbsp; On the server side you&rsquo;ll program your robot with Javascript using the&nbsp;<a href="https://web.archive.org/web/20160305222449/https://github.com/rwaldron/johnny-five">johnny-five</a>&nbsp;node library.&nbsp; This library provides an abstraction over the Firmata protocol and enable us to interact with the Arduino board and a lot of the Arduinos compatible electronic devices like sensors and motors.</p>
+          <p>The robot can be remotely controlled and followed through a web interface dashboard.&nbsp; The dashboard is a single page application built with&nbsp;<a href="https://web.archive.org/web/20160305222449/https://angularjs.org/">angular.js&nbsp;&nbsp;</a>&nbsp;.&nbsp; The html, images, css and javascript resources are served by express.js.&nbsp; Express.js is the default web application framework for node.&nbsp; Express.js is also used to expose a rest based API.&nbsp;&nbsp; Through this REST interface, the radar and accelerometer data can be retrieved and commands can be send to the motor.&nbsp; This allow you to program and control the robot via any device using the programming language of your choice.</p>
+          <p>To enable real time communication in both directions between the server and the robot&nbsp;I&rsquo;ve&nbsp;used socket.io.</p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-08.jpg" alt="design" width="224" height="300" loading="lazy"></p>
+
+          <h2>&nbsp;Assemble and configure your robot.</h2>
+          <p>To assemble the DFRobotshop RoverV2 you can follow&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.robotshop.com/en/dfrobotshop-rover-tracked-robot-bluetooth-kit.html">this video</a>.&nbsp; As I&rsquo;m a Lego fan and that with two little boys in house I&rsquo;ve a lot of little bricks, I&rsquo;d no difficulties to find all pieces I needed to build a Lego frame where I could mount the ultrasonic sensors, the accelerometer and the compass on it. Here you can find a picture of the end result.</p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-09.jpg" alt="robot" width="300" height="225" loading="lazy"></p>
+          <p>It&rsquo;s up to you to decide to copy the design or make your own as long as you use the same core components and follow the schematics provided here beneath the code will be compatible with your robot.</p>
+          <h3>Scematics</h3>
+          <p>Here you can find the schematics for your robot:</p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-10.png" alt="Johnny5-Radar_bb" width="300" height="274" loading="lazy"></p>
+
+          <h4>Accelerometer</h4>
+          <p>As the accelerometer MMA7361 can vary slightly between manufacturers and models I provide an alternative schematic only for the accelerometer:</p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-11.jpg" alt="schematicsaccel" width="300" height="159" loading="lazy"></p>
+          <h2>Configure your Robot</h2>
+          <h3>Prerequisites:</h3>
+          <p>Before you start make sure you&rsquo;ve setup the following tools on your box:</p>
+          <p>&ndash; Git&nbsp;:&nbsp;<a href="https://web.archive.org/web/20160305222449/https://git-scm.com/">https://git-scm.com/</a></p>
+          <p>&ndash; Node 0.10.40 for x86 :&nbsp;<a href="https://web.archive.org/web/20160305222449/https://nodejs.org/dist/v0.10.40/">https://nodejs.org/dist/v0.10.40/</a></p>
+          <p>&ndash; Python 2.7.x&nbsp;:&nbsp;<a href="https://web.archive.org/web/20160305222449/https://www.python.org/downloads/release/python-2710/">https://www.python.org/downloads/release/python-2710/</a></p>
+          <p>If you&rsquo;re on windows make sure you&rsquo;ve configure your PATH correctly for all of these tools, therefore I suggest you use&nbsp;<a href="https://web.archive.org/web/20160305222449/https://chocolatey.org/">Chocolatey</a>&nbsp;to install all of these components.</p>
+          <h3>&nbsp;Download the code</h3>
+          <p>Create your working folder:<br><em>c:\Dev&gt;mkdir arduino<br>cd arduino</em></p>
+          <p>Clone the repository:<br><em>c:\Dev\arduino&gt; git clone&nbsp;</em><a href="https://web.archive.org/web/20160305222449/https://github.com/geobarteam/johnny5.git"><em>https://github.com/geobarteam/johnny5.git</em></a></p>
+          <p>Install the packages:</p>
+          <p><em>c:\Dev\arduino\johnny5&gt; npm install</em></p>
+          <p>You could receive some warnings here, don&rsquo;t panic it should still be working fine.</p>
+          <h3>Flashing your Arduino board</h3>
+          <p>Because the onboard bluetooth ship is limited to 9600 baud I&rsquo;hd to patch the firmate protocol. This patched version can be found on the root folder.</p>
+          <ol>
+          <li>Open the Arduino IDE</li>
+          <li>Connect your Robot to your PC through the usb cable and temporarly remove the bluetooth module from your Arduino board</li>
+          <li>In the IDE select the correct com port</li>
+          <li>Choose, File, open and select the &ldquo;firmate_pulse_9600B_patch.ino&rdquo; file located under: ..\johnny5\firmate_pulse_9600B_patch</li>
+          <li>Push the upload button</li>
+          <li>Reconnect your bluetooth module</li>
+          </ol>
+
+          <h3>Connect to your Arduino board through Bluetooth</h3>
+          <p>You should go to your Bluetooth settings and associate your Bluetooth with a COM port.&nbsp; On resent versions of windows you should click on the Bluetooth icon, choose &ldquo;Add Bluetooth devices&rdquo;.&nbsp; You should see &ldquo;Bluetooth_Bee_V3&rdquo; click on it and enter the secret code: 1234.</p>
+          <p>You need to know which COM port windows as configured to your outgoing connections to you robot.&nbsp; Therefore open the Bluetooth settings, select the COM ports tab and note which COM port is associated with your Bluetooth_Bee_V3 outgoing connection.</p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-12.png" alt="comports" width="225" height="300" loading="lazy"></p>
+          <h3>Configure and start the server</h3>
+          <p>With your preferred IDE modify the variable &ldquo;comport&rdquo; in the &ldquo;app.js&rdquo; file with the COM port you connected the Arduino with.</p>
+          <p>On the Johnny5 folder, start the program =&gt; &ldquo;node app.js&rdquo;</p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-13.png" alt="console1" width="300" height="158" loading="lazy"></p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-14.png" alt="console2" width="300" height="137" loading="lazy"></p>
+          <p>Start your preferred browser on http://localhost:3000 , you should now be able to control your robot through the interface:</p>
+          <p><img src="/img/2016/build-your-arduino-robot-and-program-it-with-jav-15.png" alt="dashboard" width="300" height="283" loading="lazy"></p>
+
+          <p>Enjoy!</p>
+          </div>
+          <footer>This entry was posted in&nbsp;<a href="https://web.archive.org/web/20160305222449/http://www.vandiest.biz/?cat=71">Arduino</a>&nbsp;on&nbsp;<a title="4:30 pm" href="https://web.archive.org/web/20160305222449/http://www.vandiest.biz/?p=2061"><time datetime="2015-09-18T16:30:28+00:00">18th September 2015</time></a>.</footer>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

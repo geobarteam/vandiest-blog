@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extensibility for ASP.NET MVC | Geoffrey Vandiest</title>
+  <meta name="description" content="I’m working on an extensibility framework made to be used on top of ASP.NET MVC. My extensibility framework is based on the famous Ioc container: Structuremap .">
+  <link rel="canonical" href="https://vandiest.biz/post/2009/03/24/Extensibility-for-ASPNET-MVC/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Extensibility for ASP.NET MVC">
+  <meta property="og:description" content="I’m working on an extensibility framework made to be used on top of ASP.NET MVC. My extensibility framework is based on the famous Ioc container: Structuremap .">
+  <meta property="og:url" content="https://vandiest.biz/post/2009/03/24/Extensibility-for-ASPNET-MVC/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Extensibility for ASP.NET MVC",
+    "datePublished": "2009-03-24",
+    "dateModified": "2009-03-24",
+    "description": "I’m working on an extensibility framework made to be used on top of ASP.NET MVC. My extensibility framework is based on the famous Ioc container: Structuremap .",
+    "keywords": [
+      "ASP.NET",
+      "Architecture",
+      ".NET"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">ASP.NET</span></li><li><span class="chip chip--quiet">Architecture</span></li><li><span class="chip chip--quiet">.NET</span></li></ul>
+          <h1>Extensibility for ASP.NET MVC</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2009-03-24">24 MAR 2009</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <div>I&rsquo;m working on an extensibility framework made to be used on top of ASP.NET MVC. My extensibility framework is based on the famous Ioc container: Structuremap .</div>
+          <div>The use case I&rsquo;m trying to fulfill is simple: create an application that should have some basic functionality that can be extended for every customer (=multi-tenancy). There should only be one instance of the application hosted but this instance can be adapted for every customer without making any changes to the core website. </div>
+          <div>I was inspired by the article on multi tenacy wroted by Ayende Rahien: <a href="http://ayende.com/Blog/archive/2008/08/16/Multi-Tenancy--Approaches-and-Applicability.aspx">http://ayende.com/Blog/archive/2008/08/16/Multi-Tenancy--Approaches-and-Applicability.aspx</a> Another source of inspiration was the book of Eric Evans on Domain Driven Design. My Extensibility framework is based on the repository pattern and the concept of root aggregates. To be able to use the framework the hosting application should be build around repositories and domain objects. The controllers, repositories or domain objects are bind at runtime by the ExtensionFactory. </div>
+          <div>A plug-in is simply an asselmbly that contains Controllers or Repositories or Domain Objects that respects a specific naming convention. The naming convention is simple, every class should be prefixed by the customerID e.g.: AdventureworksHomeController. </div>
+          <div>To extend an application you copy a plug-in assembly in the extension folder of the application. When a user request a page under the customer root folder e.g: <a href="http://multitenant-site.com/">http://multitenant-site.com/</a>[customerID]/[controller]/[action] the framework check if there is a plug-in for that particular customer and instantiate the custom plug-in classes otherwise it loads the default once. The custom classes can be Controllers &ndash; Repositories or Domain Objects. This approach enables to extend an application at all levels, from the database to the UI, through the domain model, repositories. </div>
+          <div>When you want to extend some existing features you create a plug-in an assembly that contains subclasses of the core application. When you&rsquo;ve to create totally new functionalities you add new controllers inside the plug-in. These controllers will be loaded by the MVC framework when the corresponding url is requested. If you want to extend the UI you can create a new view inside the extension folder and reference the view by a new or subclassed controller .To modify existing behavior you can create new repositories or domain objects or sub classing exiting ones. The framework responsibility is to determine which controller/ repository / domain object should be loaded for a specific customer.<br>I advise to have a look at structuremap (<a href="http://structuremap.sourceforge.net/Default.htm">http://structuremap.sourceforge.net/Default.htm</a>) and especially at the Registry DSL features <a href="http://structuremap.sourceforge.net/RegistryDSL.htm">http://structuremap.sourceforge.net/RegistryDSL.htm</a> . </div>
+          <div>This is the code I use at the startup of the application to register all plug-in controllers/repositories or domain objects: </div>
+          <div>protectedvoidScanControllersAndRepositoriesFromPath(string path)<br>{<br>&nbsp; &nbsp; this.Scan(o =&gt;<br>&nbsp; &nbsp; {<br>&nbsp;&nbsp; &nbsp; &nbsp; o.AssembliesFromPath(path);<br>&nbsp;&nbsp; &nbsp; &nbsp; o.AddAllTypesOf&lt;SaasController&gt;().NameBy(type =&gt; type.Name.Replace("Controller", ""));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o.AddAllTypesOf&lt;IRepository&gt;().NameBy(type =&gt; type.Name.Replace("Repository", ""));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o.AddAllTypesOf&lt;IDomainFactory&gt;().NameBy(type =&gt; type.Name.Replace("DomainFactory", ""));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>}</div>
+          <div>I also use an ExtensionFactory inheriting from the System.Web.MVC. DefaultControllerFactory. This factory is responsible to load the extension objects (controllers/registries or domain objects). You can plugin your own factories by registering them at startup in the Global.asax file:</div>
+          <div>protectedvoid Application_Start()<br>{<br>&nbsp; &nbsp; ControllerBuilder.Current.SetControllerFactory(<br>&nbsp;&nbsp; &nbsp; &nbsp; newExtensionControllerFactory()<br>&nbsp; &nbsp; );<br>}</div>
+          <div>l'll try to find some time to explain my approach more clearly on my blog and&nbsp;hopefully I'll be&nbsp;able to publish my Extesnsibility framework on CodePlex soon. </div>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

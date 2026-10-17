@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Best Practices for Effective Unit Testing in C# | Geoffrey Vandiest</title>
+  <meta name="description" content="In my previous blog post, I explained the importance of writing testable code. In this post, I will explore some common best practices for unit testing in C#…">
+  <link rel="canonical" href="https://vandiest.biz/post/2023/07/07/best-practices-for-effective-unit-testing-in-c/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Best Practices for Effective Unit Testing in C#">
+  <meta property="og:description" content="In my previous blog post, I explained the importance of writing testable code. In this post, I will explore some common best practices for unit testing in C#…">
+  <meta property="og:url" content="https://vandiest.biz/post/2023/07/07/best-practices-for-effective-unit-testing-in-c/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Best Practices for Effective Unit Testing in C#",
+    "datePublished": "2023-07-07",
+    "dateModified": "2023-07-07",
+    "description": "In my previous blog post, I explained the importance of writing testable code. In this post, I will explore some common best practices for unit testing in C#…",
+    "keywords": [
+      "Testing",
+      "Unit testing",
+      ".NET"
+    ],
+    "image": "https://vandiest.biz/img/2023/best-practices-for-effective-unit-testing-in-c-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">.NET</span></li></ul>
+          <h1>Best Practices for Effective Unit Testing in C#</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2023-07-07">07 JUL 2023</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2023/best-practices-for-effective-unit-testing-in-c-01.jpg" alt width="300" height="168" loading="lazy"></p>
+          <p>In <a href="/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability/">my previous blog</a> post, I explained the importance of writing testable code. In this post, I will explore some common best practices for unit testing in C#, focusing on key areas such as test structuring, mocking frameworks, test naming, and differentiating between unit and integration tests.</p>
+          <h3>Follow the Arrange-Act-Assert (AAA) Pattern</h3>
+          <p>The AAA pattern provides a structured approach for organizing unit tests. Follow these steps:</p>
+          <ul>
+          <li>Arrange: Set up the object to be tested and its dependencies.</li>
+          <li>Act: Perform the action to be tested.</li>
+          <li>Assert: Verify that the action led to the expected result.</li>
+          </ul>
+          <p>Using the AAA pattern enhances readability and maintainability of your tests.</p>
+
+          <div>
+          <pre><code class="language-csharp">using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace MyApp.Tests
+{
+    [TestClass]
+    public class CalculatorTests
+    {
+        [TestMethod]
+        public void Add_GivenTwoIntegers_ReturnsTheirSum()
+        {
+            // Arrange
+            var calculator = new Calculator();
+            int number1 = 2;
+            int number2 = 3;
+
+            // Act
+            int result = calculator.Add(number1, number2);
+
+            // Assert
+            Assert.AreEqual(5, result, "The addition of 2 and 3 should equal 5");
+        }
+    }
+}</code></pre>
+          </div>
+          <h3><strong>&nbsp;Use Mocking Frameworks Wisely</strong></h3>
+          <p><strong><img src="/img/2023/best-practices-for-effective-unit-testing-in-c-02.png" alt width="450" height="348" loading="lazy"></strong></p>
+          <p>Mocking frameworks, like <a href="https://github.com/moq/moq">Moq</a>, allow the creation of mock implementations of dependencies. However, use them judiciously to avoid potential pitfalls:</p>
+          <ul>
+          <li>False Sense of Security: Over-mocking can lead to tests passing despite real-world failures.</li>
+          <li>Brittle Tests: Unmet mock expectations due to code changes can cause unnecessary test failures.</li>
+          <li>Overemphasis on Implementation Details: Too many mocks may shift focus from testing behavior to testing implementation.</li>
+          <li>Increased Complexity: Tests with excessive mocks become harder to understand and maintain.</li>
+          <li>Balance the use of mocking frameworks to isolate code units effectively without introducing unnecessary complexity.</li>
+          </ul>
+          <h3>Write Meaningful Test Names</h3>
+          <p>A good test name should describe what the test does and provide a clear idea of what went wrong in case of failure. Follow a convention like "MethodName_StateUnderTest_ExpectedBehavior" to improve test name clarity and simplicity.</p>
+          <h3>Separate Unit and Integration Tests</h3>
+          <p>Distinguish between unit tests and integration tests to ensure effective testing and maintainable code.</p>
+          <ul>
+          <li>Unit Tests: Focus on testing individual components in isolation, with mocked or stubbed dependencies. They are fast, cheap, and provide valuable feedback on small code units.</li>
+          <li>Integration Tests: Verify interactions and integration between components, including infrastructure. They have higher code coverage but can be more complex and fragile.</li>
+          </ul>
+          <p>Separating these test types in separate projects or folders or namespaces allows developers to leverage the strengths of each approach while maintaining code quality.</p>
+          <h3>Utilize Parametrized or Data-Driven Tests</h3>
+          <p>Parametrized tests allow running the same test method with different inputs and expected outcomes. In C#, you can use parameterized tests or data-driven tests with frameworks like MSTest. These tests provide flexibility and code reuse.</p>
+
+          <div>
+          <pre><code class="language-csharp">[TestClass]
+public class CalculatorTests
+{
+private Calculator _calculator;
+
+[TestInitialize]
+public void Setup()
+{
+    _calculator = new Calculator();
+}
+
+[TestMethod]
+public void Add_PositiveNumbers_CorrectSum()
+{
+    AddAndVerify(1, 1, 2);
+    AddAndVerify(2, 2, 4);
+    AddAndVerify(3, 3, 6);
+}
+
+[TestMethod]
+public void Add_NegativeNumbers_CorrectSum()
+{
+    AddAndVerify(-1, -1, -2);
+    AddAndVerify(-2, -2, -4);
+    AddAndVerify(-3, -3, -6);
+}
+
+private void AddAndVerify(int a, int b, int expected)
+{
+    // Arrange - setup is done before this
+
+    // Act
+    int result = _calculator.Add(a, b);
+
+    // Assert
+    Assert.AreEqual(expected, result);
+}</code></pre>
+          </div>
+
+          <p>By applying these best practices, you can write robust, reliable, and maintainable unit tests in C#. The Arrange-Act-Assert pattern brings clarity and structure to your tests. Using mocking frameworks wisely, writing meaningful test names, separating unit and integration tests, and leveraging parametrized or data-driven tests enhance the effectiveness and efficiency of your test suite. Unit testing is an essential tool for building high-quality software, and following these best practices will greatly contribute to your success.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

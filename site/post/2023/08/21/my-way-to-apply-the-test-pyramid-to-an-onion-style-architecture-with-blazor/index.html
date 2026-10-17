@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My way to apply the test pyramid to an Onion Style architecture with Blazor | Geoffrey Vandiest</title>
+  <meta name="description" content="It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements.">
+  <link rel="canonical" href="https://vandiest.biz/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="My way to apply the test pyramid to an Onion Style architecture with Blazor">
+  <meta property="og:description" content="It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements.">
+  <meta property="og:url" content="https://vandiest.biz/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "My way to apply the test pyramid to an Onion Style architecture with Blazor",
+    "datePublished": "2023-08-21",
+    "dateModified": "2023-08-21",
+    "description": "It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements.",
+    "keywords": [
+      "Testing",
+      "Unit testing",
+      "Architecture"
+    ],
+    "image": "https://vandiest.biz/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
+          <h1>My way to apply the test pyramid to an Onion Style architecture with Blazor</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2023-08-21">21 AUG 2023</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-01.jpg" alt width="1200" height="630" loading="lazy"></p>
+          <p>It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements. The team is responsible for fine-tuning the ideal testing architecture for their project.</p>
+          <p>I'm offering an example of a basic test pyramid suited to the Onion architecture I commonly employ in my projects. My intent is to showcase what a testing pyramid might look like for DDD (Domain-Driven Design) projects. However, always consider that it might need further adjustments to fit specific project circumstances.</p>
+          <p>At the core of my testing strategy lie unit tests. These focus on individual components or functions and are quick to write and maintain. They ensure the fundamental components of our application remain robust.</p>
+          <p>It's worth noting that a pyramid doesn't stand solely on its base. While unit tests are foundational, they represent just one facet. Beyond unit tests, I implement Service tests to validate the entire backend's integration. These play a pivotal role in ensuring proper interactions with databases and external services. They're generally slower and more intricate than unit tests, which is why I house them in separate projects.</p>
+          <p>The term "Service test" originates from the idea that these tests operate from the service layer.</p>
+          <p>By segregating Service Tests from unit tests and placing them in distinct projects, I enhance the manageability and scalability of my testing approach. This separation allows for unit tests to validate individual components, while integration tests or Service tests verify interactions with databases and services.</p>
+          <p><img src="/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-02.png" alt width="601" height="601" loading="lazy"></p>
+          <p><strong>Unit Tests</strong> At the pyramid's base, you find the unit test. This positioning implies a higher volume of unit tests compared to other kinds. A unit test is an automated test that targets a small, isolated code segment, typically an individual method or class. The unit test's objective is to confirm the correctness of this specific code piece.</p>
+          <p>The included diagram showcases typical software layers for an Onion/Clean architecture, with color-coding to highlight their testing suitability.</p>
+          <ul>
+          <li><strong>Green:</strong> Layers such as ViewModels, Application, and Domain are primary unit testing candidates. They offer high value when tested in isolation due to their quick execution and maintainability.</li>
+          <li><strong>Yellow:</strong> The yellow layers are less efficient when tested standalone. Their unit tests often bring limited added value since they usually rely heavily on the layer below. Therefore, integration tests are generally used to verify the accurate functionality and interaction of these components.</li>
+          <li><strong>Red:</strong> Testing red layers usually results in fragile or sluggish tests that demand considerable maintenance. These layers typically offer lower testing ROI, making integration tests a more pragmatic choice.</li>
+          </ul>
+          <p>Some attributes my unit tests adhere to include:</p>
+          <ul>
+          <li><strong>Testing Single Units:</strong> A unit test evaluates one class or method at a time. This limited scope makes it simpler to identify issues, aiding codebase maintenance and refactoring.</li>
+          <li><strong>Testing Pure Logic:</strong> The primary purpose of a unit test is to confirm the class or method logic. This encompasses checking if the method returns expected results for given inputs or handles edge cases effectively.</li>
+          <li><strong>Mocking Dependencies:</strong> To ensure code isolation, unit tests shouldn't depend on external systems. For instance, a class interacting with a database should be tested with a mock or stub, not a real database connection.</li>
+          <li><strong>Fast Execution:</strong> Due to their foundational role, unit tests need swift execution to facilitate frequent runs, ideally after each code alteration.</li>
+          </ul>
+          <p><strong>UI Test</strong></p>
+          <p>UI Tests validate user interactions and the application's interface. They replicate real user scenarios involving UI elements, ensuring the application operates as anticipated. My UI Test are done in isolation of the Service Tier, they exclusively test an application's presentation layer. As these test are performed in isolation you can see them as a specialized subset of unit tests. Using the MVVM pattern within my Blazor components enables to abstract away the UI logic and free the test from depending on UI specific details that make the test brittle.&nbsp; For testing the logic in the Razor views I typically use BUnit but try to avoid them as much as possible.</p>
+          <p>However, while UI Tests are insightful, they can be fragile and require regular updates, especially if UI elements undergo changes. They might not detect all UI issues, emphasizing the need for a comprehensive testing strategy that incorporates End2End tests for thorough application quality verification.</p>
+          <p><strong>Service Tests</strong></p>
+          <p>Occupying the pyramid's middle layer, Service Tests anchor my integration testing strategy. They center on the application's back-end components, ensuring that services, APIs, and business logic layers cohesively function. They also serve as a type of acceptance testing for complex logic. Due to their ability to test business flows without UI test fragility, Service Tests often yield the highest ROI, making them indispensable in my testing strategy.</p>
+          <p>For Service Tests, I utilize Specflow and follow the BDD (Behavior-Driven Development) approach. This method bridges the gap between non-technical and technical team members, fostering shared application behavior understanding.</p>
+          <p><img src="/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-03.png" alt width="602" height="159" loading="lazy"></p>
+          <p>Domain-Driven Design's concept of Ubiquitous Language pairs seamlessly with BDD. It denotes a shared language among team members, ensuring mutual understanding of domain concepts and requirements.</p>
+          <p>SpecFlow, a renowned BDD tool, enables business analysts to describe expected application behaviors in Gherkin syntax. Developers then create step definitions, which are code pieces that map scenarios to test actions. By adopting a BDD approach with tools like SpecFlow, I ensure the Ubiquitous Language isn't just documentation but living specifications executable as tests. This promotes clear communication and a cohesive application.</p>
+
+          <p><strong>Database: In-memory or Disk-based?</strong></p>
+          <p>Efficiency and speed are paramount for all tests, especially when integrated into a continuous integration process on a build server. Database selection significantly influences this.</p>
+          <p>From my experience, an in-memory database like SQLite is typically more build-time efficient. However, there are instances where SQLite might be unsuitable, especially when integrating with complex databases with features like stored procedures. In such cases, a closer representation of the production environment, like SQL Server, is essential. To optimize tests without compromising build times, I suggest making tests configurable to different databases. For instance, SQLite can be used on the build server for rapid tests, while SQL Server is employed locally.</p>
+          <p>It's also crucial to emphasize that tests should mock external services, ensuring the application's logic is the primary testing focus.</p>
+          <p><strong>Conclusion</strong> Structuring my test pyramid with unit tests at the base, Service Tests in the middle, and UI tests at the peak results in a comprehensive testing strategy. While UI tests play a role, Service Tests truly underpin a quality product. Combining these tests ensures both the individual components' integrity and the smooth interaction between the application's various tiers.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prism Walkthrough - Part 2: Define The Regions | Geoffrey Vandiest</title>
+  <meta name="description" content="Menu Region: contain a Menu that is responsible to load views in the Main Region">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prism Walkthrough - Part 2: Define The Regions">
+  <meta property="og:description" content="Menu Region: contain a Menu that is responsible to load views in the Main Region">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Prism Walkthrough - Part 2: Define The Regions",
+    "datePublished": "2010-05-29",
+    "dateModified": "2010-05-29",
+    "description": "Menu Region: contain a Menu that is responsible to load views in the Main Region",
+    "keywords": [
+      "Prism",
+      "WPF"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Prism</span></li><li><span class="chip chip--quiet">WPF</span></li></ul>
+          <h1>Prism Walkthrough - Part 2: Define The Regions</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-05-29">29 MAY 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <h2>Define the Regions</h2>
+
+          <p>Our shell will contain 3 regions:</p>
+          <ul>
+          <li>Menu Region: contain a Menu that is responsible to load views in the Main Region </li>
+          <li>Main Region: region that will load the workspace controls &ndash; these are the views that will handle the application features. In our application only one view at a time can be loaded in the Main Region. </li>
+          <li>Status Bar Region:&nbsp;provide info about current application state&nbsp;</li>
+          </ul>
+
+          <p><em class="lost">[Image no longer available]</em></p>
+          <p>These regions are the placeholders for the controls defined in our Modules.&nbsp; Our application will contain only one Module: the CoreModule but this application can easily be extended by adding new modules.&nbsp;&nbsp; In our application the regions are defined as ItemsControls&nbsp; in the Shell.xaml file and can be accessed in a decoupled way by their names; they support dynamically adding or removing views at run time.</p>
+          <ol>
+          <li>To add the regions in the Shell window add the following namespace definition to the root <strong>Window</strong> element. You need this namespace to use an attached property for regions that is defined in the Composite Application Library:&nbsp; xmlns:cal=<a href="http://www.codeplex.com/CompositeWPF">http://www.codeplex.com/CompositeWPF</a>. </li>
+          <li>Replace the Grid in the Shell by the following xaml:<br>
+          <pre><code class="language-html">&lt;Grid&gt;
+    &lt;Grid.RowDefinitions&gt;
+        &lt;RowDefinition Height="35" /&gt;
+        &lt;RowDefinition Height="*" /&gt;
+        &lt;RowDefinition Height="35" /&gt;
+    &lt;/Grid.RowDefinitions&gt;
+    &lt;ItemsControl Name="MenuRegion" cal:RegionManager.RegionName="MenuRegion"
+       VerticalAlignment="Top"  Grid.RowSpan="2"  Height="26" HorizontalAlignment="Left"
+        Background="Transparent" Margin="0,12,0,0"/&gt;
+    &lt;Grid Margin="4,4,4,4" Grid.Row="1"&gt;
+        &lt;Border Background="GhostWhite" BorderBrush="LightGray"
+             BorderThickness="1" CornerRadius="5" Margin="0,0,0,0"&gt;
+            &lt;ItemsControl Name="MainRegion"
+                  cal:RegionManager.RegionName="MainRegion" Margin="4" Height="291" /&gt;
+        &lt;/Border&gt;
+    &lt;/Grid&gt;
+    &lt;Border  Grid.Row="2" &gt;
+        &lt;ItemsControl Name="StatusbarRegion"
+             cal:RegionManager.RegionName="StatusbarRegion" Background="Transparent" /&gt;
+    &lt;/Border&gt;
+&lt;/Grid&gt;</code></pre>
+          </li>
+          </ol>
+
+          <p>Now you should be able to run the application and see this screen:</p>
+
+          <p>&nbsp;<em class="lost">[Image no longer available]</em></p>
+          <p><a href="/post/2010/05/31/Part-3-Add-Views-to-Regions/">Next</a> ---&gt;</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

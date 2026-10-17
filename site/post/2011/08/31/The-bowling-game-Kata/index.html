@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The bowling game Kata | Geoffrey Vandiest</title>
+  <meta name="description" content="Here is a kata made by uncle Bob (Robert C. Martin). It should be resolved the TDD way (you know…by writing the test first).">
+  <link rel="canonical" href="https://vandiest.biz/post/2011/08/31/The-bowling-game-Kata/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The bowling game Kata">
+  <meta property="og:description" content="Here is a kata made by uncle Bob (Robert C. Martin). It should be resolved the TDD way (you know…by writing the test first).">
+  <meta property="og:url" content="https://vandiest.biz/post/2011/08/31/The-bowling-game-Kata/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The bowling game Kata",
+    "datePublished": "2011-08-31",
+    "dateModified": "2011-08-31",
+    "description": "Here is a kata made by uncle Bob (Robert C. Martin). It should be resolved the TDD way (you know…by writing the test first).",
+    "keywords": [
+      "Design patterns",
+      "Unit testing"
+    ],
+    "image": "https://vandiest.biz/img/2011/the-bowling-game-kata-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Design patterns</span></li><li><span class="chip chip--quiet">Unit testing</span></li></ul>
+          <h1>The bowling game Kata</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2011-08-31">31 AUG 2011</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2011/the-bowling-game-kata-01.jpg" alt width="500" height="306" loading="lazy"></p>
+          <p><a href="http://www.slideshare.net/lalitkale/bowling-game-kata-by-robert-c-martin">Here</a> is a kata made by uncle Bob (<a href="http://en.wikipedia.org/wiki/Robert_Cecil_Martin">Robert C. Martin</a>).&nbsp; It should be resolved the TDD way (you know&hellip;by writing the test first).&nbsp; The user story of the kata sounds like: <br><em>&ldquo;The game consists of 10 frames as shown above. In each frame the player has two opportunities to knock down 10 pins. The score for the frame is the total number of pins knocked down, plus bonuses for strikes and spares.</em></p>
+          <p><em>A spare is when the player knocks down all 10 pins in two tries. The bonus for that frame is the number of pins knocked down by the next roll. So in frame 3 above, the score is 10 (the total number knocked down) plus a bonus of 5 (the number of pins knocked down on the next roll.)<br></em><em>A strike is when the player knocks down all 10 pins on his first try. The bonus for that frame is the value of the next two balls rolled. In the tenth frame a player who rolls a spare or strike is allowed to roll the extra balls to complete the frame. However no more than three balls can be rolled in tenth frame.&rdquo;</em></p>
+          <p>You can find my C# solution <a href="http://www.belgianagencies.com/content/the_bowling_game.zip">here</a>, but you should not look at it before you tried to implement it by yourself.</p>
+          <p>Have fun&hellip;</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

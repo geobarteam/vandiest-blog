@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update your Azure infrastructure as part of a build | Geoffrey Vandiest</title>
+  <meta name="description" content="In this post I demonstrate how you can create and update your Azure infrastructure as part of a build in Visual Studio Online (VSO).">
+  <link rel="canonical" href="https://vandiest.biz/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Update your Azure infrastructure as part of a build">
+  <meta property="og:description" content="In this post I demonstrate how you can create and update your Azure infrastructure as part of a build in Visual Studio Online (VSO).">
+  <meta property="og:url" content="https://vandiest.biz/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Update your Azure infrastructure as part of a build",
+    "datePublished": "2016-02-01",
+    "dateModified": "2016-02-01",
+    "description": "In this post I demonstrate how you can create and update your Azure infrastructure as part of a build in Visual Studio Online (VSO).",
+    "keywords": [
+      "DevOps",
+      "Azure"
+    ],
+    "image": "https://vandiest.biz/img/2016/update-your-azure-infrastructure-as-part-of-a-bu-01.png",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">DevOps</span></li><li><span class="chip chip--quiet">Azure</span></li></ul>
+          <h1>Update your Azure infrastructure as part of a build</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2016-02-01">01 FEB 2016</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>In this post I demonstrate how you can create and update your Azure infrastructure as part of a build in Visual Studio Online (VSO).&nbsp; This enable to deliver and test your code and your infrastructure continuously.&nbsp;</p>
+          <p>Under your VSO project, choose build, and right click your build and choose &ldquo;edit&rdquo;, add an Azure Resource Group Deployment.</p>
+          <p><img src="/img/2016/update-your-azure-infrastructure-as-part-of-a-bu-01.png" alt width="1202" height="933" loading="lazy"></p>
+          <p>To be able to provision the infrastructure from your VSO build your Resource Group Deployment need to receive the permission to be modify infrastructure in your Azure subscription.&nbsp; Therefore you can use a Service Principal.&nbsp; <a href="http://blogs.msdn.com/b/visualstudioalm/archive/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-build-release-management.aspx">This msdn article</a> details how you can create a service principal inside your subscription and use it inside your deployment.</p>
+          <p>Watch out: if you&rsquo;ve several subscriptions, chances are that you run under the wrong subscription, this will result in the following error: &ldquo;The provided information does not map to an AD object id&rdquo;. <br> You&rsquo;ll need to select the proper subscription, just after the step: &ldquo;Add Azure Account&rdquo; use the following command: Select-AzureSubscription -SubscriptionId &lt;subscription-id&gt;</p>
+          <p>The remaining steps are obvious.</p>
+          <p><img src="/img/2016/update-your-azure-infrastructure-as-part-of-a-bu-02.png" alt width="1202" height="933" loading="lazy"><br> Select your Azure Subscription, provide a name to your resource group, select the ARM template inside your VS solution and the parameter file you want to use for this deployment.</p>
+          <p>Now you can include this step inside your continuous integration build or create a specific build for your infrastructure setup that you can trigger at will.&nbsp;</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

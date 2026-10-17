@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prism Walkthrough - Part 3: Add Views to Regions | Geoffrey Vandiest</title>
+  <meta name="description" content="In this part we’ll create our first views and display them inside their regions. The views are the controls that display our content.">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/05/31/Part-3-Add-Views-to-Regions/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Prism Walkthrough - Part 3: Add Views to Regions">
+  <meta property="og:description" content="In this part we’ll create our first views and display them inside their regions. The views are the controls that display our content.">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/05/31/Part-3-Add-Views-to-Regions/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Prism Walkthrough - Part 3: Add Views to Regions",
+    "datePublished": "2010-05-31",
+    "dateModified": "2010-05-31",
+    "description": "In this part we’ll create our first views and display them inside their regions. The views are the controls that display our content.",
+    "keywords": [
+      "Prism",
+      "WPF"
+    ],
+    "image": "https://vandiest.biz/img/2010/part-3-add-views-to-regions-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Prism</span></li><li><span class="chip chip--quiet">WPF</span></li></ul>
+          <h1>Prism Walkthrough - Part 3: Add Views to Regions</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-05-31">31 MAY 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><em>Source code of this part can be downloaded </em><a href="http://www.belgianagencies.com/content/PrismWalkthrough-Part1&amp;2&amp;3.zip"><em>here</em></a><em>.</em></p>
+          <p>In this part we&rsquo;ll create&nbsp;our first views and display them inside their regions.&nbsp; The views are the controls that display our content.&nbsp; Because our application is build with modularity in mind it&rsquo;s the Module and not the Shell that should define which views need to be added to the regions.&nbsp;</p>
+
+          <p>1) We add a folder &ldquo;Views&rdquo; to our Module project and 4 views inside this new folder:&nbsp;</p>
+          <ul>
+          <li>CreateFileView:&nbsp; One of the views that can be displayed in the MainRegion </li>
+          <li>CreatFolderView: Another view for the MainRegion </li>
+          <li>MenuView: Control that will be responsible to Add views to the MainRegion </li>
+          <li>StatusBar: Control that will be added to the StatusBarRegion</li>
+          </ul>
+
+          <p><img src="/img/2010/part-3-add-views-to-regions-01.jpg" alt width="207" height="164" loading="lazy"></p>
+
+          <p>To add views to our regions we use the prism region manager service.&nbsp; The region manager service<strong> </strong>is responsible for maintaining a collection of regions and creating new regions for controls.&nbsp; Typically, we interact directly with region manager service to locate regions in a decoupled way through their name and add views to those regions. By default, the UnityBootstrapper base class registers an instance of this service in the application container. This means that we can obtain a reference to the region manager service in our application by using dependency injection.</p>
+          <p>We use constructor dependency injection to gather an instance of the RegionManager and store it in a local field and it&rsquo;s&nbsp; in the <strong>Initialize</strong> method of our CoreModule class that we implement logic to add the initial views to our Regions.&nbsp;</p>
+
+          <p>2) Modify the CoreModule class like:</p>
+          <pre><code class="language-csharp">public class CoreModule : IModule
+{
+    private readonly IRegionManager regionManager;
+
+    public CoreModule(IRegionManager regionManager)
+    {
+        this.regionManager = regionManager;
+    }
+
+    public void Initialize()
+    {
+        this.RegisterViewsWithRegions();
+    }
+
+    protected virtual void RegisterViewsWithRegions()
+    {
+        this.regionManager.RegisterViewWithRegion(RegionNames.MenuRegion, typeof(MenuView));
+        this.regionManager.RegisterViewWithRegion(RegionNames.StatusbarRegion, typeof(StatusbarView));
+    }
+}</code></pre>
+
+          <p>To overcome magic constants in our code&nbsp; we used a class containing all our region names.</p>
+
+          <p>3) Add this RegionNames class to your Infrastructure Library:</p>
+          <pre><code class="language-csharp">namespace PrismWalkthrough.Infrastructure
+{
+    public class RegionNames
+    {
+        public const string MainRegion = "MainRegion";
+        public const string MenuRegion = "MenuRegion";
+        public const string StatusbarRegion = "StatusbarRegion";
+    }
+}</code></pre>
+
+          <p>Finally to see something displayed in our Menu and StatusBar we need to add some content inside these controls:</p>
+
+          <p>4) Modify the MenuView.xaml:</p>
+          <pre><code class="language-html">&lt;StackPanel&gt;
+    &lt;Menu Name="menu1" Background="Transparent" &gt;
+        &lt;MenuItem Header="File" &gt;
+            &lt;MenuItem Header="New"  CommandParameter="CreateFile" /&gt;
+            &lt;MenuItem Header="Folder" CommandParameter="CreateFolder"  /&gt;
+        &lt;/MenuItem&gt;
+    &lt;/Menu&gt;
+&lt;/StackPanel&gt;</code></pre>
+
+          <p>5) Modify the StatusBarView.xaml:</p>
+          <pre><code class="language-html">&lt;Grid&gt;
+    &lt;TextBlock Text="This is the StatusBar" /&gt;
+&lt;/Grid&gt;</code></pre>
+
+          <p>When pressing F5 you should see:</p>
+
+          <p><em class="lost">[Image no longer available]</em></p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

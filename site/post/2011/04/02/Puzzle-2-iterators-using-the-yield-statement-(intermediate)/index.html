@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Puzzle 2: iterators using the yield statement (intermediate) | Geoffrey Vandiest</title>
+  <meta name="description" content="Remove the iterator class from the listing and replace the call to the iterator class, inside the iteration sample(line 29), by using the yield operator of C#2.">
+  <link rel="canonical" href="https://vandiest.biz/post/2011/04/02/Puzzle-2-iterators-using-the-yield-statement-(intermediate)/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Puzzle 2: iterators using the yield statement (intermediate)">
+  <meta property="og:description" content="Remove the iterator class from the listing and replace the call to the iterator class, inside the iteration sample(line 29), by using the yield operator of C#2.">
+  <meta property="og:url" content="https://vandiest.biz/post/2011/04/02/Puzzle-2-iterators-using-the-yield-statement-(intermediate)/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Puzzle 2: iterators using the yield statement (intermediate)",
+    "datePublished": "2011-04-02",
+    "dateModified": "2011-04-02",
+    "description": "Remove the iterator class from the listing and replace the call to the iterator class, inside the iteration sample(line 29), by using the yield operator of C#2.",
+    "keywords": [
+      "Puzzle",
+      "Iterator",
+      "yield"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Puzzle</span></li><li><span class="chip chip--quiet">Iterator</span></li><li><span class="chip chip--quiet">yield</span></li></ul>
+          <h1>Puzzle 2: iterators using the yield statement (intermediate)</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2011-04-02">02 APR 2011</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>Remove the iterator class from the listing and replace the call to the iterator class, inside the iteration sample(line 29), by using the yield operator of C#2. </p>
+          <p>The output of the Problem() method should remain the same.<pre><code class="language-csharp"> 1: using System;
+
+ 2: using System.Collections;
+
+ 3:
+
+ 4: namespace Puzzles
+
+ 5: {
+
+ 6:
+
+ 7:     public class Enumarators
+
+ 8:     {
+
+ 9:         public static void Problem()
+
+10:         {
+
+11:             var myValues = new[] { "a", "b", "c", "d" };
+
+12:             var col = new IterationSample(myValues);
+
+13:             foreach (var x in col)
+
+14:             {
+
+15:                 Console.WriteLine(x);
+
+16:             }
+
+17:         }
+
+18:
+
+19:         public class IterationSample : IEnumerable
+
+20:         {
+
+21:             internal object[] values;
+
+22:
+
+23:             public IterationSample(object[] values)
+
+24:             {
+
+25:                 this.values = values;
+
+26:             }
+
+27:             public IEnumerator GetEnumerator()
+
+28:             {
+
+29:                 return new Iterator(this);  //Change this line by using yield
+
+30:             }
+
+31:         }
+
+32:
+
+33:         public class Iterator:IEnumerator
+
+34:         {
+
+35:             IterationSample parent;
+
+36:             int position;
+
+37:
+
+38:             internal Iterator(IterationSample parent)
+
+39:             {
+
+40:                 this.parent = parent;
+
+41:                 position = -1;
+
+42:             }
+
+43:             public bool MoveNext()
+
+44:             {
+
+45:                 if (position != parent.values.Length)
+
+46:                 {
+
+47:                 position++;
+
+48:                 }
+
+49:                 return position &lt; parent.values.Length;
+
+50:             }
+
+51:             public object Current
+
+52:             {
+
+53:                 get
+
+54:                 {
+
+55:                     if (position==-1 || position==parent.values.Length)
+
+56:                     {
+
+57:                      throw new InvalidOperationException();
+
+58:                     }
+
+59:                     return parent.values[position];
+
+60:                 }
+
+61:             }
+
+62:             public void Reset()
+
+63:             {
+
+64:                 position = -1;
+
+65:             }
+
+66:         }
+
+67:     }
+
+68: }
+
+69:</code></pre>
+          </p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anti-Pattern2: Coupling between Domain &amp; Infrastructure | Geoffrey Vandiest</title>
+  <meta name="description" content="In the previous example we’ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer.">
+  <link rel="canonical" href="https://vandiest.biz/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Anti-Pattern2: Coupling between Domain &amp; Infrastructure">
+  <meta property="og:description" content="In the previous example we’ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer.">
+  <meta property="og:url" content="https://vandiest.biz/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Anti-Pattern2: Coupling between Domain & Infrastructure",
+    "datePublished": "2010-05-06",
+    "dateModified": "2010-05-06",
+    "description": "In the previous example we’ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer.",
+    "keywords": [
+      "Architecture",
+      "DevOps",
+      "Testing"
+    ],
+    "image": "https://vandiest.biz/img/2010/anti-pattern2-coupling-between-domain-infrastruc-01.jpg",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">Architecture</span></li><li><span class="chip chip--quiet">DevOps</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
+          <h1>Anti-Pattern2: Coupling between Domain &amp; Infrastructure</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2010-05-06">06 MAY 2010</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p><img src="/img/2010/anti-pattern2-coupling-between-domain-infrastruc-01.jpg" alt width="468" height="547" loading="lazy"></p>
+          <p>In the previous example we&rsquo;ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer. Nevertheless the Invoice class is now strongly coupled to the DataLayer class. To decouple these two classes we can make use of interfaces:</p>
+          <pre><code class="language-csharp"> 2: {
+
+ 3:         private int _balance;
+
+ 4:
+
+ 5:         public Invoice(int clientID, IDataLayer db){
+
+ 6:           …
+
+ 7:         }
+
+ 8:         …
+
+ 9: }
+
+10:</code></pre>
+          <p>The interface IDataLayer is a sort of wrapper around the infrastructure code &ndash; this interface defines a contract for our infrastructure code, this type of interface is sometimes called a service interface. By creating this service interface we decouple the infrastructure from the domain logic as it does not depend on any concrete implementation anymore. The same strategy can be applied when working with hard to test third party code like the VSTO object model. By creating an interface that defines a fa&ccedil;ade around the third party component we make sure our SUT is testable and decouple our domain logic from the infrastructure code.</p>
+          <p>We&nbsp;can use unit tests and the test doubles for designing the service interface that your code depends on. To design this service interface&nbsp;we&nbsp;could take some inspiration from the TDD process. For each new feature we write a unit test that uses a test double to simulate the behavior that your target object needs from its environment; each test double is a hypothesis of what the real code will eventually do. This interface can then be used via Mocking frameworks to generate test doubles. As the cluster of a service interfaces and its test doubles stabilises, we can then begin to wire up your own Service classes with the underlying 3rd party API. The untested code would then be contained into these service classes and will not propagate into your domain code (Entities &amp; Value objects). You would then obtain a clean and homogenous API that was dictated by what your own domain classes needs.</p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>
