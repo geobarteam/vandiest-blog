@@ -34,9 +34,17 @@ async function pool(items, fn) {
   await Promise.all(Array.from({ length: CONCURRENCY }, async () => { while (queue.length) await fn(queue.shift()); }));
 }
 
-const legacy = (await readFile(join(ROOT, 'tools', 'legacy-urls.txt'), 'utf8')).split('\n').map((l) => l.trim()).filter((l) => l.startsWith('/post/'));
+const lines = (await readFile(join(ROOT, 'tools', 'legacy-urls.txt'), 'utf8')).split('\n').map((l) => l.trim()).filter((l) => l.startsWith('/post/'));
+const legacy = lines.filter((l) => !l.includes(' -> '));
+const moved = lines.filter((l) => l.includes(' -> ')).map((l) => l.split(/\s+->\s+/));
 
-// 1. Legacy URLs.
+// 1. Legacy URLs: pages answer 200, moved ones redirect to their target.
+await pool(moved, async ([from, to]) => {
+  for (const p of [from, from + '/']) {
+    const r = await head(p);
+    if (r.status !== 301 || !(r.location || '').endsWith(to)) broken.push(`${r.status} ${p} <- legacy URL should 301 to ${to}, got ${r.location || 'no location'}`);
+  }
+});
 await pool(legacy, async (p) => {
   const a = await head(p + '/');
   if (a.status !== 200) broken.push(`${a.status} ${p}/ <- legacy URL`);

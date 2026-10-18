@@ -65,7 +65,7 @@
         <div class="post-body">
           <p>We just solved an interoperability problem for one of our customer that was trying to interoperate between Java &amp; .Net.&nbsp;He was using jaxws to generate his java proxy code and wcf (svcutil) for the .Net proxy .&nbsp;The customer had worked based on a contract first approach and tested his contract through jaxws.&nbsp;When he tried to generate the proxy classes for his .Net app, using svcutil, the generated proxy class was missing all the collections.&nbsp;He also had a runtime error when trying to serialize some messages.</p>
           <p>We rapidly found the cause of the missing collection.&nbsp;The customer had used maxOccurs="unbounded&rdquo; in his wsdl, what is not supported by the DataContractSerializer used by svcutil.&nbsp;We replaced the unbounded with a 9999999 and suddenly the collections appeared in his proxy class.</p>
-          <p>But the runtime error was still there L</p>
+          <p>But the runtime error was still there.</p>
           <p>After some research we found an interesting article on MSDN describing the subset of &nbsp;WSDL supported by SVCUTIL.&nbsp;Based on the <a href="http://msdn.microsoft.com/en-us/library/ms733112.aspx">article</a> we discovered that the customer had used a &lt;choise&gt; element in a complextype.&nbsp;This caused the SVCUTIL to use the old XMLSerializer in place of the DataContractSerializer &nbsp;of WCF.&nbsp;&nbsp; The XMLSerialzer made some strange construct in the proxy class causing runtime errors.&nbsp;So we simply removed the &lt;choice&gt; element and everything worked fine after that.</p>
           <p>GVD</p>
         </div>

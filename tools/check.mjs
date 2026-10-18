@@ -19,7 +19,7 @@ const NEW_SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // Slugs of the old blog keep their exact spelling (Azure Static Web Apps paths are case-sensitive).
 const LEGACY_FILE = join(ROOT, 'tools', 'legacy-urls.txt');
 const LEGACY = new Set(existsSync(LEGACY_FILE)
-  ? readFileSync(LEGACY_FILE, 'utf8').split('\n').map((l) => l.trim()).filter((l) => l.startsWith('/post/'))
+  ? readFileSync(LEGACY_FILE, 'utf8').split('\n').map((l) => l.trim().split(/\s+/)[0]).filter((l) => l.startsWith('/post/'))
   : []);
 const LANG_RE = /^language-(csharp|cs|bash|shell|powershell|xml|markup|html|json|javascript|js|typescript|sql|yaml|css|plaintext|none)$/;
 

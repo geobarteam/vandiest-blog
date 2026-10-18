@@ -1,5 +1,6 @@
 # Every post URL of the old BlogEngine site. These paths must answer 200 forever.
 # check.mjs accepts their mixed-case slugs; new posts use lowercase slugs.
+# A line "<path> -> <target>" is a legacy URL that now redirects (301) to <target>.
 /post/2008/09/08/Automated-testing-and-the-software-factory
 /post/2008/09/11/Unit-testing-what-else
 /post/2008/09/24/Webservice-Interoperability-with-contract-first-approach
@@ -56,7 +57,7 @@
 /post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript
 /post/2016/09/01/building-typescript-with-gulp
 /post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer
-/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core
+/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core -> /post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/
 /post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1
 /post/2017/11/10/continous-delivery-can-t-be-bought-in-a-box
 /post/2018/01/10/continous-delivery-as-a-paradigm-shift

@@ -196,17 +196,6 @@
   ]
  },
  {
-  "title": "How to design your SPA to work with Angular CLI and DoNet Core",
-  "url": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core/",
-  "date": "2017-09-10",
-  "description": "How to structure a single-page app made of an Angular CLI client and a dotnet core Web API, and the first steps to set one up.",
-  "tags": [
-   "Angular",
-   "Single-page apps",
-   "ASP.NET"
-  ]
- },
- {
   "title": "Angular2 vs React from the perspective of a .Net fullstack developer",
   "url": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer/",
   "date": "2016-09-10",

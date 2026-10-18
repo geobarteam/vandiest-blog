@@ -37,7 +37,10 @@ async function main() {
     const raw = parse(await readFile(join(HERE, entry.file), 'utf8'), PARSE).querySelector('.post-body');
     for (const el of raw.querySelectorAll('script, style, span.lnum')) el.remove();
     for (const img of raw.querySelectorAll('img')) if (isBadge(img.getAttribute('src') || '')) img.remove();
-    const out = parse(await readFile(join(ROOT, 'site', ...path.split('/').filter(Boolean), 'index.html'), 'utf8'), PARSE);
+    let outHtml;
+    try { outHtml = await readFile(join(ROOT, 'site', ...path.split('/').filter(Boolean), 'index.html'), 'utf8'); }
+    catch { continue; } // replaced by a redirect (see tools/legacy-urls.txt)
+    const out = parse(outHtml, PARSE);
     const body = out.querySelector('.post-body');
     const lostImages = body.querySelectorAll('em.lost').length;
     for (const n of body.querySelectorAll('em.lost')) n.remove();

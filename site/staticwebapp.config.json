@@ -1,16 +1,62 @@
 {
   "trailingSlash": "auto",
   "routes": [
-    { "route": "/syndication.axd", "redirect": "/rss.xml", "statusCode": 301 },
-    { "route": "/contact.aspx", "redirect": "/contact/", "statusCode": 301 },
-    { "route": "/img/*", "headers": { "cache-control": "public, max-age=31536000, immutable" } },
-    { "route": "/fonts/*", "headers": { "cache-control": "public, max-age=31536000, immutable" } },
-    { "route": "/css/*", "headers": { "cache-control": "public, max-age=604800" } },
-    { "route": "/js/*", "headers": { "cache-control": "public, max-age=604800" } },
-    { "route": "/rss.xml", "headers": { "content-type": "application/rss+xml; charset=utf-8" } }
+    {
+      "route": "/syndication.axd",
+      "redirect": "/rss.xml",
+      "statusCode": 301
+    },
+    {
+      "route": "/contact.aspx",
+      "redirect": "/contact/",
+      "statusCode": 301
+    },
+    {
+      "route": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core",
+      "redirect": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/",
+      "statusCode": 301
+    },
+    {
+      "route": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core/",
+      "redirect": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/",
+      "statusCode": 301
+    },
+    {
+      "route": "/img/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/fonts/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/css/*",
+      "headers": {
+        "cache-control": "public, max-age=604800"
+      }
+    },
+    {
+      "route": "/js/*",
+      "headers": {
+        "cache-control": "public, max-age=604800"
+      }
+    },
+    {
+      "route": "/rss.xml",
+      "headers": {
+        "content-type": "application/rss+xml; charset=utf-8"
+      }
+    }
   ],
   "responseOverrides": {
-    "404": { "rewrite": "/404.html", "statusCode": 404 }
+    "404": {
+      "rewrite": "/404.html",
+      "statusCode": 404
+    }
   },
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",

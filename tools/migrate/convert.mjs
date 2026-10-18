@@ -16,6 +16,12 @@ const SITE = join(ROOT, 'site');
 const PARSE = { comment: false, blockTextElements: { script: true, noscript: true, style: true } };
 const SITE_URL = 'https://vandiest.biz';
 const OWN_HOSTS = /^(www\.|geoffrey\.)?vandiest\.biz$/i;
+// Legacy posts the owner replaced by a redirect (2026-10-18): not converted, 301 in staticwebapp.config.json.
+const REDIRECTED = {
+  '/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core': '/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/',
+};
+// NOTE: since the D4 review, site/post/** carries hand and agent fixes. Re-running this
+// script overwrites them; restore with git if you do.
 
 // ---------- Tags ----------
 // Spelling fixes for the tags the old posts carry.
@@ -422,7 +428,7 @@ async function main() {
   const langTotals = {};
 
   for (const [path, entry] of Object.entries(manifest)) {
-    if (!path.startsWith('/post/')) continue;
+    if (!path.startsWith('/post/') || REDIRECTED[path]) continue;
     const [, , yyyy, mm, dd] = path.split('/');
     const root = parse(await readFile(join(HERE, entry.file), 'utf8'), PARSE);
     const title = root.querySelector('.post-title').text.replace(/\s+/g, ' ').trim();
@@ -461,7 +467,8 @@ async function main() {
   rows.sort((a, b) => (b.date + b.path).localeCompare(a.date + a.path));
   await writeFile(join(ROOT, 'tools', 'legacy-urls.txt'),
     '# Every post URL of the old BlogEngine site. These paths must answer 200 forever.\n# check.mjs accepts their mixed-case slugs; new posts use lowercase slugs.\n' +
-    rows.map((r) => r.path).sort().join('\n') + '\n');
+    '# A line "<path> -> <target>" is a legacy URL that now redirects (301) to <target>.\n' +
+    [...rows.map((r) => r.path), ...Object.entries(REDIRECTED).map(([p, t]) => `${p} -> ${t}`)].sort().join('\n') + '\n');
 
   const mediaAll = Object.values(media);
   const lines = [

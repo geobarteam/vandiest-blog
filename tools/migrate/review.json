@@ -33,10 +33,11 @@
   "title": "Webservice Interoperability with contract first approach",
   "level": "medium",
   "reasons": [
+   "1 of 217 words missing (l)",
    "tags inferred"
   ],
   "wordsBefore": 217,
-  "wordsMissing": 0,
+  "wordsMissing": 1,
   "wordsAdded": 0,
   "agent": {
    "level": "high",
@@ -64,12 +65,13 @@
  },
  "/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough": {
   "title": "First Steps with Unit Testing Walkthrough",
-  "level": "medium",
+  "level": "low",
   "reasons": [
+   "8 of 983 words missing (walkthrough, the, you, can, download, completed, project, here)",
    "tags inferred"
   ],
   "wordsBefore": 983,
-  "wordsMissing": 0,
+  "wordsMissing": 8,
   "wordsAdded": 1,
   "agent": {
    "level": "high",
@@ -139,12 +141,13 @@
  },
  "/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background": {
   "title": "Visual Studio TextMate Font Black Background",
-  "level": "medium",
+  "level": "low",
   "reasons": [
+   "56 of 81 words missing (s, use, visual, studio, font, monaco, and, for, …)",
    "tags inferred"
   ],
   "wordsBefore": 81,
-  "wordsMissing": 0,
+  "wordsMissing": 56,
   "wordsAdded": 0,
   "agent": {
    "level": "high",
@@ -154,14 +157,15 @@
  },
  "/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically": {
   "title": "Create a WCF service and client, using Msmq, programmatically",
-  "level": "medium",
+  "level": "low",
   "reasons": [
+   "3 of 1020 words missing (download, source, code)",
    "1 image(s) lost",
    "1 code block(s) without language",
    "tags inferred"
   ],
   "wordsBefore": 1020,
-  "wordsMissing": 0,
+  "wordsMissing": 3,
   "wordsAdded": 0,
   "agent": {
    "level": "high",
@@ -171,13 +175,14 @@
  },
  "/post/2010/01/25/Coding-Kata-on-design-patterns-Kata1-The-Abstract-Factory-Pattern": {
   "title": "Coding Kata on design patterns: Kata1, The Abstract Factory Pattern",
-  "level": "medium",
+  "level": "low",
   "reasons": [
+   "6 of 129 words missing (this, is, kata1, my, solution, for)",
    "1 image(s) lost",
    "tags inferred"
   ],
   "wordsBefore": 129,
-  "wordsMissing": 0,
+  "wordsMissing": 6,
   "wordsAdded": 0,
   "agent": {
    "level": "medium",
@@ -457,12 +462,13 @@
  },
  "/post/2010/05/31/Part-3-Add-Views-to-Regions": {
   "title": "Prism Walkthrough - Part 3: Add Views to Regions",
-  "level": "medium",
+  "level": "low",
   "reasons": [
+   "9 of 400 words missing (source, code, of, this, part, can, be, downloaded, …)",
    "1 image(s) lost"
   ],
   "wordsBefore": 400,
-  "wordsMissing": 0,
+  "wordsMissing": 9,
   "wordsAdded": 0,
   "agent": {
    "level": "medium",
@@ -472,10 +478,12 @@
  },
  "/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands": {
   "title": "Prism Walkthrough Part 4: Use Delegate Commands",
-  "level": "high",
-  "reasons": [],
+  "level": "low",
+  "reasons": [
+   "8 of 816 words missing (the, final, source, code, can, be, downloaded, here)"
+  ],
   "wordsBefore": 816,
-  "wordsMissing": 0,
+  "wordsMissing": 8,
   "wordsAdded": 0
  },
  "/post/2010/06/09/Net-Interview-questions": {
@@ -573,12 +581,13 @@
  },
  "/post/2011/08/31/The-bowling-game-Kata": {
   "title": "The bowling game Kata",
-  "level": "medium",
+  "level": "low",
   "reasons": [
+   "22 of 214 words missing (here, by, it, should, you, to, can, find, …)",
    "tags inferred"
   ],
   "wordsBefore": 214,
-  "wordsMissing": 0,
+  "wordsMissing": 22,
   "wordsAdded": 0,
   "agent": {
    "level": "high",
@@ -780,21 +789,6 @@
    "level": "high",
    "changed": "rewrote the description; moved the opening image out of an `<h2>` into a `<p>`; set the React component and NgModule blocks to typescript and the ngModel snippet to html",
    "owner": "the NgModule code block still has a blank line between every line, as in the original"
-  }
- },
- "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core": {
-  "title": "How to design your SPA to work with Angular CLI and DoNet Core",
-  "level": "medium",
-  "reasons": [
-   "tags inferred"
-  ],
-  "wordsBefore": 431,
-  "wordsMissing": 0,
-  "wordsAdded": 0,
-  "agent": {
-   "level": "medium",
-   "changed": "rewrote the description (it ended in \"…\")",
-   "owner": "this is an incomplete early copy that stops at step 2, the same as in the original; core1 is the complete post. Consider pointing readers from this one to core1"
   }
  },
  "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1": {

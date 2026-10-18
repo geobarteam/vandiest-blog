@@ -229,11 +229,11 @@ What the agents changed: inferred tags corrected on most posts, with new tags wh
 
 Decisions the review raised:
 
-- [ ] The two 2017-09-10 SPA posts: the one ending in "core" is an incomplete early copy of "core1". Both URLs stay; add a line at the top of the first one pointing to the complete post?
-- [ ] *ASP.NET MVC with Webforms*: its original "MVC" tag became "ASP.NET MVC", but the post is about the MVC pattern on Webforms, so the agent replaced it with "Design patterns". Accept?
-- [ ] Five posts link to downloads on belgianagencies.com (source zips, a font, a kata solution), which is probably dead. Drop the links, or self-host the files if you still have them?
-- [ ] *Webservice interoperability* (2008) contains a stray "L", which was a Wingdings sad face in Word. Delete it?
-- [ ] *From vibe coding to spec-driven development* (2026): its "Part 2" link points to a GitHub file. Point it at the Part 2 post on this site instead?
+- [x] The two 2017-09-10 SPA posts: the incomplete "core" copy is deleted and its URL redirects (301, with and without slash) to "core1". Recorded as `path -> target` in `tools/legacy-urls.txt`.
+- [x] *ASP.NET MVC with Webforms*: "Design patterns" instead of "ASP.NET MVC" accepted.
+- [x] Downloads on belgianagencies.com dropped in 7 posts. Paragraphs that only offered the download are removed; in the TextMate post the font install instruction went with it.
+- [x] Stray Wingdings "L" deleted.
+- [x] "Part 2" link now points to the Part 2 post on this site.
 
 ## D5. Preview verified
 

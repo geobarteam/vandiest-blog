@@ -64,7 +64,6 @@
           </div>
         </header>
         <div class="post-body">
-          <p><em><a href="http://www.belgianagencies.com/content/WCFMsmqFactoryExample.zip">download source code</a></em></p>
           <p>Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service. I dislike this way of configuring client and service in WCF because most of the time it leads to config files that are full of crab and that becomes unmanageable. I prefer to construct my WCF services programmatically. Therefore I&rsquo;ve create a bunch of helper classes that contains most of the configuration settings that are applicable in a particular domain.</p>
           <p>In this article I discuss one of these classes&nbsp; I use to create local queues. With local I mean queues used by components making part of the same application. This class can be used as a factory to create the service (serviceHost) as well as the client part (Channel) for components communicating through Msmq.</p>
           <p>This article provides a small tutorial on how to create a simple console app. I demonstrate how to create the client and service host without any configuration by using a helper factory class: WCFMsmqFactory</p>

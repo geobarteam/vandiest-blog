@@ -631,7 +631,7 @@ Format:  no changes required
       <description><![CDATA[<p><img src="https://vandiest.biz/img/2026/from-vibe-coding-to-spec-driven-development-a-re-01.png" alt width="800" height="533" loading="lazy"><a title="github-copilot-configs" href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a></p>
           <p><em>An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplined, repeatable engineering process into AI agents, skills, and instructions.</em></p>
           <blockquote>
-          <p><strong>Repository:</strong>&nbsp;<strong>Part 1 of 2.</strong>&nbsp;This article covers the motivation, best practices, and the configuration library. For a hands-on walkthrough of the spec-driven process, see&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST-PROCESS.md">Part 2: The Process in Action</a>.</p>
+          <p><strong>Repository:</strong>&nbsp;<strong>Part 1 of 2.</strong>&nbsp;This article covers the motivation, best practices, and the configuration library. For a hands-on walkthrough of the spec-driven process, see&nbsp;<a href="https://vandiest.biz/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control/">Part 2: The Process in Action</a>.</p>
           </blockquote>
           <hr>
           <h2>Why I Built This</h2>
@@ -2936,43 +2936,127 @@ export class AppComponent implements OnInit {
           <p><img src="https://vandiest.biz/img/2017/how-to-design-your-spa-to-work-with-angular-cli-05.png" alt width="1083" height="603" loading="lazy"></p>]]></description>
     </item>
     <item>
-      <title>How to design your SPA to work with Angular CLI and DoNet Core</title>
-      <link>https://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core/</link>
-      <guid isPermaLink="true">https://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core/</guid>
-      <pubDate>Sun, 10 Sep 2017 08:00:00 GMT</pubDate>
+      <title>Angular2 vs React from the perspective of a .Net fullstack developer</title>
+      <link>https://vandiest.biz/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer/</link>
+      <guid isPermaLink="true">https://vandiest.biz/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer/</guid>
+      <pubDate>Sat, 10 Sep 2016 08:00:00 GMT</pubDate>
       <category>Angular</category>
-      <category>Single-page apps</category>
-      <category>ASP.NET</category>
-      <description><![CDATA[<p>When building new apps, you need both client and server-side pieces.&nbsp; This article focusses on how to structure a SPA that is made out of angular for the client and dotnet core for the server.</p>
-          <p>There are numerous questions I needed to answers when mixing these technologies.</p>
-          <ul>
-          <li>Should I host my angular app inside an MVC View or just serve the angular app from static files.</li>
-          <li>Should I host the angular app inside the same application that serve the Web-Api or serve it from a separate site?</li>
-          <li>How to setup a productive development environment?</li>
-          <li>How should I integrate angular-cli together with a ASP.NET Core app?</li>
-          <li>Should I use Vs.Code or VisualStudio ?</li>
-          <li>How to package and deploy the application for on prem or in the cloud?</li>
-          </ul>
-          <p>Of course, the answer to all these questions is always the same: it depends! After experimenting with several options, I finally decided that I should go for the simplest solution that could possibly work and started with just serving static files inside a Web-Api application.&nbsp; Yet, during development, what I found the most productive, is to completely separate the Angular app from the Web-Api solution. I like that my Angular and the ASP.NET Web-Api apps live separate folders beside each other. It&rsquo;s only at build time that Msbuild assemble the parts by calling &ldquo;ng build&rdquo;. &nbsp;To do that I needed to configured angular-cli to output the build in the \wwwroot folder of the ASP.NET app.</p>
-          <p>Concerning the IDE, what I found the most productivity was to develop my angular app using Vs.Code. &nbsp;Thus far, for the Web-Api part I tend to prefer VisualStudio and Resharper. So, I optimized my Angular app for working with Vs.Code and my Web-Api project for VisualStudio.&nbsp; During development I usually run the backend and launch the Webpack dev server through an &ldquo;npm start&rdquo; command.&nbsp; At publish everything is nicely packaged together inside a ASP.NET app, so deploying to Azure can simply be done by using the VisualStudio publish wizard.&nbsp;&nbsp;</p>
-          <p>On my github project <a href="https://github.com/geobarteam/core-angular-example">core-angular-example</a>, you can download the solution template I use for making SPA&rsquo;s with Angular-cli and DotNet Core.</p>
-          <p>Here I explain the steps you need to follow to setup the basis of such an app:</p>
-          <p>0) First you need to install:</p>
-          <ul>
-          <li><a href="https://code.visualstudio.com/">Code</a></li>
-          <li><a href="https://www.microsoft.com/net/core#windowscmd">Donetcore</a></li>
-          <li><a href="https://nodejs.org/en/">js</a></li>
-          <li><a href="https://github.com/angular/angular-cli#installation">Angular-cl</a>i</li>
-          </ul>
-          <p>1) From a powershell console:</p>
-          <pre><code class="language-powershell">mkdir angular-dotnetcore
-cd angular-dotnetcore
-mkdir web-api
-cd web-api
-dotnet new webapi
-cd ..
-ng new angular-app</code></pre>
-          <p>2) Open VisualStudio code and open the angular-dotnetcore folder</p>]]></description>
+      <category>React</category>
+      <category>TypeScript</category>
+      <description><![CDATA[<p><img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-01.jpg" alt="FightClub" width="1200" height="704" loading="lazy"></p>
+          <h2>Intro</h2>
+          <p>Currently we had a lot of discussion on which web framework we should invest: Angular2 or React. Therefore I decided to experiment with both and make my own meaning.&nbsp;</p>
+          <p>Coming from Angular1 and loving it, I can&rsquo;t pretend I&rsquo;m completely objective. Nevertheless being a little frustrated with the breaking changes and late arrival of Angular2 and hearing a lot about the goodness of React, I wanted to give it a try and compare both frameworks with an open mind-set.&nbsp;&nbsp;</p>
+          <p>I took the perspective of an Enterprise .Net developer.&nbsp; In this comparison I value support for tooling that just work over purity/beauty of the framework. &nbsp;I also tested the integration with Visual Studio 2015 and Visual Studio Code.</p>
+          <p>In our environment applications have a lifecycle that can easily stretch over 10 years. In this context be able to support big projects and keep maintaining them over time is key. This is why I took Typescript as a given.&nbsp; Coming from a .Net background and having built all my Angular apps with the help of Typescript I don&rsquo;t wanted to get back to pure JavaScript. I love the static type checking and all the tooling support, code completion and refactoring typescript brings to the table.&nbsp; So the applications I wrote to compare both frameworks used Typescript and the ease of programming with Typescript is for me important.</p>
+          <h2>Overview</h2>
+          <h3>React</h3>
+          <p>React is a declarative Javascript UI library, created by Facebook that handles a very specific set of concerns, composing and packaging your UI in components and rendering these components. What could seem odd in the beginning is that React doesn&rsquo;t separate the HTML from the JavaScript.&nbsp; Frankly I got used to it and learned to appreciate the advantages of this. You can still separate the logic from the presentation by creating components that only render Html and Components that handles the logic&nbsp; (named &ldquo;Controller Views&rdquo; components).&nbsp;<br>Here is a simple example of a React component:</p>
+          <pre><code class="language-typescript">import * as React from "react";
+
+export class HelloWorld extends React.Component&lt;{}, {}&gt; {
+    render() {
+         return (
+            &lt;div&gt;
+
+                &lt;p&gt;Hello world from react!&lt;/p&gt;
+
+            &lt;/div&gt;
+        );
+    }
+}</code></pre>
+          <p>The render() method is the core method of the React component.&nbsp; React implements a virtual DOM, this is an internal representation of the DOM.&nbsp; Using his own representation of the real DOM and only rendering what was changed since last time render() was called.&nbsp;</p>
+          <p>A react component is typically written in a JSX file.&nbsp; JSX enables to mix the HTML tags inside the JavaScript part.&nbsp; To transform the JSX at runtime or compile time you typically need to use Babel. Now <a href="https://www.typescriptlang.org/docs/handbook/jsx.html">TypeScript provide support for JSX</a>, this enable us to use the TypeScript compiler instead of Babel. Adding the compiler option: <em>&ldquo;jsx&rdquo;:&rdquo;react&rdquo; in your </em>tsconfig.json file will enable support for the the TypeScript compiler.&nbsp; When this is done you can use the &ldquo;tsx&rdquo; extensions in order to support &ldquo;JSX&rdquo; with typescript.</p>
+          <p>I found that VisualStudio 2015 and VS Code provided a good support for the TSX format.&nbsp; It differentiates the HTML and TypeScript part quiet well. With TSX you even get auto completion in the HTML parts.<br> &nbsp;<img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-02.png" alt width="463" height="151" loading="lazy"></p>
+          <p>To illustrate other key concepts of React we need a more sophisticated example:</p>
+          <p>&nbsp;<img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-03.png" alt width="742" height="544" loading="lazy"></p>
+          <p>Notice on line 9, the two type arguments we pass to declare our AuthorComponent class.&nbsp; The first is the &ldquo;prop&rdquo; the other is the &ldquo;state&rdquo;.&nbsp; These two concepts should not be confused.&nbsp; &ldquo;state&rdquo; is an internal concern of the component, it holds the internal data (model) of the component and can change, and every time it changes the virtual DOM is adapted.&nbsp; &ldquo;props&rdquo; are passed to the component and are not meant to be changed. &nbsp;An illustration of the use of &ldquo;props&rdquo; is with &ldquo;Controller Views Components&rdquo;, these are parent components that host child components. &ldquo;props&rdquo; are typically used to pass the component properties:</p>
+          <p><img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-04.png" alt width="375" height="205" loading="lazy"></p>
+          <p>Here author, onChange, onSave, errors are &ldquo;props&rdquo; of the AuthorForm component.</p>
+          <p><img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-05.png" alt width="733" height="100" loading="lazy"><br> In contrast with Angular, React is only a UI library; therefore it&rsquo;s usually used with other libraries like Redux.&nbsp; Redux help us to manage the application data flows.&nbsp; You don&rsquo;t absolutely need Redux but usually when building large scaled Enterprise applications it&rsquo;s something you&rsquo;ll want to add to your React apps.&nbsp; In fact you can even use Redux with Angular but the unidirectional flow of React lent itself very well to the Redux model.&nbsp; Redux is based on the original Facebook Flux library. It help to manage the application State. I found that managing state in a React application without Flux or Redux demand a considerable effort. Nevertheless these frameworks bring also a great amount of concepts.&nbsp; Explaining these is outside the scope of this article.</p>
+          <h2>Angular2</h2>
+          <p>Although Angular2 comes with a lot of breaking changes and you can&rsquo;t upgrade directly from Angular1,&nbsp; Angular2 still feels like an evolution of Angular1 and I felt that&rsquo;s the big changes that where introduced where relatively easy to learn coming from an Angular1 background.</p>
+          <p>For me coming from the .Net/MVVM world, Angular always felt familiar and I appreciate the similarities with the WPF data binding model.&nbsp; Nevertheless I still have troubles with the new binding syntax that is quite different of the used in Angular1.&nbsp;</p>
+          <p>Angular advocates the separation of HTML and Code.&nbsp; Although these can now be in the same file you don&rsquo;t mix code &amp; HTML in Angular.&nbsp;&nbsp; This&rsquo;s usually a good practice especially when working with web designers.&nbsp; The downside of using a specific data-binding syntax&nbsp; is that you don&rsquo;t get the code highlighting &amp; code completion you get with React.</p>
+          <p>Angular2 is a framework and a quite complete one.&nbsp; With Angular you get all in a box.&nbsp; You can replace many parts but I never really needed to.&nbsp; From an Enterprise viewpoint, be able to count on a complete but modular toolbox is an advantage.&nbsp; It helps new hired developers to be productive faster and enforce consistency.</p>
+          <p><a href="https://github.com/geobarteam/Angular2HelloWorld">Here</a> is an example of what a &ldquo;Hello world&rdquo; Angular2 app looks like.&nbsp; A small tutorial is available on the site of angular on how to setup a <a href="https://angular.io/docs/ts/latest/quickstart.html">quickstart app</a>.&nbsp; It took me less than 5 minutes to complete.</p>
+          <p>After completing this 5 min tutorial you get basically everything you need for client side development including a small web server (BrowserSync) configured to do edit &amp; continue.&nbsp;</p>
+          <p>Angular separate the HTML from the code, you can add the Html inside a Component but it&rsquo;s still in a separate section. To be able to add view logic inside the HTML you need to use the Angular2 template syntax. A simple Angular HTML component looks like this:</p>
+          <p><img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-06.png" alt width="587" height="140" loading="lazy"></p>
+          <p>The *ngFor, {{todo.title}}, (click), [todo] and &lt;todo-detail&gt; elements are all Angular2 template syntax.&nbsp; The &lt;todo-detail&gt; tag represent a TodoListComponent.<em><br> </em>The todolist.component.ts code could be like this:</p>
+          <p><img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-07.png" alt width="524" height="399" loading="lazy"></p>
+          <p>Here is an example of how to define a two-way databinding works in Angular2:</p>
+          <pre><code class="language-html">&lt;input type="text" [(ngModel)]="user.first_name" /&gt;</code></pre>
+
+          <p>Every Angular2 app begins by declaring at least one module.&nbsp; This is an example of such a module:</p>
+
+          <pre><code class="language-typescript">import { BrowserModule } from '@angular/platform-browser';
+
+import { FormsModule }   from '@angular/forms';
+
+import { HttpModule }    from '@angular/http';
+
+import { Router }        from '@angular/router';
+
+import { AppComponent }             from './app.component';
+
+import { TeamComponent }            from './team/team.component'
+
+import { TeamService }              from './services/team.service'
+
+import { routing }                  from './app.routing';
+
+
+@NgModule({
+
+    imports: [
+
+        BrowserModule,
+
+        FormsModule,
+
+        HttpModule,
+
+        routing
+
+    ],
+
+    declarations: [
+
+        AppComponent,
+
+        TeamComponent,
+
+    ],
+
+    providers: [TeamService],
+
+    bootstrap: [AppComponent]
+
+})
+
+
+export class AppModule {
+
+}</code></pre>
+
+          <h2>My evaluation</h2>
+          <h3>Angular2 loves TypeScript</h3>
+          <p>For me the biggest difference between both is that Angular2 is TypeScript native and React just tolerates it. Sure you can use TypeScript with React, I provided some examples how you can do that nevertheless I spend a lot of time on figuring how.&nbsp; This is especially a problem when you consider that the React examples you find on the web are inconsistent. You can find many ways to do the same but some of them are not TypeScript friendly.&nbsp; During my experimentation with React I often was forced to use the &lt;&lt;any&gt;&gt; type.&nbsp; This means that I lost the goodness of working with TypeScript: compile time type checking, autocomplete and refactoring support.</p>
+          <h3>Angular2 feels like home for C# devs</h3>
+          <p><a href="https://facebook.github.io/react/docs/hello-world.html">The React documentation</a> provided by facebook is quite good but <a href="https://angular.io/docs">the Angular2 official documentation</a> is just superb.&nbsp; Following the quickstart guide I was able to construct a full application in less than 5 minutes.&nbsp; You can also find a complete guide that covers every topic of the framework.&nbsp; The Angular2 &ldquo;Tour of Heroes&rdquo; is a tutorial where you build a real world application using every important aspect of Angular2.&nbsp;</p>
+          <p>Every example in the Angular2 documentation is provided in TypeScript.&nbsp; For React most documentation is in ES6. On other internet sites I found that most of the examples are still in ES5. Finding an up-to-date tutorial on how to bootstrap a standard React application with TypeScript is not easy. You can find one on the <a href="https://www.typescriptlang.org/docs/handbook/jsx.html">TypeScript site</a> but it&rsquo;s very basic.&nbsp; When you compare this to Angular2 where you even have guidance on <a href="https://angular.io/docs/ts/latest/cookbook/visual-studio-2015.html">how to setup VisualStudio</a> you immediately understand that Angular2 is far more welcoming for C# devs as React.&nbsp; The only guidance I found on how to integrate TypeScript was on the TypeScript site. What I learned here is that usually you need to figure out by yourself how to use TypeScript with React as you don&rsquo;t find a lot on the internet. So during my React experimental project I&rsquo;ve wasted many, many hours in converting Javascript examples to TypeScript. I had some problems with inconsistencies between type definitions; sometimes I needed to tweak this myself to get my project compiled.&nbsp; I didn&rsquo;t have any of these problems using Angular2, the type definitions where always up to date and all provided libraries worked well together. &nbsp;&nbsp;</p>
+          <h3>I love mixing Html inside JavaScript</h3>
+          <p>When working with React in VS.Code and VisualStudio, I was first disappointed as these editors didn&rsquo;t support the JSX syntax correctly.&nbsp; All this changed when I converted my first code to TSX (the TypeScript equivalent of JSX).&nbsp; Here React really shined as I got type checking &amp; code completion even inside my TSX templates.&nbsp; &nbsp;Mixing typescript inside the HTML was for me a little revelation.&nbsp; I still think web designers will not really like this but for me other frameworks should copy this great idea.&nbsp; You don&rsquo;t need to learn another programming or templating syntax. You can use the same programming language everywhere. When you use TypeScript you even get static type checking in your templates what considerably diminish the number of mistakes you can make. Those who have already used Angular will certainly see the benefit of this.&nbsp; With Angular I can&rsquo;t count the number of times I got a blank page or things missing on my page because I misspelled some property in the template or used the wrong templating syntax. &nbsp;</p>
+          <h3>ErrorMessages feels a lot better</h3>
+          <p>Another great aspect of React is the explicit error messages it provides.&nbsp;&nbsp; &nbsp;&nbsp;</p>
+          <p><img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-08.png" alt width="915" height="177" loading="lazy">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p>In Angular1 you get usually at best a blank screen with completely useless error messages, now I found the error messages had improved tremendously in Angular2. It usually returns explicit messages with descriptions on how you can solve the problem.&nbsp; </p>
+          <p><img src="https://vandiest.biz/img/2016/angular2-vs-react-from-the-perspective-of-a-net-09.png" alt width="900" height="70" loading="lazy"></p>
+          <h3>Many ways to do the same thing</h3>
+          <p>A pain point concerning React is the many ways to do the same thing. For example I found the following ways to create a React component: using the ES5 Create Class Component, using the ES6 class component, using stateless components, with Object.Create, with Mixins, creating Parasitic Components and with the StampIt library.&nbsp; &nbsp;&nbsp;Also a primary concern for me is the high churn rate of React, currently React is at version 15.&nbsp; This is a high number for a framework that is only a couple of years old.</p>
+          <h2>Conclusion</h2>
+          <p>For me the conclusion is that if you are a C# enterprise developer who wants to get all the goodness Typescript brings to the table, Angular2 is the obvious choice.&nbsp; React is a beautiful library that enforces good design but it doesn&rsquo;t embrace Typescript as Angular2 does.&nbsp; React has certainly some advantages compared to Angular2 like using JavaScript as templating syntax but Angular2 is what an enterprise developer wants. It&rsquo;s complete, opinionated and his Typescript native support makes it more crafted for large scale applications. &nbsp;Angular2 two-way binding also result usually in a higher productivity rate and less code to maintain when it comes to building business applications.</p>]]></description>
     </item>
   </channel>
 </rss>
