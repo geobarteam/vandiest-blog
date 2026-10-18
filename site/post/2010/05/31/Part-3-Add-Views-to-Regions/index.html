@@ -81,6 +81,7 @@
           <p>We use constructor dependency injection to gather an instance of the RegionManager and store it in a local field and it&rsquo;s&nbsp; in the <strong>Initialize</strong> method of our CoreModule class that we implement logic to add the initial views to our Regions.&nbsp;</p>
 
           <p>2) Modify the CoreModule class like:</p>
+          <div>
           <pre><code class="language-csharp">public class CoreModule : IModule
 {
     private readonly IRegionManager regionManager;
@@ -102,9 +103,12 @@
     }
 }</code></pre>
 
+          </div>
+
           <p>To overcome magic constants in our code&nbsp; we used a class containing all our region names.</p>
 
           <p>3) Add this RegionNames class to your Infrastructure Library:</p>
+          <div>
           <pre><code class="language-csharp">namespace PrismWalkthrough.Infrastructure
 {
     public class RegionNames
@@ -114,6 +118,8 @@
         public const string StatusbarRegion = "StatusbarRegion";
     }
 }</code></pre>
+
+          </div>
 
           <p>Finally to see something displayed in our Menu and StatusBar we need to add some content inside these controls:</p>
 

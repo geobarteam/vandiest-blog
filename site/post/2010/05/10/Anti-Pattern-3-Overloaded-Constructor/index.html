@@ -67,6 +67,7 @@
           <p>In the previous example the &ldquo;Invoice&rdquo; object is responsible to retrieve all the values needed to calculate the balance and it also contains the business logic that performs the calculation. This violates the SRP (Single Responsibility Principle). Because of this flaw when we test the calculation of the Balance we need to inject a test double so that the invoice can retrieve values. Why should we need to pass a Service when the only thing our Invoice should be responsible for is the calculation of the Balance?</p>
           <p>In the code example here below we specialized the Invoice class. Only what is directly needed is passed in: the input data to calculate the balance. To adhere to the SRP we extract the logic that retrieves the data from our DataLayer out of the Invoice class and create a Repository class (see <a href="http://codebetter.com/blogs/gregyoung/archive/2009/01/16/ddd-the-generic-repository.aspx">Repository pattern</a>). We don&rsquo;t need any mock object anymore what enhance the readability and robustness of our test. By adhering to the SRP we improve our design and enable for better testability.</p>
           <p>SUT</p>
+          <div>
           <pre><code class="language-csharp">public class Invoice
 {
     private int _balance;
@@ -106,6 +107,8 @@ public class InvoiceRepository
         return new Invoice(dailyValues, offPeakPrice, peakPrice, advances);
     }
 }</code></pre>
+
+          </div>
         </div>
       </article>
 <!-- site:sidebar -->

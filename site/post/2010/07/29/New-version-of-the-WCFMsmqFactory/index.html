@@ -67,139 +67,75 @@
           <p><a href="/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically/">Create a WCF service and client, using Msmq, programmatically</a> I've updated the MsmqFactory class.</p>
 
           <p>Here is the new version:</p>
-          <pre><code class="language-csharp">using System;
-using System.Messaging;
-using System.ServiceModel;
-using System.ServiceModel.MsmqIntegration;
-
-namespace BelgianAgencies.Wcf
-
+          <p>using System;
+          using System.Messaging;
+          using System.ServiceModel;
+          using System.ServiceModel.MsmqIntegration;
+          </p>
+          <pre><code class="language-csharp">namespace BelgianAgencies.Wcf
 {
-
     public class WcfMsmqFactory&lt;I&gt;
-
     {
-
         private string _queueAddress;
-
         private string _netmsmqAddress;
-
         public WcfMsmqFactory(string queueName)
-
         {
-
             _queueAddress = String.Format(@".\private$\{0}", queueName);
-
             _netmsmqAddress = String.Format(@"msmq.formatname:DIRECT=OS:{0}", _queueAddress);
-
             if (!MessageQueue.Exists(_queueAddress))
-
                 MessageQueue.Create(_queueAddress, true);
-
         }
-
         public bool UseCustomDeadLetterQueue
-
         {
-
             get;
-
             set;
-
         }
-
         /// &lt;summary&gt;
-
         /// Is the queue on a device connected to active directory.
-
         /// Standard = false.
-
         /// &lt;/summary&gt;
-
         /// &lt;value&gt;&lt;c&gt;true&lt;/c&gt; if [in active directory]; otherwise, &lt;c&gt;false&lt;/c&gt;.&lt;/value&gt;
-
         public bool InActiveDirectory
-
         {
-
             get; set;
-
         }
-
         public ServiceHost CreateService&lt;T&gt;(string namespaceName)
-
         {
-
             var sHost = new ServiceHost(typeof(T));
-
             MsmqIntegrationBinding binding;
-
             binding = InActiveDirectory ? new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.Transport) : new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);
-
             // Retry at most 5 times
-
             binding.ReceiveRetryCount = 1;
-
             // Max amount of retries before cancel message
-
             //  (1 + MaxRetryCycles) * (ReceiveRetryCount + 1) = total amount of retries
-
             binding.MaxRetryCycles = 3;
-
             // time before timout when unable to get message out of the queue
-
             binding.ReceiveTimeout = new TimeSpan(0, 0, 5);
-
             // when unable to dequeue put message on dead letter queue
-
             //TODO: set to reject on msmq 4.0
-
             binding.ReceiveErrorHandling = ReceiveErrorHandling.Fault;
-
             // this message is not volatile, when hard reboot message will not get lost
-
             binding.Durable = true;
-
             // timout when opening connection
-
             binding.OpenTimeout = new TimeSpan(0, 0, 5);
-
             // timout when closing connection
-
             binding.CloseTimeout = new TimeSpan(0, 0, 5);
-
             binding.Namespace = namespaceName;
-
             sHost.AddServiceEndpoint(
-
                 typeof(I),
-
                 binding,
-
                 new Uri(_netmsmqAddress)
-
                              );
-
             return sHost;
-
         }
-
         public I CreateChannel()
-
         {
-
             var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);
-
             var address = new EndpointAddress(String.Format("msmq.formatname:DIRECT=OS:{0}", _queueAddress));
-
             var channelFactory = new ChannelFactory&lt;I&gt;(binding, address);
-
             return channelFactory.CreateChannel();
-
         }
-
     }
-
 }</code></pre>
         </div>
       </article>

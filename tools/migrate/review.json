@@ -1,0 +1,752 @@
+{
+ "/post/2008/09/08/Automated-testing-and-the-software-factory": {
+  "title": "Automated testing and the software factory",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 942,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2008/09/11/Unit-testing-what-else": {
+  "title": "Unit testing, what else?",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 439,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2008/09/24/Webservice-Interoperability-with-contract-first-approach": {
+  "title": "Webservice Interoperability with contract first approach",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 217,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough": {
+  "title": "ASP.NET Web setup project walkthrough",
+  "level": "medium",
+  "reasons": [
+   "27 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 1745,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough": {
+  "title": "First Steps with Unit Testing Walkthrough",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 983,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2008/12/21/Is-mangling-PRINCE2-and-SCRUM-Agile": {
+  "title": "Is mangling PRINCE2 and SCRUM Agile?",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 337,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2009/03/24/Extensibility-for-ASPNET-MVC": {
+  "title": "Extensibility for ASP.NET MVC",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 577,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2009/07/22/The-5-Pilars-of-Unit-Testing": {
+  "title": "The 5 Pilars of Unit Testing",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 368,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2009/07/30/What-is-the-role-of-a-software-architect-in-an-Agile-Enterprise": {
+  "title": "What is the role of a software architect in an Agile Enterprise?",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 605,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background": {
+  "title": "Visual Studio TextMate Font Black Background",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 81,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically": {
+  "title": "Create a WCF service and client, using Msmq, programmatically",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 1020,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/01/25/Coding-Kata-on-design-patterns-Kata1-The-Abstract-Factory-Pattern": {
+  "title": "Coding Kata on design patterns: Kata1, The Abstract Factory Pattern",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 129,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/01/25/Sharepoint-2007-Certification-Guide": {
+  "title": "Sharepoint 2007 Certification Guide",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 47,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/01/26/Kata2-The-Decorator-Pattern": {
+  "title": "Kata2: The Decorator Pattern",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 530,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/02/09/GIT-with-VisualStudio": {
+  "title": "GIT with VisualStudio",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 312,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/03/31/ASPNET-MVC-with-Webforms": {
+  "title": "ASP.NET MVC with Webforms",
+  "level": "medium",
+  "reasons": [
+   "4 image(s) lost"
+  ],
+  "wordsBefore": 1662,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/03/31/HTTP-caching-divergence-between-IE-Firefox": {
+  "title": "HTTP caching divergence between IE & Firefox",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 396,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/04/11/Cannot-start-Microsoft-Office-outlook-Cannot-open-the-outlook-window": {
+  "title": "Cannot start Microsoft Office outlook. Cannot open the outlook window",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 71,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/04/13/How-to-distinguish-an-integration-test-from-a-unit-test": {
+  "title": "How to distinguish an integration test from a unit test?",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost"
+  ],
+  "wordsBefore": 226,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4": {
+  "title": "Keyboard support for Menu control Sylverlight 4",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 175,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/04/14/Why-should-we-test": {
+  "title": "Why should we test?",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost"
+  ],
+  "wordsBefore": 1409,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/04/16/WCF4-error-message-server-did-not-provide-a-meaningful-reply": {
+  "title": "WCF4 error message: server did not provide a meaningful reply",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 444,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/04/17/Customize-Visual-Studio": {
+  "title": "Customize Visual Studio",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 14,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/04/Design-For-Testability": {
+  "title": "Design For Testability",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost"
+  ],
+  "wordsBefore": 791,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure": {
+  "title": "Anti-Pattern2: Coupling between Domain & Infrastructure",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 313,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor": {
+  "title": "Anti-Pattern 3: Overloaded Constructor",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 247,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/17/Anti-Pattern-4-Using-Global-State": {
+  "title": "Anti-Pattern 4: Using Global State",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 465,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/27/Anti-Pattern-5-Fat-UIs": {
+  "title": "Anti-Pattern 5: Fat UI's",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost"
+  ],
+  "wordsBefore": 822,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework": {
+  "title": "Create a refrence WPF application using MVVM with Prism, WCF and Entity Framework",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost",
+   "tags inferred"
+  ],
+  "wordsBefore": 330,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/28/Create-The-Shell": {
+  "title": "Prism walkthrough - Part 1: Create The Shell",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost"
+  ],
+  "wordsBefore": 643,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions": {
+  "title": "Prism Walkthrough - Part 2: Define The Regions",
+  "level": "medium",
+  "reasons": [
+   "2 image(s) lost"
+  ],
+  "wordsBefore": 267,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/05/31/Part-3-Add-Views-to-Regions": {
+  "title": "Prism Walkthrough - Part 3: Add Views to Regions",
+  "level": "medium",
+  "reasons": [
+   "1 image(s) lost"
+  ],
+  "wordsBefore": 400,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/06/04/Prism-Walkthrough-Part-4-Use-Delegate-Commands": {
+  "title": "Prism Walkthrough Part 4: Use Delegate Commands",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 816,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/06/09/Net-Interview-questions": {
+  "title": ".Net Interview questions",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 469,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2010/07/29/New-version-of-the-WCFMsmqFactory": {
+  "title": "New version of the WCFMsmqFactory",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 274,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams": {
+  "title": "Sharing Common Volatile Assemblies Across Solutions and Teams",
+  "level": "medium",
+  "reasons": [
+   "5 image(s) lost"
+  ],
+  "wordsBefore": 923,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/03/29/Puzzle-1-Passing-reference-types-by-value-(Beginner)-": {
+  "title": "Puzzle 1: Passing reference types by value (Beginner)",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 68,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/04/02/Answer-for-puzzle-1": {
+  "title": "Answer for puzzle 1",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 151,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/04/02/Puzzle-2-iterators-using-the-yield-statement-(intermediate)": {
+  "title": "Puzzle 2: iterators using the yield statement (intermediate)",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 149,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/04/07/Answer-for-Puzzle-2": {
+  "title": "Answer for Puzzle 2",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 154,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/04/30/HTML5-Local-Storage": {
+  "title": "HTML5 Local Storage",
+  "level": "high",
+  "reasons": [],
+  "wordsBefore": 529,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/05/14/Creating-an-offline-HTML5-application-for-IOS-with-ASPNET-MVC3": {
+  "title": "Create an offline HTML5 application for IOS with ASP.NET MVC3",
+  "level": "medium",
+  "reasons": [
+   "1 code block(s) without language"
+  ],
+  "wordsBefore": 1430,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/08/31/The-bowling-game-Kata": {
+  "title": "The bowling game Kata",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 214,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2011/09/01/Quality-saves-money-and-time": {
+  "title": "Quality saves time and money!",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 419,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2015/05/11/how-to-get-the-powershell-version": {
+  "title": "How to get the powershell version",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 21,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2015/05/13/gosimple-logging-log4net": {
+  "title": "GoSimple.Logging.Log4Net",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 439,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2015/06/06/learning-programming-with-scratch": {
+  "title": "Learning programming with Scratch",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 264,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2015/11/15/learning-arduino-for-beginners": {
+  "title": "Learning Arduino for beginners",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 209,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2015/12/10/learning-kodu-links": {
+  "title": "Learning Kodu links",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 181,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure": {
+  "title": "Setup, develop and deploy your ASP.NET MVC Umbraco website on Azure",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 521,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2016/01/15/how-to-use-azure-resource-manager-in-visual-studio-for-creating-web-apps": {
+  "title": "How To: Use Azure Resource Manager in Visual Studio for creating Web Apps",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 351,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2016/02/01/update-your-azure-infrastructure-as-part-of-a-build": {
+  "title": "Update your Azure infrastructure as part of a build",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 230,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2016/03/06/get-started-with-asp-net-core-angular-and-mongodb": {
+  "title": "Get started with ASP.NET Core, Angular and MongoDB",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 380,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript": {
+  "title": "Build your Arduino Robot and program it with Javascript",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 1076,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2016/09/01/building-typescript-with-gulp": {
+  "title": "Building TypeScript with Gulp",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 351,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer": {
+  "title": "Angular2 vs React from the perspective of a .Net fullstack developer",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 2065,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core": {
+  "title": "How to design your SPA to work with Angular CLI and DoNet Core",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 431,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1": {
+  "title": "How to design your SPA to work with Angular CLI and DoNet Core",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 1137,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2017/11/10/continous-delivery-can-t-be-bought-in-a-box": {
+  "title": "Continous delivery can't be bought in a box!",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 176,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2018/01/10/continous-delivery-as-a-paradigm-shift": {
+  "title": "Continous Delivery as a paradigm shift",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 748,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2018/09/10/best-practices-on-how-to-architect-for-faster-and-better-delivery-in-the-enterprise": {
+  "title": "Best practices on how to architect for faster and better delivery in the Enterprise",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 26,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2018/09/10/bottlenecks-linked-with-big-systems": {
+  "title": "The monolith database as a primary cause of slow delivery",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 282,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2018/09/24/automate-your-db-deployment-with-dbup": {
+  "title": "Automate your DB deployment with DbUp",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 74,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2018/10/16/is-my-dream-team-a-feature-team": {
+  "title": "Is my dream team a feature-team?",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 366,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2020/01/06/oidc-with-auth0-angular-and-dotnet-core-3-1": {
+  "title": "OIDC with auth0, Angular and DotNet Core 3.1",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 149,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture": {
+  "title": "What Is a Single Page Application and when should we use it?",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 420,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2022/11/02/what-is-the-best-ui-technology-angular-or-blazor": {
+  "title": "What is the best UI technology: Angular or Blazor ?",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 4082,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing": {
+  "title": "Building Code Like a Skyscraper: The Scaffolding Magic of Automated Testing!",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 460,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2023/06/21/orchestrating-success-the-harmonious-ensemble-behind-automated-testing": {
+  "title": "Orchestrating Success: The Harmonious Ensemble Behind Automated Testing!",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 583,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt": {
+  "title": "Chasing the Mythical 80%: When Code Coverage Becomes a Treasure Hunt",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 378,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability": {
+  "title": "6 Key Principles to Elevate Testability and Maintainability in C#",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 1385,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2023/07/07/best-practices-for-effective-unit-testing-in-c": {
+  "title": "Best Practices for Effective Unit Testing in C#",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 551,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure": {
+  "title": "Going All-In on UI Testing Automation: a Recipe for Failure!",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 379,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor": {
+  "title": "My way to apply the test pyramid to an Onion Style architecture with Blazor",
+  "level": "medium",
+  "reasons": [
+   "tags inferred"
+  ],
+  "wordsBefore": 1107,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects": {
+  "title": "From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects",
+  "level": "medium",
+  "reasons": [
+   "5 code block(s) without language",
+   "tags inferred"
+  ],
+  "wordsBefore": 4290,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ },
+ "/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control": {
+  "title": "Spec-Driven Development with AI: A Practical Guide to Staying in Control",
+  "level": "medium",
+  "reasons": [
+   "6 code block(s) without language",
+   "tags inferred"
+  ],
+  "wordsBefore": 3700,
+  "wordsMissing": 0,
+  "wordsAdded": 0
+ }
+}

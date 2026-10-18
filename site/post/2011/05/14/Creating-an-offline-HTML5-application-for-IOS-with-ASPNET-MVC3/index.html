@@ -71,6 +71,8 @@
           <p>&nbsp;You need to build an application for the IPad or IPhone but you don&rsquo;t have the time to learn objective-c and cocoa.&nbsp; The good news is that you don't need to!&nbsp;</p>
           <p>This walkthrough demonstrate how to use the&nbsp;.Net web technology stack to create applications&nbsp;for the IOS platform.&nbsp;&nbsp;Because we want to be capable of using the application also offline, the&nbsp;UI need to rely purely on HTML and Javascript and we can't use any server side markup generation. Nevertheless we'll need ASP.NET MVC for the creation of web services&nbsp;and his brand new model binding feature to deserialize the JASON message back to a server side model.</p>
           <p>We'll first create a new Visual Studio Asp.Net MVC3 empty web application and add an &ldquo;index.htm&rdquo; page to the project root:</p>
+          <div>
+          <div>
           <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -139,6 +141,9 @@
     &lt;script src="/Scripts/index.js" type="text/javascript"&gt;&lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+
+          </div>
+          </div>
           <p>The first line uses the Html5 doctype and the header links to jQuery. We uses two buttons, one to create the profiles in the browser local storage and another the send the profiles to the server.</p>
           <p>To create red boxes arround our input boxes when jQuery detects some validation we need to add these few lines of css to stylesheet:</p>
           <div>
@@ -146,6 +151,8 @@
           </div>
           <p>Now it&rsquo;s time to implement our UI logic with javascript. By creating a separate file for our javascript we keep the&nbsp; html page clean.</p>
           <p>Add a &ldquo;index.js&rdquo; to the script folder:</p>
+          <div>
+          <div>
           <pre><code class="language-javascript">var root = '/Subscription';
 var subscriptionsUploaded = 0;
 
@@ -261,8 +268,13 @@ function sendData(json, success, error) {
         error: error
     });
 }</code></pre>
+
+          </div>
+          </div>
           <p>When the user click on the create button the createSubscription function is called, this function is responsible for serializing the data into a Json object and to store it in the isolated storage.&nbsp; Isolated storage is a feature defined in the Html5 spec. For each domain the browser provide access&nbsp; to private key/value pair collection where data can be stored&nbsp; and retrieved. The sendData button is attached with an anonymous function that iterate over the key/value pair collection that contains the JSON serialized subscriptions and post the JSON serialized subscription object.</p>
           <p>The MVC 3 includes built-in JSON binding support that enables action methods to receive JSON-encoded data and model-bind it to action-method parameters. We will now create our Model to bind to, add a SubscriptionModel class to the models of the MVC app:</p>
+          <div>
+          <div>
           <pre><code class="language-csharp">public class SubscriptionModel
 {
     [Required]
@@ -287,7 +299,12 @@ function sendData(json, success, error) {
         //...
     }
 }</code></pre>
+
+          </div>
+          </div>
           <p>The MVC3 model binder will automatically bind all properties that matches the properties in the JSON encoded data.&nbsp; Now we will define our action method to post to, add a SubscriptionController class to the controllers folder:</p>
+          <div>
+          <div>
           <pre><code class="language-csharp">[HttpPost]
 public ActionResult Save(SubscriptionModel inputModel)
 {
@@ -320,10 +337,15 @@ public ActionResult Save(SubscriptionModel inputModel)
         return Json(new { Message = errorMessage });
     }
 }</code></pre>
+
+          </div>
+          </div>
           <p>Now you should be able to test the application.&nbsp;</p>
           <p>Set a breakpoint on the Save method of the SubscriptionModel. When you enter data in the form and push on create profiles are added to the local storage, when you click on send you should hit the breakpoint and all properties of the model should been set.</p>
           <p>To be able to load the application when we are offline we need to use a new feature available in the latest browser like IE9, the Html5:&rdquo;offline application&rdquo;.&nbsp; More info of this feature can be found <a href="http://diveintohtml5.org/offline.html">here.</a></p>
           <p>Add a cache.manifest file to the root of the application:</p>
+          <div>
+          <div>
           <pre><code class="language-plaintext">CACHE MANIFEST
 /index.htm
 /Content/Site.css
@@ -331,15 +353,27 @@ public ActionResult Save(SubscriptionModel inputModel)
 /Scripts/jquery-1.5.1.min.js
 /Scripts/jquery.validate.min.js
 /Content/wait.gif</code></pre>
+
+          </div>
+          </div>
           <p>Change the doctype of the index.htm file:</p>
+          <div>
+          <div>
           <pre><code class="language-html">&lt;html manifest="cache.manifest"&gt;</code></pre>
+          </div>
+          </div>
           <p>You will also need to change the http header that is returned by the IIS server when serving the manifest file.&nbsp; Therefore in IIS7 you need to click on HTTP Headers, open IIS console manager, navigate to the cache.manifest file, click on http headers, add for the name set-&gt; manifest,value-&gt;text/cache-manifest.</p>
           <p>If you want an optimal experience when deploying your app on the IPhone or IPad you should also add the following meta tags inside the HTML header:</p>
+          <div>
+          <div>
           <pre><code class="language-html">&lt;meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" /&gt;
 &lt;meta name="apple-mobile-web-app-capable" content="yes" /&gt;
 &lt;meta name="apple-mobile-web-app-status-bar-style" content="black" /&gt;
 &lt;link rel="apple-touch-icon" href="/Content/applogo.gif" /&gt;
 &lt;link rel="apple-touch-startup-image" href="/Content/startuplogo.gif" /&gt;</code></pre>
+
+          </div>
+          </div>
           <p>You should also add your own image files (applogo &amp; startuplogo) in the content folder so that the startup and app icon is set on the IPhone.</p>
           <p>Now you can navigate to the page with your IOS device, click on &ldquo;+&rdquo; button of the safari browser, add shortcut and voil&agrave; you&rsquo;ve an offline application for your IPhone/IPad made entirely in HTML5/Javascript/ASP.NET MVC3.</p>
           <p>Have fun!</p>

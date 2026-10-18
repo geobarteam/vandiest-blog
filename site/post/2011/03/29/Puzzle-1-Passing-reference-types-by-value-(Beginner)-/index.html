@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Puzzle 1: Passing reference types by value (Beginner) | Geoffrey Vandiest</title>
-  <meta name="description" content="1: public class ValueRef 2: { 3: public static void Problem() 4: { 5: StringBuilder myStrBuilder = new StringBuilder(&quot;x&quot;); 6: AppendHello(myStrBuilder); 7:…">
+  <meta name="description" content="With this post I’ll start a series about programming puzzles and kata’s.">
   <link rel="canonical" href="https://vandiest.biz/post/2011/03/29/Puzzle-1-Passing-reference-types-by-value-(Beginner)-/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Puzzle 1: Passing reference types by value (Beginner)">
-  <meta property="og:description" content="1: public class ValueRef 2: { 3: public static void Problem() 4: { 5: StringBuilder myStrBuilder = new StringBuilder(&quot;x&quot;); 6: AppendHello(myStrBuilder); 7:…">
+  <meta property="og:description" content="With this post I’ll start a series about programming puzzles and kata’s.">
   <meta property="og:url" content="https://vandiest.biz/post/2011/03/29/Puzzle-1-Passing-reference-types-by-value-(Beginner)-/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,7 +24,7 @@
     "headline": "Puzzle 1: Passing reference types by value (Beginner)",
     "datePublished": "2011-03-29",
     "dateModified": "2011-03-29",
-    "description": "1: public class ValueRef 2: { 3: public static void Problem() 4: { 5: StringBuilder myStrBuilder = new StringBuilder(\"x\"); 6: AppendHello(myStrBuilder); 7:…",
+    "description": "With this post I’ll start a series about programming puzzles and kata’s.",
     "keywords": [
       "Puzzle",
       "Kata"
@@ -63,69 +63,37 @@
           </div>
         </header>
         <div class="post-body">
-          <pre><code class="language-csharp"> 1: public class ValueRef
+          <p>With this post I&rsquo;ll start a series about programming puzzles and <a href="http://en.wikipedia.org/wiki/Kata_(programming)">kata&rsquo;s</a>.</p><p>These small exercises will focus on the specific features of C#1,2 &amp; 3. </p><p>Have fun&hellip; </p><p>What is the output of: ValueRef.Problem() ? </p><p>Can you explain why?</p><pre><code class="language-csharp">public class ValueRef
 
- 2: {
+{
 
- 3:         public static void Problem()
+        public static void Problem()
 
- 4:         {
+        {
 
- 5:             StringBuilder myStrBuilder = new StringBuilder("x");
+            StringBuilder myStrBuilder = new StringBuilder("x");
 
- 6:             AppendHello(myStrBuilder);
+            AppendHello(myStrBuilder);
 
- 7:             Console.WriteLine(myStrBuilder.ToString());
+            Console.WriteLine(myStrBuilder.ToString());
 
- 8:             Console.ReadLine();
+            Console.ReadLine();
 
- 9:         }
+        }
 
-10:
 
-11:         static void AppendHello(StringBuilder builder)
 
-12:         {
+        static void AppendHello(StringBuilder builder)
 
-13:             builder.Append("hello");
+        {
 
-14:             builder = null;
+            builder.Append("hello");
 
-15:         }
+            builder = null;
 
-16: }
+        }
 
- 1: public class ValueRef
-
- 2: {
-
- 3:         public static void Problem()
-
- 4:         {
-
- 5:             StringBuilder myStrBuilder = new StringBuilder("x");
-
- 6:             AppendHello(myStrBuilder);
-
- 7:             Console.WriteLine(myStrBuilder.ToString());
-
- 8:             Console.ReadLine();
-
- 9:         }
-
-10:
-
-11:         static void AppendHello(StringBuilder builder)
-
-12:         {
-
-13:             builder.Append("hello");
-
-14:             builder = null;
-
-15:         }
-
-16: }</code></pre>
+}</code></pre>
         </div>
       </article>
 <!-- site:sidebar -->

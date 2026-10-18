@@ -67,23 +67,21 @@
         <div class="post-body">
           <p><img src="/img/2010/anti-pattern2-coupling-between-domain-infrastruc-01.jpg" alt width="468" height="547" loading="lazy"></p>
           <p>In the previous example we&rsquo;ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer. Nevertheless the Invoice class is now strongly coupled to the DataLayer class. To decouple these two classes we can make use of interfaces:</p>
-          <pre><code class="language-csharp"> 2: {
+          <pre><code class="language-csharp">{
 
- 3:         private int _balance;
+        private int _balance;
 
- 4:
 
- 5:         public Invoice(int clientID, IDataLayer db){
 
- 6:           …
+        public Invoice(int clientID, IDataLayer db){
 
- 7:         }
+          …
 
- 8:         …
+        }
 
- 9: }
+        …
 
-10:</code></pre>
+}</code></pre>
           <p>The interface IDataLayer is a sort of wrapper around the infrastructure code &ndash; this interface defines a contract for our infrastructure code, this type of interface is sometimes called a service interface. By creating this service interface we decouple the infrastructure from the domain logic as it does not depend on any concrete implementation anymore. The same strategy can be applied when working with hard to test third party code like the VSTO object model. By creating an interface that defines a fa&ccedil;ade around the third party component we make sure our SUT is testable and decouple our domain logic from the infrastructure code.</p>
           <p>We&nbsp;can use unit tests and the test doubles for designing the service interface that your code depends on. To design this service interface&nbsp;we&nbsp;could take some inspiration from the TDD process. For each new feature we write a unit test that uses a test double to simulate the behavior that your target object needs from its environment; each test double is a hypothesis of what the real code will eventually do. This interface can then be used via Mocking frameworks to generate test doubles. As the cluster of a service interfaces and its test doubles stabilises, we can then begin to wire up your own Service classes with the underlying 3rd party API. The untested code would then be contained into these service classes and will not propagate into your domain code (Entities &amp; Value objects). You would then obtain a clean and homogenous API that was dictated by what your own domain classes needs.</p>
         </div>

@@ -76,6 +76,7 @@
 
           <h4>1) The new keyword is used to construct anything you could replace with a test-double.</h4>
           <p>The most common cause making our test hard to test is violating the single responsibility principle. Look at the example here beneath, the SUT is responsible to construct his own collaborators. When your class has to instantiate and initialize its collaborators, the result tends to be an inflexible and prematurely coupled design. Such classes shut off the ability to inject test collaborators when testing. Do not create collaborators in your constructor or methods, but pass them in. (Don&rsquo;t look for things! Ask for things!)</p>
+          <div>
           <pre><code class="language-csharp">public class Invoice
 {
     private int _balance;
@@ -112,7 +113,10 @@
     }
 }</code></pre>
 
+          </div>
+
           <p>In the example here above, we can never replace the _db field with a test-double.&nbsp; It&rsquo;s true that the Invoice is easy to instantiate but this come at the cost of flexibility.&nbsp; Because the DataLayer represents something expensive to access it is also not very testable .&nbsp; To be able to inject a stubbed DataLayer into the Invoice we add a dataLayer parameter to the constructor:</p>
+          <div>
           <pre><code class="language-csharp">public class Invoice
 {
     private int _balance;
@@ -158,41 +162,41 @@
     }
 }</code></pre>
 
+          </div>
+
           <p>Here we dispose of a SUT that is a lot more testable because we are now able to inject a test doubles into the Invoice .&nbsp; These test doubles can simply be a subtype based on DataLayer that returns default hard coded values.&nbsp; A more advance technique is making use of a mocking framework to generate a stub/mock from the DataLayer class -&gt;</p>
 
-          <pre><code class="language-csharp"> 1: public void Construct_WithSampleValues_BalanceEqualsSampleBalance()
+          <pre><code class="language-csharp">public void Construct_WithSampleValues_BalanceEqualsSampleBalance()
 
- 2: {
+{
 
- 3:     //Arrange
+    //Arrange
 
- 4:     var dalStub = MockRepository.GenerateStub&lt;DataLayer&gt;();
+    var dalStub = MockRepository.GenerateStub&lt;DataLayer&gt;();
 
- 5:     dalStub.Stub(m =&gt; m.GetMeteringValues(SampleClientID)).Return(SampleMeteringValues);
+    dalStub.Stub(m =&gt; m.GetMeteringValues(SampleClientID)).Return(SampleMeteringValues);
 
- 6:     dalStub.Stub(m =&gt; m.GetOffPeakPrice()).Return(SampleOffPeakPrice);
+    dalStub.Stub(m =&gt; m.GetOffPeakPrice()).Return(SampleOffPeakPrice);
 
- 7:     dalStub.Stub(m =&gt; m.GetPeakPrice()).Return(SamplePeakPrice);
+    dalStub.Stub(m =&gt; m.GetPeakPrice()).Return(SamplePeakPrice);
 
- 8:     dalStub.Stub(m =&gt; m.GetAdvances(SampleClientID)).Return(SampleAdvances);
+    dalStub.Stub(m =&gt; m.GetAdvances(SampleClientID)).Return(SampleAdvances);
 
- 9:
 
-10:     //Act
 
-11:     var subject = new Invoice(1, dalStub);
+    //Act
 
-12:
+    var subject = new Invoice(1, dalStub);
 
-13:     //Assert
 
-14:
 
-15:     Assert.AreEqual(SampleBalance, subject.Balance);
+    //Assert
 
-16: }
 
-17:</code></pre>
+
+    Assert.AreEqual(SampleBalance, subject.Balance);
+
+}</code></pre>
         </div>
       </article>
 <!-- site:sidebar -->

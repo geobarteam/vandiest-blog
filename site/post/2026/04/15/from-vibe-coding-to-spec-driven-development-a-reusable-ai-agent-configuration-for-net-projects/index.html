@@ -462,6 +462,7 @@
           <h3>Step 1: Copy the Configuration Files</h3>
           <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-1-copy-the-configuration-files"></a></div>
           <p>Clone or download&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;and copy the relevant files into your project:</p>
+          <div>
           <pre><code class="language-plaintext">your-project/
 ├── .github/
 │   ├── copilot-instructions.md   ← from this repo's root copilot-instructions.md
@@ -472,6 +473,8 @@
 ├── AGENTS.md                     ← shared agent workflow rules (always-on)
 ├── CLAUDE.md                     ← optional, for Claude Code users
 └── templates/                    ← referenced by agents and skills</code></pre>
+
+          </div>
           <blockquote>
           <p>The&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;in this repo is meta (for the template library itself). Copy the&nbsp;<strong>root-level</strong>&nbsp;<code>copilot-instructions.md</code>&nbsp;to&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;in your project.</p>
           </blockquote>
@@ -488,6 +491,7 @@
           <div>
           <h3>Step 3: Start Building Features</h3>
           <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-3-start-building-features"></a></div>
+          <div>
           <pre><code class="language-plaintext"># 1. Plan the feature
 @planner Add subscription management with list and create
 
@@ -495,6 +499,8 @@
 
 # 3. Implement step by step
 /build-feature Step 1 — Display subscription list</code></pre>
+
+          </div>
           <div>
           <h3>Step 4: Adapt to Your Architecture</h3>
           <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-4-adapt-to-your-architecture"></a></div>
@@ -526,7 +532,10 @@
           <h3>The Five-Phase Workflow</h3>
           <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-five-phase-workflow"></a></div>
           <p>Every feature follows five phases. The AI agent is responsible for executing them, but the developer stays in control at every gate.</p>
+          <div>
           <pre><code class="language-plaintext">Explore → Specify → Plan → Implement → Commit</code></pre>
+
+          </div>
           <p><strong>Explore</strong>&nbsp;&mdash; The agent reads the codebase to understand existing patterns, the reference feature, and the problem space. No code changes happen here.</p>
           <p><strong>Specify</strong>&nbsp;&mdash; A specification file (<code>_specs/&lt;FeatureName&gt;.md</code>) captures user stories, acceptance criteria, data model, and business rules. This is the contract between the developer and the AI.</p>
           <p><strong>Plan</strong>&nbsp;&mdash; A plan file (<code>_plans/&lt;FeatureName&gt;.md</code>) decomposes the feature into concrete implementation steps. Each step is a vertical behaviour slice with explicit file paths, test methods, and verification criteria. The plan must be approved before any code is written.</p>
@@ -641,6 +650,7 @@
           <h3>Red-Green-Refactor-Proof: The Implementation Loop</h3>
           <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#red-green-refactor-proof-the-implementation-loop"></a></div>
           <p>Each plan step is executed as a single Red-Green-Refactor cycle. This is the loop the AI agent follows for every step:</p>
+          <div>
           <pre><code class="language-plaintext">READ       — Read the plan step. Understand scope, files, and the test to write.
 RED        — Write the failing test FIRST. Run it. Confirm it fails.
 GREEN      — Write the minimal production code to make the test pass. Run it. Confirm it passes.
@@ -649,6 +659,8 @@ ANALYSE    — Run static analysis. Fix all violations. Run the full test suite.
 PROVE      — Build (zero warnings) + all tests pass + format check passes.
 🛑 STOP    — Present results. Wait for human approval.
 MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
+
+          </div>
           <p>Three rules are non-negotiable:</p>
           <ol>
           <li>
@@ -694,6 +706,7 @@ MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
           <h3>Progress Tracking Across Sessions</h3>
           <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#progress-tracking-across-sessions"></a></div>
           <p>AI coding sessions are ephemeral &mdash; context is lost when a session ends. Our plan files solve this with a simple convention:&nbsp;<strong>checkbox tracking</strong>.</p>
+          <div>
           <pre><code class="language-plaintext">## Step 1 — Display subscription list (stubbed)
 ...
 **🛑 HUMAN GATE**:
@@ -705,6 +718,8 @@ MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
 **🛑 HUMAN GATE**:
 - [ ] Behavioral verification: Integration test passes, GET /api/subscriptions returns list
 - [ ] Code review: Repository, query, controller follow reference patterns</code></pre>
+
+          </div>
           <p>When a new session starts, the agent reads the plan file and finds the first unchecked&nbsp;<code>[ ]</code>&nbsp;&mdash; that's where to resume. No context is lost. Any agent, in any session, can pick up exactly where the last one left off.</p>
           <div>
           <h3>Encoding All of This as AI Instructions</h3>

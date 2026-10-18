@@ -65,143 +65,141 @@
         </header>
         <div class="post-body">
           <p>Remove the iterator class from the listing and replace the call to the iterator class, inside the iteration sample(line 29), by using the yield operator of C#2. </p>
-          <p>The output of the Problem() method should remain the same.<pre><code class="language-csharp"> 1: using System;
+          <p>The output of the Problem() method should remain the same.<pre><code class="language-csharp">using System;
 
- 2: using System.Collections;
+using System.Collections;
 
- 3:
 
- 4: namespace Puzzles
 
- 5: {
+namespace Puzzles
 
- 6:
+{
 
- 7:     public class Enumarators
 
- 8:     {
 
- 9:         public static void Problem()
+    public class Enumarators
 
-10:         {
+    {
 
-11:             var myValues = new[] { "a", "b", "c", "d" };
+        public static void Problem()
 
-12:             var col = new IterationSample(myValues);
+        {
 
-13:             foreach (var x in col)
+            var myValues = new[] { "a", "b", "c", "d" };
 
-14:             {
+            var col = new IterationSample(myValues);
 
-15:                 Console.WriteLine(x);
+            foreach (var x in col)
 
-16:             }
+            {
 
-17:         }
+                Console.WriteLine(x);
 
-18:
+            }
 
-19:         public class IterationSample : IEnumerable
+        }
 
-20:         {
 
-21:             internal object[] values;
 
-22:
+        public class IterationSample : IEnumerable
 
-23:             public IterationSample(object[] values)
+        {
 
-24:             {
+            internal object[] values;
 
-25:                 this.values = values;
 
-26:             }
 
-27:             public IEnumerator GetEnumerator()
+            public IterationSample(object[] values)
 
-28:             {
+            {
 
-29:                 return new Iterator(this);  //Change this line by using yield
+                this.values = values;
 
-30:             }
+            }
 
-31:         }
+            public IEnumerator GetEnumerator()
 
-32:
+            {
 
-33:         public class Iterator:IEnumerator
+                return new Iterator(this);  //Change this line by using yield
 
-34:         {
+            }
 
-35:             IterationSample parent;
+        }
 
-36:             int position;
 
-37:
 
-38:             internal Iterator(IterationSample parent)
+        public class Iterator:IEnumerator
 
-39:             {
+        {
 
-40:                 this.parent = parent;
+            IterationSample parent;
 
-41:                 position = -1;
+            int position;
 
-42:             }
 
-43:             public bool MoveNext()
 
-44:             {
+            internal Iterator(IterationSample parent)
 
-45:                 if (position != parent.values.Length)
+            {
 
-46:                 {
+                this.parent = parent;
 
-47:                 position++;
+                position = -1;
 
-48:                 }
+            }
 
-49:                 return position &lt; parent.values.Length;
+            public bool MoveNext()
 
-50:             }
+            {
 
-51:             public object Current
+                if (position != parent.values.Length)
 
-52:             {
+                {
 
-53:                 get
+                position++;
 
-54:                 {
+                }
 
-55:                     if (position==-1 || position==parent.values.Length)
+                return position &lt; parent.values.Length;
 
-56:                     {
+            }
 
-57:                      throw new InvalidOperationException();
+            public object Current
 
-58:                     }
+            {
 
-59:                     return parent.values[position];
+                get
 
-60:                 }
+                {
 
-61:             }
+                    if (position==-1 || position==parent.values.Length)
 
-62:             public void Reset()
+                    {
 
-63:             {
+                     throw new InvalidOperationException();
 
-64:                 position = -1;
+                    }
 
-65:             }
+                    return parent.values[position];
 
-66:         }
+                }
 
-67:     }
+            }
 
-68: }
+            public void Reset()
 
-69:</code></pre>
+            {
+
+                position = -1;
+
+            }
+
+        }
+
+    }
+
+}</code></pre>
           </p>
         </div>
       </article>

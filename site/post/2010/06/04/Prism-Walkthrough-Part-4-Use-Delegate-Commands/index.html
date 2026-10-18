@@ -73,7 +73,23 @@
           <p><img src="/img/2010/prism-walkthrough-part-4-use-delegate-commands-01.jpg" alt width="263" height="173" loading="lazy"></p>
 
           <p>Insert following code into the MenuViewModel:</p>
-          <pre><code class="language-plaintext"></code></pre>
+          <div>
+
+          <div>
+          <pre><code class="language-csharp">public class MenuViewModel
+{
+    private readonly IRegionManager _regionManager;
+    private readonly IUnityContainer _container;
+
+    public MenuViewModel(IRegionManager regionManager, IUnityContainer container)
+    {
+        this._regionManager = regionManager;
+        this._container = container;
+    }
+}</code></pre>
+
+          </div>
+          </div>
 
           <p>Here we created our first ViewModel that will be the target of our View binding.&nbsp;&nbsp; Our View reference our ViewModel but&nbsp;the ViewModel does not need a reference to a view. The view binds to properties on a ViewModel, which, in turn, exposes data contained in model objects and other state specific to the view. The bindings between view and ViewModel are simple to construct because a ViewModel object is set as the DataContext of a view. If property values in the ViewModel change, those new values automatically propagate to the view via data binding.&nbsp;</p>
 
@@ -83,6 +99,7 @@
 
           <p>To setup this binding update the MenuView class:</p>
 
+          <div>
           <pre><code class="language-csharp">public partial class MenuView : UserControl
 {
     public MenuView(IRegionManager regionManager,IUnityContainer container)
@@ -100,6 +117,8 @@
     }
 }</code></pre>
 
+          </div>
+
           <p>When the user clicks a MenuItem in the MenuView, a command on the MenuViewModel should execute to display a view in the MainRegion (see line 36 - MenuViewModel).&nbsp;&nbsp; Here we use the Prism DelegateCommand to implement the Command pattern.&nbsp;</p>
 
           <p>To retrieve the right View we choose for convention over configuration.&nbsp; The&nbsp; LoadViewCommand takes a parameter that is the the name of the View without the suffix View.&nbsp;</p>
@@ -107,6 +126,7 @@
 
           <p>Add the following code to the CoreModule.cs:</p>
 
+          <div>
           <pre><code class="language-csharp">public void Initialize()
 {
     this.RegisterViewsWithRegions();
@@ -118,8 +138,11 @@ protected virtual void RegisterViewsWithRegions()
     this.regionManager.RegisterViewWithRegion(RegionNames.StatusbarRegion, typeof(StatusbarView));
 }</code></pre>
 
+          </div>
+
           <p><br>Update the MenuViewModel:</p>
 
+          <div>
           <pre><code class="language-csharp">public class MenuViewModel : INotifyPropertyChanged
 {
     private readonly IRegionManager _regionManager;
@@ -176,14 +199,19 @@ protected virtual void RegisterViewsWithRegions()
     #endregion
 }</code></pre>
 
+          </div>
+
           <p>Bind the LoadViewCommand in our MenuItem.xaml:</p>
 
+          <div>
           <pre><code class="language-html">&lt;Menu Name="menu1"&gt;
     &lt;MenuItem Header="File"&gt;
         &lt;MenuItem Header="New"  CommandParameter="CreateFile" Command="{Binding Path=LoadViewCommand}"/&gt;
         &lt;MenuItem Header="Folder"  CommandParameter="CreateFolder" Command="{Binding Path=LoadViewCommand}" /&gt;
     &lt;/MenuItem&gt;
 &lt;/Menu&gt;</code></pre>
+
+          </div>
 
           <p>You should be able to run the application and when you click the menu File, you should see :</p>
 

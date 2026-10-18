@@ -107,41 +107,47 @@
           <li>Add a new class on the root of the application containing the shell (PrismWalkthrough.Shell), name it Bootstrapper </li>
           <li>The Bootstrapper should inherit from Microsoft.Practices.Composite.UnityExtensions.UnityBootstrapper class and override the CreateShell method. You need to instantiate the Shell through the Unity conatiner and call his Show method</li>
           </ol>
-          <pre><code class="language-csharp">public class Bootstrapper : UnityBootstrapper</code></pre>
-          <pre><code class="language-csharp">{</code></pre>
-          <pre><code class="language-plaintext">protected override System.Windows.DependencyObject CreateShell()</code></pre>
-          <pre><code class="language-csharp">{</code></pre>
-          <pre><code class="language-csharp">Shell shell = this.Container.Resolve&lt;Shell&gt;();</code></pre>
-          <pre><code class="language-csharp">shell.Show();</code></pre>
-          <pre><code class="language-csharp">return shell;</code></pre>
-          <pre><code class="language-csharp">}</code></pre>
-          <pre><code class="language-csharp">}</code></pre>
+          <div>
+          <pre><code class="language-csharp">public class Bootstrapper : UnityBootstrapper
+{
+    protected override System.Windows.DependencyObject CreateShell()
+    {
+        Shell shell = this.Container.Resolve&lt;Shell&gt;();
+        shell.Show();
+        return shell;
+    }
+}</code></pre>
+          </div>
 
           <p>To be able to run the bootstrapper at least one module should be registered in our application.&nbsp;</p>
           <ol>
           <li>Add a class to the PrismWalkthrough.Module and name it CoreModule.cs </li>
           <li>This class should implement the IModule interface:</li>
           </ol>
-          <pre><code class="language-csharp">namespace PrismWalkthrough.Modules</code></pre>
-          <pre><code class="language-csharp">{</code></pre>
-          <pre><code class="language-csharp">public class CoreModule : IModule</code></pre>
-          <pre><code class="language-csharp">{</code></pre>
-          <pre><code class="language-csharp">public void Initialize()</code></pre>
-          <pre><code class="language-csharp">{</code></pre>
-          <pre><code class="language-plaintext"></code></pre>
-          <pre><code class="language-csharp">}</code></pre>
-          <pre><code class="language-csharp">}</code></pre>
-          <pre><code class="language-csharp">}</code></pre>
+          <div>
+          <pre><code class="language-csharp">namespace PrismWalkthrough.Modules
+{
+    public class CoreModule : IModule
+    {
+        public void Initialize()
+        {
+
+        }
+    }
+}</code></pre>
+          </div>
 
           <p>Through the bootstrapper you must configure which Modules are available in our Shell. You need to register at least one module in your bootstrapper.</p>
           <ol>
           <li>Override the InitializeModules in the bootstrapper:</li>
           </ol>
-          <pre><code class="language-csharp">protected override void  InitializeModules()</code></pre>
-          <pre><code class="language-csharp">{</code></pre>
-          <pre><code class="language-csharp">IModule coreModule = this.Container.Resolve&lt;CoreModule&gt;();</code></pre>
-          <pre><code class="language-csharp">coreModule.Initialize();</code></pre>
-          <pre><code class="language-csharp">}</code></pre>
+          <div>
+          <pre><code class="language-csharp">protected override void  InitializeModules()
+{
+    IModule coreModule = this.Container.Resolve&lt;CoreModule&gt;();
+    coreModule.Initialize();
+}</code></pre>
+          </div>
 
           <p>The WPF Application class needs to execute the bootstrapper by calling his Run method.&nbsp;</p>
           <ol>
@@ -153,12 +159,14 @@
           </li>
           <li>Override the OnStartup method in the App.cs file:</li>
           </ol>
-          <pre><code class="language-csharp">protected override void OnStartup(StartupEventArgs e)</code></pre>
-          <pre><code class="language-csharp">{</code></pre>
-          <pre><code class="language-csharp">base.OnStartup(e);</code></pre>
-          <pre><code class="language-csharp">Bootstrapper bootstrapper = new Bootstrapper();</code></pre>
-          <pre><code class="language-csharp">bootstrapper.Run();</code></pre>
-          <pre><code class="language-csharp">}</code></pre>
+          <div>
+          <pre><code class="language-csharp">protected override void OnStartup(StartupEventArgs e)
+{
+    base.OnStartup(e);
+    Bootstrapper bootstrapper = new Bootstrapper();
+    bootstrapper.Run();
+}</code></pre>
+          </div>
 
           <p>Now you should be able to run you application, you should see a white screen.</p>
           <p><a href="/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions/">Next ---&gt;</a></p>

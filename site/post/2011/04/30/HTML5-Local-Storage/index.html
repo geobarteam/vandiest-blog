@@ -67,127 +67,147 @@
           <p>There is a feature in HTML5 that enables you to store named key/value pairs in the local storage of your browser.&nbsp; The advantage over using regular cookies is that your data is never send to the remote web server and that you can store a lot more compared to the 4KB limitation of cookie storage space.</p>
           <p>As the local storage is a feature making part of the HTML5 specification, only modern browser supports is;<br>Safari 4.0, Opera 10.5,IE8, FireFox 3.5, Chrome 4.0 and IOS above version 2.0.</p>
           <p>As for any feature of HTML5 before using it you should check if your browser supports the feature:</p>
-          <pre><code class="language-javascript">1: function can_use_html5() {
-2:    try {
-3:        return 'localStorage' in window &amp;&amp; window['localStorage'] !== null;
-4:    }
-5:    catch (e) {
-6:        return false;
-7:    }
-8: }</code></pre>
+          <div>
+          <div>
+          <pre><code class="language-javascript">function can_use_html5() {
+   try {
+       return 'localStorage' in window &amp;&amp; window['localStorage'] !== null;
+   }
+   catch (e) {
+       return false;
+   }
+}</code></pre>
+
+          </div>
+          </div>
           <p>To store or retrieve an item from the local storage:</p>
-          <pre><code class="language-csharp">1: //Retireve an item:
-2: var item = localStorage.getItem("mykey");
-3: //Store an item:
-4: localStorage.setItem("myKey", "myValue");</code></pre>
+          <div>
+          <div>
+          <pre><code class="language-csharp">//Retireve an item:
+var item = localStorage.getItem("mykey");
+//Store an item:
+localStorage.setItem("myKey", "myValue");</code></pre>
+
+          </div>
+          </div>
           <p>To clear an item from the local storage or remove all items:</p>
-          <pre><code class="language-csharp">1: //Remove an item
-2: localStorage.removeItem("myKey");
-3: //Remove all
-4: localStorage.clear();</code></pre>
+          <div>
+          <div>
+          <pre><code class="language-csharp">//Remove an item
+localStorage.removeItem("myKey");
+//Remove all
+localStorage.clear();</code></pre>
+
+          </div>
+          </div>
 
           <p>With this feature we are now able to build web applications that can work offline.&nbsp; Here under I build an application that stores persons profiles in the local storage.&nbsp; I use the JSON.stringify method to serialize the persons before storing the JSON strings in the local storage and JQuery to retrieve the values and bind the events:</p>
-          <pre><code class="language-javascript">  1: &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-  2: &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-  3: &lt;head&gt;
-  4:     &lt;title&gt;Local Storage&lt;/title&gt;
-  5:     &lt;script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.js" type="text/javascript"&gt;&lt;/script&gt;
-  6: &lt;/head&gt;
-  7:
-  8: &lt;body&gt;
-  9:     &lt;div id="resultMessage"&gt;&amp;nbsp;&lt;/div&gt;
- 10:     &lt;table style="position: absolute; left: 10px;"&gt;
- 11:         &lt;tr&gt;
- 12:             &lt;td&gt;
- 13:             Firstname:
- 14:             &lt;/td&gt;
- 15:             &lt;td&gt;&lt;input type="text" id="firstname" /&gt;
- 16:             &lt;/td&gt;
- 17:         &lt;/tr&gt;
- 18:         &lt;tr&gt;
- 19:             &lt;td&gt;
- 20:             Lastname:
- 21:             &lt;/td&gt;
- 22:             &lt;td&gt;&lt;input type="text" id="lastname" /&gt;
- 23:             &lt;/td&gt;
- 24:         &lt;/tr&gt;
- 25:         &lt;tr&gt;
- 26:             &lt;td&gt;
- 27:             E-mail:
- 28:             &lt;/td&gt;
- 29:             &lt;td&gt;&lt;input type="text" id="email" /&gt;
- 30:             &lt;/td&gt;
- 31:         &lt;/tr&gt;
- 32:          &lt;tr&gt;
- 33:             &lt;td&gt;
- 34:                 &lt;input type="button" id="save"  value="Create" /&gt;
- 35:             &lt;/td&gt;
- 36:             &lt;td&gt;
- 37:                 &lt;input type="button" id="print"  value="Print"/&gt;
- 38:             &lt;/td&gt;
- 39:         &lt;/tr&gt;
- 40:     &lt;/table&gt;
- 41:     &lt;script type="text/javascript"&gt;
- 42:         $(function () {
- 43:             if (!can_use_html5()) {
- 44:                 alert("This browser does not support Html5 storage, upgrade or change your browser!");
- 45:             }
- 46:         });
- 47:
- 48:         $(function () {
- 49:             $("#save").click(function () {
- 50:
- 51:                 var person = getPerson();
- 52:
- 53:                 //simple validation
- 54:                 if (person == null) {
- 55:                     alert("Fill in all fields please!");
- 56:                     return;
- 57:                 }
- 58:
- 59:                 var jsData = JSON.stringify(person);
- 60:                 localStorage.setItem($("#email").val(), jsData);
- 61:
- 62:                 $("#resultMessage").html($("#email").val() + " stored in local storage");
- 63:                 clearAllText();
- 64:             })
- 65:         });
- 66:
- 67:         $(function () {
- 68:             $("#print").click(function () {
- 69:                 for (var i = 0; i &lt; window.localStorage.length; i++) {
- 70:                     document.write('&lt;div id="record_' + i + '"&gt; ' + localStorage[localStorage.key(i)] + '&lt;/div&gt;');
- 71:                 }
- 72:                 localStorage.clear();
- 73:             })
- 74:         });
- 75:
- 76:         function getPerson() {
- 77:             var firstname = $("#firstname").val();
- 78:             var lastname = $("#lastname").val();
- 79:             var email = $("#email").val();
- 80:             //simple validation
- 81:             return (firstname == "" || lastname == "" || email == "") ? null : { Firstname: firstname, Lastname: lastname, Email: email };
- 82:         }
- 83:
- 84:         function can_use_html5() {
- 85:             try {
- 86:                 return 'localStorage' in window &amp;&amp; window['localStorage'] !== null;
- 87:             }
- 88:             catch (e) {
- 89:                 return false;
- 90:             }
- 91:         }
- 92:
- 93:         function clearAllText() {
- 94:
- 95:             $("#firstname").attr("value", "");
- 96:             $("#lastname").attr("value", "");
- 97:             $("#email").attr("value", "");
- 98:         }
- 99:     &lt;/Script&gt;
-100: &lt;/body&gt;
-101: &lt;/html&gt;</code></pre>
+          <div>
+          <div>
+          <pre><code class="language-xml">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+    &lt;title&gt;Local Storage&lt;/title&gt;
+    &lt;script src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div id="resultMessage"&gt;&amp;nbsp;&lt;/div&gt;
+    &lt;table style="position: absolute; left: 10px;"&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+            Firstname:
+            &lt;/td&gt;
+            &lt;td&gt;&lt;input type="text" id="firstname" /&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+            Lastname:
+            &lt;/td&gt;
+            &lt;td&gt;&lt;input type="text" id="lastname" /&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+            E-mail:
+            &lt;/td&gt;
+            &lt;td&gt;&lt;input type="text" id="email" /&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;
+                &lt;input type="button" id="save"  value="Create" /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;input type="button" id="print"  value="Print"/&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;script type="text/javascript"&gt;
+        $(function () {
+            if (!can_use_html5()) {
+                alert("This browser does not support Html5 storage, upgrade or change your browser!");
+            }
+        });
+
+        $(function () {
+            $("#save").click(function () {
+
+                var person = getPerson();
+
+                //simple validation
+                if (person == null) {
+                    alert("Fill in all fields please!");
+                    return;
+                }
+
+                var jsData = JSON.stringify(person);
+                localStorage.setItem($("#email").val(), jsData);
+
+                $("#resultMessage").html($("#email").val() + " stored in local storage");
+                clearAllText();
+            })
+        });
+
+        $(function () {
+            $("#print").click(function () {
+                for (var i = 0; i &lt; window.localStorage.length; i++) {
+                    document.write('&lt;div id="record_' + i + '"&gt; ' + localStorage[localStorage.key(i)] + '&lt;/div&gt;');
+                }
+                localStorage.clear();
+            })
+        });
+
+        function getPerson() {
+            var firstname = $("#firstname").val();
+            var lastname = $("#lastname").val();
+            var email = $("#email").val();
+            //simple validation
+            return (firstname == "" || lastname == "" || email == "") ? null : { Firstname: firstname, Lastname: lastname, Email: email };
+        }
+
+        function can_use_html5() {
+            try {
+                return 'localStorage' in window &amp;&amp; window['localStorage'] !== null;
+            }
+            catch (e) {
+                return false;
+            }
+        }
+
+        function clearAllText() {
+
+            $("#firstname").attr("value", "");
+            $("#lastname").attr("value", "");
+            $("#email").attr("value", "");
+        }
+    &lt;/Script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+          </div>
+          </div>
           <p>HTML5 enables new possibilities for all types of scenarios like creating IPAD/IPhone web applications without having to program in objective c and/or upload the app to the app store.&nbsp; In a future post I will demonstrate how you can extend this application to create such an application. &nbsp;&nbsp;</p>
         </div>
       </article>

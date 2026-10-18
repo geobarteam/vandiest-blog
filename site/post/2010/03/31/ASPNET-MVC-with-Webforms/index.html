@@ -87,6 +87,7 @@
           <h2>The View</h2>
           <p>To make our code testable it&rsquo;s very important to be able to decouple the UI from the ASP.NET code-behind.&nbsp; Therefore we will create an interface our ASP.NET page should implement.&nbsp; This View interface will represent the contract the UI as to conform to.&nbsp; When we will test our controller we will not do this with our actual web page but through a mock object that implements the View interface.&nbsp;&nbsp;&nbsp;&nbsp;</p>
           <p>Add an interface ILoginView on the project ZooLibrary:</p>
+          <div>
           <pre><code class="language-typescript">namespace ZooApplication.Library
 {
      public interface ILoginView
@@ -98,6 +99,8 @@
         System.Web.UI.WebControls.Button BtnLogin { get;set;}
     }
 }</code></pre>
+
+          </div>
 
           <ul>
           <li>Edit the default aspx page and enter: Welcome you are authenticated! </li>
@@ -141,6 +144,7 @@
           <p>Because the code-behind is not testable and don&rsquo;t make part of the SUT (Subject Under Test) we want to diminish the code-behind logic to a bare minimum.&nbsp;&nbsp; The view responsibility is limited to output&nbsp; the data coming from our model in a human readable way and to expose user input to the controller.</p>
           <p>Therefore we implement our interface through an aspx page that only contains a set of properties that binds data coming from the controller with our web controls.&nbsp;</p>
           <p>Generally we will try to implement all the presentation logic into the controller. The only exception here will be the RedirectFromLoginPage() method.</p>
+          <div>
           <pre><code class="language-csharp">using System;
 using System.Data;
 using System.Configuration;
@@ -213,6 +217,8 @@ namespace ZooApplication.Website
     }
 }</code></pre>
 
+          </div>
+
           <h2>The model</h2>
           <p>It&rsquo;s our model that is responsible to validate the user login and password against the DB.&nbsp;</p>
           <p>We create a DB named ZooDB:</p>
@@ -252,6 +258,7 @@ namespace ZooApplication.Website
           <p><em class="lost">[Image no longer available: image004]</em></p>
           <p>Our model implements an Authenticate method. Again we will make use of interfaces to decouple the model from the controller.</p>
           <p>On the ZooLibrary project create an interface ILoginModel:</p>
+          <div>
           <pre><code class="language-typescript">namespace ZooApplication.Library
 {
     public interface ILoginModel
@@ -260,8 +267,11 @@ namespace ZooApplication.Website
     }
 }</code></pre>
 
+          </div>
+
           <p>The method Authenticate of the class LoginModel will check the validity of supplied email address and password.&nbsp; You can implement the model with your preferred data access code.&nbsp; Personally I use <a href="http://www.subsonicproject.com/">Subsonic</a> because it&rsquo;s really simple to use and it&rsquo;s based on the active record pattern, the same pattern used in Rails.</p>
           <p>But for the moment let&rsquo;s use standard ADO.NET code:</p>
+          <div>
           <pre><code class="language-sql">using System;
 using System.Collections.Generic;
 using System.Text;
@@ -297,12 +307,15 @@ namespace ZooApplication.Library
     }
 }</code></pre>
 
+          </div>
+
           <h2>The controller</h2>
           <p>The controller job is to figure out how the view should display the model. Therefore the controller should have an association with the model and the view.</p>
           <ul>
           <li>Add a new class to ZooLibrary name it LoginController.</li>
           </ul>
           <p>We start by defining a constructor that takes a ILoginView and a ILoginModel as parameters.<br>The Initialize method will be called by the page to instruct the controller to take control over the view and the model.<br>In the initialize method we will prepare the view to be rendered and subscribe to the events triggered by the view.</p>
+          <div>
           <pre><code class="language-csharp">using System;
 using System.Collections.Generic;
 using System.Text;
@@ -337,10 +350,13 @@ namespace ZooApplication.Library
     }
 }</code></pre>
 
+          </div>
+
           <p><em class="lost">[Image no longer available: clip_image002]</em></p>
 
           <h4><em>Integrating the MVC into the page</em></h4>
           <p>When we program against an asmx page it&rsquo;s always the page that receive the initial control from the ASP.NET framework. <br>So it&rsquo;s the page that need to instantiate the model, the view and the controller.</p>
+          <div>
           <pre><code class="language-csharp">public partial class Login : System.Web.UI.Page, ZooApplication.Library.ILoginView
 {
     private LoginController controller;
@@ -359,9 +375,12 @@ namespace ZooApplication.Library
     …
  }</code></pre>
 
+          </div>
+
           <h2>Testing</h2>
           <p>We are now able with the help of mocking frameworks to test the logic in the model and the controller.</p>
           <p>The code here uses NMock but you can use your prefered mocking framework to implement your tests:<br>In the meantime the test for our LoginController should look like this:</p>
+          <div>
           <pre><code class="language-csharp">public void LoginController_LoginTest()
 {
     ILoginView view = mocks.NewMock&lt;ILoginView&gt;();
@@ -382,6 +401,8 @@ namespace ZooApplication.Library
     mocks.VerifyAllExpectationsHaveBeenMet();
 
 }</code></pre>
+
+          </div>
 
           <p>I hope this introduction to the MVC pattern has been profitable to you.</p>
         </div>

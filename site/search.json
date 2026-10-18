@@ -398,7 +398,7 @@
   "title": "Puzzle 1: Passing reference types by value (Beginner)",
   "url": "/post/2011/03/29/Puzzle-1-Passing-reference-types-by-value-(Beginner)-/",
   "date": "2011-03-29",
-  "description": "1: public class ValueRef 2: { 3: public static void Problem() 4: { 5: StringBuilder myStrBuilder = new StringBuilder(\"x\"); 6: AppendHello(myStrBuilder); 7:…",
+  "description": "With this post I’ll start a series about programming puzzles and kata’s.",
   "tags": [
    "Puzzle",
    "Kata"

@@ -68,6 +68,7 @@
           <p><em class="lost">[Image no longer available]</em></p>
           <p>One of the major flaws in an un-testable design is the very tight coupling between the UI and the actual domain and/or presentation logic. Our typical ASP.NET applications are difficult to test, because much of the logic is contained within the codebehind files, which derive from <em>Web.UI.Page</em>, which needs an <em>HttpContext</em>, which is difficult to mock. Furthermore, the output of the methods in the codebehind is often not easily-testable, because it's a side-effect (such as calling <em>DataBind()</em> on a <em>GridView</em>).</p>
           <p>This same problem exists in windows forms: How do you test the logic inside the form when you are unable to control the input &amp; output of the UI? Let&rsquo;s examine the following code sample.</p>
+          <div>
           <pre><code class="language-csharp">public partial class LoginForm : Form
 {
     const string AUTHNETICATION_FAILED = "Authentication failed!";
@@ -97,8 +98,11 @@
     }
 }</code></pre>
 
+          </div>
+
           <p>Apart from being a pretty na&iuml;ve implementation of a login form, this code is also hard to test. It&rsquo;s design contains several smells of un-testable design. First of all it instantiates his Services directly, making it impossible to inject his dependencies through test doubles. Another problem is how can we test that; when the authentication was successful, the MainForm is shown?</p>
           <p>By applying what we learned earlier we could already make our SUT more testable:</p>
+          <div>
           <pre><code class="language-typescript">public partial class LoginForm : Form
 {
     const string AUTHENTICATION_FAILED = "Authentication failed!";
@@ -157,7 +161,10 @@ public class NavigationService : INavigationService
     }
 }</code></pre>
 
+          </div>
+
           <p>Here we encapsulated the Navigation logic into a Service and we&rsquo;ve created a specific constructor that can be used by our tests to inject a test double making possible to write the following test:</p>
+          <div>
           <pre><code class="language-csharp">[Test]
 public void LoginButton_Click_OnSuccessfullLogin_ShouldNavigateToMainForm()
 {
@@ -179,7 +186,10 @@ public void LoginButton_Click_OnSuccessfullLogin_ShouldNavigateToMainForm()
     mocks.VerifyAll();
 }</code></pre>
 
+          </div>
+
           <p>By applying one of the variants of the <a href="http://martinfowler.com/eaaDev/uiArchs.html">MVC</a> pattern namely the <a href="http://martinfowler.com/eaaDev/PresentationModel">PresentationModel</a> we can completely decouple the presentation logic from infrastructure and test it in isolation:</p>
+          <div>
           <pre><code class="language-typescript">public interface ILoginFormView
 {
     string UserName { get; set; }
@@ -283,7 +293,10 @@ public partial class LoginForm : Form, ILoginFormView
     }
 }</code></pre>
 
+          </div>
+
           <p>We are now able to test the presentation logic:</p>
+          <div>
           <pre><code class="language-csharp">[TestFixture]
 public class LoginFormPresenterTest
 {
@@ -341,6 +354,8 @@ public class LoginFormPresenterTest
         return viewMock;
     }
 }</code></pre>
+
+          </div>
 
           <p><strong>When designing UI&rsquo;s you should make your choice between patterns like </strong><a href="http://nl.wikipedia.org/wiki/Model-view-controller-model"><strong>MVC</strong></a><strong>/</strong><a href="http://martinfowler.com/eaaDev/ModelViewPresenter.html"><strong>MVP</strong></a><strong>/</strong><a href="http://msdn.microsoft.com/en-us/magazine/dd419663.aspx"><strong>MVVM</strong></a><strong> and use the most appropriate pattern and/or framework for your project.</strong>&nbsp; With the appropriate design a lot of the presentation logic encapsulated into the UI can be extracted and tested. In this example we extracted all the presentation logic encapsulated in our form and transferred it into a presenter. This presenter is completely decoupled from any infrastructure and we are able to easily obtain 100% test coverage with it. The LoginForm itself remains un-testable but it does not contain any logic anymore. His only purpose is to act as a sort of proxy between the windows forms infrastructure and our presentation logic.</p>
         </div>

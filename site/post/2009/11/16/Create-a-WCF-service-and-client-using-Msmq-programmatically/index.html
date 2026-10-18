@@ -79,6 +79,7 @@
           <p><em class="lost">[Image no longer available]</em></p>
 
           <p>2) Create a the WcfMsmqFactory class by copying the source code here beneath:</p>
+          <div>
           <pre><code class="language-csharp">public class WcfMsmqFactory&lt;I, T&gt; where T : I
 {
     private string _queueAddress;
@@ -122,6 +123,8 @@
     }
 }</code></pre>
 
+          </div>
+
           <p>This class is perfectly reusable in any project and provide an abstraction on how to create programaticaly WCF services using the msmq binding. To instantiate the class we&rsquo;ve to pass the interface and his actual implementation. The interface type we&rsquo;ll be used to create the client &amp; server part. The implementation type (service) will only be used to create the server. <br>The constructor creates a queue if it&rsquo;s not already available. Note that the example don&rsquo;t use security as the transport level security would demand to use active directory. As my pc does not connect to an Active Directory server I had to instantiate the binding without security:</p>
           <pre><code class="language-javascript">var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);</code></pre>
 
@@ -146,6 +149,7 @@ sHost.Description.Behaviors.Add(smb);</code></pre>
 }</code></pre>
 
           <p>4) Define the service definition:<br>Add the file SmsService.cs:</p>
+          <div>
           <pre><code class="language-typescript">[ServiceContract(Namespace = "http://My.Domain.Services.WCF")]
 [ServiceKnownType(typeof(SmsMessage))]
 public interface ISmsService
@@ -169,8 +173,11 @@ public class SmsService : ISmsService
     }
 }</code></pre>
 
+          </div>
+
           <p>The SmsService class contains the real implementation code. As the purpose of this article is not to demonstrate how to actually send sms messages I didn&rsquo;t provide the real code here. This demo only output the message on the console.</p>
           <p>5) Finally let&rsquo;s put all the parts together.<br>Add the following code to the main part of the program:</p>
+          <div>
           <pre><code class="language-javascript"> static void Main(string[] args)
     {
         //define variables
@@ -207,6 +214,8 @@ public class SmsService : ISmsService
         Console.ReadLine();
     }
 }</code></pre>
+
+          </div>
 
           <p>&nbsp;&nbsp; Running the application should display a console with:<br><em>Starting the server...<br>Instantiating the client channel...<br>Sending the message...<br>SMS send to +322678821 with body='This is a sample sms message!'<br>Closing the server...</em></p>
           <p>The real magic happens here:</p>

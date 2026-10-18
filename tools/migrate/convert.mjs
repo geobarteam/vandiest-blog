@@ -167,7 +167,25 @@ const onlyWhitespaceBetween = (a, b) => {
 };
 const nextElement = (n) => siblingsAfter(n).find(isElement) || null;
 
+// Line numbers typed as plain text ("  1: public class ...") when every line has one.
+function stripLineNumbers(text) {
+  const lines = text.split('\n');
+  const filled = lines.filter((l) => l.trim());
+  if (filled.length < 2 || !filled.every((l) => /^\s*\d+:(\s|$)/.test(l))) return text;
+  return lines.map((l) => l.replace(/^\s*\d+:\s?/, '')).join('\n');
+}
+
+const isCodeDiv = (n) => n && n.tagName === 'DIV' && (/\bcsharpcode\b/.test(n.getAttribute('class') || '') || /codeSnippet/i.test(n.getAttribute('id') || ''));
+
 function convertCode(body, stats) {
+  // A <pre> that wraps paragraphs is damaged markup, not code: keep its content, drop the <pre>.
+  for (let again = true; again;) {
+    again = false;
+    for (const pre of body.querySelectorAll('pre')) {
+      if (pre.querySelector('p, h1, h2, h3, h4, ul, ol, table, blockquote, img')) { unwrap(pre); again = true; break; }
+    }
+  }
+
   const groups = [];
   const seen = new Set();
   for (const pre of body.querySelectorAll('pre')) {
@@ -177,51 +195,49 @@ function convertCode(body, stats) {
     if (insidePre) continue;
 
     const parent = pre.parentNode;
-    const pcls = parent.getAttribute?.('class') || '';
-    const pid = parent.getAttribute?.('id') || '';
-    let lines, wrapper, hint = hintFrom(pre);
-    const childPres = pre.querySelectorAll('pre');
-    if (childPres.length) {
-      // A <pre> holding one <pre> per line (Live Writer variant).
-      lines = childPres.map(preText);
-      childPres.forEach((c) => seen.add(c));
-      wrapper = pre;
-    } else if (/\bcsharpcode\b/.test(pcls) || /codeSnippet/i.test(pid)) {
+    const hint = hintFrom(pre);
+    let pres;
+    if (pre.querySelector('pre')) {
+      // A <pre> holding one <pre> per line (Live Writer variant): the leaves are the lines.
+      const leaves = pre.querySelectorAll('pre').filter((p) => !p.querySelector('pre'));
+      leaves.forEach((p) => seen.add(p));
+      groups.push({ anchor: pre, remove: [], texts: leaves.map(preText), hint });
+      seen.add(pre);
+      continue;
+    }
+    if (isCodeDiv(parent)) {
       // CopySourceAsHtml / "Paste from Visual Studio": one <pre> per line inside a div.
-      const pres = parent.childNodes.filter((n) => n.tagName === 'PRE');
-      pres.forEach((p) => seen.add(p));
-      lines = pres.map(preText);
-      wrapper = parent;
-      const gp = parent.parentNode;
-      if (gp && gp !== body && (/codeSnippetWrapper/i.test(gp.getAttribute?.('id') || '') || gp.childNodes.filter(isElement).length === 1)) wrapper = gp;
+      // Some posts put every line in its own div: join a run of sibling code divs.
+      const containers = [parent];
+      for (let next = nextElement(parent); next && isCodeDiv(next) && onlyWhitespaceBetween(containers[containers.length - 1], next); next = nextElement(next)) containers.push(next);
+      pres = containers.flatMap((c) => c.childNodes.filter((n) => n.tagName === 'PRE'));
     } else {
       // Standalone <pre>: merge a run of consecutive single-line siblings (styled lines).
       const run = [pre];
-      let next = nextElement(pre);
-      while (next && next.tagName === 'PRE' && onlyWhitespaceBetween(run[run.length - 1], next) && !next.querySelector('pre')) { run.push(next); next = nextElement(next); }
+      for (let next = nextElement(pre); next && next.tagName === 'PRE' && onlyWhitespaceBetween(run[run.length - 1], next) && !next.querySelector('pre'); next = nextElement(next)) run.push(next);
       const styled = run.every((p) => p.getAttribute('style'));
-      const texts = run.map(preText);
       const trimBlank = (t) => t.replace(/^(?:[ \t]*\n)+/, '').replace(/\n[ \t]*$/, '').replace(/\n+$/, '');
+      const texts = run.map(preText);
       const singleLines = run.length > 1 && (styled || texts.every((t) => !trimBlank(t).includes('\n')));
-      const take = singleLines ? run : [pre];
-      take.forEach((p) => seen.add(p));
-      lines = singleLines ? texts.map(trimBlank) : [texts[0]];
-      wrapper = pre;
-      if (take.length > 1) { for (const extra of take.slice(1)) extra.remove(); }
-      const wp = pre.parentNode;
-      if (wp && wp !== body && /snippet-clipboard-content|highlight/.test(wp.getAttribute?.('class') || '')) wrapper = wp;
+      pres = singleLines ? run : [pre];
+      if (singleLines) { pres.forEach((p) => seen.add(p)); groups.push({ anchor: pre, remove: run.slice(1), texts: texts.map(trimBlank), hint }); continue; }
     }
-    const before = nonSpace(lines.join(''));
-    const code = tidyCode(lines);
-    const lang = hint || guessLanguage(code);
-    groups.push({ wrapper, code, lang, lines: lines.length, preserved: nonSpace(code) === before });
+    pres.forEach((p) => seen.add(p));
+    groups.push({ anchor: pres[0], remove: pres.slice(1), texts: pres.map(preText), hint });
   }
+
   for (const g of groups) {
-    g.wrapper.replaceWith(`<pre><code class="language-${g.lang}">${esc(g.code).replace(/&quot;/g, '"')}</code></pre>`);
+    const text = stripLineNumbers(g.texts.join('\n'));
+    const before = nonSpace(text);
+    const code = tidyCode([text]);
+    for (const r of g.remove) r.remove();
+    if (!code.trim()) { g.anchor.remove(); stats.empty = (stats.empty || 0) + 1; continue; }
+    const lang = g.hint || guessLanguage(code);
+    g.anchor.replaceWith('<pre><code class="language-' + lang + '">' + esc(code).replace(/&quot;/g, '"') + '</code></pre>');
     stats.blocks++;
-    stats.lines += g.lines;
-    stats.langs[g.lang] = (stats.langs[g.lang] || 0) + 1;
-    if (!g.preserved) stats.altered++;
+    stats.lines += g.texts.length;
+    stats.langs[lang] = (stats.langs[lang] || 0) + 1;
+    if (nonSpace(code) !== before) stats.altered++;
   }
 }
 
