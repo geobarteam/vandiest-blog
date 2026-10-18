@@ -29,7 +29,7 @@
       "Testing",
       "Unit testing",
       "Windows Forms",
-      "ASP.NET MVC"
+      "Design patterns"
     ],
     "author": {
       "@type": "Person",
@@ -57,7 +57,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">Windows Forms</span></li><li><span class="chip chip--quiet">ASP.NET MVC</span></li></ul>
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">Windows Forms</span></li><li><span class="chip chip--quiet">Design patterns</span></li></ul>
           <h1>Anti-Pattern 5: Fat UI's</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -103,7 +103,7 @@
           <p>Apart from being a pretty na&iuml;ve implementation of a login form, this code is also hard to test. It&rsquo;s design contains several smells of un-testable design. First of all it instantiates his Services directly, making it impossible to inject his dependencies through test doubles. Another problem is how can we test that; when the authentication was successful, the MainForm is shown?</p>
           <p>By applying what we learned earlier we could already make our SUT more testable:</p>
           <div>
-          <pre><code class="language-typescript">public partial class LoginForm : Form
+          <pre><code class="language-csharp">public partial class LoginForm : Form
 {
     const string AUTHENTICATION_FAILED = "Authentication failed!";
     private IMembershipService _membershipService;
@@ -190,7 +190,7 @@ public void LoginButton_Click_OnSuccessfullLogin_ShouldNavigateToMainForm()
 
           <p>By applying one of the variants of the <a href="http://martinfowler.com/eaaDev/uiArchs.html">MVC</a> pattern namely the <a href="http://martinfowler.com/eaaDev/PresentationModel">PresentationModel</a> we can completely decouple the presentation logic from infrastructure and test it in isolation:</p>
           <div>
-          <pre><code class="language-typescript">public interface ILoginFormView
+          <pre><code class="language-csharp">public interface ILoginFormView
 {
     string UserName { get; set; }
     string Password { get; set; }

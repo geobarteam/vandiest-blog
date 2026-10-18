@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Unit testing, what else? | Geoffrey Vandiest</title>
-  <meta name="description" content="In the preceding post I stressed why automated testing is so important for the distributed team, but I didn’t really specify what automated testing is.">
+  <meta name="description" content="The most common types of automated tests, from unit and integration tests to acceptance, black box and load tests, and when each one is used.">
   <link rel="canonical" href="https://vandiest.biz/post/2008/09/11/Unit-testing-what-else/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Unit testing, what else?">
-  <meta property="og:description" content="In the preceding post I stressed why automated testing is so important for the distributed team, but I didn’t really specify what automated testing is.">
+  <meta property="og:description" content="The most common types of automated tests, from unit and integration tests to acceptance, black box and load tests, and when each one is used.">
   <meta property="og:url" content="https://vandiest.biz/post/2008/09/11/Unit-testing-what-else/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,11 @@
     "headline": "Unit testing, what else?",
     "datePublished": "2008-09-11",
     "dateModified": "2008-09-11",
-    "description": "In the preceding post I stressed why automated testing is so important for the distributed team, but I didn’t really specify what automated testing is.",
+    "description": "The most common types of automated tests, from unit and integration tests to acceptance, black box and load tests, and when each one is used.",
     "keywords": [
       "Testing",
-      "Unit testing"
+      "Unit testing",
+      "Integration testing"
     ],
     "author": {
       "@type": "Person",
@@ -55,7 +56,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li></ul>
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">Integration testing</span></li></ul>
           <h1>Unit testing, what else?</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -63,20 +64,16 @@
           </div>
         </header>
         <div class="post-body">
-          <div>In the preceding post I stressed why automated testing is so important for the distributed team, but I didn&rsquo;t really specify what automated testing is. Automated testing is not just about uni tests and all tests created with a unit testing framework are not really unit tests!&nbsp;There are many flavors and terms to define automated testing. &nbsp;There exist lots of other kinds of testing and this list is absolutely not exhaustive nevertheless it lists the most common types of automated tests:</div>
+          <p>In the preceding post I stressed why automated testing is so important for the distributed team, but I didn&rsquo;t really specify what automated testing is. Automated testing is not just about uni tests and all tests created with a unit testing framework are not really unit tests!&nbsp;There are many flavors and terms to define automated testing. &nbsp;There exist lots of other kinds of testing and this list is absolutely not exhaustive nevertheless it lists the most common types of automated tests:</p>
+          <ul>
+            <li><p><em>Unit testing</em></p><p>Unit test target a single class or package. They are written by the developer to test one single unit of code and must be isolated from all other components.</p></li>
+            <li><p><em>Integration testing</em></p><p>Integration testing tests the integration of the different unit of code.&nbsp;In an integration test the different program units are combined and tested as groups in multiple ways.&nbsp;Integration testis can be done through the use of a unit testing framework of with black box testing tools.</p></li>
+            <li><p><em>User acceptance tests</em></p><p>These can be block box test or integration test but used in the context of the acceptance of the application. They can be performed by the provider before delivery to the customer or by the customer before transferring ownership.</p></li>
+            <li><p><em>Black box testing</em></p><p>Usually performed by Q&amp;A but they can also sometimes used by developers having to change legacy systems that don&rsquo;t have unit or pre existing integration tests.&nbsp;These tests take an external perspective of the SUT to derive test cases. These tests can be functional or non-functional, though usually functional. The test designer selects valid and invalid input and determines the correct output. There is no knowledge of the test object's internal structure.</p></li>
+            <li><p><em>Performance/Load/stress testing</em></p><p>Although these terms are used to define different techniques they share the same purpose.&nbsp;Their goal is to test the performance of a system and not to find bugs.</p></li>
+          </ul>
 
-          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Unit testing</em></div>
-          <div>Unit test target a single class or package. They are written by the developer to test one single unit of code and must be isolated from all other components.</div>
-          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Integration testing</em></div>
-          <div>Integration testing tests the integration of the different unit of code.&nbsp;In an integration test the different program units are combined and tested as groups in multiple ways.&nbsp;Integration testis can be done through the use of a unit testing framework of with black box testing tools.</div>
-          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>User acceptance tests</em></div>
-          <div>These can be block box test or integration test but used in the context of the acceptance of the application. They can be performed by the provider before delivery to the customer or by the customer before transferring ownership.</div>
-          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Black box testing</em></div>
-          <div>Usually performed by Q&amp;A but they can also sometimes used by developers having to change legacy systems that don&rsquo;t have unit or pre existing integration tests.&nbsp;These tests take an external perspective of the SUT to derive test cases. These tests can be functional or non-functional, though usually functional. The test designer selects valid and invalid input and determines the correct output. There is no knowledge of the test object's internal structure.&nbsp;</div>
-          <div>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>Performance/Load/stress testing</em></div>
-          <div>Although these terms are used to define different techniques they share the same purpose.&nbsp;Their goal is to test the performance of a system and not to find bugs.</div>
-
-          <div>As described in my previous post testing must occur at every stage of the development and by each part of the production unit.&nbsp;Nevertheless the types of tests used at a specific stage differ.&nbsp;Unit tests will be written during the implementation phase by developers. To avoid long and painful integration phases it is also recommended that developers write integration tests. They should test as soon as possible if their components integrate well with other already available components.&nbsp;Black box and load tests should be done after the implementation stage by Q&amp;A teams.&nbsp;This is at the end of iteration when using an iterative process like Xp, Scrum or RUP or before deployment when using a linear process like waterfall.&nbsp;</div>
+          <p>As described in my previous post testing must occur at every stage of the development and by each part of the production unit.&nbsp;Nevertheless the types of tests used at a specific stage differ.&nbsp;Unit tests will be written during the implementation phase by developers. To avoid long and painful integration phases it is also recommended that developers write integration tests. They should test as soon as possible if their components integrate well with other already available components.&nbsp;Black box and load tests should be done after the implementation stage by Q&amp;A teams.&nbsp;This is at the end of iteration when using an iterative process like Xp, Scrum or RUP or before deployment when using a linear process like waterfall.</p>
 
           <p>GVD</p>
         </div>

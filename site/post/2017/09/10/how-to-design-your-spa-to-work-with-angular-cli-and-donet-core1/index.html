@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How to design your SPA to work with Angular CLI and DoNet Core | Geoffrey Vandiest</title>
-  <meta name="description" content="When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…">
+  <meta name="description" content="How to structure a single-page app with an Angular CLI client and an ASP.NET Core Web API, from the development setup to one packaged build.">
   <link rel="canonical" href="https://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to design your SPA to work with Angular CLI and DoNet Core">
-  <meta property="og:description" content="When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…">
+  <meta property="og:description" content="How to structure a single-page app with an Angular CLI client and an ASP.NET Core Web API, from the development setup to one packaged build.">
   <meta property="og:url" content="https://vandiest.biz/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,11 +24,11 @@
     "headline": "How to design your SPA to work with Angular CLI and DoNet Core",
     "datePublished": "2017-09-10",
     "dateModified": "2017-09-10",
-    "description": "When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…",
+    "description": "How to structure a single-page app with an Angular CLI client and an ASP.NET Core Web API, from the development setup to one packaged build.",
     "keywords": [
       "Angular",
-      "JavaScript",
-      "Single-page apps"
+      "Single-page apps",
+      "ASP.NET"
     ],
     "image": "https://vandiest.biz/img/2017/how-to-design-your-spa-to-work-with-angular-cli-01.png",
     "author": {
@@ -57,7 +57,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">JavaScript</span></li><li><span class="chip chip--quiet">Single-page apps</span></li></ul>
+          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">Single-page apps</span></li><li><span class="chip chip--quiet">ASP.NET</span></li></ul>
           <h1>How to design your SPA to work with Angular CLI and DoNet Core</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -98,7 +98,7 @@ ng new angular-app</code></pre>
           <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-01.png" alt width="290" height="563" loading="lazy"></p>
           <p>3) Disable TypeScript compilation<br> Since we will eventually have TypeScript files in our project, we should also disable any TypeScript compilation errors. Open the web-api.csproj file and modify the top PropertyGroup:</p>
 
-          <pre><code class="language-html">&lt;PropertyGroup&gt;
+          <pre><code class="language-xml">&lt;PropertyGroup&gt;
 
   &lt;TargetFramework&gt;netcoreapp2.0&lt;/TargetFramework&gt;
 
@@ -111,7 +111,7 @@ ng new angular-app</code></pre>
 &lt;/PropertyGroup&gt;</code></pre>
 
           <p>4) Configure Startup.cs<br> As our web-api app will also serve the static files we need to configure the Stratup.cs file as follow:</p>
-          <pre><code class="language-html">public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+          <pre><code class="language-csharp">public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     if (env.IsDevelopment())
     {
@@ -141,14 +141,15 @@ ng new angular-app</code></pre>
 
           <p>5) Configure angular-cli to output the build inside the wwroot of the web-api app =&gt; <br> edit the .angular-cli.json file and change the OutDir parameter:</p>
 
-          <pre><code class="language-javascript">"apps": [
+          <pre><code class="language-json">"apps": [
     {
       "root": "src",
       "outDir": "../web-api/wwwroot",</code></pre>
           <p>Now when running ng build inside the angular-app angular-cli should output the result inside the wwroot folder of the web-api app.</p>
-          <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-02.png" alt width="1752" height="1000" loading="lazy">6) Modify the angular app to consume data from your web-api<br> Edit the following files under /angular-app/src/app file=&gt;</p>
+          <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-02.png" alt width="1752" height="1000" loading="lazy"></p>
+          <p>6) Modify the angular app to consume data from your web-api<br> Edit the following files under /angular-app/src/app file=&gt;</p>
           <p>App.module.ts:</p>
-          <pre><code class="language-javascript">import { BrowserModule } from '@angular/platform-browser';
+          <pre><code class="language-typescript">import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -167,7 +168,7 @@ import { HttpModule } from '@angular/http';
 })
 export class AppModule { }</code></pre>
           <p>Modify app.component.ts:</p>
-          <pre><code class="language-javascript">import { Component, OnInit } from '@angular/core';
+          <pre><code class="language-typescript">import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http'
 @Component({
    selector: 'app-root',
@@ -185,14 +186,14 @@ export class AppComponent implements OnInit {
    }
 }</code></pre>
           <p>Edit app.component.html and add this as last lines of the html file:</p>
-          <pre><code class="language-javascript">  &lt;li&gt;
+          <pre><code class="language-html">  &lt;li&gt;
     &lt;h2&gt;Values from ValuesController&lt;/h2&gt;
     &lt;p *ngFor="let value of apiValues"&gt;{{value}}&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
           <p>7) Redirect api calls to your DotNet core app</p>
           <p>To be able to redirect api calls from your angular app when running&nbsp; in the webpack dev server you should create a proxy.conf.json file on the root of your angular app.&nbsp; Here my dotnet webapi runs on port 5000:</p>
-          <pre><code class="language-javascript">{
+          <pre><code class="language-json">{
     "/api": {
       "target": "http://localhost:5000/",
       "secure": false
@@ -202,23 +203,23 @@ export class AppComponent implements OnInit {
           <ul>
           <li>launch the web-api app with</li>
           </ul>
-          <p>dotnet run</p>
+          <pre><code class="language-powershell">dotnet run</code></pre>
           <ul>
           <li>Launch the angular app and pass the proxy configuration:</li>
           </ul>
-          <p>ng serve --proxy-config proxy.conf.json</p>
+          <pre><code class="language-powershell">ng serve --proxy-config proxy.conf.json</code></pre>
           <ul>
           <li>Launch Chrome and open http://localhost:4200/</li>
           </ul>
           <p><img src="/img/2017/how-to-design-your-spa-to-work-with-angular-cli-03.png" alt width="1805" height="783" loading="lazy"></p>
           <p>8)&nbsp;To be able to use npm script commands edit the package.json of the angular-app and edit the script section:</p>
-          <pre><code class="language-javascript">"scripts": {
+          <pre><code class="language-json">"scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "build-prd": "ng build --prod --env=prod",</code></pre>
           <p>9) To be able to invoke these commands from you web-api, add a package.json inside the root of the web-api app containing.&nbsp; Here we declare the same commands but first cd to the angular-app:</p>
-          <pre><code class="language-javascript">{
+          <pre><code class="language-json">{
     "name": "core-angular-example",
     "version": "0.0.0",
     "license": "MIT",

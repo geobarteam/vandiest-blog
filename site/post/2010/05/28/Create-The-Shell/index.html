@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prism walkthrough - Part 1: Create The Shell | Geoffrey Vandiest</title>
-  <meta name="description" content="The client side application is made out of three assemblies:">
+  <meta name="description" content="Prism walkthrough part 1: create the Shell, Modules and Infrastructure projects and set up a Unity bootstrapper that loads the CoreModule.">
   <link rel="canonical" href="https://vandiest.biz/post/2010/05/28/Create-The-Shell/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Prism walkthrough - Part 1: Create The Shell">
-  <meta property="og:description" content="The client side application is made out of three assemblies:">
+  <meta property="og:description" content="Prism walkthrough part 1: create the Shell, Modules and Infrastructure projects and set up a Unity bootstrapper that loads the CoreModule.">
   <meta property="og:url" content="https://vandiest.biz/post/2010/05/28/Create-The-Shell/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,7 +24,7 @@
     "headline": "Prism walkthrough - Part 1: Create The Shell",
     "datePublished": "2010-05-28",
     "dateModified": "2010-05-28",
-    "description": "The client side application is made out of three assemblies:",
+    "description": "Prism walkthrough part 1: create the Shell, Modules and Infrastructure projects and set up a Unity bootstrapper that loads the CoreModule.",
     "keywords": [
       "Prism",
       "WPF",
@@ -81,17 +81,13 @@
           <ol>
           <li>Create the Shell project (PrismWalkthrough.Shell) application with Visual Studio-&gt; File, Project, WPF Application. </li>
           <li>Add the Modules project and Infrastructure project &ndash;&gt; File, Add New Project, Classlibrary </li>
-          <li>The three projects should reference the Composite Application Library assemblies, add the following reference:<br>(These assemblies can be found in the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=387c7a59-b217-4318-ad1b-cbc2ea453f40&amp;displaylang=en">october 2009 Guidance</a> of Prism -&nbsp; you will need to compile the sample application) <ol>
-          <li>&nbsp;
-          <ul>
+          <li>The three projects should reference the Composite Application Library assemblies, add the following reference:<br>(These assemblies can be found in the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=387c7a59-b217-4318-ad1b-cbc2ea453f40&amp;displaylang=en">october 2009 Guidance</a> of Prism -&nbsp; you will need to compile the sample application) <ul>
           <li><strong>Microsoft.Practices.Composite.dll</strong> </li>
           <li><strong>Microsoft.Practices.Composite.Presentation.dll</strong> </li>
           <li><strong>Microsoft.Practices.Composite.UnityExtensions.dll</strong> </li>
           <li><strong>Microsoft.Practices.Unity.dll</strong> </li>
           <li><strong>Microsoft.Practices.ServiceLocation.dll</strong></li>
-          </ul>
-          </li>
-          </ol></li>
+          </ul></li>
           <li>Add a reference to the Modules and Shell&nbsp;projects referencing the Infrastructure assembly. </li>
           <li>Add a refrence to the Shell&nbsp;project referencing the Modules assembly. </li>
           <li>Add a refrence to the Modules and infrastructure that reference to the WindowsBase &amp; PresentationCore and PresentationFramework &ndash;&gt; Reference, Add, .Net tab.</li>

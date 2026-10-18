@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anti-Pattern2: Coupling between Domain &amp; Infrastructure | Geoffrey Vandiest</title>
-  <meta name="description" content="In the previous example we’ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer.">
+  <meta name="description" content="Decouple the Invoice from its DataLayer with a service interface, so domain logic no longer depends on infrastructure and can be tested with test doubles.">
   <link rel="canonical" href="https://vandiest.biz/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Anti-Pattern2: Coupling between Domain &amp; Infrastructure">
-  <meta property="og:description" content="In the previous example we’ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer.">
+  <meta property="og:description" content="Decouple the Invoice from its DataLayer with a service interface, so domain logic no longer depends on infrastructure and can be tested with test doubles.">
   <meta property="og:url" content="https://vandiest.biz/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,11 +24,11 @@
     "headline": "Anti-Pattern2: Coupling between Domain & Infrastructure",
     "datePublished": "2010-05-06",
     "dateModified": "2010-05-06",
-    "description": "In the previous example we’ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer.",
+    "description": "Decouple the Invoice from its DataLayer with a service interface, so domain logic no longer depends on infrastructure and can be tested with test doubles.",
     "keywords": [
-      "Architecture",
-      "DevOps",
-      "Testing"
+      "Testing",
+      "Testability",
+      "Architecture"
     ],
     "image": "https://vandiest.biz/img/2010/anti-pattern2-coupling-between-domain-infrastruc-01.jpg",
     "author": {
@@ -57,7 +57,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Architecture</span></li><li><span class="chip chip--quiet">DevOps</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Testability</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
           <h1>Anti-Pattern2: Coupling between Domain &amp; Infrastructure</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">

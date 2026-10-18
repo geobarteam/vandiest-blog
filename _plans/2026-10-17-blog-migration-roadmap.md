@@ -10,7 +10,7 @@ Written 2026-10-17. The spec budgets one weekend for the migration proper; the d
 | D1 (done) | Decisions closed and foundation live | — | An empty site answers on the preview URL after a manual workflow run |
 | D2 (done) | Content extracted | D1 | 76 posts committed as raw input (scraped) |
 | D3 (done) | Content converted and media fetched | D2 | `check.mjs` passes on all generated posts; `report.md` lists every miss |
-| D4 | Review pass accepted | D3 | Every post has a report line; you accepted the uncertain ones and the missing-image list |
+| D4 (done) | Review pass accepted | D3 | Every post has a report line; you accepted the uncertain ones and the missing-image list |
 | D5 | Preview verified | D4 | All legacy URLs, redirects, feed, 404 and Lighthouse checks pass on the preview URL |
 | D6 | Authoring toolkit | D1 (parallel with D2 to D5) | A test article goes from "new post" to live in under 10 minutes, no manual git |
 | D7 | Cut-over to vandiest.biz | D5, D6 | HTTPS serves a valid certificate on apex and www; sitemap submitted |
@@ -209,6 +209,31 @@ Left for D4: the report flags posts with lost images and inferred tags for the r
 - Zero broken internal links and images from the link-checker.
 - You have accepted the missing-image list (text kept, one-line note where the picture was).
 - Every code block is a single `<pre><code>` with a language class and Prism highlights it.
+
+**Status (2026-10-18): done, pending your spot-check.**
+
+The review ran in three layers. `tools/migrate/review.mjs` compares every converted post with its original word by word. Its first pass found five converter bugs, which are fixed, so no post loses a word now. Next, four migrate-review agents reviewed, in parallel, the 66 posts with an automated finding. Last, I audited their edits: the word comparison again, the full check, and a look at the most heavily rebuilt post. Their verdicts are in `tools/migrate/verdicts.txt` and in the "Review (D4)" section of `tools/migrate/report.md`.
+
+| Final confidence | Posts |
+| --- | --- |
+| High | 64 |
+| Medium (mostly lost images the text survives without) | 10 |
+| Low | 2 |
+
+What the agents changed: inferred tags corrected on most posts, with new tags where the vocabulary had none (Silverlight, Umbraco, Blazor, Authentication, SQL Server, Quality, Scrum); about 60 meta descriptions rewritten from the post's own words, replacing truncated fragments; about 25 code blocks relabelled (C# that was guessed as TypeScript or SQL, XAML as XML); Live Writer debris removed, with dash paragraphs turned into lists and bold lead-ins turned into headings.
+
+**Your spot-check.** The two low posts:
+
+- [ ] *ASP.NET Web setup project walkthrough* (2008): 27 screenshots are lost and most steps depend on them. Keep it as it is, or add a note at the top that the screenshots are gone.
+- [ ] *Building TypeScript with gulp* (2016): the code of each gulp step was already missing in the BlogEngine version. The old WordPress copy on the Wayback Machine may still hold it. Keep it, recover the code, or unpublish it.
+
+Decisions the review raised:
+
+- [ ] The two 2017-09-10 SPA posts: the one ending in "core" is an incomplete early copy of "core1". Both URLs stay; add a line at the top of the first one pointing to the complete post?
+- [ ] *ASP.NET MVC with Webforms*: its original "MVC" tag became "ASP.NET MVC", but the post is about the MVC pattern on Webforms, so the agent replaced it with "Design patterns". Accept?
+- [ ] Five posts link to downloads on belgianagencies.com (source zips, a font, a kata solution), which is probably dead. Drop the links, or self-host the files if you still have them?
+- [ ] *Webservice interoperability* (2008) contains a stray "L", which was a Wingdings sad face in Word. Delete it?
+- [ ] *From vibe coding to spec-driven development* (2026): its "Part 2" link points to a GitHub file. Point it at the Part 2 post on this site instead?
 
 ## D5. Preview verified
 

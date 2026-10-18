@@ -27,8 +27,9 @@
     "description": "This post compares and explains in detail the pros and cons of the 2 most used SPA frameworks by .net developers, Angular and Blazor.",
     "keywords": [
       "Angular",
-      "ASP.NET",
-      "JavaScript"
+      "Blazor",
+      "Single-page apps",
+      "ASP.NET"
     ],
     "image": "https://vandiest.biz/img/2022/what-is-the-best-ui-technology-angular-or-blazor-01.jpg",
     "author": {
@@ -57,7 +58,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">ASP.NET</span></li><li><span class="chip chip--quiet">JavaScript</span></li></ul>
+          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">Blazor</span></li><li><span class="chip chip--quiet">Single-page apps</span></li><li><span class="chip chip--quiet">ASP.NET</span></li></ul>
           <h1>What is the best UI technology: Angular or Blazor ?</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -144,9 +145,11 @@
 
           <h3><strong>Blazor Server vs. client recommendation</strong></h3>
           <p>For traditional enterprise business applications, Blazor Server seems usually the best option but for certain scenarios, Blazor Wasm has clear advantages :</p>
-          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When the responsiveness of your app must be optimal, the low latency of Blazor server will optimize the responsiveness.</p>
-          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You need offline support.</p>
-          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; You expect many users (&gt;100). Blazor Server is a less scalable solution as many users require server resources to handle multiple client connections and client states.</p>
+          <ul>
+          <li>When the responsiveness of your app must be optimal, the low latency of Blazor server will optimize the responsiveness.</li>
+          <li>You need offline support.</li>
+          <li>You expect many users (&gt;100). Blazor Server is a less scalable solution as many users require server resources to handle multiple client connections and client states.</li>
+          </ul>
           <table>
           <tbody>
           <tr>
@@ -510,10 +513,16 @@
 
           <h3><strong>When to choose Blazor over ASP.NET MVC ?</strong></h3>
           <p>As developing or maintaining apps using Blazor is more productive than ASP.NET MVC and easy to learn, Blazor is usually the best choice except when:</p>
-          <p><em>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your application has simple, possibly read-only requirements.</em></p>
+          <ul>
+          <li>
+          <p><em>Your application has simple, possibly read-only requirements.</em></p>
           <p>Many web applications are primarily consumed in a read-only fashion by most of their users. Read-only (or read-mostly) applications tend to be much simpler than those applications that maintain and manipulate a great deal of state. For example, our intranet or public websites where anonymous users can easily make requests, and there is little need for client-side logic. This type of public-facing web site usually consists mainly of content with little client-side behavior. Such applications are easily built as traditional ASP.NET MVC web applications, which perform logic on the web server and render HTML to be displayed in the browser. The fact that each unique page of the site has its own URL that can be bookmarked and indexed by search engines (by default, without having to add this functionality as a separate feature of the application) is also a clear benefit in such scenarios.</p>
-          <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your application ecosystem is based on MVC and is too small or too simple to invest in Blazor.</p>
+          </li>
+          <li>
+          <p>Your application ecosystem is based on MVC and is too small or too simple to invest in Blazor.</p>
           <p>When your applications consist mainly of server-side processes and your UI is quite simple (e.g., Dashboard, back-office CRUD apps, &hellip;) and you&rsquo;ve already made a strong investment in MVC then adding Blazor could not be worth the investment.</p>
+          </li>
+          </ul>
           <h2>Angular vs. Blazor Score Card</h2>
           <p>Here we selected several criteria and attributed weight to the function of the specific needs and environment of Enterprises using .Net as their main technology stack. But, each organization is unique and adapt the scoring based on its specific needs.&nbsp; &nbsp;</p>
           <p>The weight ranges from 1 to 5. 5 indicates an especially important criterion, starting from 1 as minor importance to 5 as the top priority.</p>

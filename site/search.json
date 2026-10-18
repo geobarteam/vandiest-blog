@@ -3,40 +3,40 @@
   "title": "Spec-Driven Development with AI: A Practical Guide to Staying in Control",
   "url": "/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control/",
   "date": "2026-04-18",
-  "description": "AI coding tools have made it remarkably easy to generate software at speed. They can scaffold features, sketch architecture, wire endpoints, and fill in…",
+  "description": "How to turn a vague feature request into a clear spec, a reviewed plan and small testable steps, so AI coding speed never costs you control.",
   "tags": [
    "AI development",
-   "Testing",
-   "Architecture"
+   "Testing"
   ]
  },
  {
   "title": "From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects",
   "url": "/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects/",
   "date": "2026-04-15",
-  "description": "An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplined, repeatable engineering process into AI agents, skills…",
+  "description": "An open-source library of GitHub Copilot and Claude Code configuration files that encodes a disciplined, repeatable engineering process for .NET projects.",
   "tags": [
    "AI development",
-   "Testing",
-   "Architecture"
+   ".NET",
+   "Testing"
   ]
  },
  {
   "title": "My way to apply the test pyramid to an Onion Style architecture with Blazor",
   "url": "/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor/",
   "date": "2023-08-21",
-  "description": "It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements.",
+  "description": "A basic test pyramid for the Onion architecture I use in Blazor projects: unit tests at the base, SpecFlow service tests in the middle, UI tests on top.",
   "tags": [
    "Testing",
-   "Unit testing",
-   "Architecture"
+   "Architecture",
+   "Blazor",
+   "Unit testing"
   ]
  },
  {
   "title": "Going All-In on UI Testing Automation: a Recipe for Failure!",
   "url": "/post/2023/07/17/going-all-in-on-ui-testing-automation-a-recipe-for-failure/",
   "date": "2023-07-17",
-  "description": "Many professionals in our industry believe that the key to an effective testing strategy is a robust system of automated tests that interact with the User…",
+  "description": "A testing strategy focused solely on automated UI tests is too expensive, fragile and slow. The test pyramid organizes tests across the stack instead.",
   "tags": [
    "Testing"
   ]
@@ -45,10 +45,10 @@
   "title": "Best Practices for Effective Unit Testing in C#",
   "url": "/post/2023/07/07/best-practices-for-effective-unit-testing-in-c/",
   "date": "2023-07-07",
-  "description": "In my previous blog post, I explained the importance of writing testable code. In this post, I will explore some common best practices for unit testing in C#…",
+  "description": "Best practices for unit testing in C#: the AAA pattern, using mocking frameworks wisely, test naming, and separating unit from integration tests.",
   "tags": [
-   "Testing",
    "Unit testing",
+   "Testing",
    ".NET"
   ]
  },
@@ -56,10 +56,10 @@
   "title": "6 Key Principles to Elevate Testability and Maintainability in C#",
   "url": "/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability/",
   "date": "2023-07-03",
-  "description": "Testable code stands as a cornerstone in the realm of quality software development.",
+  "description": "Six principles for writing testable and maintainable C# code, from single responsibility and dependency injection to pure functions.",
   "tags": [
-   "Testing",
    "Unit testing",
+   "Testability",
    ".NET"
   ]
  },
@@ -67,7 +67,7 @@
   "title": "Chasing the Mythical 80%: When Code Coverage Becomes a Treasure Hunt",
   "url": "/post/2023/06/28/chasing-the-mythical-80-when-code-coverage-becomes-a-treasure-hunt/",
   "date": "2023-06-28",
-  "description": "Ah, the famous 80% code coverage - the golden number that many developers I've encountered seem to believe has magical powers to keep all the coding gremlins…",
+  "description": "80% code coverage is not magic. Set the right coverage target from complexity and risk, with the SonarQube Coverage Overview report as your map.",
   "tags": [
    "Testing"
   ]
@@ -76,7 +76,7 @@
   "title": "Orchestrating Success: The Harmonious Ensemble Behind Automated Testing!",
   "url": "/post/2023/06/21/orchestrating-success-the-harmonious-ensemble-behind-automated-testing/",
   "date": "2023-06-21",
-  "description": "Hello everyone! Before we dive deep into the technical side of automated testing in my upcoming articles, I want to hit the pause button and shine a spotlight…",
+  "description": "Writing automated tests is a team sport: developers, analysts, testers and Scrum Masters each play a part, with SpecFlow as the glue.",
   "tags": [
    "Testing",
    "Agile"
@@ -86,7 +86,7 @@
   "title": "Building Code Like a Skyscraper: The Scaffolding Magic of Automated Testing!",
   "url": "/post/2023/06/19/building-code-like-a-skyscraper-the-scaffolding-magic-of-automated-testing/",
   "date": "2023-06-19",
-  "description": "Today, I want to chat about how automated testing in software development is like scaffolding in building construction. Why?",
+  "description": "Automated testing in software development is like scaffolding in building construction: both give support and strength to what we are building.",
   "tags": [
    "Testing"
   ]
@@ -98,27 +98,30 @@
   "description": "This post compares and explains in detail the pros and cons of the 2 most used SPA frameworks by .net developers, Angular and Blazor.",
   "tags": [
    "Angular",
-   "ASP.NET",
-   "JavaScript"
+   "Blazor",
+   "Single-page apps",
+   "ASP.NET"
   ]
  },
  {
   "title": "What Is a Single Page Application and when should we use it?",
   "url": "/post/2022/09/10/when-to-choose-for-a-spa-single-page-application-architecture/",
   "date": "2022-09-10",
-  "description": "There are two general approaches to building web applications today: traditional web applications also called Multi Page Applications (MPA’s) because they are…",
+  "description": "Multi page or single page application? An MPA suits mostly read-only content; a SPA gives a better user experience when the app is interactive.",
   "tags": [
-   "Single-page apps"
+   "Single-page apps",
+   "Architecture"
   ]
  },
  {
   "title": "OIDC with auth0, Angular and DotNet Core 3.1",
   "url": "/post/2020/01/06/oidc-with-auth0-angular-and-dotnet-core-3-1/",
   "date": "2020-01-06",
-  "description": "On my github repo you’ll find a demo app based on auth0 SPA Angular quickstart. It is integrated with a .Net Core 3.1 backend.",
+  "description": "A demo app that shows how to use auth0 to secure API calls from an Angular 8+ SPA to a .NET Core 3.1 backend, and the steps to run it.",
   "tags": [
    "Angular",
-   "JavaScript"
+   "ASP.NET",
+   "Authentication"
   ]
  },
  {
@@ -127,24 +130,28 @@
   "date": "2018-10-16",
   "description": "Feature teams is one of the ways of scaling agile over a larger organization, you divide your organization in many feature-teams.",
   "tags": [
-   "Agile"
+   "Agile",
+   "Architecture"
   ]
  },
  {
   "title": "Automate your DB deployment with DbUp",
   "url": "/post/2018/09/24/automate-your-db-deployment-with-dbup/",
   "date": "2018-09-24",
-  "description": "Databases and applications should coexist in the same deployment pipeline. They should be versioned and packaged in the same way and they should share a single…",
+  "description": "Databases and applications should share one deployment pipeline. DbUp, a simple but effective migration tool, does this for SQL Server.",
   "tags": [
-   "DevOps"
+   "DevOps",
+   "SQL Server"
   ]
  },
  {
   "title": "The monolith database as a primary cause of slow delivery",
   "url": "/post/2018/09/10/bottlenecks-linked-with-big-systems/",
   "date": "2018-09-10",
-  "description": "Large monolitic applications are characterized by big bottlenecks that slows down the entire process.",
+  "description": "A monolith database causes delivery bottlenecks: big databases make test data hard to manage, which blocks test automation and adds coordination overhead.",
   "tags": [
+   "Architecture",
+   "DevOps",
    "Testing"
   ]
  },
@@ -154,18 +161,18 @@
   "date": "2018-09-10",
   "description": "Link to my presentation about \"Best practices on how to architect for faster and better delivery in the Enterprise\".",
   "tags": [
-   "Architecture"
+   "Architecture",
+   "DevOps"
   ]
  },
  {
   "title": "Continous Delivery as a paradigm shift",
   "url": "/post/2018/01/10/continous-delivery-as-a-paradigm-shift/",
   "date": "2018-01-10",
-  "description": "In the classical view of software delivery, you need to make a trade-off between quality and speed.",
+  "description": "Continuous delivery breaks the old trade-off between quality and speed: teams that deploy at the push of a button deliver faster and better.",
   "tags": [
    "DevOps",
-   "Agile",
-   "Testing"
+   "Agile"
   ]
  },
  {
@@ -181,18 +188,18 @@
   "title": "How to design your SPA to work with Angular CLI and DoNet Core",
   "url": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core1/",
   "date": "2017-09-10",
-  "description": "When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…",
+  "description": "How to structure a single-page app with an Angular CLI client and an ASP.NET Core Web API, from the development setup to one packaged build.",
   "tags": [
    "Angular",
-   "JavaScript",
-   "Single-page apps"
+   "Single-page apps",
+   "ASP.NET"
   ]
  },
  {
   "title": "How to design your SPA to work with Angular CLI and DoNet Core",
   "url": "/post/2017/09/10/how-to-design-your-spa-to-work-with-angular-cli-and-donet-core/",
   "date": "2017-09-10",
-  "description": "When building new apps, you need both client and server-side pieces. This article focusses on how to structure a SPA that is made out of angular for the client…",
+  "description": "How to structure a single-page app made of an Angular CLI client and a dotnet core Web API, and the first steps to set one up.",
   "tags": [
    "Angular",
    "Single-page apps",
@@ -203,7 +210,7 @@
   "title": "Angular2 vs React from the perspective of a .Net fullstack developer",
   "url": "/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer/",
   "date": "2016-09-10",
-  "description": "Currently we had a lot of discussion on which web framework we should invest: Angular2 or React.",
+  "description": "Angular2 or React? I built with both as an enterprise .NET developer who wants TypeScript and tooling that just works, and compare them.",
   "tags": [
    "Angular",
    "React",
@@ -214,7 +221,7 @@
   "title": "Building TypeScript with Gulp",
   "url": "/post/2016/09/01/building-typescript-with-gulp/",
   "date": "2016-09-01",
-  "description": "In the preceding post I show how you can build your TypeScript with Tsc, you can also simply use Visual Studio and use the option: “Compile TypeScipt on Build”…",
+  "description": "How to use Gulp and gulp-typescript to set up and fine-tune the TypeScript build of an ASP.NET Core project.",
   "tags": [
    "TypeScript",
    "JavaScript"
@@ -224,11 +231,10 @@
   "title": "Build your Arduino Robot and program it with Javascript",
   "url": "/post/2016/05/03/build-your-arduino-robot-and-program-it-with-javascript/",
   "date": "2016-05-03",
-  "description": "In this post I explain step by step how I build an Arduino based Robot. This can be a handy if you want to build your own.",
+  "description": "Step by step, how I built an Arduino robot that a Node.js server drives over Bluetooth with Johnny-Five, and how you can build your own.",
   "tags": [
    "Arduino",
-   "JavaScript",
-   "Git"
+   "JavaScript"
   ]
  },
  {
@@ -267,18 +273,18 @@
   "title": "Setup, develop and deploy your ASP.NET MVC Umbraco website on Azure",
   "url": "/post/2016/01/06/setup-develop-and-deploy-your-asp-net-mvc-umbraco-website-on-azure/",
   "date": "2016-01-06",
-  "description": "To run Umbraco on Azure you can choose to use the build in Azure template.",
+  "description": "How I set up, develop and deploy an ASP.NET MVC Umbraco website on Azure: my development lifecycle and the steps of a first deployment.",
   "tags": [
-   "ASP.NET",
+   "Umbraco",
    "Azure",
-   "DevOps"
+   "ASP.NET MVC"
   ]
  },
  {
   "title": "Learning Kodu links",
   "url": "/post/2015/12/10/learning-kodu-links/",
   "date": "2015-12-10",
-  "description": "Here a couple of links in dutch, french and English with info on how to learn Kodu to kids:",
+  "description": "A couple of links in Dutch, French and English, with manuals and videos, on how to teach Kodu Game Lab to kids.",
   "tags": [
    "Coding for kids"
   ]
@@ -289,14 +295,15 @@
   "date": "2015-11-15",
   "description": "Through this link you can download my course for Arduino beginners. This course is one of the many I use to entertain kids during our coding-dojos sessions.",
   "tags": [
-   "Arduino"
+   "Arduino",
+   "Coding for kids"
   ]
  },
  {
   "title": "Learning programming with Scratch",
   "url": "/post/2015/06/06/learning-programming-with-scratch/",
   "date": "2015-06-06",
-  "description": "Here is a little coding exercise inspired from one of the codeingame puzzels. It was ported based on the Mars Lander-2 game made by mrswanson.",
+  "description": "A Scratch coding exercise for kids, ported from the Mars Lander puzzle: reprogram the lander so it lands safely on Mars without crashing.",
   "tags": [
    "Coding for kids"
   ]
@@ -305,9 +312,10 @@
   "title": "GoSimple.Logging.Log4Net",
   "url": "/post/2015/05/13/gosimple-logging-log4net/",
   "date": "2015-05-13",
-  "description": "Wouldn’t it be great if I ‘had a central place where I could keep and work on all my little nuggets of utility code I’ve written over the years.",
+  "description": "GoSimple.Logging is a small library with a common logging interface and a Log4Net implementation, including a syslog appender for Splunk.",
   "tags": [
-   "Logging"
+   "Logging",
+   ".NET"
   ]
  },
  {
@@ -323,9 +331,10 @@
   "title": "Quality saves time and money!",
   "url": "/post/2011/09/01/Quality-saves-money-and-time/",
   "date": "2011-09-01",
-  "description": "This principle is based on the observation that one of the most time consuming activity is rework.",
+  "description": "In software projects quality saves time and money: rework is the costliest activity, and the longer a defect stays in the chain the more it costs to fix.",
   "tags": [
-   "Agile"
+   "Quality",
+   "Testing"
   ]
  },
  {
@@ -334,8 +343,9 @@
   "date": "2011-08-31",
   "description": "Here is a kata made by uncle Bob (Robert C. Martin). It should be resolved the TDD way (you know…by writing the test first).",
   "tags": [
-   "Design patterns",
-   "Unit testing"
+   "Kata",
+   "Unit testing",
+   "Testing"
   ]
  },
  {
@@ -344,11 +354,10 @@
   "date": "2011-05-14",
   "description": "You need to build an application for the IPad or IPhone but you don’t have the time to learn objective-c and cocoa. The good news is that you don't need to!",
   "tags": [
-   "ASP.NET",
-   "iPad",
-   "iPhone",
+   "HTML5",
    "ASP.NET MVC",
-   "JavaScript"
+   "JavaScript",
+   "iPad"
   ]
  },
  {
@@ -389,9 +398,10 @@
   "title": "Answer for puzzle 1",
   "url": "/post/2011/04/02/Answer-for-puzzle-1/",
   "date": "2011-04-02",
-  "description": "The result is: xhello The thing here is that because the stringbuilder is a reference type, when you change the content of the stringbuilder inside the…",
+  "description": "Puzzle 1 prints xhello: .NET passes every parameter by value, even a reference, so setting the copied pointer to null never reaches the caller.",
   "tags": [
-   "Puzzle"
+   "Puzzle",
+   "C#"
   ]
  },
  {
@@ -408,7 +418,7 @@
   "title": "Sharing Common Volatile Assemblies Across Solutions and Teams",
   "url": "/post/2011/02/19/Sharing-Common-Volatile-Assemblies-Across-Solutions-and-Teams/",
   "date": "2011-02-19",
-  "description": "I've taken over the role of Architect on a large project made of several applications all sharing a lot of common assemblies.",
+  "description": "How I brought order to shared, constantly changing assemblies across teams: local reference folders, a package catalogue and JoPack syncing them in CI.",
   "tags": [
    "Architecture",
    "TFS",
@@ -463,7 +473,7 @@
   "title": "Prism Walkthrough - Part 2: Define The Regions",
   "url": "/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions/",
   "date": "2010-05-29",
-  "description": "Menu Region: contain a Menu that is responsible to load views in the Main Region",
+  "description": "Prism walkthrough part 2: define the menu, main and status bar regions of the Shell as named ItemsControls in Shell.xaml.",
   "tags": [
    "Prism",
    "WPF"
@@ -473,7 +483,7 @@
   "title": "Prism walkthrough - Part 1: Create The Shell",
   "url": "/post/2010/05/28/Create-The-Shell/",
   "date": "2010-05-28",
-  "description": "The client side application is made out of three assemblies:",
+  "description": "Prism walkthrough part 1: create the Shell, Modules and Infrastructure projects and set up a Unity bootstrapper that loads the CoreModule.",
   "tags": [
    "Prism",
    "WPF",
@@ -484,11 +494,12 @@
   "title": "Create a refrence WPF application using MVVM with Prism, WCF and Entity Framework",
   "url": "/post/2010/05/27/Create-a-refrence-application-using-the-Net4-stack-WPF-MVVM-using-Prism-WCF-and-Entity-Framework/",
   "date": "2010-05-27",
-  "description": "In this series of posts I’ll build a reference WPF application(template) that can be used as a template for line of business applications (LOB). .",
+  "description": "A walkthrough series that builds a reference WPF application for line of business apps with Prism, MVVM, Unity, WCF and the Entity Framework.",
   "tags": [
    "WPF",
-   "WCF",
-   ".NET"
+   "Prism",
+   "MVVM",
+   "WCF"
   ]
  },
  {
@@ -500,7 +511,7 @@
    "Testing",
    "Unit testing",
    "Windows Forms",
-   "ASP.NET MVC"
+   "Design patterns"
   ]
  },
  {
@@ -519,21 +530,22 @@
   "title": "Anti-Pattern 3: Overloaded Constructor",
   "url": "/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor/",
   "date": "2010-05-10",
-  "description": "In the previous example the “Invoice” object is responsible to retrieve all the values needed to calculate the balance and it also contains the business logic…",
+  "description": "An Invoice that fetches its own data and calculates its balance violates the SRP. Extract a repository, pass in only the data, and the test needs no mocks.",
   "tags": [
-   "Architecture",
-   "Testing"
+   "Testing",
+   "Testability",
+   "Design patterns"
   ]
  },
  {
   "title": "Anti-Pattern2: Coupling between Domain & Infrastructure",
   "url": "/post/2010/05/06/Anti-Pattern2-Coupling-between-Domain-Infrastructure/",
   "date": "2010-05-06",
-  "description": "In the previous example we’ve extracted all the infrastructure code from the Invoice class and created a new class: the DataLayer.",
+  "description": "Decouple the Invoice from its DataLayer with a service interface, so domain logic no longer depends on infrastructure and can be tested with test doubles.",
   "tags": [
-   "Architecture",
-   "DevOps",
-   "Testing"
+   "Testing",
+   "Testability",
+   "Architecture"
   ]
  },
  {
@@ -551,7 +563,7 @@
   "title": "Customize Visual Studio",
   "url": "/post/2010/04/17/Customize-Visual-Studio/",
   "date": "2010-04-17",
-  "description": "Want to customize your Vs 20x theme - have a look at: http://studiostyles.info",
+  "description": "Want to customize your Visual Studio theme? Have a look at studiostyles.info.",
   "tags": [
    "Visual Studio"
   ]
@@ -571,7 +583,7 @@
   "title": "Why should we test?",
   "url": "/post/2010/04/14/Why-should-we-test/",
   "date": "2010-04-14",
-  "description": "I plan to write some articles regarding how to write good unit tests but before providing what my guidelines are regarding unit testing it’s important to first…",
+  "description": "Why we unit test, and my answers to the objections I hear on the field: it is not productive, misses bugs, breaks all the time, is too hard to test.",
   "tags": [
    "Testing",
    "Unit testing",
@@ -582,9 +594,10 @@
   "title": "Keyboard support for Menu control Sylverlight 4",
   "url": "/post/2010/04/13/Keyboard-support-for-Menu-control-Sylverlight-4/",
   "date": "2010-04-13",
-  "description": "Today I tried to validate an Architecture by creating a POC. The architecture is an N-Tier using Silverlight for the client.",
+  "description": "Silverlight 4 has no menu control, and none of the open source or commercial menus I tried gives decent keyboard support. Here is my shortlist.",
   "tags": [
-   "WPF"
+   "Silverlight",
+   "Architecture"
   ]
  },
  {
@@ -602,7 +615,7 @@
   "title": "Cannot start Microsoft Office outlook. Cannot open the outlook window",
   "url": "/post/2010/04/11/Cannot-start-Microsoft-Office-outlook-Cannot-open-the-outlook-window/",
   "date": "2010-04-11",
-  "description": "It’s now the third time I experience the same problem, for a strange reason outlook refuse to start anymore and I get the following error message: “\"Cannot…",
+  "description": "The fix for Outlook refusing to start with “Cannot start Microsoft Office Outlook. Cannot open the Outlook window”: run Outlook.exe /resetnavpane.",
   "tags": [
    "Office"
   ]
@@ -623,37 +636,39 @@
   "title": "ASP.NET MVC with Webforms",
   "url": "/post/2010/03/31/ASPNET-MVC-with-Webforms/",
   "date": "2010-03-31",
-  "description": "It’s now generally admitted in the community that Unit testing and TDD (Test Driven Development) are valuable techniques when it comes to increasing the…",
+  "description": "How to apply the model view controller pattern on top of the ASP.NET Webforms code-behind model, with a testable login form as the example.",
   "tags": [
    "ASP.NET",
-   "ASP.NET MVC",
-   "Webforms"
+   "Webforms",
+   "Design patterns",
+   "Testing"
   ]
  },
  {
   "title": "GIT with VisualStudio",
   "url": "/post/2010/02/09/GIT-with-VisualStudio/",
   "date": "2010-02-09",
-  "description": "It’s about a week that I’m trying to use Git with Visual Studio. My intention was to replace SVN by Git because it allows for a more complete development…",
+  "description": "A week of using Git with Visual Studio instead of SVN: the pros and cons I found, and why I am sticking with SVN for now.",
   "tags": [
-   "Git"
+   "Git",
+   "Visual Studio"
   ]
  },
  {
   "title": "Kata2: The Decorator Pattern",
   "url": "/post/2010/01/26/Kata2-The-Decorator-Pattern/",
   "date": "2010-01-26",
-  "description": "This the second part of the series of Coding Kata’s. Here we’ll explore the Decorator pattern.",
+  "description": "The second coding kata on design patterns: send customer alerts by e-mail, sms and messenger with the Decorator pattern, plus my NUnit solution.",
   "tags": [
    "Design patterns",
-   "Testing"
+   "Kata"
   ]
  },
  {
   "title": "Sharepoint 2007 Certification Guide",
   "url": "/post/2010/01/25/Sharepoint-2007-Certification-Guide/",
   "date": "2010-01-25",
-  "description": "Here under you can find two usefull ressources to prepare for the exam:",
+  "description": "The two resources I used to prepare for the SharePoint 2007 development certification exam, and pass it with a high score.",
   "tags": [
    "SharePoint",
    "Career"
@@ -663,26 +678,28 @@
   "title": "Coding Kata on design patterns: Kata1, The Abstract Factory Pattern",
   "url": "/post/2010/01/25/Coding-Kata-on-design-patterns-Kata1-The-Abstract-Factory-Pattern/",
   "date": "2010-01-25",
-  "description": "This post is the first in a series dedicated to Coding Kata’s and design patterns.",
+  "description": "The first coding kata in a series on design patterns: create two products with a Name that cannot change, using the Abstract Factory pattern.",
   "tags": [
-   "Design patterns"
+   "Design patterns",
+   "Kata"
   ]
  },
  {
   "title": "Create a WCF service and client, using Msmq, programmatically",
   "url": "/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically/",
   "date": "2009-11-16",
-  "description": "Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service.",
+  "description": "How to create a WCF service and client over MSMQ in code instead of config files, with a small reusable factory class and a console demo.",
   "tags": [
    "WCF",
-   "Architecture"
+   "MSMQ",
+   ".NET"
   ]
  },
  {
   "title": "Visual Studio TextMate Font Black Background",
   "url": "/post/2009/10/03/Visual-Studio-TextMate-Font-Black-Background/",
   "date": "2009-10-03",
-  "description": "It’s about 2 years now that I use a black background in Visual studio with TextMate inspired font \"Monaco\" and I still love it.",
+  "description": "My Visual Studio setup for two years: a black background with the TextMate inspired Monaco font, and the settings file to import it yourself.",
   "tags": [
    "Visual Studio"
   ]
@@ -691,69 +708,69 @@
   "title": "What is the role of a software architect in an Agile Enterprise?",
   "url": "/post/2009/07/30/What-is-the-role-of-a-software-architect-in-an-Agile-Enterprise/",
   "date": "2009-07-30",
-  "description": "I’ve defined here under what my vision is on the tasks and responsibilities of a Agile Software Architect role should have in the Enterprise.",
+  "description": "My view on the tasks and responsibilities of an Agile software architect in the enterprise, and why the role stays close to the team for the whole project.",
   "tags": [
    "Architecture",
-   "Agile",
-   "Career"
+   "Agile"
   ]
  },
  {
   "title": "The 5 Pilars of Unit Testing",
   "url": "/post/2009/07/22/The-5-Pilars-of-Unit-Testing/",
   "date": "2009-07-22",
-  "description": "These are, what I consider to be the 5 most desirable quality attributes of a unit test:",
+  "description": "The five quality attributes I want from every unit test: accessible, repeatable, easy to write and maintain, resistant to change, and quick to run.",
   "tags": [
-   "Testing",
-   "Unit testing"
+   "Unit testing",
+   "Testing"
   ]
  },
  {
   "title": "Extensibility for ASP.NET MVC",
   "url": "/post/2009/03/24/Extensibility-for-ASPNET-MVC/",
   "date": "2009-03-24",
-  "description": "I’m working on an extensibility framework made to be used on top of ASP.NET MVC. My extensibility framework is based on the famous Ioc container: Structuremap .",
+  "description": "How I built an extensibility framework on top of ASP.NET MVC with StructureMap, so one hosted application can be extended per customer with plug-ins.",
   "tags": [
-   "ASP.NET",
-   "Architecture",
-   ".NET"
+   "ASP.NET MVC",
+   "IoC",
+   "Architecture"
   ]
  },
  {
   "title": "Is mangling PRINCE2 and SCRUM Agile?",
   "url": "/post/2008/12/21/Is-mangling-PRINCE2-and-SCRUM-Agile/",
   "date": "2008-12-21",
-  "description": "This week I attended a session of the Agile users-group in Belgium. The topic was about: how to mangle SCRUM and PRINCE2.",
+  "description": "Notes from a Belgian Agile user group fishbowl on mixing PRINCE2 and SCRUM: why they can fit, the risks of waste and a split team, and my advice.",
   "tags": [
-   "Agile"
+   "Agile",
+   "Scrum"
   ]
  },
  {
   "title": "First Steps with Unit Testing Walkthrough",
   "url": "/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough/",
   "date": "2008-10-30",
-  "description": "In this article I introduce through a walkthrough the basics of how to write a good well structured unit test.",
+  "description": "A walkthrough of the basics of writing a well structured unit test in C# with VSTS: setup, execute, verify, and fixtures with TestInitialize and TestCleanup.",
   "tags": [
-   "Testing",
-   "Unit testing"
+   "Unit testing",
+   "Testing"
   ]
  },
  {
   "title": "ASP.NET Web setup project walkthrough",
   "url": "/post/2008/10/07/ASPNET-Web-setup-project-walkthrough/",
   "date": "2008-10-07",
-  "description": "This post contains a walkthrough that will help you understand the basic tasks to accomplish to create an MSI packages for deploying your web application.",
+  "description": "A walkthrough for building an MSI package for an ASP.NET web application with a Web setup project, a custom action for web.config and quiet installs.",
   "tags": [
    "DevOps",
-   ".NET",
-   "ASP.NET"
+   "ASP.NET",
+   ".NET"
   ]
  },
  {
   "title": "Webservice Interoperability with contract first approach",
   "url": "/post/2008/09/24/Webservice-Interoperability-with-contract-first-approach/",
   "date": "2008-09-24",
-  "description": "We just solved an interoperability problem for one of our customer that was trying to interoperate between Java & .Net.",
+  "description": "Fixing a Java to .NET web service interop problem: svcutil dropped collections on maxOccurs unbounded and fell back to XmlSerializer on a choice element.",
   "tags": [
    "WCF",
    ".NET"
@@ -763,19 +780,22 @@
   "title": "Unit testing, what else?",
   "url": "/post/2008/09/11/Unit-testing-what-else/",
   "date": "2008-09-11",
-  "description": "In the preceding post I stressed why automated testing is so important for the distributed team, but I didn’t really specify what automated testing is.",
+  "description": "The most common types of automated tests, from unit and integration tests to acceptance, black box and load tests, and when each one is used.",
   "tags": [
    "Testing",
-   "Unit testing"
+   "Unit testing",
+   "Integration testing"
   ]
  },
  {
   "title": "Automated testing and the software factory",
   "url": "/post/2008/09/08/Automated-testing-and-the-software-factory/",
   "date": "2008-09-08",
-  "description": "There is a theory in software engineering asserting that a relationship exists between the structure of a development organization and the architecture of the…",
+  "description": "Why a distributed software factory should practice automated testing, and how it affects the team, seen through the lens of a factory assembly line.",
   "tags": [
-   "Testing"
+   "Testing",
+   "Software factory",
+   "Agile"
   ]
  }
 ]

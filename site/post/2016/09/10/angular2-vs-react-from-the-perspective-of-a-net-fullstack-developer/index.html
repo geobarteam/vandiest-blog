@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Angular2 vs React from the perspective of a .Net fullstack developer | Geoffrey Vandiest</title>
-  <meta name="description" content="Currently we had a lot of discussion on which web framework we should invest: Angular2 or React.">
+  <meta name="description" content="Angular2 or React? I built with both as an enterprise .NET developer who wants TypeScript and tooling that just works, and compare them.">
   <link rel="canonical" href="https://vandiest.biz/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Angular2 vs React from the perspective of a .Net fullstack developer">
-  <meta property="og:description" content="Currently we had a lot of discussion on which web framework we should invest: Angular2 or React.">
+  <meta property="og:description" content="Angular2 or React? I built with both as an enterprise .NET developer who wants TypeScript and tooling that just works, and compare them.">
   <meta property="og:url" content="https://vandiest.biz/post/2016/09/10/angular2-vs-react-from-the-perspective-of-a-net-fullstack-developer/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,7 +24,7 @@
     "headline": "Angular2 vs React from the perspective of a .Net fullstack developer",
     "datePublished": "2016-09-10",
     "dateModified": "2016-09-10",
-    "description": "Currently we had a lot of discussion on which web framework we should invest: Angular2 or React.",
+    "description": "Angular2 or React? I built with both as an enterprise .NET developer who wants TypeScript and tooling that just works, and compare them.",
     "keywords": [
       "Angular",
       "React",
@@ -65,7 +65,7 @@
           </div>
         </header>
         <div class="post-body">
-          <h2><img src="/img/2016/angular2-vs-react-from-the-perspective-of-a-net-01.jpg" alt="FightClub" width="1200" height="704" loading="lazy"></h2>
+          <p><img src="/img/2016/angular2-vs-react-from-the-perspective-of-a-net-01.jpg" alt="FightClub" width="1200" height="704" loading="lazy"></p>
           <h2>Intro</h2>
           <p>Currently we had a lot of discussion on which web framework we should invest: Angular2 or React. Therefore I decided to experiment with both and make my own meaning.&nbsp;</p>
           <p>Coming from Angular1 and loving it, I can&rsquo;t pretend I&rsquo;m completely objective. Nevertheless being a little frustrated with the breaking changes and late arrival of Angular2 and hearing a lot about the goodness of React, I wanted to give it a try and compare both frameworks with an open mind-set.&nbsp;&nbsp;</p>
@@ -74,7 +74,7 @@
           <h2>Overview</h2>
           <h3>React</h3>
           <p>React is a declarative Javascript UI library, created by Facebook that handles a very specific set of concerns, composing and packaging your UI in components and rendering these components. What could seem odd in the beginning is that React doesn&rsquo;t separate the HTML from the JavaScript.&nbsp; Frankly I got used to it and learned to appreciate the advantages of this. You can still separate the logic from the presentation by creating components that only render Html and Components that handles the logic&nbsp; (named &ldquo;Controller Views&rdquo; components).&nbsp;<br>Here is a simple example of a React component:</p>
-          <pre><code class="language-javascript">import * as React from "react";
+          <pre><code class="language-typescript">import * as React from "react";
 
 export class HelloWorld extends React.Component&lt;{}, {}&gt; {
     render() {
@@ -108,11 +108,11 @@ export class HelloWorld extends React.Component&lt;{}, {}&gt; {
           <p>The *ngFor, {{todo.title}}, (click), [todo] and &lt;todo-detail&gt; elements are all Angular2 template syntax.&nbsp; The &lt;todo-detail&gt; tag represent a TodoListComponent.<em><br> </em>The todolist.component.ts code could be like this:</p>
           <p><img src="/img/2016/angular2-vs-react-from-the-perspective-of-a-net-07.png" alt width="524" height="399" loading="lazy"></p>
           <p>Here is an example of how to define a two-way databinding works in Angular2:</p>
-          <pre><code class="language-javascript">&lt;input type="text" [(ngModel)]="user.first_name" /&gt;</code></pre>
+          <pre><code class="language-html">&lt;input type="text" [(ngModel)]="user.first_name" /&gt;</code></pre>
 
           <p>Every Angular2 app begins by declaring at least one module.&nbsp; This is an example of such a module:</p>
 
-          <pre><code class="language-javascript">import { BrowserModule } from '@angular/platform-browser';
+          <pre><code class="language-typescript">import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule }   from '@angular/forms';
 

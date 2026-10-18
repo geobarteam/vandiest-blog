@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My way to apply the test pyramid to an Onion Style architecture with Blazor | Geoffrey Vandiest</title>
-  <meta name="description" content="It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements.">
+  <meta name="description" content="A basic test pyramid for the Onion architecture I use in Blazor projects: unit tests at the base, SpecFlow service tests in the middle, UI tests on top.">
   <link rel="canonical" href="https://vandiest.biz/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="My way to apply the test pyramid to an Onion Style architecture with Blazor">
-  <meta property="og:description" content="It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements.">
+  <meta property="og:description" content="A basic test pyramid for the Onion architecture I use in Blazor projects: unit tests at the base, SpecFlow service tests in the middle, UI tests on top.">
   <meta property="og:url" content="https://vandiest.biz/post/2023/08/21/my-way-to-apply-the-test-pyramid-to-an-onion-style-architecture-with-blazor/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,11 +24,12 @@
     "headline": "My way to apply the test pyramid to an Onion Style architecture with Blazor",
     "datePublished": "2023-08-21",
     "dateModified": "2023-08-21",
-    "description": "It's crucial to understand that the testing pyramid must be tailored to a project's unique requirements.",
+    "description": "A basic test pyramid for the Onion architecture I use in Blazor projects: unit tests at the base, SpecFlow service tests in the middle, UI tests on top.",
     "keywords": [
       "Testing",
-      "Unit testing",
-      "Architecture"
+      "Architecture",
+      "Blazor",
+      "Unit testing"
     ],
     "image": "https://vandiest.biz/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-01.jpg",
     "author": {
@@ -57,7 +58,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Architecture</span></li><li><span class="chip chip--quiet">Blazor</span></li><li><span class="chip chip--quiet">Unit testing</span></li></ul>
           <h1>My way to apply the test pyramid to an Onion Style architecture with Blazor</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -73,7 +74,8 @@
           <p>The term "Service test" originates from the idea that these tests operate from the service layer.</p>
           <p>By segregating Service Tests from unit tests and placing them in distinct projects, I enhance the manageability and scalability of my testing approach. This separation allows for unit tests to validate individual components, while integration tests or Service tests verify interactions with databases and services.</p>
           <p><img src="/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-02.png" alt width="601" height="601" loading="lazy"></p>
-          <p><strong>Unit Tests</strong> At the pyramid's base, you find the unit test. This positioning implies a higher volume of unit tests compared to other kinds. A unit test is an automated test that targets a small, isolated code segment, typically an individual method or class. The unit test's objective is to confirm the correctness of this specific code piece.</p>
+          <h2>Unit Tests</h2>
+          <p>At the pyramid's base, you find the unit test. This positioning implies a higher volume of unit tests compared to other kinds. A unit test is an automated test that targets a small, isolated code segment, typically an individual method or class. The unit test's objective is to confirm the correctness of this specific code piece.</p>
           <p>The included diagram showcases typical software layers for an Onion/Clean architecture, with color-coding to highlight their testing suitability.</p>
           <ul>
           <li><strong>Green:</strong> Layers such as ViewModels, Application, and Domain are primary unit testing candidates. They offer high value when tested in isolation due to their quick execution and maintainability.</li>
@@ -87,21 +89,22 @@
           <li><strong>Mocking Dependencies:</strong> To ensure code isolation, unit tests shouldn't depend on external systems. For instance, a class interacting with a database should be tested with a mock or stub, not a real database connection.</li>
           <li><strong>Fast Execution:</strong> Due to their foundational role, unit tests need swift execution to facilitate frequent runs, ideally after each code alteration.</li>
           </ul>
-          <p><strong>UI Test</strong></p>
+          <h2>UI Test</h2>
           <p>UI Tests validate user interactions and the application's interface. They replicate real user scenarios involving UI elements, ensuring the application operates as anticipated. My UI Test are done in isolation of the Service Tier, they exclusively test an application's presentation layer. As these test are performed in isolation you can see them as a specialized subset of unit tests. Using the MVVM pattern within my Blazor components enables to abstract away the UI logic and free the test from depending on UI specific details that make the test brittle.&nbsp; For testing the logic in the Razor views I typically use BUnit but try to avoid them as much as possible.</p>
           <p>However, while UI Tests are insightful, they can be fragile and require regular updates, especially if UI elements undergo changes. They might not detect all UI issues, emphasizing the need for a comprehensive testing strategy that incorporates End2End tests for thorough application quality verification.</p>
-          <p><strong>Service Tests</strong></p>
+          <h2>Service Tests</h2>
           <p>Occupying the pyramid's middle layer, Service Tests anchor my integration testing strategy. They center on the application's back-end components, ensuring that services, APIs, and business logic layers cohesively function. They also serve as a type of acceptance testing for complex logic. Due to their ability to test business flows without UI test fragility, Service Tests often yield the highest ROI, making them indispensable in my testing strategy.</p>
           <p>For Service Tests, I utilize Specflow and follow the BDD (Behavior-Driven Development) approach. This method bridges the gap between non-technical and technical team members, fostering shared application behavior understanding.</p>
           <p><img src="/img/2023/my-way-to-apply-the-test-pyramid-to-an-onion-sty-03.png" alt width="602" height="159" loading="lazy"></p>
           <p>Domain-Driven Design's concept of Ubiquitous Language pairs seamlessly with BDD. It denotes a shared language among team members, ensuring mutual understanding of domain concepts and requirements.</p>
           <p>SpecFlow, a renowned BDD tool, enables business analysts to describe expected application behaviors in Gherkin syntax. Developers then create step definitions, which are code pieces that map scenarios to test actions. By adopting a BDD approach with tools like SpecFlow, I ensure the Ubiquitous Language isn't just documentation but living specifications executable as tests. This promotes clear communication and a cohesive application.</p>
 
-          <p><strong>Database: In-memory or Disk-based?</strong></p>
+          <h2>Database: In-memory or Disk-based?</h2>
           <p>Efficiency and speed are paramount for all tests, especially when integrated into a continuous integration process on a build server. Database selection significantly influences this.</p>
           <p>From my experience, an in-memory database like SQLite is typically more build-time efficient. However, there are instances where SQLite might be unsuitable, especially when integrating with complex databases with features like stored procedures. In such cases, a closer representation of the production environment, like SQL Server, is essential. To optimize tests without compromising build times, I suggest making tests configurable to different databases. For instance, SQLite can be used on the build server for rapid tests, while SQL Server is employed locally.</p>
           <p>It's also crucial to emphasize that tests should mock external services, ensuring the application's logic is the primary testing focus.</p>
-          <p><strong>Conclusion</strong> Structuring my test pyramid with unit tests at the base, Service Tests in the middle, and UI tests at the peak results in a comprehensive testing strategy. While UI tests play a role, Service Tests truly underpin a quality product. Combining these tests ensures both the individual components' integrity and the smooth interaction between the application's various tiers.</p>
+          <h2>Conclusion</h2>
+          <p>Structuring my test pyramid with unit tests at the base, Service Tests in the middle, and UI tests at the peak results in a comprehensive testing strategy. While UI tests play a role, Service Tests truly underpin a quality product. Combining these tests ensures both the individual components' integrity and the smooth interaction between the application's various tiers.</p>
         </div>
       </article>
 <!-- site:sidebar -->

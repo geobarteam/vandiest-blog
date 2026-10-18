@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Answer for puzzle 1 | Geoffrey Vandiest</title>
-  <meta name="description" content="The result is: xhello The thing here is that because the stringbuilder is a reference type, when you change the content of the stringbuilder inside the…">
+  <meta name="description" content="Puzzle 1 prints xhello: .NET passes every parameter by value, even a reference, so setting the copied pointer to null never reaches the caller.">
   <link rel="canonical" href="https://vandiest.biz/post/2011/04/02/Answer-for-puzzle-1/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Answer for puzzle 1">
-  <meta property="og:description" content="The result is: xhello The thing here is that because the stringbuilder is a reference type, when you change the content of the stringbuilder inside the…">
+  <meta property="og:description" content="Puzzle 1 prints xhello: .NET passes every parameter by value, even a reference, so setting the copied pointer to null never reaches the caller.">
   <meta property="og:url" content="https://vandiest.biz/post/2011/04/02/Answer-for-puzzle-1/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,9 +24,10 @@
     "headline": "Answer for puzzle 1",
     "datePublished": "2011-04-02",
     "dateModified": "2011-04-02",
-    "description": "The result is: xhello The thing here is that because the stringbuilder is a reference type, when you change the content of the stringbuilder inside the…",
+    "description": "Puzzle 1 prints xhello: .NET passes every parameter by value, even a reference, so setting the copied pointer to null never reaches the caller.",
     "keywords": [
-      "Puzzle"
+      "Puzzle",
+      "C#"
     ],
     "author": {
       "@type": "Person",
@@ -54,7 +55,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Puzzle</span></li></ul>
+          <ul class="chips"><li><span class="chip">Puzzle</span></li><li><span class="chip chip--quiet">C#</span></li></ul>
           <h1>Answer for puzzle 1</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -62,11 +63,9 @@
           </div>
         </header>
         <div class="post-body">
-          The result is: xhello
-
-          The thing here is that because the stringbuilder is a reference type,  when you change the content of the stringbuilder  inside the method AppendHello() this change is  reflected in the caller method –> Problem()  but when you set the stringbuilder to null this change is not visible inside the caller method.
-
-          This is because in .Net all parameters are passed by value, even reference types.  For reference types it’s not the value of the object itself that is passed by value but a pointer to the underlying value (the reference). The pointer is copied on the stack and is passed by value.  When you change the value inside the called method this change is reflected in the underlying value and is visible for the calling method.  When you set the pointer to null inside the called method you only destroy the copied pointer not the underlying value.
+          <p>The result is: xhello</p>
+          <p>The thing here is that because the stringbuilder is a reference type,  when you change the content of the stringbuilder  inside the method AppendHello() this change is  reflected in the caller method –> Problem()  but when you set the stringbuilder to null this change is not visible inside the caller method.</p>
+          <p>This is because in .Net all parameters are passed by value, even reference types.  For reference types it’s not the value of the object itself that is passed by value but a pointer to the underlying value (the reference). The pointer is copied on the stack and is passed by value.  When you change the value inside the called method this change is reflected in the underlying value and is visible for the calling method.  When you set the pointer to null inside the called method you only destroy the copied pointer not the underlying value.</p>
         </div>
       </article>
 <!-- site:sidebar -->

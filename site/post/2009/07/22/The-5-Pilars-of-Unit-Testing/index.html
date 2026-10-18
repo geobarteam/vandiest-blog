@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The 5 Pilars of Unit Testing | Geoffrey Vandiest</title>
-  <meta name="description" content="These are, what I consider to be the 5 most desirable quality attributes of a unit test:">
+  <meta name="description" content="The five quality attributes I want from every unit test: accessible, repeatable, easy to write and maintain, resistant to change, and quick to run.">
   <link rel="canonical" href="https://vandiest.biz/post/2009/07/22/The-5-Pilars-of-Unit-Testing/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="The 5 Pilars of Unit Testing">
-  <meta property="og:description" content="These are, what I consider to be the 5 most desirable quality attributes of a unit test:">
+  <meta property="og:description" content="The five quality attributes I want from every unit test: accessible, repeatable, easy to write and maintain, resistant to change, and quick to run.">
   <meta property="og:url" content="https://vandiest.biz/post/2009/07/22/The-5-Pilars-of-Unit-Testing/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,10 @@
     "headline": "The 5 Pilars of Unit Testing",
     "datePublished": "2009-07-22",
     "dateModified": "2009-07-22",
-    "description": "These are, what I consider to be the 5 most desirable quality attributes of a unit test:",
+    "description": "The five quality attributes I want from every unit test: accessible, repeatable, easy to write and maintain, resistant to change, and quick to run.",
     "keywords": [
-      "Testing",
-      "Unit testing"
+      "Unit testing",
+      "Testing"
     ],
     "author": {
       "@type": "Person",
@@ -55,7 +55,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li></ul>
+          <ul class="chips"><li><span class="chip">Unit testing</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
           <h1>The 5 Pilars of Unit Testing</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -63,21 +63,18 @@
           </div>
         </header>
         <div class="post-body">
-          <div>These are, what I consider to be&nbsp;the 5 most desirable quality attributes of a unit test:</div>
+          <p>These are, what I consider to be&nbsp;the 5 most desirable quality attributes of a unit test:</p>
+          <ol>
+            <li><p><strong><em>Unit tests should be accessible, everyone should be able to run them</em></strong></p><p>Running a unit test should not involve more than getting the source code from a source controller, compile the SUT/Test code and clicking on a button to run all the tests. No configuration should be involved. Your tests should not require to setup external components like a DB or SMTP server.</p></li>
+            <li><p><strong><em>Unit tests should be repeatable</em></strong></p><p>What is the value of a test you can&rsquo;t trust? Unit tests results should only change when modifications are introduce in the SUT. When the SUT remain the same the unit tests should always return the same result.&nbsp;Therefore unit tests should be state independent and in anyway they should never be dependant on a shared resource like a file or persistent memory.</p></li>
+            <li><p><strong><em>Unit tests should be easy to write and maintain</em></strong></p><p>In an&nbsp;software shop&nbsp;we should only use a practice or tool when this is economical viable meaning that the cost of writing the tests and maintaining it should not exceeds the costs of having a bug and fixing it. To minimize the cost of creating and maintaining tests we should use appropriate practices and tools. We should also have the same quality requirement for test code as for production code.&nbsp;Refactoring is as important for test code as for production code.</p></li>
+            <li><p><strong><em>Unit tests should be resistant to change</em></strong></p><p>We should write our test in such a way that the amount of tests failing when introducing a change is minimal. When testing the SUT it is common to set his variable in proper state so it can be tested.&nbsp;This type of setup test code is very fragile.&nbsp;We should always try to isolate this type of code so it is easy to change.</p></li>
+            <li><p><strong><em>Unit tests should run quickly</em></strong></p><p>ideally unit tests should be executed after every build.&nbsp;Having to wait more than 1 minute to execute all the unit tests will decrease the overall productivity of the tests.&nbsp;Unit tests should never be dependant on costly resources to invoke like web services or DB.</p></li>
+          </ol>
 
-          <div>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><em>Unit tests should be accessible, everyone should be able to run them<br></em></strong>Running a unit test should not involve more than getting the source code from a source controller, compile the SUT/Test code and clicking on a button to run all the tests. No configuration should be involved. Your tests should not require to setup external components like a DB or SMTP server.&nbsp;</div>
+          <p>Is there someting&nbsp;missing here?</p>
 
-          <div>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><em>Unit tests should be repeatable<br></em></strong>What is the value of a test you can&rsquo;t trust? Unit tests results should only change when modifications are introduce in the SUT. When the SUT remain the same the unit tests should always return the same result.&nbsp;Therefore unit tests should be state independent and in anyway they should never be dependant on a shared resource like a file or persistent memory. </div>
-
-          <div>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><em>Unit tests should be easy to write and maintain<br></em></strong>In an&nbsp;software shop&nbsp;we should only use a practice or tool when this is economical viable meaning that the cost of writing the tests and maintaining it should not exceeds the costs of having a bug and fixing it. To minimize the cost of creating and maintaining tests we should use appropriate practices and tools. We should also have the same quality requirement for test code as for production code.&nbsp;Refactoring is as important for test code as for production code.&nbsp;&nbsp;&nbsp; </div>
-
-          <div>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><em>Unit tests should be resistant to change<br></em></strong>We should write our test in such a way that the amount of tests failing when introducing a change is minimal. When testing the SUT it is common to set his variable in proper state so it can be tested.&nbsp;This type of setup test code is very fragile.&nbsp;We should always try to isolate this type of code so it is easy to change.&nbsp;</div>
-
-          <div>5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><em>Unit tests should run quickly<br></em></strong>ideally unit tests should be executed after every build.&nbsp;Having to wait more than 1 minute to execute all the unit tests will decrease the overall productivity of the tests.&nbsp;Unit tests should never be dependant on costly resources to invoke like web services or DB. </div>
-
-          <div>Is there someting&nbsp;missing here?&nbsp;</div>
-
-          <div>GVD</div>
+          <p>GVD</p>
         </div>
       </article>
 <!-- site:sidebar -->

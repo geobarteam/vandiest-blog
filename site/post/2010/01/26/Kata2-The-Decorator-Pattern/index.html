@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kata2: The Decorator Pattern | Geoffrey Vandiest</title>
-  <meta name="description" content="This the second part of the series of Coding Kata’s. Here we’ll explore the Decorator pattern.">
+  <meta name="description" content="The second coding kata on design patterns: send customer alerts by e-mail, sms and messenger with the Decorator pattern, plus my NUnit solution.">
   <link rel="canonical" href="https://vandiest.biz/post/2010/01/26/Kata2-The-Decorator-Pattern/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Kata2: The Decorator Pattern">
-  <meta property="og:description" content="This the second part of the series of Coding Kata’s. Here we’ll explore the Decorator pattern.">
+  <meta property="og:description" content="The second coding kata on design patterns: send customer alerts by e-mail, sms and messenger with the Decorator pattern, plus my NUnit solution.">
   <meta property="og:url" content="https://vandiest.biz/post/2010/01/26/Kata2-The-Decorator-Pattern/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,10 @@
     "headline": "Kata2: The Decorator Pattern",
     "datePublished": "2010-01-26",
     "dateModified": "2010-01-26",
-    "description": "This the second part of the series of Coding Kata’s. Here we’ll explore the Decorator pattern.",
+    "description": "The second coding kata on design patterns: send customer alerts by e-mail, sms and messenger with the Decorator pattern, plus my NUnit solution.",
     "keywords": [
       "Design patterns",
-      "Testing"
+      "Kata"
     ],
     "author": {
       "@type": "Person",
@@ -55,7 +55,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Design patterns</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
+          <ul class="chips"><li><span class="chip">Design patterns</span></li><li><span class="chip chip--quiet">Kata</span></li></ul>
           <h1>Kata2: The Decorator Pattern</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -63,10 +63,10 @@
           </div>
         </header>
         <div class="post-body">
-          <p>This the second part of the series of Coding Kata&rsquo;s. Here we&rsquo;ll explore the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">Decorator pattern</a>.<br></p>
+          <p>This the second part of the series of Coding Kata&rsquo;s. Here we&rsquo;ll explore the <a href="http://en.wikipedia.org/wiki/Decorator_pattern">Decorator pattern</a>.</p>
           <p><em class="lost">[Image no longer available]</em></p>
           <p>This is the user story:</p>
-          <p>You need to send alerts to your customers when a new product is available.&nbsp; <br>An Alert is represented by the Alert Class:</p>
+          <p>You need to send alerts to your customers when a new product is available.<br>An Alert is represented by the Alert Class:</p>
           <pre><code class="language-csharp">public class Alert
 {
       public String DestinationAddress { get; set; }
@@ -75,24 +75,26 @@
       public string Log { get; set; }
 }</code></pre>
           <p>Classes used to send the Alerts implement the following interface:</p>
-          <pre><code class="language-typescript">public interface ISender
+          <pre><code class="language-csharp">public interface ISender
 {
         void Send(Alert alert);
 }</code></pre>
 
           <ul>
-          <li>Create an Alerter class that send the appropriate alerts. &nbsp;</li>
+          <li>Create an Alerter class that send the appropriate alerts.</li>
           <li>Alerts are always send by e-mail.</li>
-          <li>Customers can also subscribe to receive alerts via sms and/or through messenger.&nbsp;</li>
-          <li>Use the Decorator pattern to configure the Alerter <br><br>You do not need to use real infrastructure code to send the alert, just append a string that contains the Sender through which the message was send.<br>-&gt;Append the following text to the Alert.Log when the message is send by:</li>
-          <li>e-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &ldquo;Message was send by e-mail&rdquo;</li>
-          <li>sms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &ldquo;Message was send by sms&rdquo;</li>
+          <li>Customers can also subscribe to receive alerts via sms and/or through messenger.</li>
+          <li>Use the Decorator pattern to configure the Alerter</li>
+          </ul>
+          <p>You do not need to use real infrastructure code to send the alert, just append a string that contains the Sender through which the message was send.<br>-&gt;Append the following text to the Alert.Log when the message is send by:</p>
+          <ul>
+          <li>e-mail: &ldquo;Message was send by e-mail&rdquo;</li>
+          <li>sms: &ldquo;Message was send by sms&rdquo;</li>
           <li>messenger: &ldquo;Message was send by messenger&rdquo;</li>
           </ul>
 
-          <p>Show Solution Hide Solution</p>
-          <div>
-          <pre><code class="language-typescript">using System;
+          <h2>Solution</h2>
+          <pre><code class="language-csharp">using System;
 using NUnit.Framework;
 
 namespace Kata2
@@ -257,7 +259,6 @@ namespace Kata2
     }
     #endregion
 }</code></pre>
-          </div>
         </div>
       </article>
 <!-- site:sidebar -->

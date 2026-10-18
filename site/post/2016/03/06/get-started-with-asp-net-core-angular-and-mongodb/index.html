@@ -68,7 +68,7 @@
           <p>Here I&rsquo;ll start a series of little post that will build a new application based on the following stack: ASP.NET MVC5, Angular 1.5.x and MongoDB.</p>
           <p>The code used in these tutorials can be found under my git hub project:&nbsp;<a href="https://github.com/geobarteam/myClub">myClub</a></p>
           <p>Every post has his own dedicated branch, so you can just use&nbsp; &ldquo;git checkout &lt;branchname&gt;&rdquo; to find all the source code of the post you&rsquo;re interesting in.</p>
-          <h2>1.0&nbsp; Create a new MVC core project<br><br></h2>
+          <h2>1.0&nbsp; Create a new MVC core project</h2>
           <p>To generate a new project we&rsquo;ll use&nbsp;<a href="http://yeoman.io/">Yeomen</a>.&nbsp; Open a commend prompt/bash shell or powershell shell on the location you want to put your new project.</p>
 
           <pre><code class="language-powershell">mkdir myClub
@@ -80,12 +80,12 @@ yo aspnet</code></pre>
           <p>Provide a name.</p>
           <h2>1.1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add Angular to MVC app</h2>
 
-          <p><strong>1) Add Angular, from command line inside you project dir:&nbsp;</strong><br><br></p>
+          <p><strong>1) Add Angular, from command line inside you project dir:&nbsp;</strong></p>
           <pre><code class="language-powershell">bower install angular angular-ui-router –save</code></pre>
           <p><strong>&nbsp;Add angular to _layout.cshtml :&nbsp;</strong></p>
-          <p>&lt;script src="~/lib/angular/angular.min.js"&gt;&lt;/script&gt;</p>
+          <pre><code class="language-html">&lt;script src="~/lib/angular/angular.min.js"&gt;&lt;/script&gt;</code></pre>
           <h4>2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Create two js scripts under wwwroot</h4>
-          <p><br>app.config.js</p>
+          <p><em>app.config.js</em></p>
           <pre><code class="language-javascript">(function () {
     'use strict';
 
@@ -149,32 +149,32 @@ yo aspnet</code></pre>
     }
 })();</code></pre>
           <p><em>home.controller.js</em></p>
-          <p>(function () {</p>
-          <p>&nbsp;&nbsp;&nbsp; 'use strict';</p>
+          <pre><code class="language-javascript">(function () {
+    'use strict';
 
-          <p>&nbsp;&nbsp;&nbsp; angular</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .module('myClub')</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .controller('HomeController', myTeam);</p>
+    angular
+        .module('myClub')
+        .controller('HomeController', myTeam);
 
-          <p>&nbsp;&nbsp;&nbsp; myTeam.$inject = ['$location'];</p>
+    myTeam.$inject = ['$location'];
 
-          <p>&nbsp;&nbsp;&nbsp; function myTeam($location) {</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* jshint validthis:true */</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var vm = this;</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vm.players = [];</p>
+    function myTeam($location) {
+        /* jshint validthis:true */
+        var vm = this;
+        vm.players = [];
 
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vm.title = 'Home';</p>
+        vm.title = 'Home';
 
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; activate();</p>
+        activate();
 
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function activate() {</p>
+        function activate() {
 
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
-          <p>&nbsp;&nbsp;&nbsp; }</p>
-          <p>})();</p>
+        }
+    }
+})();</code></pre>
           <h4>&nbsp; &nbsp; &nbsp; 4) Add two html pages</h4>
           <p>home.html</p>
-          <pre><code class="language-javascript">&lt;div class="jumbotron"&gt;
+          <pre><code class="language-html">&lt;div class="jumbotron"&gt;
     &lt;div class="container"&gt;
         &lt;h1&gt;MyClub&lt;/h1&gt;
         &lt;p&gt;&lt;/p&gt;
@@ -190,7 +190,7 @@ yo aspnet</code></pre>
 
 &lt;/div&gt;</code></pre>
 
-          <p><strong>5) Reference the js scripts in _layout.cshtml</strong><br><br></p>
+          <p><strong>5) Reference the js scripts in _layout.cshtml</strong></p>
           <pre><code class="language-html"> &lt;script src="~/lib/angular/angular.min.js"&gt;&lt;/script&gt;
 &lt;script src="~/lib/angular-ui-router/release/angular-ui-router.js"&gt;&lt;/script&gt;
 &lt;script src="~/app/app.module.js"&gt;&lt;/script&gt;

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>First Steps with Unit Testing Walkthrough | Geoffrey Vandiest</title>
-  <meta name="description" content="In this article I introduce through a walkthrough the basics of how to write a good well structured unit test.">
+  <meta name="description" content="A walkthrough of the basics of writing a well structured unit test in C# with VSTS: setup, execute, verify, and fixtures with TestInitialize and TestCleanup.">
   <link rel="canonical" href="https://vandiest.biz/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="First Steps with Unit Testing Walkthrough">
-  <meta property="og:description" content="In this article I introduce through a walkthrough the basics of how to write a good well structured unit test.">
+  <meta property="og:description" content="A walkthrough of the basics of writing a well structured unit test in C# with VSTS: setup, execute, verify, and fixtures with TestInitialize and TestCleanup.">
   <meta property="og:url" content="https://vandiest.biz/post/2008/10/30/First-Steps-with-Unit-Testing-Walkthrough/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,10 @@
     "headline": "First Steps with Unit Testing Walkthrough",
     "datePublished": "2008-10-30",
     "dateModified": "2008-10-30",
-    "description": "In this article I introduce through a walkthrough the basics of how to write a good well structured unit test.",
+    "description": "A walkthrough of the basics of writing a well structured unit test in C# with VSTS: setup, execute, verify, and fixtures with TestInitialize and TestCleanup.",
     "keywords": [
-      "Testing",
-      "Unit testing"
+      "Unit testing",
+      "Testing"
     ],
     "image": "https://vandiest.biz/img/2008/first-steps-with-unit-testing-walkthrough-01.jpg",
     "author": {
@@ -56,7 +56,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li></ul>
+          <ul class="chips"><li><span class="chip">Unit testing</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
           <h1>First Steps with Unit Testing Walkthrough</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -64,14 +64,14 @@
           </div>
         </header>
         <div class="post-body">
-          <p>&nbsp;In this article I&nbsp;introduce through a walkthrough the basics of how to write a good well structured unit test. This post is the first of a series about Unit testing and TDD. I&rsquo;ll not be doing TDD for now&nbsp;because I first want to&nbsp;start with the&nbsp;basics of creating well structured unit tests.&nbsp; In later posts we will build on this to&nbsp;practice TDD. Therefor the tests of this first walkthrough will seem overly simple, but let&rsquo;s crawls before we start running.<br>The details on how we should write tests vary with the programming framework &amp; unit test framework. For this walkthrough I've choosen to implement&nbsp; the tests and examples witrh C# and&nbsp;VSTS .Nevertheless the core principle of how to implement automated tests stays applicable in any technology.&nbsp;&nbsp;If you desire to get the walkthroughs for NUnit or for other programming frameworks post a demand in this blog.&nbsp;&nbsp;You can download the completed walkthrough project&nbsp;<a href="http://www.belgianagencies.com/content/blogs/post5/firststeps_finished.zip">here</a>.<br><br>&nbsp;</p>
+          <p>In this article I&nbsp;introduce through a walkthrough the basics of how to write a good well structured unit test. This post is the first of a series about Unit testing and TDD. I&rsquo;ll not be doing TDD for now&nbsp;because I first want to&nbsp;start with the&nbsp;basics of creating well structured unit tests.&nbsp; In later posts we will build on this to&nbsp;practice TDD. Therefor the tests of this first walkthrough will seem overly simple, but let&rsquo;s crawls before we start running.<br>The details on how we should write tests vary with the programming framework &amp; unit test framework. For this walkthrough I've choosen to implement&nbsp; the tests and examples witrh C# and&nbsp;VSTS .Nevertheless the core principle of how to implement automated tests stays applicable in any technology.&nbsp;&nbsp;If you desire to get the walkthroughs for NUnit or for other programming frameworks post a demand in this blog.&nbsp;&nbsp;You can download the completed walkthrough project&nbsp;<a href="http://www.belgianagencies.com/content/blogs/post5/firststeps_finished.zip">here</a>.</p>
           <pre><code class="language-csharp">public class Fleet : IDisposable
 {
-    private List _planes { get; set; }
+    private List&lt;Plane&gt; _planes { get; set; }
 
     public Fleet()
     {
-        this._planes = new List();
+        this._planes = new List&lt;Plane&gt;();
     }
 
     public Plane this[string index]
@@ -113,9 +113,30 @@ public class Plane
     public string Name { get; set; }
 
 }</code></pre>
-          <p><br><br><br><br>Examine the code of Fleet and Plane. The Fleet class represents an aero fleet (a simple Model) this class is a sort of collection of planes. The fleet class contains a property &ldquo;Count&rdquo; that counts the number of planes in the fleet.<br>Create a new Test Project File, right click solution, add, new, Project, select C#, Test, name your Project:&rdquo;FirstStepsTest&rdquo;.<br>Launch all tests: Ctrl R,A or Test, Windows, Test View<br>VS should launch the TestMethod1 and it should pass.<br><img src="/img/2008/first-steps-with-unit-testing-walkthrough-01.jpg" alt width="320" height="124" loading="lazy"><br><br><br><br><br><br><br><br><br><br>&nbsp;Replace the generated TestMethod() with the following test:</p>
-          <p><br>[TestMethod()]<br>public void NewFleet_WithNoPlanes_CountWillReturn0()<br>{<br>&nbsp;&nbsp;&nbsp;//Setup<br>&nbsp;&nbsp;Fleet fleet = new Fleet();<br><br>&nbsp; //Execute<br>&nbsp; int actual = fleet.Count;<br><br>&nbsp; //Verify<br>&nbsp; Assert.AreEqual(0, actual);<br>}</p>
-          <p>Run the test by right click on the test name and select &ldquo;Run Test&rdquo;.<br>The test above is a public method whose giving the attribute [TestMethod] the test class itself is been annotated with the attribute [TestClass]. This enable the testRunner of VSTS to retrieve all test methods. <br><br>Every test will always consist of 3 parts:<br>&bull; The setup: to be able to test our SUT we&rsquo;ve to put him in a certain state so it can be tested.<br>&bull; The test execution: when our SUT is prepared to be test we can call the actual execution unit on our SUT.<br>&bull; The verification: A test generally ends with the comparison on the expected results and the actual outcome of our execution.<br><br>The last part of our test uses an assertion method of our unit testing framework. Knowing what to assert about in your tests is pretty much 90% of the battle. An assertion is basically taking an expected value and comparing it to an actual value. If the expected value does not match the actual value, then the test will fail. <br><br>There are many other type of assertions but for simplicity and for readability when debuging I prefer to only use the Assert.Equals(). Assert equals is the most generic form of assertion and it will always display a meaningful message like Assert.AreEqual failed. Expected:. Actual:.Add following new tests to the test class:<br><br>&nbsp;</p>
+          <p>Examine the code of Fleet and Plane. The Fleet class represents an aero fleet (a simple Model) this class is a sort of collection of planes. The fleet class contains a property &ldquo;Count&rdquo; that counts the number of planes in the fleet.<br>Create a new Test Project File, right click solution, add, new, Project, select C#, Test, name your Project:&rdquo;FirstStepsTest&rdquo;.<br>Launch all tests: Ctrl R,A or Test, Windows, Test View<br>VS should launch the TestMethod1 and it should pass.</p>
+          <p><img src="/img/2008/first-steps-with-unit-testing-walkthrough-01.jpg" alt="Test results window showing TestMethod1 passed" width="320" height="124" loading="lazy"></p>
+          <p>Replace the generated TestMethod() with the following test:</p>
+          <pre><code class="language-csharp">[TestMethod()]
+public void NewFleet_WithNoPlanes_CountWillReturn0()
+{
+    //Setup
+    Fleet fleet = new Fleet();
+
+    //Execute
+    int actual = fleet.Count;
+
+    //Verify
+    Assert.AreEqual(0, actual);
+}</code></pre>
+          <p>Run the test by right click on the test name and select &ldquo;Run Test&rdquo;.<br>The test above is a public method whose giving the attribute [TestMethod] the test class itself is been annotated with the attribute [TestClass]. This enable the testRunner of VSTS to retrieve all test methods.</p>
+          <p>Every test will always consist of 3 parts:</p>
+          <ul>
+            <li>The setup: to be able to test our SUT we&rsquo;ve to put him in a certain state so it can be tested.</li>
+            <li>The test execution: when our SUT is prepared to be test we can call the actual execution unit on our SUT.</li>
+            <li>The verification: A test generally ends with the comparison on the expected results and the actual outcome of our execution.</li>
+          </ul>
+          <p>The last part of our test uses an assertion method of our unit testing framework. Knowing what to assert about in your tests is pretty much 90% of the battle. An assertion is basically taking an expected value and comparing it to an actual value. If the expected value does not match the actual value, then the test will fail.</p>
+          <p>There are many other type of assertions but for simplicity and for readability when debuging I prefer to only use the Assert.Equals(). Assert equals is the most generic form of assertion and it will always display a meaningful message like Assert.AreEqual failed. Expected:. Actual:.Add following new tests to the test class:</p>
           <pre><code class="language-csharp">[TestMethod()]
 public void Add_OnePlane_WillIncrementCountByOne()
 {
@@ -142,7 +163,8 @@ public void RetriveByIndex_APlane_WillReturnThePlane()
     //Verify
     Assert.AreEqual("X2938", actual);
 }</code></pre>
-          <p><br><br>Examine the tests and run them, they should all pass.<br><br>We'll refactor a little bit our code because the test contains some parts of code that are repeated and repeating ourselves is always bad!<br>First we will remove the magic string: &ldquo;X2938&rdquo; and will instantiate a string field flightName containing this value. Replace &ldquo;X238&rdquo; with this new variable. <br>We will also promote the fleet object in each test to a new private field. We will use the [TestInitialize] attribute to instantiate this field.<br>Also imagine that our Fleet class implements IDisposable because it uses somehow an expensive resource that isn&rsquo;t automatically disposed by the garbage collector. We could call fleet.Dispose() after the Assertion but what if our test fails? The dispose method would never been called and the object will remain in memory.<br>The result should look like that:<br>&nbsp;</p>
+          <p>Examine the tests and run them, they should all pass.</p>
+          <p>We'll refactor a little bit our code because the test contains some parts of code that are repeated and repeating ourselves is always bad!<br>First we will remove the magic string: &ldquo;X2938&rdquo; and will instantiate a string field flightName containing this value. Replace &ldquo;X238&rdquo; with this new variable. <br>We will also promote the fleet object in each test to a new private field. We will use the [TestInitialize] attribute to instantiate this field.<br>Also imagine that our Fleet class implements IDisposable because it uses somehow an expensive resource that isn&rsquo;t automatically disposed by the garbage collector. We could call fleet.Dispose() after the Assertion but what if our test fails? The dispose method would never been called and the object will remain in memory.<br>The result should look like that:</p>
           <pre><code class="language-csharp">[TestClass]
 public class FleetTest
 {
@@ -196,7 +218,9 @@ public class FleetTest
         Assert.AreEqual(flightName, actual);
     }
 }</code></pre>
-          <p><br><br>We've defined a SetUp() and TearDown() pair of methods. In major XUnit frameworks, these are used to create Fixtures. A Fixture is some resource all tests in a test case have in common and which sets the context of the test (the situation in which we're testing), as well as other repetitive objects or resources.<br>VSTS uses the attributes [TestInitialize()] for the Setup, this part is run before each test and [TestCleanup()] for the teardown, run after each test.<br>Because each test must be isolated (cannot share information) these methods will tell the Framework to create our Fixture (a Fleet instance) before each test, and destroy it after. So each test gets a shiny new version to play with, free of anything a previous test may have done.<br><br>The test case above is a good small start and I hope you enjoyed this first walkthrough on unit testing, don&rsquo;t hesitate to post some feedback!</p>
+          <p>We've defined a SetUp() and TearDown() pair of methods. In major XUnit frameworks, these are used to create Fixtures. A Fixture is some resource all tests in a test case have in common and which sets the context of the test (the situation in which we're testing), as well as other repetitive objects or resources.</p>
+          <p>VSTS uses the attributes [TestInitialize()] for the Setup, this part is run before each test and [TestCleanup()] for the teardown, run after each test.<br>Because each test must be isolated (cannot share information) these methods will tell the Framework to create our Fixture (a Fleet instance) before each test, and destroy it after. So each test gets a shiny new version to play with, free of anything a previous test may have done.</p>
+          <p>The test case above is a good small start and I hope you enjoyed this first walkthrough on unit testing, don&rsquo;t hesitate to post some feedback!</p>
         </div>
       </article>
 <!-- site:sidebar -->

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Create a WCF service and client, using Msmq, programmatically | Geoffrey Vandiest</title>
-  <meta name="description" content="Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service.">
+  <meta name="description" content="How to create a WCF service and client over MSMQ in code instead of config files, with a small reusable factory class and a console demo.">
   <link rel="canonical" href="https://vandiest.biz/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Create a WCF service and client, using Msmq, programmatically">
-  <meta property="og:description" content="Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service.">
+  <meta property="og:description" content="How to create a WCF service and client over MSMQ in code instead of config files, with a small reusable factory class and a console demo.">
   <meta property="og:url" content="https://vandiest.biz/post/2009/11/16/Create-a-WCF-service-and-client-using-Msmq-programmatically/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,11 @@
     "headline": "Create a WCF service and client, using Msmq, programmatically",
     "datePublished": "2009-11-16",
     "dateModified": "2009-11-16",
-    "description": "Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service.",
+    "description": "How to create a WCF service and client over MSMQ in code instead of config files, with a small reusable factory class and a console demo.",
     "keywords": [
       "WCF",
-      "Architecture"
+      "MSMQ",
+      ".NET"
     ],
     "author": {
       "@type": "Person",
@@ -55,7 +56,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">WCF</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
+          <ul class="chips"><li><span class="chip">WCF</span></li><li><span class="chip chip--quiet">MSMQ</span></li><li><span class="chip chip--quiet">.NET</span></li></ul>
           <h1>Create a WCF service and client, using Msmq, programmatically</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -63,7 +64,7 @@
           </div>
         </header>
         <div class="post-body">
-          <p>&nbsp; <em><a href="http://www.belgianagencies.com/content/WCFMsmqFactoryExample.zip">download source code</a></em></p>
+          <p><em><a href="http://www.belgianagencies.com/content/WCFMsmqFactoryExample.zip">download source code</a></em></p>
           <p>Most of the WCF examples on the web uses the config file to setup the address, binding and contract of a WCF service. I dislike this way of configuring client and service in WCF because most of the time it leads to config files that are full of crab and that becomes unmanageable. I prefer to construct my WCF services programmatically. Therefore I&rsquo;ve create a bunch of helper classes that contains most of the configuration settings that are applicable in a particular domain.</p>
           <p>In this article I discuss one of these classes&nbsp; I use to create local queues. With local I mean queues used by components making part of the same application. This class can be used as a factory to create the service (serviceHost) as well as the client part (Channel) for components communicating through Msmq.</p>
           <p>This article provides a small tutorial on how to create a simple console app. I demonstrate how to create the client and service host without any configuration by using a helper factory class: WCFMsmqFactory</p>
@@ -79,7 +80,6 @@
           <p><em class="lost">[Image no longer available]</em></p>
 
           <p>2) Create a the WcfMsmqFactory class by copying the source code here beneath:</p>
-          <div>
           <pre><code class="language-csharp">public class WcfMsmqFactory&lt;I, T&gt; where T : I
 {
     private string _queueAddress;
@@ -123,10 +123,8 @@
     }
 }</code></pre>
 
-          </div>
-
           <p>This class is perfectly reusable in any project and provide an abstraction on how to create programaticaly WCF services using the msmq binding. To instantiate the class we&rsquo;ve to pass the interface and his actual implementation. The interface type we&rsquo;ll be used to create the client &amp; server part. The implementation type (service) will only be used to create the server. <br>The constructor creates a queue if it&rsquo;s not already available. Note that the example don&rsquo;t use security as the transport level security would demand to use active directory. As my pc does not connect to an Active Directory server I had to instantiate the binding without security:</p>
-          <pre><code class="language-javascript">var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);</code></pre>
+          <pre><code class="language-csharp">var binding = new MsmqIntegrationBinding(MsmqIntegrationSecurityMode.None);</code></pre>
 
           <p>Not setting this setting resulted to the following error message: <em>&rdquo; Binding validation failed because the binding's MsmqAuthenticationMode property is set to WindowsDomain but MSMQ is installed with Active Directory integration disabled. The channel factory or service host cannot be opened&rdquo;</em></p>
           <p>For the dead letter queue I use the default dead letter queue (see comment) settings:</p>
@@ -136,7 +134,7 @@
           <pre><code class="language-csharp">binding.Namespace = namespaceName;</code></pre>
 
           <p>The following code exposes the metadata information (wsdl) on the provided metadata address:</p>
-          <pre><code class="language-javascript">var smb = new ServiceMetadataBehavior();
+          <pre><code class="language-csharp">var smb = new ServiceMetadataBehavior();
 smb.HttpGetEnabled = true;
 smb.HttpGetUrl = new Uri(metadataAddress);
 sHost.Description.Behaviors.Add(smb);</code></pre>
@@ -149,8 +147,7 @@ sHost.Description.Behaviors.Add(smb);</code></pre>
 }</code></pre>
 
           <p>4) Define the service definition:<br>Add the file SmsService.cs:</p>
-          <div>
-          <pre><code class="language-typescript">[ServiceContract(Namespace = "http://My.Domain.Services.WCF")]
+          <pre><code class="language-csharp">[ServiceContract(Namespace = "http://My.Domain.Services.WCF")]
 [ServiceKnownType(typeof(SmsMessage))]
 public interface ISmsService
 {
@@ -173,12 +170,9 @@ public class SmsService : ISmsService
     }
 }</code></pre>
 
-          </div>
-
           <p>The SmsService class contains the real implementation code. As the purpose of this article is not to demonstrate how to actually send sms messages I didn&rsquo;t provide the real code here. This demo only output the message on the console.</p>
           <p>5) Finally let&rsquo;s put all the parts together.<br>Add the following code to the main part of the program:</p>
-          <div>
-          <pre><code class="language-javascript"> static void Main(string[] args)
+          <pre><code class="language-csharp"> static void Main(string[] args)
     {
         //define variables
         const string queueAddress = @".\private$\sms";
@@ -215,11 +209,14 @@ public class SmsService : ISmsService
     }
 }</code></pre>
 
-          </div>
-
-          <p>&nbsp;&nbsp; Running the application should display a console with:<br><em>Starting the server...<br>Instantiating the client channel...<br>Sending the message...<br>SMS send to +322678821 with body='This is a sample sms message!'<br>Closing the server...</em></p>
+          <p>Running the application should display a console with:</p>
+          <pre><code class="language-plaintext">Starting the server...
+Instantiating the client channel...
+Sending the message...
+SMS send to +322678821 with body='This is a sample sms message!'
+Closing the server...</code></pre>
           <p>The real magic happens here:</p>
-          <pre><code class="language-javascript">var factory = new WcfMsmqFactory&lt;ISmsService, SmsService&gt;(queueAddress);</code></pre>
+          <pre><code class="language-csharp">var factory = new WcfMsmqFactory&lt;ISmsService, SmsService&gt;(queueAddress);</code></pre>
 
           <p>With this few line of code we&rsquo;ve instantiated a factory that is able to create the client as the server of our service. The only thing we&rsquo;ve to pass is the queue address &ndash; the rest of the configuration is encapsulated in our Factory class and can be easily reused.&nbsp;&nbsp; We can provide our factory classes to all the enterprise and create a framework on top of WCF that will standardize and facilitate how WCF is used inside our company.</p>
           <p>GVD</p>

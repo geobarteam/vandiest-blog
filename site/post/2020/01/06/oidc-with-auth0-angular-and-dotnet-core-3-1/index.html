@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OIDC with auth0, Angular and DotNet Core 3.1 | Geoffrey Vandiest</title>
-  <meta name="description" content="On my github repo you’ll find a demo app based on auth0 SPA Angular quickstart. It is integrated with a .Net Core 3.1 backend.">
+  <meta name="description" content="A demo app that shows how to use auth0 to secure API calls from an Angular 8+ SPA to a .NET Core 3.1 backend, and the steps to run it.">
   <link rel="canonical" href="https://vandiest.biz/post/2020/01/06/oidc-with-auth0-angular-and-dotnet-core-3-1/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="OIDC with auth0, Angular and DotNet Core 3.1">
-  <meta property="og:description" content="On my github repo you’ll find a demo app based on auth0 SPA Angular quickstart. It is integrated with a .Net Core 3.1 backend.">
+  <meta property="og:description" content="A demo app that shows how to use auth0 to secure API calls from an Angular 8+ SPA to a .NET Core 3.1 backend, and the steps to run it.">
   <meta property="og:url" content="https://vandiest.biz/post/2020/01/06/oidc-with-auth0-angular-and-dotnet-core-3-1/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,11 @@
     "headline": "OIDC with auth0, Angular and DotNet Core 3.1",
     "datePublished": "2020-01-06",
     "dateModified": "2020-01-06",
-    "description": "On my github repo you’ll find a demo app based on auth0 SPA Angular quickstart. It is integrated with a .Net Core 3.1 backend.",
+    "description": "A demo app that shows how to use auth0 to secure API calls from an Angular 8+ SPA to a .NET Core 3.1 backend, and the steps to run it.",
     "keywords": [
       "Angular",
-      "JavaScript"
+      "ASP.NET",
+      "Authentication"
     ],
     "author": {
       "@type": "Person",
@@ -55,7 +56,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">JavaScript</span></li></ul>
+          <ul class="chips"><li><span class="chip">Angular</span></li><li><span class="chip chip--quiet">ASP.NET</span></li><li><span class="chip chip--quiet">Authentication</span></li></ul>
           <h1>OIDC with auth0, Angular and DotNet Core 3.1</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -68,13 +69,12 @@
           <ol>
           <li>Have a auth0 subscription.</li>
           <li>Create an Application and a API.</li>
-          <li>Edit following files with your auth0 configuration info:</li>
-          </ol>
+          <li>Edit following files with your auth0 configuration info:
           <ul>
           <li>\auth0-backend-demo\appsettings.config</li>
           <li>\auth0-angular-demo\src\app\auth.service.ts</li>
           </ul>
-          <ol>
+          </li>
           <li>In the angular app install the npm packages: cd .\auth0-angular-demo<br> npm install</li>
           <li>start the angular app: npm start</li>
           <li>Compile and run the .NetCore Api app: cd .\auth0-backend-demo<br> dotnet restore dotnet run</li>

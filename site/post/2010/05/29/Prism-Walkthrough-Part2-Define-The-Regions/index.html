@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prism Walkthrough - Part 2: Define The Regions | Geoffrey Vandiest</title>
-  <meta name="description" content="Menu Region: contain a Menu that is responsible to load views in the Main Region">
+  <meta name="description" content="Prism walkthrough part 2: define the menu, main and status bar regions of the Shell as named ItemsControls in Shell.xaml.">
   <link rel="canonical" href="https://vandiest.biz/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Prism Walkthrough - Part 2: Define The Regions">
-  <meta property="og:description" content="Menu Region: contain a Menu that is responsible to load views in the Main Region">
+  <meta property="og:description" content="Prism walkthrough part 2: define the menu, main and status bar regions of the Shell as named ItemsControls in Shell.xaml.">
   <meta property="og:url" content="https://vandiest.biz/post/2010/05/29/Prism-Walkthrough-Part2-Define-The-Regions/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,7 +24,7 @@
     "headline": "Prism Walkthrough - Part 2: Define The Regions",
     "datePublished": "2010-05-29",
     "dateModified": "2010-05-29",
-    "description": "Menu Region: contain a Menu that is responsible to load views in the Main Region",
+    "description": "Prism walkthrough part 2: define the menu, main and status bar regions of the Shell as named ItemsControls in Shell.xaml.",
     "keywords": [
       "Prism",
       "WPF"
@@ -77,7 +77,7 @@
           <ol>
           <li>To add the regions in the Shell window add the following namespace definition to the root <strong>Window</strong> element. You need this namespace to use an attached property for regions that is defined in the Composite Application Library:&nbsp; xmlns:cal=<a href="http://www.codeplex.com/CompositeWPF">http://www.codeplex.com/CompositeWPF</a>. </li>
           <li>Replace the Grid in the Shell by the following xaml:<br>
-          <pre><code class="language-html">&lt;Grid&gt;
+          <pre><code class="language-xml">&lt;Grid&gt;
     &lt;Grid.RowDefinitions&gt;
         &lt;RowDefinition Height="35" /&gt;
         &lt;RowDefinition Height="*" /&gt;

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>6 Key Principles to Elevate Testability and Maintainability in C# | Geoffrey Vandiest</title>
-  <meta name="description" content="Testable code stands as a cornerstone in the realm of quality software development.">
+  <meta name="description" content="Six principles for writing testable and maintainable C# code, from single responsibility and dependency injection to pure functions.">
   <link rel="canonical" href="https://vandiest.biz/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="6 Key Principles to Elevate Testability and Maintainability in C#">
-  <meta property="og:description" content="Testable code stands as a cornerstone in the realm of quality software development.">
+  <meta property="og:description" content="Six principles for writing testable and maintainable C# code, from single responsibility and dependency injection to pure functions.">
   <meta property="og:url" content="https://vandiest.biz/post/2023/07/03/crafting-c-code-for-success-6-key-principles-to-elevate-testability-and-maintainability/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,10 @@
     "headline": "6 Key Principles to Elevate Testability and Maintainability in C#",
     "datePublished": "2023-07-03",
     "dateModified": "2023-07-03",
-    "description": "Testable code stands as a cornerstone in the realm of quality software development.",
+    "description": "Six principles for writing testable and maintainable C# code, from single responsibility and dependency injection to pure functions.",
     "keywords": [
-      "Testing",
       "Unit testing",
+      "Testability",
       ".NET"
     ],
     "image": "https://vandiest.biz/img/2023/crafting-c-code-for-success-6-key-principles-to-01.jpg",
@@ -57,7 +57,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Unit testing</span></li><li><span class="chip chip--quiet">.NET</span></li></ul>
+          <ul class="chips"><li><span class="chip">Unit testing</span></li><li><span class="chip chip--quiet">Testability</span></li><li><span class="chip chip--quiet">.NET</span></li></ul>
           <h1>6 Key Principles to Elevate Testability and Maintainability in C#</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -159,12 +159,7 @@ public class ComposedObjectTests
           <p>Take this example where the method &ldquo;StoreAverageOfPrimes&rdquo; is extremely hard to test:</p>
 
           <div>
-          <table>
-          <tbody>
-          <tr>
-          <td>&nbsp;</td>
-          <td>
-          <pre><code class="language-sql">public void StoreAverageOfPrimes(int number)
+          <pre><code class="language-csharp">public void StoreAverageOfPrimes(int number)
 {
     List&lt;int&gt; primeNumbers = new List&lt;int&gt;();
 
@@ -200,22 +195,13 @@ public class ComposedObjectTests
         command.ExecuteNonQuery();
     }
 }</code></pre>
-          </td>
-          </tr>
-          </tbody>
-          </table>
           </div>
 
           <p>This code suffers from the same challenges when it comes to testing the calculation logic in isolation. The code tightly couples the calculation logic with the database access code, making it difficult to write focused unit tests. The lack of separation and abstraction hinders code reusability and maintainability.</p>
           <p>In the refactored code here under, the StoreAverageOfPrimes method has been modified to separate the calculation logic from the data access code:</p>
 
           <div>
-          <table>
-          <tbody>
-          <tr>
-          <td>&nbsp;</td>
-          <td>
-          <pre><code class="language-sql">public static List&lt;int&gt; GetPrimeNumbers(int number)
+          <pre><code class="language-csharp">public static List&lt;int&gt; GetPrimeNumbers(int number)
 {
     List&lt;int&gt; primeNumbers = new List&lt;int&gt;();
 
@@ -274,10 +260,6 @@ private void StoreResult(double result, SqlConnection connection)
     command.Parameters.AddWithValue("@Value", result);
     command.ExecuteNonQuery();
 }</code></pre>
-          </td>
-          </tr>
-          </tbody>
-          </table>
           </div>
 
           <p>In this updated code, the pure functions GetPrimeNumbers and IsPrime have been made static. By making them static, they can be accessed directly without an instance of the CalculationService class.</p>

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anti-Pattern 3: Overloaded Constructor | Geoffrey Vandiest</title>
-  <meta name="description" content="In the previous example the “Invoice” object is responsible to retrieve all the values needed to calculate the balance and it also contains the business logic…">
+  <meta name="description" content="An Invoice that fetches its own data and calculates its balance violates the SRP. Extract a repository, pass in only the data, and the test needs no mocks.">
   <link rel="canonical" href="https://vandiest.biz/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Anti-Pattern 3: Overloaded Constructor">
-  <meta property="og:description" content="In the previous example the “Invoice” object is responsible to retrieve all the values needed to calculate the balance and it also contains the business logic…">
+  <meta property="og:description" content="An Invoice that fetches its own data and calculates its balance violates the SRP. Extract a repository, pass in only the data, and the test needs no mocks.">
   <meta property="og:url" content="https://vandiest.biz/post/2010/05/10/Anti-Pattern-3-Overloaded-Constructor/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,10 +24,11 @@
     "headline": "Anti-Pattern 3: Overloaded Constructor",
     "datePublished": "2010-05-10",
     "dateModified": "2010-05-10",
-    "description": "In the previous example the “Invoice” object is responsible to retrieve all the values needed to calculate the balance and it also contains the business logic…",
+    "description": "An Invoice that fetches its own data and calculates its balance violates the SRP. Extract a repository, pass in only the data, and the test needs no mocks.",
     "keywords": [
-      "Architecture",
-      "Testing"
+      "Testing",
+      "Testability",
+      "Design patterns"
     ],
     "author": {
       "@type": "Person",
@@ -55,7 +56,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">Architecture</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
+          <ul class="chips"><li><span class="chip">Testing</span></li><li><span class="chip chip--quiet">Testability</span></li><li><span class="chip chip--quiet">Design patterns</span></li></ul>
           <h1>Anti-Pattern 3: Overloaded Constructor</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">

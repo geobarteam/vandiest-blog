@@ -42,8 +42,10 @@ async function main() {
     const lostImages = body.querySelectorAll('em.lost').length;
     for (const n of body.querySelectorAll('em.lost')) n.remove();
 
-    const before = bag(words(raw.text));
-    const after = bag(words(body.text));
+    // Separate words at every tag boundary: "</p><p>" must not glue two words together.
+    const spaced = (el) => parse(el.innerHTML.replace(/></g, '> <'), PARSE).text;
+    const before = bag(words(spaced(raw)));
+    const after = bag(words(spaced(body)));
     const missing = [];
     let total = 0, lost = 0;
     for (const [w, n] of before) {
@@ -72,7 +74,34 @@ async function main() {
       ...(previous[path]?.agent ? { agent: previous[path].agent } : {}),
     };
   }
+  // Merge the review agent's verdicts (tools/migrate/verdicts.txt) when present.
+  let verdicts = '';
+  try { verdicts = await readFile(join(HERE, 'verdicts.txt'), 'utf8'); } catch {}
+  for (const line of verdicts.split('\n')) {
+    if (!line.startsWith('/post/')) continue;
+    const [path, level, changed, owner] = line.split(' | ').map((s) => s.trim());
+    if (result[path]) result[path].agent = { level, changed, owner };
+  }
   await writeFile(OUT, JSON.stringify(result, null, 1) + '\n');
+
+  // Review section of report.md: final confidence = the agent's verdict, else the automated mark.
+  const rows = Object.entries(result).sort((a, b) => b[0].localeCompare(a[0]));
+  const final = (r) => r.agent?.level || r.level;
+  const tally = { high: 0, medium: 0, low: 0 };
+  rows.forEach(([, r]) => tally[final(r)]++);
+  const cell = (s) => (s || '-').replace(/\|/g, '\\|');
+  const section = [
+    '## Review (D4)', '',
+    `Every post was compared word by word with its original (\`review.mjs\`): no post lost text. The ${rows.filter(([, r]) => r.agent).length} posts with an automated finding were then reviewed by the migrate-review agent, which fixed tags, descriptions, code languages and structure. Final confidence: high ${tally.high}, medium ${tally.medium}, low ${tally.low}.`, '',
+    '| Post | Confidence | Changed in review | For the owner |', '| --- | --- | --- | --- |',
+    ...rows.map(([p, r]) => `| ${cell(r.title)} | ${final(r)} | ${cell(r.agent ? r.agent.changed : 'not needed: no automated finding')} | ${cell(r.agent?.owner)} |`),
+    '',
+  ].join('\n');
+  const reportFile = join(HERE, 'report.md');
+  let report = await readFile(reportFile, 'utf8');
+  report = report.replace(/\n## Review \(D4\)[\s\S]*?(?=\n## |$)/, '');
+  report = report.replace(/\n## Notes per post/, '\n' + section + '\n## Notes per post');
+  await writeFile(reportFile, report);
   console.log(`review: high ${counts.high}, medium ${counts.medium}, low ${counts.low}`);
   for (const [p, r] of Object.entries(result)) if (r.level === 'low') console.log(`  LOW ${p}\n      ${r.reasons.join('; ')}`);
 }

@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Building TypeScript with Gulp | Geoffrey Vandiest</title>
-  <meta name="description" content="In the preceding post I show how you can build your TypeScript with Tsc, you can also simply use Visual Studio and use the option: “Compile TypeScipt on Build”…">
+  <meta name="description" content="How to use Gulp and gulp-typescript to set up and fine-tune the TypeScript build of an ASP.NET Core project.">
   <link rel="canonical" href="https://vandiest.biz/post/2016/09/01/building-typescript-with-gulp/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Building TypeScript with Gulp">
-  <meta property="og:description" content="In the preceding post I show how you can build your TypeScript with Tsc, you can also simply use Visual Studio and use the option: “Compile TypeScipt on Build”…">
+  <meta property="og:description" content="How to use Gulp and gulp-typescript to set up and fine-tune the TypeScript build of an ASP.NET Core project.">
   <meta property="og:url" content="https://vandiest.biz/post/2016/09/01/building-typescript-with-gulp/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,7 +24,7 @@
     "headline": "Building TypeScript with Gulp",
     "datePublished": "2016-09-01",
     "dateModified": "2016-09-01",
-    "description": "In the preceding post I show how you can build your TypeScript with Tsc, you can also simply use Visual Studio and use the option: “Compile TypeScipt on Build”…",
+    "description": "How to use Gulp and gulp-typescript to set up and fine-tune the TypeScript build of an ASP.NET Core project.",
     "keywords": [
       "TypeScript",
       "JavaScript"
@@ -68,7 +68,7 @@
           <h2>Pull Gulp npm packages</h2>
           <p>First will need to use npm to pull down some gulp packages that will help us in setting up our Typescript build.</p>
           <p>The npm packages we need are:</p>
-          <pre><code class="language-javascript">"gulp-rimraf": "^0.2.0",
+          <pre><code class="language-json">"gulp-rimraf": "^0.2.0",
 
 "gulp-sourcemaps": "^1.6.0",
 
@@ -91,13 +91,7 @@
           <li>Write the typescript build task</li>
           <li>Write the clean tasks</li>
           <li>If you use VS2015 you can bind the gulp tasks with your VS build. The clean tasks should run before our build and after our build we should run first the &lsquo;tsbuilld&rsquo; and then the &lsquo;min&rsquo; task.</li>
-          </ul>
-
-          <ul>
           <li>If you want that the ts build is triggered when a ts file changes write a watch task:</li>
-          </ul>
-
-          <ul>
           <li>If needed modify your angular script links. As the predefined min:js gulp task mimifies all js files we can choose to use the mimified app.js file in production.</li>
           </ul>
 

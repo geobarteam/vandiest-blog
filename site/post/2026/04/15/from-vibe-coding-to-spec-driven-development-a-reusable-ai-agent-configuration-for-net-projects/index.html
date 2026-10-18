@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects | Geoffrey Vandiest</title>
-  <meta name="description" content="An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplined, repeatable engineering process into AI agents, skills…">
+  <meta name="description" content="An open-source library of GitHub Copilot and Claude Code configuration files that encodes a disciplined, repeatable engineering process for .NET projects.">
   <link rel="canonical" href="https://vandiest.biz/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects">
-  <meta property="og:description" content="An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplined, repeatable engineering process into AI agents, skills…">
+  <meta property="og:description" content="An open-source library of GitHub Copilot and Claude Code configuration files that encodes a disciplined, repeatable engineering process for .NET projects.">
   <meta property="og:url" content="https://vandiest.biz/post/2026/04/15/from-vibe-coding-to-spec-driven-development-a-reusable-ai-agent-configuration-for-net-projects/">
   <meta property="og:site_name" content="Geoffrey Vandiest">
   <meta name="theme-color" content="#1e3a6e">
@@ -24,11 +24,11 @@
     "headline": "From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects",
     "datePublished": "2026-04-15",
     "dateModified": "2026-04-15",
-    "description": "An open-source library of GitHub Copilot and Claude Code configuration files that encode a disciplined, repeatable engineering process into AI agents, skills…",
+    "description": "An open-source library of GitHub Copilot and Claude Code configuration files that encodes a disciplined, repeatable engineering process for .NET projects.",
     "keywords": [
       "AI development",
-      "Testing",
-      "Architecture"
+      ".NET",
+      "Testing"
     ],
     "image": "https://vandiest.biz/img/2026/from-vibe-coding-to-spec-driven-development-a-re-01.png",
     "author": {
@@ -57,7 +57,7 @@
     <div class="layout">
       <article>
         <header class="post__head">
-          <ul class="chips"><li><span class="chip">AI development</span></li><li><span class="chip chip--quiet">Testing</span></li><li><span class="chip chip--quiet">Architecture</span></li></ul>
+          <ul class="chips"><li><span class="chip">AI development</span></li><li><span class="chip chip--quiet">.NET</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
           <h1>From Vibe Coding to Spec-Driven Development: A Reusable AI Agent Configuration for .NET Projects</h1>
           <div class="byline">
             <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
@@ -71,9 +71,7 @@
           <p><strong>Repository:</strong>&nbsp;<strong>Part 1 of 2.</strong>&nbsp;This article covers the motivation, best practices, and the configuration library. For a hands-on walkthrough of the spec-driven process, see&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST-PROCESS.md">Part 2: The Process in Action</a>.</p>
           </blockquote>
           <hr>
-          <div>
           <h2>Why I Built This</h2>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#why-i-built-this"></a></div>
           <p>Over the past year I've spent hundreds of hours working with AI coding agents &mdash; GitHub Copilot, Claude Code, and various MCP tool integrations. I learned a lot, made plenty of mistakes, and eventually landed on a workflow that works reliably.</p>
           <p>The problem was: every time I started a new project, I was rebuilding the same configuration from scratch. The same planning discipline. The same Red-Green-Refactor loop. The same human gates. The same layer-specific coding conventions. Each project had slight variations, and none of them captured everything I'd learned.</p>
           <p>So I built&nbsp;<strong><a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a></strong>&nbsp;&mdash; a reusable template library of AI agent configuration files that I copy into every new .NET project. It encodes the engineering process I've developed over my career &mdash; now translated into agents, skills, and instruction files that AI assistants follow automatically.</p>
@@ -84,24 +82,16 @@
           </ol>
           <p>This article shares what I've learned and how the configuration library works. Whether you adopt it wholesale or just borrow ideas, I hope it saves you some of the trial and error I went through.</p>
           <hr>
-          <div>
           <h2>The Problem: Vibe Coding</h2>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-problem-vibe-coding"></a></div>
           <p>AI coding assistants like GitHub Copilot are changing how developers write software. But without clear practices, teams drift into what I call&nbsp;<strong>vibe coding</strong>&nbsp;&mdash; letting the AI generate code with no plan, no verification, and no accountability. The result? Code nobody fully understands.</p>
           <hr>
-          <div>
           <h2>Part 1: Best Practices for AI-Assisted Coding</h2>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-1-best-practices-for-ai-assisted-coding"></a></div>
-          <div>
           <h3>Understand the Core Concepts</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#understand-the-core-concepts"></a></div>
           <p>Before diving into workflows, every developer should understand three foundational concepts:</p>
           <p><strong>The Model</strong>&nbsp;&mdash; The LLM behind Copilot. Different models have different strengths, costs, and context windows. Choosing the right model for the task is a deliberate decision, not an afterthought.</p>
           <p><strong>The Context</strong>&nbsp;&mdash; Everything the model sees when generating a response: your open files, instructions, conversation history, and workspace structure. Context quality directly determines output quality.</p>
           <p><strong>The Agent</strong>&nbsp;&mdash; The orchestration layer that can inspect files, reason about tasks, propose plans, make changes, run checks, launch commands, and iterate through workflows. Agents interact with tools including MCP servers, making them far more capable than simple chat completions.</p>
-          <div>
           <h3>Treat Tokens as a Limited Resource</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#treat-tokens-as-a-limited-resource"></a></div>
           <p>Tokens &mdash; the unit of model consumption &mdash; are finite on any plan. Practical consequences:</p>
           <ul>
           <li>Use&nbsp;<strong>short, focused sessions</strong></li>
@@ -111,9 +101,7 @@
           <li>Use&nbsp;<strong>lighter models</strong>&nbsp;for simple work</li>
           <li>Reserve&nbsp;<strong>premium models</strong>&nbsp;for harder problems</li>
           </ul>
-          <div>
           <h3>Choose the Right Model for the Job</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#choose-the-right-model-for-the-job"></a></div>
           <p>Not every task needs the most powerful model. Here's how I think about model selection:</p>
           <table>
           <thead>
@@ -147,9 +135,7 @@
           </tbody>
           </table>
           <p><strong>The rule</strong>: use Haiku or Flash for quick simple work, Sonnet as the daily default, and Opus only when the problem genuinely demands it. Don't burn premium tokens on formatting a JSON file.</p>
-          <div>
           <h3>The Biggest Risk: Losing Control</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-biggest-risk-losing-control"></a></div>
           <p>The main danger of AI-assisted coding isn't wrong code &mdash; it's&nbsp;<strong>no longer knowing what the AI changed, why it changed it, or whether it still matches the design</strong>.</p>
           <table>
           <thead>
@@ -174,14 +160,10 @@
           </tbody>
           </table>
           <p>The antidote is&nbsp;<strong>spec-driven development</strong>: start with a specification, produce a plan, implement in small verified steps, and stay in control throughout. That's what this configuration library encodes.</p>
-          <div>
           <h3>Keep Sessions Short</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#keep-sessions-short"></a></div>
           <p>A good AI coding session has one task, one goal, a small scope, only relevant files, and clear validation criteria. A bad session involves multiple unrelated tasks, too much history, broad exploration, repeated retries, and unclear ownership.</p>
           <p><strong>Rule: if the topic changes, start a new session.</strong>&nbsp;Session pollution &mdash; accumulated irrelevant context &mdash; is one of the most common causes of degraded AI output.</p>
-          <div>
           <h3>Anthropic Principle #1: Give the Model a Way to Verify Its Work</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#anthropic-principle-1-give-the-model-a-way-to-verify-its-work"></a></div>
           <p>Verification is the&nbsp;<strong>single biggest improvement</strong>&nbsp;you can make in AI-assisted coding.</p>
           <p>What counts as verification:</p>
           <ul>
@@ -193,9 +175,7 @@
           </ul>
           <p>Without verification, the AI produces plausible but potentially wrong code, and you become the only feedback loop &mdash; a feedback loop that gets tired and loses attention.</p>
           <p>In my workflow, every change follows:&nbsp;<strong>RED &rarr; GREEN &rarr; REFACTOR &rarr; ANALYSIS &rarr; PROOF &rarr; HUMAN GATE</strong>.</p>
-          <div>
           <h3>Anthropic Principle #2: Explore &rarr; Specify &rarr; Plan &rarr; Implement &rarr; Commit</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#anthropic-principle-2-explore--specify--plan--implement--commit"></a></div>
           <p>This is the workflow backbone:</p>
           <ol>
           <li><strong>Explore</strong>&nbsp;&mdash; Understand the codebase, existing patterns, and the real problem</li>
@@ -205,9 +185,7 @@
           <li><strong>Commit</strong>&nbsp;&mdash; Checkpoint small, validated changes in Git</li>
           </ol>
           <p>Planning is most valuable for new features, multi-file changes, or risk areas. Tiny fixes can be done directly &mdash; but still verified.</p>
-          <div>
           <h3>Anthropic Principle #3: Provide Specific Context</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#anthropic-principle-3-provide-specific-context"></a></div>
           <p>Good prompts are not long prompts &mdash; they are&nbsp;<strong>scoped, specific, and verifiable</strong>.</p>
           <table>
           <thead>
@@ -233,14 +211,10 @@
           </table>
           <p>The pattern is always the same: scope the task, reference existing patterns, and define what "done" looks like.</p>
           <hr>
-          <div>
           <h2>Part 2: The "github-copilot-configs"&nbsp;library &mdash; What's Inside</h2>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-2-the-configuration-library--whats-inside"></a></div>
           <p>Knowing best practices is one thing. Making every AI session follow them automatically is another. That's what the&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;library does &mdash; it encodes your architecture, conventions, and development process into configuration files that GitHub Copilot and Claude Code follow without you repeating yourself every session.</p>
           <p><strong>Target stack</strong>: ASP.NET Core + Blazor WebAssembly &middot; Onion/Screaming Architecture &middot; CQRS-lite &middot; .NET 10. But the patterns and workflow are adaptable to any .NET project.</p>
-          <div>
           <h3>Agents &mdash; Specialized AI Roles</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#agents--specialized-ai-roles"></a></div>
           <p>Agents are invoked via&nbsp;<code>@name</code>&nbsp;in VS Code chat. Each is a specialized role with its own constraints, workflow, and tools.</p>
           <table>
           <thead>
@@ -277,9 +251,7 @@
           </tbody>
           </table>
           <p>Each agent follows the shared workflow rules in&nbsp;<code>AGENTS.md</code>: plan-first discipline, Red-Green-Refactor loops, and mandatory human gates.</p>
-          <div>
           <h4>The DevOps Agent in Detail</h4>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-devops-agent-in-detail"></a></div>
           <p>The&nbsp;<code>@devops</code>&nbsp;agent deserves special attention because it encodes a pattern I found particularly valuable: the&nbsp;<strong>Architecture.md &rarr; Bicep &rarr; Deployment-Info pipeline</strong>.</p>
           <p>The workflow separates&nbsp;<em>what should exist</em>&nbsp;(Architecture.md) from&nbsp;<em>what does exist</em>&nbsp;(Deployment-Info-{env}.md):</p>
           <ol>
@@ -288,9 +260,7 @@
           <li><strong>Deployment-Info-stg.md / Deployment-Info-prd.md</strong>&nbsp;record the actual deployed state &mdash; real resource names, FQDNs, and live URLs</li>
           </ol>
           <p>This separation means the devops agent always knows the current state of each environment and can reason about what needs to change. It also means the&nbsp;<code>@smoke-test</code>&nbsp;and&nbsp;<code>@debug</code>&nbsp;agents can discover live URLs automatically &mdash; no hardcoded values.</p>
-          <div>
           <h4>The Smoke Test Agent in Detail</h4>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-smoke-test-agent-in-detail"></a></div>
           <p>The&nbsp;<code>@smoke-test</code>&nbsp;agent is designed for post-deployment verification. Instead of relying on hardcoded URLs, it dynamically builds its environment URL table by reading the infrastructure documentation files. It then executes a structured test plan:</p>
           <ul>
           <li><strong>Health endpoints</strong>: Checks&nbsp;<code>/health</code>,&nbsp;<code>/health/ready</code>,&nbsp;<code>/health/live</code>&nbsp;on every API</li>
@@ -300,9 +270,7 @@
           <li><strong>Authentication flows</strong>: Verifies login redirects appear on protected routes (without entering real credentials)</li>
           </ul>
           <p>The agent produces a structured report with pass/fail counts, collected errors, and details on every failure. It's read-only by design &mdash; it never submits forms or modifies data, especially in production.</p>
-          <div>
           <h3>Skills &mdash; Step-by-Step Recipes</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#skills--step-by-step-recipes"></a></div>
           <p>Skills are invoked via&nbsp;<code>/name</code>&nbsp;in chat and guide the AI through multi-step code generation tasks.</p>
           <table>
           <thead>
@@ -354,9 +322,7 @@
           <li><strong><code>_specs/&lt;Feature&gt;.md</code></strong>&nbsp;&mdash; Feature specifications (the contract between developer and AI). Written before planning using&nbsp;<code>templates/spec-template.md</code>.</li>
           <li><strong><code>_plans/&lt;Feature&gt;.md</code></strong>&nbsp;&mdash; Implementation plans with vertical-slice steps, created by&nbsp;<code>@planner</code>&nbsp;from the spec.</li>
           </ul>
-          <div>
           <h3>Instructions &mdash; Auto-Activated Layer Conventions</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#instructions--auto-activated-layer-conventions"></a></div>
           <p>Instruction files activate automatically when you edit files matching their&nbsp;<code>applyTo</code>&nbsp;glob pattern. When you open a domain entity file, the AI silently loads domain conventions. When you edit a controller, it loads BFF patterns.</p>
           <table>
           <thead>
@@ -397,9 +363,7 @@
           </tbody>
           </table>
           <p>This means the AI always knows the conventions for the layer you're working in &mdash; without you needing to mention them.</p>
-          <div>
           <h3>Root Files &mdash; The Process Backbone</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#root-files--the-process-backbone"></a></div>
           <table>
           <thead>
           <tr>
@@ -422,9 +386,7 @@
           </tr>
           </tbody>
           </table>
-          <div>
           <h3>Token System &mdash; Project-Specific Customization</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#token-system--project-specific-customization"></a></div>
           <p>Templates use&nbsp;<code>{{MustacheStyle}}</code>&nbsp;placeholders that the&nbsp;<code>/init</code>&nbsp;skill replaces with project-specific values:</p>
           <table>
           <thead>
@@ -454,13 +416,9 @@
           </table>
           <p>Copy the files, run&nbsp;<code>/init</code>, and the entire AI configuration is project-specific in seconds.</p>
           <hr>
-          <div>
           <h2>Part 3: Getting Started &mdash; Setting Up Your Own Project</h2>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-3-getting-started--setting-up-your-own-project"></a></div>
           <p>You don't need to use the exact same stack. The engineering process &mdash; plan first, test first, one step at a time &mdash; works for any project. Here's how to get started:</p>
-          <div>
           <h3>Step 1: Copy the Configuration Files</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-1-copy-the-configuration-files"></a></div>
           <p>Clone or download&nbsp;<a href="https://github.com/geobarteam/github-copilot-configs">github-copilot-configs</a>&nbsp;and copy the relevant files into your project:</p>
           <div>
           <pre><code class="language-plaintext">your-project/
@@ -478,9 +436,7 @@
           <blockquote>
           <p>The&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;in this repo is meta (for the template library itself). Copy the&nbsp;<strong>root-level</strong>&nbsp;<code>copilot-instructions.md</code>&nbsp;to&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;in your project.</p>
           </blockquote>
-          <div>
           <h3>Step 2: Run the Init Skill</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-2-run-the-init-skill"></a></div>
           <p>Open VS Code chat and type&nbsp;<code>/init</code>. The skill will:</p>
           <ol>
           <li><strong>Discover</strong>&nbsp;your project's tokens automatically (solution name, namespace root, test executable path, etc.)</li>
@@ -488,9 +444,7 @@
           <li><strong>Replace</strong>&nbsp;all&nbsp;<code>{{token}}</code>&nbsp;placeholders across your config files</li>
           <li><strong>Verify</strong>&nbsp;no unreplaced tokens remain</li>
           </ol>
-          <div>
           <h3>Step 3: Start Building Features</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-3-start-building-features"></a></div>
           <div>
           <pre><code class="language-plaintext"># 1. Plan the feature
 @planner Add subscription management with list and create
@@ -501,9 +455,7 @@
 /build-feature Step 1 — Display subscription list</code></pre>
 
           </div>
-          <div>
           <h3>Step 4: Adapt to Your Architecture</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-4-adapt-to-your-architecture"></a></div>
           <p>These files are templates. After running&nbsp;<code>/init</code>, adapt them to your project:</p>
           <ul>
           <li><strong>Different architecture?</strong>&nbsp;Edit the project structure in&nbsp;<code>.github/copilot-instructions.md</code>&nbsp;and update&nbsp;<code>applyTo</code>&nbsp;globs in instruction files</li>
@@ -512,9 +464,7 @@
           <li><strong>Additional agents?</strong>&nbsp;Create&nbsp;<code>&lt;name&gt;.agent.md</code>&nbsp;in&nbsp;<code>.github/agents/</code>&nbsp;following the existing pattern</li>
           <li><strong>Different CI/CD?</strong>&nbsp;Update the&nbsp;<code>@devops</code>&nbsp;agent with your pipeline conventions</li>
           </ul>
-          <div>
           <h3>Step 5: Build Your Own Agent Library</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#step-5-build-your-own-agent-library"></a></div>
           <p>The most valuable thing in this repo isn't the boilerplate &mdash; it's the&nbsp;<strong>workflow encoded in agents</strong>. Consider building agents for your own recurring tasks:</p>
           <ul>
           <li>A&nbsp;<strong>code review agent</strong>&nbsp;that checks PRs against your team's conventions</li>
@@ -524,13 +474,9 @@
           </ul>
           <p>The pattern is always the same: define the agent's role, constraints, workflow steps, and tools &mdash; then let it execute within guardrails you control.</p>
           <hr>
-          <div>
           <h2>Part 4: Best Practices for AI Development Process</h2>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#part-4-best-practices-for-ai-development-process"></a></div>
           <p>Parts 1&ndash;3 covered principles and tooling. This part describes the&nbsp;<strong>concrete development process</strong>&nbsp;we encode into our templates &mdash; the workflow an AI agent follows when building features. This is where spec-driven development, Red-Green-Refactor, vertical slicing, and human gates come together into a single disciplined loop.</p>
-          <div>
           <h3>The Five-Phase Workflow</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-five-phase-workflow"></a></div>
           <p>Every feature follows five phases. The AI agent is responsible for executing them, but the developer stays in control at every gate.</p>
           <div>
           <pre><code class="language-plaintext">Explore → Specify → Plan → Implement → Commit</code></pre>
@@ -541,9 +487,7 @@
           <p><strong>Plan</strong>&nbsp;&mdash; A plan file (<code>_plans/&lt;FeatureName&gt;.md</code>) decomposes the feature into concrete implementation steps. Each step is a vertical behaviour slice with explicit file paths, test methods, and verification criteria. The plan must be approved before any code is written.</p>
           <p><strong>Implement</strong>&nbsp;&mdash; The agent executes the plan one step at a time using Red-Green-Refactor. Each step ends at a human gate &mdash; the developer reviews and approves before the next step starts.</p>
           <p><strong>Commit</strong>&nbsp;&mdash; Small, validated changes are checkpointed in Git after each approved step.</p>
-          <div>
           <h3>The Planning Gate: When Plans Are Required</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#the-planning-gate-when-plans-are-required"></a></div>
           <p>Not every change needs a plan. The configuration library encodes a simple decision matrix:</p>
           <table>
           <thead>
@@ -576,9 +520,7 @@
           </tbody>
           </table>
           <p>The planning gate prevents the most common AI failure mode: the agent starts writing code before understanding the scope, creates files in the wrong locations, misses existing patterns, and produces work that has to be thrown away.</p>
-          <div>
           <h3>Vertical Slice Decomposition</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#vertical-slice-decomposition"></a></div>
           <p>This is the most important planning principle and the one most teams get wrong when working with AI.</p>
           <p><strong>The problem with horizontal slicing:</strong>&nbsp;A natural instinct &mdash; for both humans and AI &mdash; is to plan layer by layer: "Step 1: Create the entity. Step 2: Add the repository. Step 3: Build the controller. Step 4: Create the page." This feels orderly, but it has a critical flaw:&nbsp;<strong>you don't discover integration problems until the very end</strong>. The entity might not match the DTO. The query might return the wrong shape. The page might need data the controller doesn't provide. By the time you find out, you've built four layers of code that need rework.</p>
           <p><strong>The vertical slice alternative:</strong>&nbsp;Decompose features into the smallest possible&nbsp;<strong>user-visible behaviours</strong>, not into layers. Each slice delivers something a user or a test can verify end-to-end.</p>
@@ -597,9 +539,7 @@
           <li><strong>UI feedback early</strong>&nbsp;&mdash; The user sees and validates the interface before any backend work begins, catching UX issues when they're cheap to fix.</li>
           <li><strong>Smaller blast radius</strong>&nbsp;&mdash; If the backend step reveals that the contract needs to change, only one stub step and one wire step are affected &mdash; not four independent layers.</li>
           </ul>
-          <div>
           <h3>Example: Two Slices for a "Subscriptions" Feature</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#example-two-slices-for-a-subscriptions-feature"></a></div>
           <p><strong>Slice A &mdash; View subscriptions:</strong></p>
           <table>
           <thead>
@@ -646,9 +586,7 @@
           </table>
           <p>Notice: each slice is completed (UI + backend) before the next slice starts. Step 1 and Step 2 are adjacent &mdash; they belong to the same user behaviour. The agent never jumps to Slice B before Slice A is fully wired.</p>
           <p><strong>Compare with the anti-pattern:</strong>&nbsp;Step 1 "Create Entity + Repository", Step 2 "Build Application handlers", Step 3 "GET endpoint", Step 4 "POST endpoint", Step 5 "List page", Step 6 "Create page". This builds layers in isolation. The UI is validated last, when it should be validated first.</p>
-          <div>
           <h3>Red-Green-Refactor-Proof: The Implementation Loop</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#red-green-refactor-proof-the-implementation-loop"></a></div>
           <p>Each plan step is executed as a single Red-Green-Refactor cycle. This is the loop the AI agent follows for every step:</p>
           <div>
           <pre><code class="language-plaintext">READ       — Read the plan step. Understand scope, files, and the test to write.
@@ -673,9 +611,7 @@ MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
           <p><strong>Never proceed past the human gate.</strong>&nbsp;The 🛑 STOP is absolute. The agent does not continue until the developer explicitly approves. This is the single most important control mechanism &mdash; it keeps the developer accountable for every change.</p>
           </li>
           </ol>
-          <div>
           <h3>Human Gates: The Developer Stays in Control</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#human-gates-the-developer-stays-in-control"></a></div>
           <p>The human gate is not a rubber stamp. Each gate requires&nbsp;<strong>behavioural verification</strong>&nbsp;&mdash; a concrete assertion that the system now does something it didn't before:</p>
           <ul>
           <li>"Integration test&nbsp;<code>GetSubscriptionsTest</code>&nbsp;passes &mdash; GET&nbsp;<code>/api/subscriptions</code>&nbsp;returns a list."</li>
@@ -689,9 +625,7 @@ MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
           <li>Before any Git push</li>
           <li>On any change to authentication, PII handling, shared contracts, or database schema</li>
           </ul>
-          <div>
           <h3>Spec-Driven Development: The Spec as Contract</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#spec-driven-development-the-spec-as-contract"></a></div>
           <p>The specification file (<code>_specs/&lt;FeatureName&gt;.md</code>) is written before the plan and serves as the contract between developer intent and AI execution. A good spec contains:</p>
           <ul>
           <li><strong>User stories</strong>&nbsp;&mdash; Who benefits and what they can do</li>
@@ -702,9 +636,7 @@ MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
           </ul>
           <p>The spec prevents a common AI failure: scope creep. Without a spec, the AI infers what "Add subscriptions" means and may add features nobody asked for, use patterns that don't match the codebase, or miss critical business rules. The spec makes intent unambiguous.</p>
           <p>The plan is then derived from the spec. Every plan step traces back to an acceptance criterion. If a step doesn't serve an acceptance criterion, it shouldn't exist.</p>
-          <div>
           <h3>Progress Tracking Across Sessions</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#progress-tracking-across-sessions"></a></div>
           <p>AI coding sessions are ephemeral &mdash; context is lost when a session ends. Our plan files solve this with a simple convention:&nbsp;<strong>checkbox tracking</strong>.</p>
           <div>
           <pre><code class="language-plaintext">## Step 1 — Display subscription list (stubbed)
@@ -721,9 +653,7 @@ MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
 
           </div>
           <p>When a new session starts, the agent reads the plan file and finds the first unchecked&nbsp;<code>[ ]</code>&nbsp;&mdash; that's where to resume. No context is lost. Any agent, in any session, can pick up exactly where the last one left off.</p>
-          <div>
           <h3>Encoding All of This as AI Instructions</h3>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#encoding-all-of-this-as-ai-instructions"></a></div>
           <p>The key insight is that this entire process &mdash; planning gates, vertical slicing, Red-Green-Refactor, human gates, progress tracking &mdash; is&nbsp;<strong>encoded as AI instruction files</strong>&nbsp;that the agent reads and follows automatically. It's not a convention that developers need to remember; it's a constraint the AI enforces on itself.</p>
           <table>
           <thead>
@@ -769,9 +699,7 @@ MARK DONE  — After approval, update the plan file checkboxes.</code></pre>
           </table>
           <p>When a developer says "build the Subscriptions feature", the AI reads these files, asks clarifying questions, produces a vertically-sliced plan, waits for approval, and executes one step at a time with test-first discipline and mandatory human gates. The developer's job shifts from writing boilerplate to&nbsp;<strong>reviewing vertical slices of working behaviour</strong>.</p>
           <hr>
-          <div>
           <h2>Conclusion</h2>
-          <a href="https://github.com/geobarteam/github-copilot-configs/blob/master/BLOGPOST.md#conclusion"></a></div>
           <p>AI coding assistants are powerful, but they amplify both good and bad practices. The developers who benefit most will be those who:</p>
           <ol>
           <li><strong>Adopt deliberate workflows</strong>&nbsp;&mdash; Explore, Specify, Plan, Implement, Commit</li>
