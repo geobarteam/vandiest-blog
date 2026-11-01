@@ -1,5 +1,125 @@
 [
  {
+  "title": "€139 million. Zero working software.",
+  "url": "/post/2026/10/30/139-million-zero-working-software/",
+  "date": "2026-10-30",
+  "description": "The i-Police report shows what happens when a client outsources the knowledge of its own systems. Keep a core team that can say: this is not done.",
+  "tags": [
+   "Architecture",
+   "Public sector"
+  ]
+ },
+ {
+  "title": "I gave my coding agent read access to production. Best hire of the year.",
+  "url": "/post/2026/10/28/i-gave-my-coding-agent-read-access-to-production/",
+  "date": "2026-10-28",
+  "description": "How I let a coding agent diagnose production incidents with the Azure MCP server, a read-only identity and a runbook skill, without letting it touch anything.",
+  "tags": [
+   "AI development",
+   "Azure",
+   "DevOps"
+  ]
+ },
+ {
+  "title": "Patch early, part two. Now with .NET.",
+  "url": "/post/2026/10/26/patch-early-part-two-now-with-dotnet/",
+  "date": "2026-10-26",
+  "description": "Microsoft pushed an emergency .NET patch for a Brotli bug fixed upstream eight months ago. Self-contained apps and containers need a rebuild too.",
+  "tags": [
+   ".NET",
+   "Security"
+  ]
+ },
+ {
+  "title": "PHP2Shell caused a Kitchen Nightmare.",
+  "url": "/post/2026/10/24/php2shell-caused-a-kitchen-nightmare/",
+  "date": "2026-10-24",
+  "description": "My favourite restaurant lost its cash register for days because its ordering portal ran an unsupported PHP version. Staying up to date is hygiene.",
+  "tags": [
+   "Security",
+   "PHP"
+  ]
+ },
+ {
+  "title": "Don't buy your AI server now. It may get a lot cheaper soon.",
+  "url": "/post/2026/10/20/dont-buy-your-ai-server-now/",
+  "date": "2026-10-20",
+  "description": "Memory prices quadrupled on hoarding, not on datacenters built. Every memory cycle ends the same way. If your AI server can wait a year, let it wait.",
+  "tags": [
+   "AI",
+   "Hardware"
+  ]
+ },
+ {
+  "title": "Europe does not need to win the model race. It needs to be opportunistic.",
+  "url": "/post/2026/10/17/europe-does-not-need-to-win-the-model-race/",
+  "date": "2026-10-17",
+  "description": "The money in AI is in the use, not the model. Free open-weight models run in isolation are where European growth sits, and it is sitting there for free.",
+  "tags": [
+   "AI",
+   "Europe"
+  ]
+ },
+ {
+  "title": "Still on .NET 8? Why are we so lazy?",
+  "url": "/post/2026/10/15/still-on-dotnet-8-why-are-we-so-lazy/",
+  "date": "2026-10-15",
+  "description": ".NET 8 and 9 stop receiving security patches on 10 November. The upgrade to .NET 10 is one line. We skip it because nobody has sent us the bill.",
+  "tags": [
+   ".NET",
+   "Security"
+  ]
+ },
+ {
+  "title": "My Azure VM has no SSH port open to the internet. I still manage it from my sofa.",
+  "url": "/post/2026/10/14/my-azure-vm-has-no-ssh-port-open-to-the-internet/",
+  "date": "2026-10-14",
+  "description": "With Tailscale my laptop, my phone and my Azure VM share a private network. No open SSH port, no VPN to configure, no firewall rules to write.",
+  "tags": [
+   "Azure",
+   "Security"
+  ]
+ },
+ {
+  "title": "Europe is starting to study Chinese AI models. In October 2026.",
+  "url": "/post/2026/10/13/europe-is-starting-to-study-chinese-ai-models/",
+  "date": "2026-10-13",
+  "description": "ENISA now tests Chinese open-weight models that have been free since January 2025. The answer was on the shelf: an open model on your own hardware.",
+  "tags": [
+   "AI",
+   "Europe"
+  ]
+ },
+ {
+  "title": "My AI agents burned through GitHub's free CI minutes in six days",
+  "url": "/post/2026/10/12/my-ai-agents-burned-through-githubs-free-ci-minutes/",
+  "date": "2026-10-12",
+  "description": "My AI agents used up GitHub’s free CI minutes in six days. GitHub expects 14 billion commits this year, against 1 billion last year.",
+  "tags": [
+   "AI development",
+   "DevOps"
+  ]
+ },
+ {
+  "title": "A court can be switched off from Washington",
+  "url": "/post/2026/10/11/a-court-can-be-switched-off-from-washington/",
+  "date": "2026-10-11",
+  "description": "The US sanctioned the entire ICC. If a court can be switched off from Washington, what about a ministry, a hospital, a bank? Europe needs more choices.",
+  "tags": [
+   "Europe",
+   "Cloud"
+  ]
+ },
+ {
+  "title": "Hello, I'm Zyggy",
+  "url": "/post/2026/10/08/hello-im-zyggy/",
+  "date": "2026-10-08",
+  "description": "Zyggy, my personal AI assistant, wrote and sent its first LinkedIn post by itself, with a human in the loop. It is open source.",
+  "tags": [
+   "AI development"
+  ]
+ },
+ {
   "title": "Spec-Driven Development with AI: A Practical Guide to Staying in Control",
   "url": "/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control/",
   "date": "2026-04-18",

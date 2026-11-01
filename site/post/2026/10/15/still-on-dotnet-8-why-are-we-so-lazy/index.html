@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Still on .NET 8? Why are we so lazy? | Geoffrey Vandiest</title>
+  <meta name="description" content=".NET 8 and 9 stop receiving security patches on 10 November. The upgrade to .NET 10 is one line. We skip it because nobody has sent us the bill.">
+  <link rel="canonical" href="https://vandiest.biz/post/2026/10/15/still-on-dotnet-8-why-are-we-so-lazy/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Still on .NET 8? Why are we so lazy?">
+  <meta property="og:description" content=".NET 8 and 9 stop receiving security patches on 10 November. The upgrade to .NET 10 is one line. We skip it because nobody has sent us the bill.">
+  <meta property="og:url" content="https://vandiest.biz/post/2026/10/15/still-on-dotnet-8-why-are-we-so-lazy/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Still on .NET 8? Why are we so lazy?",
+    "datePublished": "2026-10-15",
+    "dateModified": "2026-10-15",
+    "description": ".NET 8 and 9 stop receiving security patches on 10 November. The upgrade to .NET 10 is one line. We skip it because nobody has sent us the bill.",
+    "keywords": [
+      ".NET",
+      "Security"
+    ],
+    "image": "https://vandiest.biz/img/2026/still-on-dotnet-8-why-are-we-so-lazy-01.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">.NET</span></li><li><span class="chip chip--quiet">Security</span></li></ul>
+          <h1>Still on .NET 8? Why are we so lazy?</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2026-10-15">15 OCT 2026</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>I know teams that have not upgraded yet. Still on .NET 8, some on .NET 9. And it is never a surprise which teams. The same ones that were late for .NET 6, late for .NET Core, and whose releases you learn to check twice. The runtime version is not the problem. It is the symptom.</p>
+          <figure>
+            <img src="/img/2026/still-on-dotnet-8-why-are-we-so-lazy-01.webp" alt="A man at a laptop, asleep, with sticky notes drawn with open eyes stuck over his glasses." width="800" height="494" loading="lazy">
+          </figure>
+          <p>On 10 November, .NET 8 and .NET 9 stop receiving security patches. That is in four weeks. After that date, every vulnerability found in those runtimes stays open. Forever.</p>
+          <p>And this is the easiest upgrade we have ever had. The move from .NET Framework to .NET Core was a project: months of work, broken libraries, rewritten startup code. .NET 8 to .NET 10 is one line in the project file. net8.0 becomes net10.0. Restore, build, run the tests. The breaking changes fit on a short page, and most of them concern things you never used. Azure has supported .NET 10 since last year.</p>
+          <p>An afternoon. A week for a large application. A team that cannot find that afternoon in a year is telling you something about the rest of its code.</p>
+          <p>This month Microsoft shipped fixes for 1,413 vulnerabilities across its products, its largest monthly release ever. One was already being used by attackers. So ask yourself: how many of this month's fixes, and next month's, touch code that also lives in your .NET 8 runtime? You will never know. After 10 November, Microsoft stops telling you.</p>
+          <p>An unsupported runtime is not &quot;the same code as last year&quot;. It is the same code, plus every bug found since, minus every fix.</p>
+          <p>And in the age of AI, this is a different risk. Five years ago an exploit took a skilled attacker weeks. Today an agent reads the patch diff, writes the exploit and scans the internet for targets in one afternoon. A runtime that will never be fixed is not a risk you take. It is a gift you hand out.</p>
+          <p>Why do we get away with it? Because it costs nothing. When a company leaks customer data through a bug patched two years earlier, the customers carry the loss. The company issues a statement, offers a year of credit monitoring, and moves on.</p>
+          <p>Imagine the rule was different. Imagine a company that leaked data through a known, patched, unapplied vulnerability had to pay back the real damage to every affected user. Not a fine that disappears into a budget. The actual loss, to the actual people.</p>
+          <p>Then that afternoon of upgrade work would be the best investment on the whole roadmap. Every CTO would find the time.</p>
+          <p>We are not lazy because the upgrade is hard. We are lazy because, so far, nobody has sent us the bill.</p>
+          <p>Change the target framework. Run the tests. Do it this week.</p>
+          <p><em>First published on <a href="https://www.linkedin.com/feed/update/urn:li:activity:7516424470564225025/">LinkedIn</a>.</em></p>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>
