@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plans are worthless, but planning is everything | Geoffrey Vandiest</title>
+  <meta name="description" content="I stopped asking my coding agent for implementation plans. The planning moved into an interview and a spec. Here is why, and the kit I built to do it.">
+  <link rel="canonical" href="https://vandiest.biz/post/2026/11/14/plans-are-worthless-but-planning-is-everything/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Plans are worthless, but planning is everything">
+  <meta property="og:description" content="I stopped asking my coding agent for implementation plans. The planning moved into an interview and a spec. Here is why, and the kit I built to do it.">
+  <meta property="og:url" content="https://vandiest.biz/post/2026/11/14/plans-are-worthless-but-planning-is-everything/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Plans are worthless, but planning is everything",
+    "datePublished": "2026-11-14",
+    "dateModified": "2026-11-14",
+    "description": "I stopped asking my coding agent for implementation plans. The planning moved into an interview and a spec. Here is why, and the kit I built to do it.",
+    "keywords": [
+      "AI development",
+      "Testing"
+    ],
+    "image": "https://vandiest.biz/img/2026/plans-are-worthless-00.webp",
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">AI development</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
+          <h1>Plans are worthless, but planning is everything</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2026-11-14">14 NOV 2026</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>I have a folder with eighteen plans in it. My coding agent wrote every one of them. I approved every one of them. <strong>Thirteen were never executed.</strong></p>
+          <figure>
+            <img src="/img/2026/plans-are-worthless-00.webp" alt="Spec driven development: a document, then a screen with a page on it, then an AI brain, linked by arrows." width="1280" height="720" loading="lazy">
+          </figure>
+          <p>The five that were executed did not age well either. A plan was three to five times longer than the spec it came from. It named fifty to a hundred files, classes and test methods. By the time the agent started building, some of those files had moved. The plan described, with great confidence, <strong>a codebase that no longer existed</strong>.</p>
+          <p>A year ago those plans were worth the tokens. Today they are <strong>long text files I do nothing with</strong>.</p>
+
+          <h2>Three steps, one too many</h2>
+          <p>My workflow had three steps: <strong>spec, plan, implementation</strong>. The spec said what I wanted. The plan said how the agent would build it, file by file. Then the agent built it. In April I <a href="/post/2026/04/18/spec-driven-development-with-ai-a-practical-guide-to-staying-in-control/">called the plan one of three pillars</a>.</p>
+          <p>Back then the middle step earned its place. <strong>Models started coding before they understood the question.</strong> A plan was the only way to see what they were about to do. Plan mode in Claude Code existed for exactly that reason.</p>
+          <p>So I asked myself a simple question. <strong>Is the middle step still doing anything?</strong></p>
+          <p>For me the answer was no. The model reads the code better at build time than at plan time, because <strong>at build time the code is current</strong>. The plan was a snapshot of decisions that should have been taken later.</p>
+
+          <h2>I was not the only one</h2>
+          <p>In September, Ayman Nadeem published an article called <a href="https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html">&quot;Plan mode is dead&quot;</a>. It reached <a href="https://news.ycombinator.com/item?id=49840054">Hacker News</a> and collected more than five hundred comments. He had built a coding tool around a separate planning step. His diagnosis of why it failed is one sentence long: <strong>&quot;we had conflated planning with a plan&quot;</strong>.</p>
+          <p><a href="https://news.ycombinator.com/item?id=49850929">One of those comments</a> came from Boris Cherny, who works on Claude Code and built plan mode himself.</p>
+          <blockquote>
+            <p>I broadly agree with the author's point: <strong>plan mode was useful, and is no longer useful</strong>.</p>
+          </blockquote>
+          <p>He also explained what plan mode is under the hood: &quot;a little reminder to every user message along the lines of 'you're in plan mode, please don't code yet'&quot;. <strong>It never changed what the model could do.</strong> He stopped using it when he noticed that &quot;the model just got it&quot;, and that for complex work &quot;planning had become interactive and iterative&quot;.</p>
+          <p>To be fair to the feature, it is not being removed. In the same thread he wrote that &quot;plan mode isn't going away&quot;. It is just <strong>no longer where a session starts</strong>. Recent versions of Claude Code <a href="https://code.claude.com/docs/en/permission-modes">start in auto mode</a>.</p>
+          <p>Not everybody agreed. The best objection in that thread is worth keeping: &quot;The model is smarter now but <strong>that doesn't solve for underspecification</strong> if it guesses my intent wrong.&quot;</p>
+          <p>That is true. It is also the whole point of the title, which I borrowed from Eisenhower. <strong>The plan as a document is worthless.</strong> The planning, the thinking about what you actually want, is everything. <strong>It just has to happen somewhere else.</strong></p>
+
+          <h2>Where the planning went</h2>
+          <p>I read what Anthropic now recommends in its own <a href="https://code.claude.com/docs/en/best-practices">best practices for Claude Code</a>. <strong>Plan files are not in it.</strong> This is.</p>
+          <ul>
+            <li><strong>Let the agent interview you.</strong> The documentation gives the prompt literally: &quot;Interview me until you could write the spec, then write it to SPEC.md.&quot;</li>
+            <li><strong>Build in a fresh session.</strong> Start a new session from the spec, so the build begins &quot;with a clean context and a written definition of done&quot;.</li>
+            <li><strong>Give it a check that can fail.</strong> &quot;Give Claude something it can run that comes back pass or fail.&quot; Then it can work on its own and you do not have to watch.</li>
+            <li><strong>Ask for evidence.</strong> The command it ran and the output. Not a sentence saying it works.</li>
+            <li><strong>Use a second agent as a fresh pair of eyes.</strong> Not because it is smarter. Because it has not seen how the code was written.</li>
+          </ul>
+          <p>So the underspecification problem is real, and the answer is not a longer plan. The answer is <strong>a better spec, written after an interview, with a test attached to every promise</strong>.</p>
+          <figure>
+            <img src="/img/2026/plans-are-worthless-01.svg" alt="Two rows of boxes. A year ago: spec, then plan, then build, with the plan crossed out. Today: interview, then spec, then build from the current code." width="600" height="284" loading="lazy">
+            <figcaption>The plan is gone. The planning moved to the front, into the interview.</figcaption>
+          </figure>
+
+          <h2>The real problem is my existing projects</h2>
+          <p>Knowing this is the easy part. I have several projects, each with its own instructions, its own skills and its own habits. <strong>Some still tell the agent to write a plan first.</strong></p>
+          <p>Changing the way of working in one project takes an afternoon. <strong>Changing it everywhere, the same way, without breaking what already works</strong>, is the kind of job that never gets done.</p>
+          <p>That is why I built the <a href="https://github.com/geobarteam/spec-driven-kit">spec-driven kit</a>.</p>
+
+          <h2>The spec-driven kit replaces the plan with six phases</h2>
+          <p>The kit is a set of rules, skills, agents and hooks for Claude Code. It replaces &quot;spec, plan, implement&quot; with <strong>six phases</strong>.</p>
+          <figure>
+            <img src="/img/2026/plans-are-worthless-02.svg" alt="Six phases from top to bottom: investigate, interview, specify, build one slice, verify and approve, review. An arrow loops from verify back to build for the next slice. Next to each phase is who decides: the agent for investigate and build; I answer, I approve, I commit and I push for the others." width="600" height="548" loading="lazy">
+            <figcaption>The agent decides twice. I decide four times. Build and verify repeat for every slice.</figcaption>
+          </figure>
+          <table>
+            <thead>
+              <tr><th>Phase</th><th>What happens</th><th>Who decides</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Investigate</td><td>The agent reads the code first and records what it verified</td><td>The agent</td></tr>
+              <tr><td>Interview</td><td>It asks me questions, round by round, until nothing has to be assumed</td><td>I answer</td></tr>
+              <tr><td>Specify</td><td>Behaviour, two diagrams, acceptance criteria, vertical slices</td><td>I approve</td></tr>
+              <tr><td>Build</td><td>One slice per fresh session, the test first</td><td>The agent</td></tr>
+              <tr><td>Verify and approve</td><td>A second agent tries to break the checks, then I get a one-screen recap</td><td>I commit</td></tr>
+              <tr><td>Review</td><td>After the last slice, a reviewer checks every criterion against the diff</td><td>I push</td></tr>
+            </tbody>
+          </table>
+          <p>Six choices in it matter more than the rest.</p>
+          <p><strong>The spec is the only planning document.</strong> It says what must be true and how that is checked. No file lists, no class names, no line numbers. <strong>So it cannot go stale.</strong> The agent works those out from the current code when it builds.</p>
+          <p><strong>Work is cut in vertical slices.</strong> A slice is one piece of behaviour I can see working, <strong>never one layer</strong>. A page comes first on fake data. I can try it and change my mind while that is still cheap. The next slice wires it to the real backend.</p>
+          <p><strong>Every slice starts with a test that fails.</strong> An integration test first, then a unit test before each piece of logic. <strong>A test that never failed proves nothing.</strong></p>
+          <p><strong>Nobody grades their own work.</strong> In my trial run, a reviewer without context found a test that passed on any 401 response. It was green, and it proved nothing. So the kit has <strong>three agents that never see the conversation</strong>. One reads the spec before I do. One breaks the behaviour on purpose to see whether each check notices. One reviews the finished feature.</p>
+          <p><strong>Rules without exceptions are hooks.</strong> An instruction can be skipped under pressure. <strong>A hook cannot.</strong> No edits on a protected branch. No recap while verification fails. Commit and push ask for my confirmation.</p>
+          <p><strong>My commit is the acceptance.</strong> The agent stops after every slice. I read the recap, try the slice, review the diff and commit. <strong>A clean working tree</strong> tells the next session that the previous slice was accepted.</p>
+
+          <h2>The review by slice is the part I will not give up</h2>
+          <p>If I had to keep one thing from the whole kit, it is this one. <strong>I review the code slice by slice.</strong></p>
+          <p>An agent builds faster than I can read. Give it a whole feature and it comes back with two thousand lines. I can approve that. I cannot understand it. And after three features like that, I no longer know my own codebase.</p>
+          <p>A small slice is different. One piece of behaviour, one diff I can read in a few minutes. After every slice <strong>the map in my head is up to date again</strong>. I know what was built, where it lives and why.</p>
+          <p>That is also why I ask for pictures. The spec carries two diagrams, so <strong>I see what will be built before a line of code exists</strong>. A diagram shows me in ten seconds what a page of text hides.</p>
+          <p>The model can write the code without me. It cannot keep me in the loop without my help. <strong>The diagrams and the small reviews are how I keep up with the AI.</strong> The day I skip them, I am no longer the developer. I am the person who presses approve.</p>
+          <aside class="callout callout--warn">
+            <p>Drop the plan. Never drop the review. A slice you did not read is a slice you do not own.</p>
+          </aside>
+
+          <h2>How to use it</h2>
+          <p>The kit is <strong>never copied into a project by hand</strong>. It stays in its own folder next to the project, and a setup session installs it from there. That way it can look at what the project already has before it touches anything.</p>
+          <pre><code class="language-plaintext">work/
+  spec-driven-kit/     the kit
+  my-project/          the project to set up</code></pre>
+          <ol>
+            <li>Clone the kit next to your project. You need git and Node.js.</li>
+            <li>Start Claude Code in the kit folder: <code>claude --add-dir ../my-project</code></li>
+            <li>Run <code>/setup ../my-project</code> and stay in the conversation. It surveys the project, shows what it would add and asks what the kit should take over. <strong>It commits nothing.</strong></li>
+            <li>Review the diff in your project and commit it.</li>
+            <li>Start Claude Code in the project and run <code>/new-feature</code> with a name and a sentence of context.</li>
+          </ol>
+          <p>For a project that already has a harness, the setup asks <strong>one question per concern</strong>: planning, test-first, review, verification, commit policy. For each one you decide. Your existing piece stays, the kit takes over, or the kit plugs into it. Your own verification command, for example, simply becomes the kit's.</p>
+          <p>You do not have to take everything at once either. The kit <strong>installs by level</strong>: the review agents only, then the guards, then the full workflow.</p>
+          <aside class="callout">
+            <p>My advice: take <strong>one real feature through all six phases on a branch</strong> before you let the kit own the planning of a whole project.</p>
+          </aside>
+          <p>The kit is here: <a href="https://github.com/geobarteam/spec-driven-kit">github.com/geobarteam/spec-driven-kit</a></p>
+
+          <h2>What I kept</h2>
+          <p>I did not stop planning. <strong>I plan more than before.</strong> The investigation, the interview and the spec are all planning.</p>
+          <p>I did not stop reviewing either. <strong>I still read every slice</strong>, because that is what keeps the picture of the system in my head.</p>
+          <p>What I stopped doing is asking an agent to write down, in great detail, <strong>how it will build something in a codebase that will have changed by the time it starts</strong>.</p>
+          <p>The eighteen plans are still in their folder. I keep them as a reminder.</p>
+
+          <h2>Sources</h2>
+          <ul>
+            <li>Ayman Nadeem, <a href="https://www.aymannadeem.com/artificial/intelligence,/developer/tools/2026/09/24/plan-mode-is-dead.html">&quot;Plan mode is dead&quot;</a>, 24 September 2026</li>
+            <li><a href="https://news.ycombinator.com/item?id=49840054">The Hacker News discussion</a> of that article</li>
+            <li><a href="https://news.ycombinator.com/item?id=49850929">Boris Cherny's comment</a> in that discussion</li>
+            <li>Anthropic, <a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a></li>
+            <li>Anthropic, <a href="https://code.claude.com/docs/en/permission-modes">Permission modes</a> (Claude Code documentation)</li>
+            <li><a href="https://github.com/geobarteam/spec-driven-kit">spec-driven-kit</a> on GitHub</li>
+          </ul>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>

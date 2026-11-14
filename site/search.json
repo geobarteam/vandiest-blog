@@ -1,5 +1,15 @@
 [
  {
+  "title": "Plans are worthless, but planning is everything",
+  "url": "/post/2026/11/14/plans-are-worthless-but-planning-is-everything/",
+  "date": "2026-11-14",
+  "description": "I stopped asking my coding agent for implementation plans. The planning moved into an interview and a spec. Here is why, and the kit I built to do it.",
+  "tags": [
+   "AI development",
+   "Testing"
+  ]
+ },
+ {
   "title": "€139 million. Zero working software.",
   "url": "/post/2026/10/30/139-million-zero-working-software/",
   "date": "2026-10-30",

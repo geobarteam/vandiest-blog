@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 284" width="600" height="284" role="img" aria-label="A year ago: spec, plan, build. Today: interview, spec, build.">
+  <style>
+    .bg{fill:#ffffff}
+    .box{fill:#ffffff;stroke:#171717;stroke-width:4}
+    .gone{fill:#e8e8e3;stroke:#171717;stroke-width:4;stroke-dasharray:8 8}
+    .sun{fill:#ffd75e;stroke:#171717;stroke-width:4}
+    .line{stroke:#171717;stroke-width:4;fill:none}
+    .head{fill:#171717}
+    .cross{stroke:#d4433b;stroke-width:4}
+    text{font-family:"Nunito Sans","Segoe UI",system-ui,sans-serif;fill:#171717;text-anchor:middle}
+    .name{font-size:20px;font-weight:700}
+    .onsun{fill:#171717}
+    .note{font-size:14px;fill:#555555}
+    .row{font-size:13px;font-weight:700;letter-spacing:2px;text-anchor:start}
+    @media (prefers-color-scheme:dark){
+      .bg{fill:#222226}
+      .box{fill:#222226;stroke:#f5f5f2}
+      .gone{fill:#2c2c31;stroke:#f5f5f2}
+      .sun{stroke:#f5f5f2}
+      .line{stroke:#f5f5f2}
+      .head{fill:#f5f5f2}
+      .cross{stroke:#e0564f}
+      text{fill:#f5f5f2}
+      .onsun{fill:#171717}
+      .note{fill:#b0b0b0}
+    }
+  </style>
+  <rect class="bg" width="600" height="284"/>
+
+  <text class="row" x="24" y="30">A YEAR AGO</text>
+  <rect class="box" x="24" y="44" width="152" height="56"/>
+  <text class="name" x="100" y="79">Spec</text>
+  <path class="line" d="M176 72H212"/><path class="head" d="M212 60l12 12-12 12z"/>
+  <rect class="gone" x="224" y="44" width="152" height="56"/>
+  <text class="name" x="300" y="79">Plan</text>
+  <path class="cross" d="M260 72H340"/>
+  <path class="line" d="M376 72H412"/><path class="head" d="M412 60l12 12-12 12z"/>
+  <rect class="box" x="424" y="44" width="152" height="56"/>
+  <text class="name" x="500" y="79">Build</text>
+  <text class="note" x="100" y="124">what I want</text>
+  <text class="note" x="300" y="124">how, file by file</text>
+  <text class="note" x="500" y="124">from a stale plan</text>
+
+  <text class="row" x="24" y="170">TODAY</text>
+  <rect class="sun" x="24" y="184" width="152" height="56"/>
+  <text class="name onsun" x="100" y="219">Interview</text>
+  <path class="line" d="M176 212H212"/><path class="head" d="M212 200l12 12-12 12z"/>
+  <rect class="box" x="224" y="184" width="152" height="56"/>
+  <text class="name" x="300" y="219">Spec</text>
+  <path class="line" d="M376 212H412"/><path class="head" d="M412 200l12 12-12 12z"/>
+  <rect class="box" x="424" y="184" width="152" height="56"/>
+  <text class="name" x="500" y="219">Build</text>
+  <text class="note" x="100" y="264">the agent asks, I answer</text>
+  <text class="note" x="300" y="264">what must be true</text>
+  <text class="note" x="500" y="264">from the current code</text>
+</svg>
