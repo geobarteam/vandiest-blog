@@ -16,7 +16,7 @@
       <category>Testing</category>
       <description><![CDATA[<p>I have a folder with eighteen plans in it. My coding agent wrote every one of them. I approved every one of them. <strong>Thirteen were never executed.</strong></p>
           <figure>
-            <img src="https://vandiest.biz/img/2026/plans-are-worthless-00.webp" alt="Spec driven development: a document, then a screen with a page on it, then an AI brain, linked by arrows." width="1280" height="720" loading="lazy">
+            <img src="https://vandiest.biz/img/2026/plans-are-worthless-03.png" alt="Pixel cartoon. A robot holds a plan so long it runs across the floor and says: Plan 18, step 47: edit BillingService.cs at line 212. The developer answers: We deleted that file on Tuesday." width="720" height="360" loading="lazy">
           </figure>
           <p>The five that were executed did not age well either. A plan was three to five times longer than the spec it came from. It named fifty to a hundred files, classes and test methods. By the time the agent started building, some of those files had moved. The plan described, with great confidence, <strong>a codebase that no longer existed</strong>.</p>
           <p>A year ago those plans were worth the tokens. Today they are <strong>long text files I do nothing with</strong>.</p>
