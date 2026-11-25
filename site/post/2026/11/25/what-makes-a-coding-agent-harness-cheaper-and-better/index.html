@@ -29,6 +29,7 @@
       "AI development",
       "Testing"
     ],
+    "image": "https://vandiest.biz/img/2026/harness-dragon.webp",
     "author": {
       "@type": "Person",
       "name": "Geoffrey Vandiest"
@@ -63,6 +64,9 @@
           </div>
         </header>
         <div class="post-body">
+          <figure>
+            <img src="/img/2026/harness-dragon.webp" alt="A glowing translucent dragon made of circuitry, with an engineer fitting a harness on it" width="1874" height="1281" loading="lazy">
+          </figure>
           <p>My harness for Claude Code had grown for a year. Investigate, write a spec, review it, plan each slice, build test-first, verify, recap. <strong>It worked. It was also expensive</strong>, and I no longer knew which parts earned their cost.</p>
           <p>A harness is everything around the model: instruction files, skills, hooks, gates, the process the agent must follow. Every piece of it costs tokens. So I asked one simple question: <strong>which parts change the result, and which only cost tokens?</strong></p>
           <p>To answer it I ran <strong>19 controlled experiments</strong>. Each changed one thing and measured the effect on the same task: building one slice of a feature in a Blazor WebAssembly application from an approved spec. Two independent judge agents scored every build on acceptance criteria, on planted bugs caught by the tests, on weak tests and on cost.</p>
