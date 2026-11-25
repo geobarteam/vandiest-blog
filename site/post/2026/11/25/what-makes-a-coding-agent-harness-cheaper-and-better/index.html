@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What actually makes a coding-agent harness cheaper and better | Geoffrey Vandiest</title>
+  <meta name="description" content="I ran 19 controlled experiments on my Claude Code harness. The build cost fell 67% and the tests got stronger. What worked, what did nothing, and the numbers.">
+  <link rel="canonical" href="https://vandiest.biz/post/2026/11/25/what-makes-a-coding-agent-harness-cheaper-and-better/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What actually makes a coding-agent harness cheaper and better">
+  <meta property="og:description" content="I ran 19 controlled experiments on my Claude Code harness. The build cost fell 67% and the tests got stronger. What worked, what did nothing, and the numbers.">
+  <meta property="og:url" content="https://vandiest.biz/post/2026/11/25/what-makes-a-coding-agent-harness-cheaper-and-better/">
+  <meta property="og:site_name" content="Geoffrey Vandiest">
+  <meta name="theme-color" content="#1e3a6e">
+  <link rel="preload" href="/fonts/pixelify-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="icon" href="/img/site/avatar_px.png" type="image/png">
+  <link rel="alternate" type="application/rss+xml" title="Geoffrey Vandiest" href="/rss.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What actually makes a coding-agent harness cheaper and better",
+    "datePublished": "2026-11-25",
+    "dateModified": "2026-11-25",
+    "description": "I ran 19 controlled experiments on my Claude Code harness. The build cost fell 67% and the tests got stronger. What worked, what did nothing, and the numbers.",
+    "keywords": [
+      "AI development",
+      "Testing"
+    ],
+    "author": {
+      "@type": "Person",
+      "name": "Geoffrey Vandiest"
+    }
+  }
+  </script>
+</head>
+<body>
+<!-- site:header -->
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <a class="nav__brand" href="/"><img class="pixel" src="/img/site/avatar_px.png" alt="" width="32" height="32">Geoffrey Vandiest</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="/">Home</a></li>
+        <li><a class="nav__link" href="/archive/">Archive</a></li>
+        <li><a class="nav__link" href="/contact/">Contact</a></li>
+        <li><a class="nav__link nav__link--cta" href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- /site:header -->
+  <main id="main" class="wrap">
+    <div class="layout">
+      <article>
+        <header class="post__head">
+          <ul class="chips"><li><span class="chip">AI development</span></li><li><span class="chip chip--quiet">Testing</span></li></ul>
+          <h1>What actually makes a coding-agent harness cheaper and better</h1>
+          <div class="byline">
+            <img src="/img/site/avatar_px.png" alt="" width="40" height="40">
+            <div><span class="byline__name">Geoffrey Vandiest</span><time class="label-s" datetime="2026-11-25">25 NOV 2026</time></div>
+          </div>
+        </header>
+        <div class="post-body">
+          <p>My harness for Claude Code had grown for a year. Investigate, write a spec, review it, plan each slice, build test-first, verify, recap. <strong>It worked. It was also expensive</strong>, and I no longer knew which parts earned their cost.</p>
+          <p>A harness is everything around the model: instruction files, skills, hooks, gates, the process the agent must follow. Every piece of it costs tokens. So I asked one simple question: <strong>which parts change the result, and which only cost tokens?</strong></p>
+          <p>To answer it I ran <strong>19 controlled experiments</strong>. Each changed one thing and measured the effect on the same task: building one slice of a feature in a Blazor WebAssembly application from an approved spec. Two independent judge agents scored every build on acceptance criteria, on planted bugs caught by the tests, on weak tests and on cost.</p>
+
+          <h2>The short version</h2>
+          <p>The build cost fell from <strong>5.57 USD to 1.81 USD per slice (&minus;67%)</strong>. The tests became stronger at the same time: a real page-level integration test, and a mutation score of 100% on the slice's code.</p>
+          <p>The final run missed my strict quality floor by two minor test gaps, and most conditions were run once. So the last figure is an indication, not a proven mean.</p>
+          <p>Three things made a measurable difference:</p>
+          <ul>
+            <li>removing duplicate work;</li>
+            <li>keeping tool output out of the context;</li>
+            <li>replacing written testing rules by a mechanical check (mutation testing).</li>
+          </ul>
+          <p>Three things did not: shortening or adding instruction text, removing paperwork, and regrouping tool calls. A cheaper model (Sonnet 5.5) held the quality once the mechanical check was in place.</p>
+          <p>And the results agree with Anthropic's published guidance on almost every point I could test.</p>
+
+          <h2>The method</h2>
+          <h3>Task and baseline</h3>
+          <ul>
+            <li><strong>Codebase:</strong> a Blazor WebAssembly line-of-business application, with unit, UI (bUnit) and integration test projects.</li>
+            <li><strong>Task:</strong> build slice 1 of a &quot;CSV export&quot; feature from an approved spec with 11 acceptance criteria (file name with local date, sorted rows across pages, localized headers, quoting, formula-injection guard, a log record without personal data, and so on).</li>
+            <li><strong>Agent:</strong> Claude Code, unattended, with a fixed prompt, a fixed tool allow-list and a cap of 300 turns. Opus 5.5 unless stated.</li>
+            <li><strong>Baseline:</strong> the harness as it was (kit 2.5.6), built three times: 5.59, 5.64 and 5.48 USD. Mean 5.57 USD, spread &plusmn;1.5%.</li>
+          </ul>
+
+          <h3>What I measured</h3>
+          <p>Two judge agents scored each build. Neither had seen the build session.</p>
+          <table>
+            <thead>
+              <tr><th>Judge</th><th>What it measures</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Build judge</td><td>Acceptance criteria met (of 11); gate green (0 warnings, all tests, formatting); 2 bugs planted after the build and whether the tests catch them; code quality (0&ndash;5)</td></tr>
+              <tr><td>Coverage judge</td><td>10 planted bugs (M1&ndash;M10) and how many the tests catch; weak tests (cannot fail, or only check a constant or a mock); whether a real integration test exists; line coverage</td></tr>
+            </tbody>
+          </table>
+          <p>Cost is the build job's cost in USD. I also recorded turns and the tokens re-read from cache, as a proxy for context size.</p>
+          <p><strong>Quality floor:</strong> 11/11 criteria, 10/10 planted bugs, 0 weak tests, a real integration test.</p>
+
+          <h3>The loop</h3>
+          <p>Every experiment followed the same cycle.</p>
+          <ol>
+            <li><strong>Propose</strong> one improvement, with a reason taken from the previous analysis.</li>
+            <li><strong>Modify</strong> the harness (a new kit version or a setup change) and install it on the fixed baseline commit.</li>
+            <li><strong>Measure:</strong> one unattended build, then both judges.</li>
+            <li><strong>Analyse:</strong> cost, turns and context against the reference; the judges' findings.</li>
+            <li><strong>Decide:</strong> adopt, reject or &quot;not alone&quot;. Adoption required at least 5% lower cost with the quality held, or better quality at an accepted cost.</li>
+            <li><strong>Next:</strong> the following proposal comes from what the analysis showed, not from a fixed list.</li>
+          </ol>
+          <p>An adopted change became the new reference for the next experiment.</p>
+
+          <h3>A defect in my own method</h3>
+          <p>After experiment 10 I found a bug in my runner. It started each session on the repository's default branch and switched to the experiment commit afterwards. Claude Code loads the instruction file, the unscoped rules and the lists of skills and agents at session start. So <strong>changes to always-loaded text were never in effect in experiments 1&ndash;10</strong>.</p>
+          <p>The consequences: experiment 6 (shorter instruction text) is void, and absolute costs before the fix carry extra text. I fixed the runner so sessions start on the experiment commit, re-measured the reference in isolation at <strong>4.29 USD</strong>, and re-tested the instruction-text question in experiments 11&ndash;12 and 15.</p>
+          <aside class="callout callout--warn">
+            <p>I report this because it changes how the early numbers must be read, and because it is an easy mistake to make. Start every session on the commit under test.</p>
+          </aside>
+
+          <h2>Phase 1: cost at equal quality</h2>
+          <p>Experiments 1 to 10.</p>
+          <table>
+            <thead>
+              <tr><th>#</th><th>Change</th><th>Cost USD</th><th>Decision</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>base</td><td>Kit 2.5.6</td><td>5.57</td><td>reference</td></tr>
+              <tr><td>1</td><td>No slice-plan file, no separate analysis build, short recap</td><td>4.78 (&minus;14%)</td><td><strong>adopted</strong></td></tr>
+              <tr><td>2</td><td>Every build and test through a fresh sub-agent</td><td>8.57 (+54%)</td><td>rejected</td></tr>
+              <tr><td>3</td><td>Many small targeted builds and tests</td><td>6.37 (+33%)</td><td>rejected</td></tr>
+              <tr><td>4</td><td>Fewer, more targeted tests</td><td>4.61 (&minus;4%)</td><td>not alone</td></tr>
+              <tr><td>5</td><td>Integration test first, slice gate filtered to it</td><td>4.77 (0%)</td><td><strong>adopted with 4</strong>: first real integration test at equal cost</td></tr>
+              <tr><td>6</td><td>Always-loaded instructions &minus;55%</td><td>4.78 (0%)</td><td>void (see the method defect)</td></tr>
+              <tr><td>7</td><td>Quiet build and test output, read once</td><td>4.11 (&minus;14%)</td><td><strong>adopted</strong></td></tr>
+              <tr><td>8</td><td>Write all tests, then all code (batching)</td><td>4.60 (+12%)</td><td>rejected</td></tr>
+              <tr><td>9</td><td>No recap file, no spec edits</td><td>4.04 (&minus;2%)</td><td>not adopted</td></tr>
+              <tr><td>10</td><td>Parallel independent tool calls</td><td>5.62 (+37%)</td><td>rejected</td></tr>
+            </tbody>
+          </table>
+          <p>Result of phase 1: <strong>5.57 &rarr; 4.11 USD (&minus;26%)</strong> with the quality held.</p>
+
+          <h2>Phase 2: how much harness do you need?</h2>
+          <p>Experiments 11 and 12.</p>
+          <table>
+            <thead>
+              <tr><th>Run</th><th>Harness</th><th>Cost USD</th><th>Criteria</th><th>Planted bugs</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Isolated reference</td><td>Full kit 2.5.9</td><td>4.29</td><td>11/11</td><td>10/10</td></tr>
+              <tr><td>11b</td><td>Minimal harness, <strong>no spec</strong>, from the one-paragraph request</td><td>3.42</td><td><strong>5/11</strong></td><td><strong>8/10</strong></td></tr>
+              <tr><td>11c</td><td>Minimal harness <strong>with the approved spec</strong></td><td>3.96</td><td>10/11</td><td>10/10</td></tr>
+              <tr><td>12</td><td>Kit 2.6.0: build skill cut from 22.6 KB to 3.1 KB</td><td>4.33</td><td>11/11</td><td>10/10</td></tr>
+            </tbody>
+          </table>
+          <p>Without the spec, the agent built less. No date in the file name, no log record, no empty state, and an unrequested grid filter. <strong>The saving was real, but it came from building a smaller feature.</strong></p>
+          <p>With the spec, a minimal harness reached almost the same quality as the full process.</p>
+          <p>Cutting the build instructions by 86% changed neither cost nor quality.</p>
+
+          <h2>Phase 3: test quality</h2>
+          <p>Experiments 13 to 19. The judges kept finding the same weaknesses: tests written after the code, tests that could not fail, an integration test that bypassed the page. I tried three ways to fix this.</p>
+          <table>
+            <thead>
+              <tr><th>#</th><th>Change</th><th>Model</th><th>Cost USD</th><th>Criteria</th><th>Bugs</th><th>Weak tests</th><th>Integration test</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>13</td><td>Home-made check &quot;each test was seen failing first&quot;</td><td>Opus</td><td>4.67</td><td>11/11</td><td>10/10</td><td>1</td><td>bypasses the page</td></tr>
+              <tr><td>14</td><td>Same check, corrected</td><td>Opus</td><td>5.31</td><td>11/11</td><td>10/10</td><td>0</td><td>bypasses the page</td></tr>
+              <tr><td>15</td><td>Seven written rules for efficient tests</td><td>Opus</td><td>4.94</td><td>10/11</td><td>10/10</td><td>1</td><td>bypasses the page</td></tr>
+              <tr><td>16</td><td>Rules + mutation testing as the slice gate</td><td>Opus</td><td>5.09</td><td>11/11</td><td>10/10</td><td>0</td><td><strong>drives the page</strong></td></tr>
+              <tr><td>17</td><td>Mutation gate packaged, stricter, whole changed files</td><td>Opus</td><td>5.78</td><td>11/11</td><td>10/10</td><td>1</td><td>bypasses the page</td></tr>
+              <tr><td>18</td><td>Same as 17</td><td>Sonnet 5.5</td><td>3.22</td><td>11/11</td><td>10/10</td><td>0</td><td>bypasses the page</td></tr>
+              <tr><td>19</td><td>Mutation on changed lines only; outer test must drive the page</td><td>Sonnet 5.5</td><td><strong>1.81</strong></td><td>10/11</td><td>10/10</td><td>1</td><td><strong>drives the page</strong></td></tr>
+            </tbody>
+          </table>
+          <ul>
+            <li><strong>The home-made check failed twice</strong> (13, 14) on details of the test runner's output. It blocked correct builds and cost more.</li>
+            <li><strong>Written rules changed nothing</strong> (15). The build broke the very rules it had been given.</li>
+            <li><strong>Mutation testing worked</strong> (16). Fewest tests of the series, none weak, and an integration test that caught five of the ten planted bugs by itself.</li>
+            <li><strong>Scope matters</strong> (17, 18). When the tool mutated whole files, the agent wrote tests for existing code to reach the threshold. In experiment 18, 11 of 12 new view-model tests were off-scope.</li>
+            <li><strong>Limiting the check to changed lines removed that</strong> (19). 38 of 38 mutants killed, 122 outside the slice not scored, no off-scope tests, and 44% cheaper than experiment 18 on the same model.</li>
+          </ul>
+
+          <h2>The overall gain</h2>
+          <table>
+            <thead>
+              <tr><th></th><th>Baseline</th><th>Final (exp. 19)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Build cost per slice</td><td>5.57 USD</td><td>1.81 USD (<strong>&minus;67%</strong>)</td></tr>
+              <tr><td>Against the isolated reference (4.29 USD)</td><td></td><td><strong>&minus;58%</strong></td></tr>
+              <tr><td>Acceptance criteria</td><td>11/11</td><td>10/11 (one partly met)</td></tr>
+              <tr><td>Planted bugs caught</td><td>10/10</td><td>10/10</td></tr>
+              <tr><td>Weak tests</td><td>0</td><td>1</td></tr>
+              <tr><td>Real integration test</td><td>no (a UI test)</td><td>yes, through the page, on the real container</td></tr>
+              <tr><td>Mutation score on the slice's code</td><td>not measured</td><td>100%</td></tr>
+              <tr><td>Line coverage</td><td>&asymp;87%</td><td>&asymp;97%</td></tr>
+            </tbody>
+          </table>
+          <p>Where the saving came from, roughly:</p>
+          <ul>
+            <li>process and output changes on the same model: &minus;26%;</li>
+            <li>the cheaper model: about &minus;44% (experiment 17 against 18);</li>
+            <li>a correctly scoped check: a further &minus;44% (18 against 19).</li>
+          </ul>
+
+          <h2>What made a real difference</h2>
+          <ol>
+            <li><strong>The spec.</strong> It was the single largest quality factor: 5/11 criteria without it, 10&ndash;11/11 with it, whatever the rest of the harness looked like. The spec is where the owner's decisions enter the build.</li>
+            <li><strong>Removing duplicate work.</strong> A separate plan file and a second analysis build repeated what the spec and the gate already did: &minus;14%.</li>
+            <li><strong>Keeping tool output out of the context.</strong> Quiet build and test output: &minus;14% cost, &minus;27% context. The context grows from what the agent reads and runs, not from the instructions.</li>
+            <li><strong>A mechanical check instead of prose.</strong> Mutation testing changed how the agent tested. Seven written rules did not.</li>
+            <li><strong>Scoping that check to the slice.</strong> An unscoped gate creates its own waste.</li>
+            <li><strong>Model choice, once the gate exists.</strong> Sonnet 5.5 met the same floor as Opus 5.5 at 56% of the cost. The gate, not the model, set the quality.</li>
+          </ol>
+
+          <h2>What had no measurable effect</h2>
+          <ol>
+            <li><strong>Instruction text, in either direction.</strong> &minus;86% of the build skill: no change. Seven new rules: no change.</li>
+            <li><strong>Paperwork.</strong> Dropping the recap file and spec edits: &minus;2%, inside the noise.</li>
+            <li><strong>Regrouping work.</strong> Batching tests, parallel tool calls, many small commands: all more expensive, because each turn re-reads the context and bigger steps grow it.</li>
+          </ol>
+
+          <h2>What made things worse</h2>
+          <ol>
+            <li><strong>A sub-agent per command:</strong> +54% and more than twice the time.</li>
+            <li><strong>A home-made verification hook:</strong> two versions, two defects, both blocking correct work. A proven tool (Stryker.NET) did the job the first time.</li>
+            <li><strong>Stale instructions.</strong> Old texts left in the project contradicted the new ones. Two builds from the same base differed by 37%.</li>
+          </ol>
+
+          <h2>Anthropic's guidance holds up</h2>
+          <p>I compared my findings with three Anthropic sources: the <a href="https://code.claude.com/docs/en/best-practices">Claude Code best-practices page</a>, <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">&quot;Harness design for long-running application development&quot;</a> (March 2026) and <a href="https://claude.com/blog/harnessing-claudes-intelligence">&quot;Harnessing Claude's intelligence&quot;</a> (April 2026).</p>
+          <table>
+            <thead>
+              <tr><th>Guidance</th><th>My measurement</th><th>Verdict</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Write a spec, then build from it in a fresh session</td><td>Spec: 5/11 &rarr; 11/11. Every build ran in a fresh session from the spec.</td><td><strong>Confirmed</strong>, strongest effect of the study</td></tr>
+              <tr><td>Instructions are advisory; what must always happen belongs in a hook or a check</td><td>Rules text: no effect (exp. 15). Mutation gate: clear effect (exp. 16, 19).</td><td><strong>Confirmed</strong></td></tr>
+              <tr><td>Give the agent a check that returns pass or fail</td><td>The mutation check let the agent find and close its own gaps (68% &rarr; 83%, 70% &rarr; 87%).</td><td><strong>Confirmed</strong></td></tr>
+              <tr><td>&quot;Every component in a harness encodes an assumption about what the model can't do on its own&quot;; remove components and measure</td><td>Plan file, analysis build and 86% of the build skill removed without loss.</td><td><strong>Confirmed</strong></td></tr>
+              <tr><td>Keep the instruction file short</td><td>Shorter is harmless, but it saved nothing measurable: the context is dominated by tool output.</td><td><strong>Partly</strong>: right for clarity, not a cost lever here</td></tr>
+              <tr><td>Keep noisy output out of the main context</td><td>Quiet output: &minus;14% cost, &minus;27% context.</td><td><strong>Confirmed</strong></td></tr>
+              <tr><td>Sub-agents isolate noisy work</td><td>One sub-agent per build or test command: +54%.</td><td><strong>Not confirmed as I applied it</strong>: isolation has a start-up cost; per command is too fine</td></tr>
+              <tr><td>Agents grade their own work too positively; use a separate evaluator</td><td>My independent judges found weak tests, false claims in the test list and mislabelled mutants that the builders reported as fine.</td><td><strong>Confirmed</strong></td></tr>
+              <tr><td>Every enforced rule will sometimes fire wrongly and must be maintained</td><td>My own red-check hook failed twice.</td><td><strong>Confirmed</strong>, the hard way</td></tr>
+              <tr><td>Sonnet costs less on routine work</td><td>Same quality floor at 56% of the cost, with the gate in place.</td><td><strong>Confirmed</strong></td></tr>
+              <tr><td>Stale or contradictory instructions should be audited out</td><td>A 37% cost difference traced to stale texts.</td><td><strong>Confirmed</strong></td></tr>
+            </tbody>
+          </table>
+
+          <h3>On plan mode</h3>
+          <p>Several third-party articles report that Anthropic now puts less weight on plan mode and more on a written spec. I did not find this stated in the Anthropic pages I read, so I treat it as unverified.</p>
+          <p>My data is consistent with it. Removing the separate planning step saved 14% with no loss. Removing the spec lost half the acceptance criteria. <strong>For this kind of work, the spec is the plan.</strong></p>
+
+          <h2>Limitations</h2>
+          <ul>
+            <li><strong>One task, one codebase, one slice.</strong> A different feature may behave differently.</li>
+            <li><strong>Mostly single runs.</strong> The baseline spread was &plusmn;1.5% over three runs, but I also saw 37% between two runs with contaminated instructions. Differences under 10% should be read as noise. The larger effects (&minus;14%, &minus;44%, +54%) are outside it.</li>
+            <li><strong>The final run did not fully meet the floor</strong> (one criterion partly tested, one weak test). It is the best cost and the best integration test, not a clean win on every line.</li>
+            <li><strong>The judges are models.</strong> They were blind to the build session and consistent across runs, but they are not ground truth.</li>
+            <li><strong>Early absolute costs are inflated</strong> by the isolation defect. Relative results for skill and setting changes hold.</li>
+            <li><strong>Evaluation is not free.</strong> The two judges cost about 4.5 USD per experiment, more than the final build itself.</li>
+          </ul>
+
+          <h2>Keep what decides, drop what only instructs</h2>
+          <p>The harness I ended with is smaller than the one I started with. It produces better-tested code for about a third of the cost.</p>
+          <p>The pattern behind every gain was the same: <strong>keep what carries decisions (the spec) and what can be checked by a machine (the gate, the mutation check); remove what only tells the model how to work.</strong></p>
+          <p>The practical advice I draw from the measurements:</p>
+          <ol>
+            <li>Invest in the spec; it decides what gets built.</li>
+            <li>Enforce with a proven tool, not with more text and not with home-made hooks.</li>
+            <li>Scope every gate to the change under review.</li>
+            <li>Watch tool output, not instruction length, when the cost is too high.</li>
+            <li>Measure one change at a time against a fixed task, and start every session on the commit under test.</li>
+            <li>Re-test the model choice after the gate is in place.</li>
+          </ol>
+
+          <h2>Measurements</h2>
+          <h3>All runs</h3>
+          <p>Costs in USD for the build job only. &quot;Ctx&quot; is tokens read from cache, in millions. &quot;&ndash;&quot; means not judged.</p>
+          <table>
+            <thead>
+              <tr><th>Run</th><th>Harness / change</th><th>Model</th><th>Cost</th><th>Turns</th><th>Ctx</th><th>Criteria</th><th>Bugs caught</th><th>Weak</th><th>Line cov.</th><th>Decision</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>base-1</td><td>Kit 2.5.6</td><td>Opus</td><td>5.59</td><td>147</td><td>12.30</td><td>10/11</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>baseline</td></tr>
+              <tr><td>base-2</td><td>Kit 2.5.6</td><td>Opus</td><td>5.64</td><td>150</td><td>10.81</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>found one criterion untestable; spec fixed</td></tr>
+              <tr><td>base-3</td><td>Kit 2.5.6, spec fixed</td><td>Opus</td><td>5.48</td><td>149</td><td>11.06</td><td>11/11</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>reference</td></tr>
+              <tr><td>1</td><td>No plan file, no analysis build</td><td>Opus</td><td>4.78</td><td>121</td><td>10.53</td><td>11/11</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>adopted (2.5.7)</td></tr>
+              <tr><td>2</td><td>Sub-agent per build/test</td><td>Opus</td><td>8.57</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>rejected</td></tr>
+              <tr><td>3</td><td>Small targeted commands</td><td>Opus</td><td>6.37</td><td>152</td><td>15.70</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>rejected</td></tr>
+              <tr><td>4</td><td>Test economy</td><td>Opus</td><td>4.61</td><td>118</td><td>8.84</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>not alone</td></tr>
+              <tr><td>5</td><td>Integration test first</td><td>Opus</td><td>4.77</td><td>101</td><td>9.50</td><td>11/11</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>adopted with 4 (2.5.8)</td></tr>
+              <tr><td>6</td><td>Instructions &minus;55%</td><td>Opus</td><td>4.78</td><td>126</td><td>9.39</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>void</td></tr>
+              <tr><td>7</td><td>Quiet output</td><td>Opus</td><td>4.11</td><td>103</td><td>6.93</td><td>11/11</td><td>10/10</td><td>0</td><td>&asymp;87%</td><td>adopted (2.5.9)</td></tr>
+              <tr><td>8</td><td>Batch red, batch green</td><td>Opus</td><td>4.60</td><td>116</td><td>8.57</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>rejected</td></tr>
+              <tr><td>9</td><td>No recap, no spec edits</td><td>Opus</td><td>4.04</td><td>101</td><td>7.12</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>not adopted</td></tr>
+              <tr><td>10</td><td>Parallel tool calls</td><td>Opus</td><td>5.62</td><td>114</td><td>7.99</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>rejected</td></tr>
+              <tr><td>ref-iso</td><td>Kit 2.5.9, isolated</td><td>Opus</td><td>4.29</td><td>102</td><td>8.05</td><td>11/11</td><td>10/10</td><td>0</td><td>&asymp;87%</td><td>isolated reference</td></tr>
+              <tr><td>11b</td><td>Minimal harness, no spec</td><td>Opus</td><td>3.42</td><td>96</td><td>6.82</td><td>5/11</td><td>8/10</td><td>0</td><td>100%</td><td>rejected</td></tr>
+              <tr><td>11c</td><td>Minimal harness + spec</td><td>Opus</td><td>3.96</td><td>101</td><td>7.61</td><td>10/11</td><td>10/10</td><td>0</td><td>&asymp;92%</td><td>not adopted as is</td></tr>
+              <tr><td>12</td><td>Kit 2.6.0, slim build skill</td><td>Opus</td><td>4.33</td><td>121</td><td>8.60</td><td>11/11</td><td>10/10</td><td>0</td><td>&asymp;89%</td><td>kept (simpler, equal)</td></tr>
+              <tr><td>13</td><td>Kit 2.6.1, red check</td><td>Opus</td><td>4.67</td><td>117</td><td>&ndash;</td><td>11/11</td><td>10/10</td><td>1</td><td>&asymp;90%</td><td>check defective</td></tr>
+              <tr><td>14</td><td>Kit 2.6.2, red check v2</td><td>Opus</td><td>5.31</td><td>139</td><td>10.87</td><td>11/11</td><td>10/10</td><td>0</td><td>100%</td><td>check defective</td></tr>
+              <tr><td>15</td><td>Kit 2.6.3, testing rules only</td><td>Opus</td><td>4.94</td><td>109</td><td>10.03</td><td>10/11</td><td>10/10</td><td>1</td><td>&asymp;91%</td><td>not adopted</td></tr>
+              <tr><td>16</td><td>+ mutation gate</td><td>Opus</td><td>5.09</td><td>117</td><td>10.50</td><td>11/11</td><td>10/10</td><td>0</td><td>100%</td><td>adopted (2.6.4)</td></tr>
+              <tr><td>17</td><td>Kit 2.6.4</td><td>Opus</td><td>5.78</td><td>152</td><td>11.60</td><td>11/11</td><td>10/10</td><td>1</td><td>100%</td><td>confirmed, padding found</td></tr>
+              <tr><td>18</td><td>Kit 2.6.4</td><td>Sonnet</td><td>3.22</td><td>168</td><td>&ndash;</td><td>11/11</td><td>10/10</td><td>0</td><td>100%</td><td>model adopted</td></tr>
+              <tr><td>19</td><td>Kit 2.6.5</td><td>Sonnet</td><td>1.81</td><td>113</td><td>&ndash;</td><td>10/11</td><td>10/10</td><td>1</td><td>&asymp;97%</td><td>recommended</td></tr>
+            </tbody>
+          </table>
+          <p>All judged runs had a green gate, caught both bugs planted by the build judge, and scored 4/5 on code quality.</p>
+
+          <h3>Mutation testing detail</h3>
+          <table>
+            <thead>
+              <tr><th>Run</th><th>Scope</th><th>Mutants scored</th><th>First score</th><th>Final score</th><th>Tests added for it</th><th>Off-scope tests</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>16</td><td>Selected files</td><td>45</td><td>71.4%</td><td>80.0%</td><td>2</td><td>0</td></tr>
+              <tr><td>17</td><td>Whole changed files</td><td>123</td><td>68.3%</td><td>82.9%</td><td>9</td><td>5</td></tr>
+              <tr><td>18</td><td>Whole changed files</td><td>125</td><td>70.4%</td><td>87.2%</td><td>&asymp;20</td><td>11</td></tr>
+              <tr><td>19</td><td>Changed lines only</td><td>38 (122 outside, not scored)</td><td>7 survivors</td><td>100%</td><td>0 beyond the slice</td><td>0</td></tr>
+            </tbody>
+          </table>
+          <p>Tool: <a href="https://stryker-mutator.io/docs/stryker-net/introduction/">Stryker.NET</a> 5.1.0, threshold 80%, no mutant without coverage allowed. Surviving mutants are committed with the slice and classified as killed later, equivalent (unobservable by any test) or accepted for the reviewer.</p>
+
+          <h3>The ten planted bugs</h3>
+          <table>
+            <thead>
+              <tr><th></th><th>Bug</th><th>Caught in exp. 19 by</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>M1</td><td>Separator <code>;</code> changed to <code>,</code></td><td>1 unit, 2 integration</td></tr>
+              <tr><td>M2</td><td>Byte-order mark removed</td><td>13 unit, 2 integration</td></tr>
+              <tr><td>M3</td><td>CRLF changed to LF</td><td>13 unit, 2 integration</td></tr>
+              <tr><td>M4</td><td>Quoting removed</td><td>4 unit</td></tr>
+              <tr><td>M5</td><td>Formula guard for <code>=</code> removed</td><td>2 unit</td></tr>
+              <tr><td>M6</td><td>Headers in a fixed language</td><td>1 integration</td></tr>
+              <tr><td>M7</td><td>Only the current page exported</td><td>1 integration</td></tr>
+              <tr><td>M8</td><td>Grid sort ignored</td><td>1 integration</td></tr>
+              <tr><td>M9</td><td>UTC date instead of local date in the file name</td><td>1 integration</td></tr>
+              <tr><td>M10</td><td>A person's name added to the log record</td><td>1 unit</td></tr>
+            </tbody>
+          </table>
+
+          <h2>Sources</h2>
+          <ul>
+            <li>Anthropic, <a href="https://code.claude.com/docs/en/best-practices">Best practices for Claude Code</a></li>
+            <li>Anthropic Engineering, <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Harness design for long-running application development</a>, 24 March 2026</li>
+            <li>Anthropic, <a href="https://claude.com/blog/harnessing-claudes-intelligence">Harnessing Claude's intelligence</a>, 2 April 2026</li>
+            <li><a href="https://stryker-mutator.io/docs/stryker-net/introduction/">Stryker.NET</a></li>
+          </ul>
+        </div>
+      </article>
+<!-- site:sidebar -->
+    <aside class="sidebar" aria-label="About this blog">
+      <div class="box box--sky">
+        <p class="label">About</p>
+        <p><img class="pixel avatar" src="/img/site/avatar_px.png" alt="" width="40" height="40">Geoffrey Vandiest on software development: architecture, .NET, Azure, testing and AI-assisted development.</p>
+      </div>
+      <div class="box">
+        <p class="label">Subscribe</p>
+        <p>New posts arrive in the feed the minute they are published.</p>
+        <a class="btn btn--sun btn--label" href="/rss.xml">RSS feed</a>
+      </div>
+      <div class="box">
+        <p class="label">More</p>
+        <p><a href="/archive/">Every post since 2008, by year</a></p>
+      </div>
+    </aside>
+    <!-- /site:sidebar -->
+    </div>
+  </main>
+<!-- site:footer -->
+  <footer class="footer">
+    <p class="footer__brand">Geoffrey Vandiest</p>
+    <ul class="footer__links">
+      <li><a href="/archive/">Archive</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <p class="footer__copy">&copy; 2008&ndash;2026 Geoffrey Vandiest</p>
+  </footer>
+  <!-- /site:footer -->
+  <script src="/js/prism.js" defer></script>
+</body>
+</html>
